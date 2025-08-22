@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Projet : Migration vers AWS Serverless - Abderrahman El Ouali</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<section id="header">
+					<h1><a href="index.html">Abderrahman El Ouali</a></h1>
+                            <nav id="nav">
+                                <ul>
+                                    <li><a href="index.html">Accueil</a></li>
+                                    <li><a href="about.html">À Propos</a></li>
+                                    <li><a href="experiences.html">Expériences</a></li>
+                                    <li><a href="projects.html">Projets</a></li>
+                                    <li><a href="#footer">Contact</a></li>
+                                </ul>
+                            </nav>
+				</section>
+
+			<section id="main">
+					<div class="container">
+						<article class="box post">
+								<a href="#" class="image featured"><img src="images/projet-dynamodb.jpg" alt="" /></a>
+								<header>
+									<h2>Projet : Migration d'une Architecture de Données vers AWS Serverless</h2>
+									<p>Optimisation des performances et des coûts pour la plateforme Core S&T chez Airbus.</p>
+								</header>
+								
+								<section>
+									<header>
+										<h3>Contexte et Problématique</h3>
+									</header>
+									<p>
+										[cite_start]L'architecture initiale de stockage des produits de simulation reposait sur un unique fichier Parquet sur Amazon S3. [cite: 371] [cite_start]Avec l'augmentation du volume de données, cette approche montrait des limites critiques : chaque mise à jour, même mineure, nécessitait de lire, modifier et réécrire l'intégralité du fichier. [cite: 373] [cite_start]Ce processus entraînait des latences importantes et une complexité algorithmique linéaire (O(N)), ce qui n'était ni scalable ni efficient en termes de coûts. [cite: 18, 375]
+									</p>
+								</section>
+								
+								<section>
+									<header>
+										<h3>Ma Solution et mes Actions</h3>
+									</header>
+									<p>
+										Pour résoudre cette problématique, j'ai conçu et implémenté une nouvelle architecture entièrement serverless sur AWS. La solution s'articule autour de deux flux distincts pour optimiser les performances :
+									</p>
+									<ul>
+										[cite_start]<li><strong>Flux d'Écriture Asynchrone :</strong> Pour garantir la fiabilité, les requêtes de mise à jour sont envoyées à une file d'attente Amazon SQS. [cite: 54] Une fonction AWS Lambda consomme ensuite les messages de manière asynchrone et effectue une écriture ciblée (opération <code>PutItem</code>) dans une table Amazon DynamoDB. [cite_start]Ce découplage assure la résilience du système et une confirmation de réception instantanée. [cite: 54, 389, 390, 391]</li>
+										[cite_start]<li><strong>Flux de Lecture Synchrone :</strong> Pour des consultations rapides, une API Gateway expose un point de terminaison qui déclenche une autre fonction Lambda. [cite: 55] [cite_start]Celle-ci effectue une lecture directe et ultra-performante (opération <code>GetItem</code>) sur DynamoDB en utilisant la clé primaire, retournant la donnée avec une latence minimale. [cite: 55, 395]</li>
+									</ul>
+									<p>
+										[cite_start]L'intégralité de cette infrastructure (table DynamoDB, Lambdas, file SQS, API Gateway, rôles IAM) a été provisionnée de manière automatisée et reproductible via l'AWS Cloud Development Kit (CDK), en suivant les principes de l'Infrastructure as Code (IaC). [cite: 56]
+									</p>
+								</section>
+								
+								<section>
+									<header>
+										<h3>Résultats et Impact</h3>
+									</header>
+									<p>
+										Cette migration a eu un impact majeur sur la performance et l'efficacité de la plateforme :
+									</p>
+									<ul>
+										[cite_start]<li>✅ <strong>Performance Drastiquement Améliorée :</strong> La latence des opérations est passée de plusieurs secondes à quelques millisecondes. [cite: 436]</li>
+										[cite_start]<li>✅ <strong>Complexité Réduite :</strong> La complexité des opérations de lecture/écriture a été réduite de linéaire **O(N)** à constante **O(1)**. [cite: 453]</li>
+										[cite_start]<li>✅ <strong>Scalabilité Native :</strong> L'architecture serverless peut gérer des milliers de requêtes sans intervention manuelle. [cite: 437]</li>
+										[cite_start]<li>✅ <strong>Optimisation des Coûts :</strong> Le modèle "pay-as-you-go" assure que nous ne payons que pour les ressources réellement consommées, éliminant les coûts superflus. [cite: 438]</li>
+									</ul>
+								</section>
+
+								<section>
+									<header>
+										<h3>Technologies Utilisées</h3>
+									</header>
+									<p>
+										[cite_start]AWS (DynamoDB, Lambda, SQS, S3, API Gateway), AWS CDK, Python, Git, Jenkins, CI/CD, Infrastructure as Code (IaC). [cite: 21, 454]
+									</p>
+								</section>
+							</article>
+					</div>
+				</section>
+
+			<section id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-8 col-12-medium">
+							<section>
+								<header>
+									<h2>À la recherche d'opportunités</h2>
+								</header>
+								<p>
+									Actuellement à la recherche d'un stage de fin d'études de 6 mois à partir de janvier 2026. Je suis motivé par la construction de solutions logicielles qui ont un impact réel et positif. [cite_start]N'hésitez pas à me contacter pour discuter de projets ambitieux. [cite: 447, 448]
+								</p>
+							</section>
+						</div>
+						<div class="col-4 col-12-medium">
+							<section>
+								<header>
+									<h2>Contact</h2>
+								</header>
+								<ul class="social">
+									<li><a class="icon brands fa-linkedin-in" href="https://www.linkedin.com/in/elouali" target="_blank"><span class="label">LinkedIn</span></a></li>
+									<li><a class="icon brands fa-github" href="#" target="_blank"><span class="label">GitHub</span></a></li> </ul>
+								<ul class="contact">
+									<li>
+										<h3>Mail</h3>
+										<p><a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></p>
+									</li>
+									<li>
+										<h3>Téléphone</h3>
+										[cite_start]<p>+33 7 52 04 36 70 [cite: 445]</p>
+									</li>
+								</ul>
+							</section>
+						</div>
+						<div class="col-12">
+							<div id="copyright">
+								<ul class="links">
+									<li>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
