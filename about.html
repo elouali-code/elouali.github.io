@@ -5,137 +5,199 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+		
+		<style>
+			:root {
+				--background: #0A0F1E;
+				--surface: #161B29;
+				--text-primary: #F0F0F0;
+				--text-secondary: #A0A0B0;
+				--accent-blue: #5271FF;
+				--accent-purple: #C652FF;
+				--border-color: #2a3042;
+			}
+
+			body {
+				background: var(--background);
+				color: var(--text-secondary);
+				font-family: 'Poppins', sans-serif;
+			}
+			#page-wrapper { background: none; }
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
+			a:hover { color: var(--accent-blue); }
+			hr { border-bottom-color: var(--border-color); }
+
+			#header {
+				background: var(--background);
+				border-bottom: 1px solid var(--border-color);
+				position: sticky; top: 0; z-index: 1000;
+				padding: 0.5em 2em;
+			}
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
+			#logo { display: flex; align-items: center; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+			#logo h1 { font-size: 1.2em; margin: 0; }
+			
+			#nav ul li a {
+				color: var(--text-secondary);
+				position: relative;
+				padding-bottom: 5px;
+				font-weight: 500;
+			}
+			#nav ul li a:after {
+				content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+				width: 0; height: 2px; background-color: var(--accent-blue);
+				transition: width 0.3s ease;
+			}
+			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
+			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+
+			.gradient-title {
+				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.section-container { padding: 5em 0; }
+			.section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
+			
+			.about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+			.about-content .profile-image { width: 100%; max-width: 250px; border-radius: 50%; margin: 2em 0; border: 3px solid var(--border-color); box-shadow: 0 0 30px rgba(82, 113, 255, 0.2); }
+			.about-content .narrative { text-align: justify; }
+
+			.tech-stack { text-align: center; }
+			.tech-stack .section-title { color: var(--accent-purple); }
+			.tech-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5em; }
+			.tech-logo { display: flex; flex-direction: column; align-items: center; width: 80px; text-align: center; }
+			.tech-logo img { height: 40px; max-width: 80px; object-fit: contain; transition: transform 0.2s ease; }
+			.tech-logo img:hover { transform: scale(1.1); }
+			.tech-logo span { font-family: 'Source Code Pro', monospace; font-size: 0.8em; color: var(--text-secondary); margin-top: 0.8em; text-transform: uppercase; }
+			
+			.languages-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; list-style: none; padding: 0; font-size: 1.1em; }
+
+			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
+			#footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
+			#footer-copy { flex-basis: 55%; padding-right: 2em; }
+			#footer-details { flex-basis: 35%; }
+			#footer-details ul { list-style: none; padding: 0; }
+			#footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
+			#footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
+
+			@media (max-width: 768px) {
+				#footer-grid { flex-direction: column; }
+				#footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
+				#footer-details { margin-top: 2em; }
+			}
+		</style>
 	</head>
-	<body class="left-sidebar is-preload">
+	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
 
 			<section id="header">
-					<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-                            <nav id="nav">
-                                <ul>
-                                    <li><a href="index.html">Accueil</a></li>
-                                    <li><a href="about.html">À Propos</a></li>
-                                    <li><a href="experiences.html">Expériences</a></li>
-                                    <li><a href="projects.html">Projets</a></li>
-                                    <li><a href="#footer">Contact</a></li>
-                                </ul>
-                            </nav>
+					<div class="container">
+						<div id="logo">
+							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
+						</div>
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Accueil</a></li>
+								<li class="current"><a href="about.html">À Propos</a></li>
+								<li><a href="experiences.html">Expériences</a></li>
+								<li><a href="projects.html">Projets</a></li>
+								<li><a href="articles.html">Articles</a></li> 								
+								<li><a href="#footer">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
 				</section>
 
 			<section id="main">
 					<div class="container">
-						<div class="row">
-							<div class="col-4 col-12-medium">
+						<div class="about-content">
+							<header>
+								<h2 class="gradient-title" style="font-size: 3em; line-height: 1.4;">Ma mission : transformer la complexité en clarté.</h2>
+							</header>
 
-								<section class="box">
-										<a href="#" class="image featured"><img src="images/IMG_0318.jpeg" alt="Photo de Abderrahman El Ouali" /></a>
-										<header>
-											<h3>Abderrahman El Ouali</h3>
-										</header>
-										[cite_start]<p>Étudiant Ingénieur en Systèmes Distribués & Big Data, INSA Toulouse. [cite: 6, 465]</p>
-										<footer>
-											<a href="Cv_EL_OUALI_2025.pdf" class="button alt" target="_blank">Télécharger mon CV</a>
-										</footer>
-									</section>
-									<section class="box">
-										<header>
-											<h3>Compétences Techniques</h3>
-										</header>
-										[cite_start]<p><strong>Cloud & DevOps:</strong><br/> AWS (S3, Lambda, SQS, DynamoDB, CDK), Docker, Jenkins, Git, CI/CD [cite: 481]</p>
-										[cite_start]<p><strong>Data & IA:</strong><br/> Spark, PySpark, Scikit-learn, Pandas, NumPy, SQL, NoSQL, Power BI [cite: 482]</p>
-										[cite_start]<p><strong>Langages & Frameworks:</strong><br/> Python (FastAPI), Java (Spring Boot, JPA), C, R, Angular [cite: 483]</p>
-										
-									</section>
+							<img src="images/IMG_0318.jpeg" alt="Abderrahman El Ouali" class="profile-image" />
 
+							<div class="narrative">
+								<p>
+									En tant que futur ingénieur de l'INSA Toulouse, ma véritable passion est de plonger au cœur des systèmes complexes. J'aime décortiquer un problème, en comprendre les rouages, et architecturer une solution qui soit non seulement efficace, mais aussi élégante et durable.
+								</p>
+								<p>
+									Mon parcours, notamment chez <strong>Airbus</strong>, m'a appris que la meilleure technologie est celle qui sert un objectif clair. J'ai eu la chance de concevoir des architectures Cloud qui optimisent la performance, de construire des pipelines qui donnent vie aux données, et d'appliquer les principes DevOps qui garantissent la robustesse. Chaque défi est une opportunité d'apprendre et de solidifier ma conviction : une bonne architecture n'est pas une finalité, mais le fondement d'une innovation réussie.
+								</p>
 							</div>
-							<div class="col-8 col-12-medium imp-medium">
+						</div>
 
-								<article class="box post">
-										<header>
-											<h2>À Propos de Moi</h2>
-											<p>Déconstruire la complexité pour bâtir des solutions durables.</p>
-										</header>
-										<p>
-											[cite_start]Actuellement en dernière année du cycle d'ingénieur à l'INSA Toulouse, avec une spécialisation en Systèmes Distribués et Big Data, je suis profondément passionné par l'ingénierie logicielle et l'architecture de systèmes informatiques. [cite: 465]
-										</p>
-										<p>
-											[cite_start]Ce qui me motive au quotidien est la capacité à déconstruire des problèmes complexes pour en comprendre l'essence, puis à concevoir et architecturer des solutions qui soient non seulement fonctionnelles, mais aussi élégantes, robustes et durables. [cite: 448] [cite_start]Je crois fermement que la technologie est un levier puissant pour créer des outils performants et innovants, et mon objectif est de maîtriser cet art pour construire des solutions qui ont un impact réel et positif. [cite: 449]
-										</p>
-										<section>
-											<header>
-												<h3>Mon Parcours</h3>
-											</header>
-											<p>
-												Mes expériences professionnelles, notamment chez Airbus, m'ont permis d'appliquer ces principes à des problématiques industrielles concrètes. [cite_start]J'ai eu l'opportunité de travailler sur des architectures Cloud-natives sur AWS, d'optimiser des pipelines de données pour la performance, et de mettre en place des pratiques DevOps pour garantir la qualité et la maintenabilité des logiciels. [cite: 451, 452, 453, 454] Chaque projet a été une occasion d'apprendre, de m'adapter et de renforcer ma conviction qu'une bonne architecture est la clé de la réussite d'un projet technique.
-											</p>
-										</section>
-										<section>
-											<header>
-												<h3>Mes Ambitions</h3>
-											</header>
-											<p>
-												[cite_start]À la recherche d'un stage de fin d'études de 6 mois dès janvier 2026, je souhaite rejoindre une équipe dynamique pour contribuer à des projets ambitieux où je pourrai continuer à développer mes compétences en architecture logicielle et en technologies Cloud. [cite: 447]
-											</p>
-										</section>
-									</article>
-
+						<div class="section-container tech-stack">
+							<h2 class="section-title gradient-title">Stack Technique</h2>
+							<div class="tech-logos">
+								<div class="tech-logo"><img src="images/logo-aws.png" alt="AWS"><span>AWS</span></div>
+								<div class="tech-logo"><img src="images/logo-docker.png" alt="Docker"><span>Docker</span></div>
+								<div class="tech-logo"><img src="images/logo-jenkins.png" alt="Jenkins"><span>Jenkins</span></div>
+								<div class="tech-logo"><img src="images/logo-git.png" alt="Git"><span>Git</span></div>
+								<div class="tech-logo"><img src="images/logo-spark.png" alt="Spark"><span>Spark</span></div>
+								<div class="tech-logo"><img src="images/logo-dynamodb.png" alt="DynamoDB"><span>DynamoDB</span></div>
+								<div class="tech-logo"><img src="images/logo-python.png" alt="Python"><span>Python</span></div>
+								<div class="tech-logo"><img src="images/logo-java.png" alt="Java"><span>Java</span></div>
+								<div class="tech-logo"><img src="images/logo-sql.png" alt="SQL"><span>SQL</span></div>
+								<div class="tech-logo"><img src="images/logo-angular.png" alt="Angular"><span>Angular</span></div>
 							</div>
+						</div>
+						
+						<div class="section-container languages-section">
+							<h2 class="section-title gradient-title">Langues</h2>
+							<ul class="languages-list">
+								<li>🇫🇷 Français</li>
+								<li>🇬🇧 Anglais</li>
+								<li>🇲🇦 Marocain (Darija)</li>
+								<li>🇸🇦 Arabe</li>
+                                <li>🇪🇸 Espagnol</li>
+							</ul>
 						</div>
 					</div>
 				</section>
-
 			<section id="footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-8 col-12-medium">
-							<section>
-								<header>
-									<h2>À la recherche d'opportunités</h2>
-								</header>
-								<p>
-									Actuellement à la recherche d'un stage de fin d'études de 6 mois à partir de janvier 2026. Je suis motivé par la construction de solutions logicielles qui ont un impact réel et positif. [cite_start]N'hésitez pas à me contacter pour discuter de projets ambitieux. [cite: 447, 448]
-								</p>
-							</section>
-						</div>
-						<div class="col-4 col-12-medium">
-							<section>
-								<header>
-									<h2>Contact</h2>
-								</header>
-								<ul class="social">
-									<li><a class="icon brands fa-linkedin-in" href="https://www.linkedin.com/in/elouali" target="_blank"><span class="label">LinkedIn</span></a></li>
-									<li><a class="icon brands fa-github" href="#" target="_blank"><span class="label">GitHub</span></a></li> </ul>
-								<ul class="contact">
-									<li>
-										<h3>Mail</h3>
-										<p><a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></p>
-									</li>
-									<li>
-										<h3>Téléphone</h3>
-										[cite_start]<p>+33 7 52 04 36 70 [cite: 445]</p>
-									</li>
-								</ul>
-							</section>
-						</div>
-						<div class="col-12">
-							<div id="copyright">
-								<ul class="links">
-									<li>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<div class="container">
+						<div id="footer-grid">
+							<div id="footer-copy">
+								<h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
+								<p>   </p>
+								<p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
+							</div>
+							<div id="footer-details">
+								<h3>Informations</h3>
+								<ul>
+									<p>   </p>
+									<li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
+									<li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
+									<li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
+									<li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a> </li>
+									<li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
 								</ul>
 							</div>
 						</div>
+						<div class="container" style="margin-top: 3em; padding-top: 3em; border-top: 1px solid var(--border-color); text-align: center;">
+							<ul class="links" style="list-style: none; padding: 0;">
+								<li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+							</ul>
+						</div>
 					</div>
-				</div>
-			</section>
-
+				</section>
 		</div>
 
 		<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>

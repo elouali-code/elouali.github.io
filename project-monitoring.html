@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Étude de Cas : Migration Data Serverless - Abderrahman El Ouali</title>
+		<title>Étude de Cas : Solution d'Observabilité - Abderrahman El Ouali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -115,7 +115,7 @@
 								<li><a href="about.html">À Propos</a></li>
 								<li><a href="experiences.html">Expériences</a></li>
 								<li class="current"><a href="projects.html">Projets</a></li>
-            					<li><a href="articles.html">Articles</a></li>
+								<li><a href="articles.html">Articles</a></li>
 								<li><a href="#footer">Contact</a></li>
 							</ul>
 						</nav>
@@ -126,22 +126,22 @@
 					<div class="container">
 						<article class="box post">
 							<header style="text-align:center; margin-bottom: 2em;">
-								<h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Migration Data Serverless</h2>
-								<p style="font-size: 1.2em; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">Optimisation des performances et des coûts pour la plateforme Core S&T chez Airbus.</p>
+								<h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Solution d'Observabilité Cloud</h2>
+								<p style="font-size: 1.2em; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">Transformer une "boîte noire" en un système transparent et résilient.</p>
 							</header>
 
 							<ul class="project-meta">
-								<li><strong>Rôle</strong><span>Architecte & Développeur</span></li>
+								<li><strong>Rôle</strong><span>Architecte & Développeur DevOps</span></li>
 								<li><strong>Entreprise</strong><span>Airbus</span></li>
-								<li><strong>Durée</strong><span>3 mois</span></li>
-								<li><strong>Technologies</strong><span>AWS, Python, DynamoDB, IaC</span></li>
+								<li><strong>Durée</strong><span>2 mois</span></li>
+								<li><strong>Technologies</strong><span>AWS CloudWatch, AWS CDK, Python, IaC</span></li>
 							</ul>
 							
 							<div class="slider-container">
 								<div class="slider">
-									<div class="slide"><img src="images/projet-dynamodb.jpg" alt="Schéma d'architecture de la solution"></div>
-									<div class="slide"><img src="images/projet-dynamodb.jpg" alt="Dashboard de monitoring"></div>
-									<div class="slide"><img src="images/projet-dynamodb.jpg" alt="Exemple d'alerte"></div>
+									<div class="slide"><img src="images/projet-monitoring.jpg" alt="Schéma de la solution de monitoring"></div>
+									<div class="slide"><img src="images/projet-monitoring.jpg" alt="Dashboard CloudWatch"></div>
+									<div class="slide"><img src="images/projet-monitoring.jpg" alt="Exemple d'alerte sur Google Chat"></div>
 								</div>
 								<div class="slider-nav">
 									<a class="prev">&#10094;</a>
@@ -152,30 +152,30 @@
 							<div style="max-width: 800px; margin: 2em auto 0 auto;">
 								<section>
 									<h3 class="gradient-title">Le Contexte</h3>
-									<p>L'architecture précédente de la plateforme reposait sur le stockage des données dans un fichier unique au format Parquet sur Amazon S3. Bien que simple, cette approche a révélé des limitations critiques avec l'augmentation du volume de données, notamment pour des accès transactionnels fréquents.</p>
+									<p>La plateforme de traitement de données Core S&T, bien que fonctionnelle, opérait comme une "boîte noire", avec une visibilité très limitée sur sa santé et ses performances en temps réel. La détection d'erreurs était réactive, rendant le diagnostic des incidents long et complexe.</p>
 								</section>
 
 								<section>
-									<h3 class="gradient-title">La Problématique : Complexité en $O(N)$</h3>
-									<p>Le défi majeur était une inadéquation entre le pattern d'accès (mises à jour d'items individuels) et l'architecture de stockage (fichier monolithique optimisé pour le batch). Chaque mise à jour, même mineure, nécessitait la lecture et la réécriture complètes du fichier, induisant une latence importante et une complexité temporelle directement proportionnelle à la taille des données, soit $O(N)$.</p>
+									<h3 class="gradient-title">Les Objectifs</h3>
+									<p>La mission était de concevoir et d'implémenter une pile de surveillance complète pour garantir la fiabilité du système. Les objectifs étaient clairs : visualiser les KPIs, détecter proactivement les pannes, réduire le temps de résolution des incidents (MTTD) et automatiser entièrement la configuration via l'Infrastructure as Code (IaC).</p>
 								</section>
 
 								<section>
-									<h3 class="gradient-title">Ma Solution : Une Architecture Serverless</h3>
-									<p>Pour résoudre cette problématique, j'ai conçu et implémenté une nouvelle architecture entièrement serverless sur AWS, dissociant les opérations de lecture et d'écriture pour une performance optimale et une complexité constante en $O(1)$.</p>
+									<h3 class="gradient-title">Ma Solution : Une Stack de Monitoring Modulaire</h3>
+									<p>J'ai développé une solution de surveillance entièrement codée avec l'AWS CDK en Python. L'approche était modulaire : une "stack" CDK réutilisable qui génère dynamiquement des dashboards et des alarmes pour n'importe quelle ressource (Lambda, SQS) qui lui est fournie.</p>
 									<ul>
-										<li><strong>Flux d'écriture asynchrone :</strong> Pour garantir rapidité et fiabilité, une requête de mise à jour est envoyée à une file d'attente Amazon SQS. Un Lambda "Consumer" est déclenché de manière asynchrone pour traiter le message et exécuter une opération `PutItem` ciblée sur la table DynamoDB.</li>
-										<li><strong>Flux de lecture synchrone :</strong> Pour des consultations instantanées, une API Gateway expose un endpoint qui déclenche un Lambda "Getter". Celui-ci exécute une opération `GetItem` ultra-performante sur DynamoDB en utilisant la clé primaire.</li>
+										<li><strong>Dashboards Centralisés :</strong> Un tableau de bord CloudWatch unique a été créé pour agréger toutes les métriques clés : latence de l'API Gateway, nombre de messages dans les files SQS, et surtout, l'utilisation mémoire et la durée d'exécution de chaque fonction Lambda.</li>
+										<li><strong>Alertes Proactives :</strong> Des alarmes critiques ont été configurées pour les points de défaillance majeurs (erreurs 5XX, messages dans la DLQ, erreurs Lambda). Les alertes sont envoyées via un topic SNS vers les canaux de communication de l'équipe pour une réaction immédiate.</li>
 									</ul>
 								</section>
 								
 								<section>
 									<h3 class="gradient-title">Résultats & Impact</h3>
 									<div class="row results-grid">
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-rocket"></span><h4>Performance Drastique</h4><p>Latence réduite de secondes à millisecondes.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-expand-arrows-alt"></span><h4>Scalabilité Native</h4><p>Gère des milliers de requêtes sans intervention.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-euro-sign"></span><h4>Optimisation des Coûts</h4><p>Facturation à l'usage, éliminant les coûts fixes.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-code"></span><h4>Maintenabilité Accrue</h4><p>Infrastructure 100% en code (IaC) pour des déploiements fiables.</p></div></div>
+										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-eye"></span><h4>Observabilité Complète</h4><p>Le système n'est plus une "boîte noire", permettant de visualiser la santé de chaque composant en temps réel.</p></div></div>
+										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-bell"></span><h4>Détection Proactive</h4><p>Les pannes sont détectées et notifiées instantanément, avant qu'elles n'impactent les utilisateurs.</p></div></div>
+										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-shipping-fast"></span><h4>Réponse Rapide</h4><p>Le temps de détection et de diagnostic des incidents (MTTD) a été drastiquement réduit.</p></div></div>
+										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-cogs"></span><h4>Configuration Fiable</h4><p>La solution 100% en code (IaC) élimine les erreurs manuelles et garantit la cohérence.</p></div></div>
 									</div>
 								</section>
 							</div>
@@ -223,6 +223,7 @@
 				document.addEventListener('DOMContentLoaded', function() {
 					let currentSlide = 0;
 					const slides = document.querySelectorAll('.slide');
+					if (slides.length === 0) return;
 					const slideCount = slides.length;
 					const slider = document.querySelector('.slider');
 					const prevButton = document.querySelector('.prev');

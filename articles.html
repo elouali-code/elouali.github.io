@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Expériences - Abderrahman El Ouali</title>
+		<title>Articles - Abderrahman El Ouali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -29,7 +29,6 @@
 			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
 			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
 			a:hover { color: var(--accent-blue); }
-			hr { border-bottom-color: var(--border-color); }
 
 			#header {
 				background: var(--background);
@@ -56,38 +55,35 @@
 			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
 			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
 
-			.gradient-title {
-				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
+			.section-container { padding: 4em 0; }
+			.section-title {
+				font-size: 2.8em;
+				text-align: center;
+				margin-bottom: 1.5em;
+				line-height: 1.4;
+				color: var(--accent-blue);
 			}
 
-			.card {
+			.article-card {
 				background: var(--surface);
 				border: 1px solid var(--border-color);
 				border-radius: 12px;
-				padding: 2em;
 				height: 100%;
+				display: flex;
+				flex-direction: column;
 				transition: transform 0.3s ease, box-shadow 0.3s ease;
 			}
-			.card:hover {
+			.article-card:hover {
 				transform: translateY(-8px);
 				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 			}
-			
-			.experience-header { display: flex; align-items: center; margin-bottom: 1em; flex-wrap: wrap; }
-			.experience-header img.logo { height: 40px; width: auto; max-width: 100px; margin-right: 15px; object-fit: contain; }
-			.experience-header .title-block { flex-grow: 1; }
-			.experience-header h3, .experience-header p { margin-bottom: 0.25em; }
-			.company-domain { font-style: italic; color: var(--text-secondary); font-size: 0.9em; margin-top: 0.5em; border-left: 2px solid var(--accent-blue); padding-left: 1em; }
-			.card ul { padding-left: 20px; }
-			.card ul li { margin-bottom: 0.8em; color: var(--text-primary); }
-			.card ul li strong {
-				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				font-weight: 600;
-			}
+			.article-card .image.featured { border-bottom: 1px solid var(--border-color); }
+			.article-card .content { padding: 1.5em; flex-grow: 1; display: flex; flex-direction: column; }
+			.article-card .content h3 { font-size: 1.3em; }
+			.article-card .content p { flex-grow: 1; font-size: 0.9em; }
+			.article-card .meta { font-size: 0.8em; color: var(--text-secondary); margin-top: -0.5em; margin-bottom: 1em;}
+			.button { background: var(--accent-purple); color: #fff !important; border: 0; border-radius: 8px; box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4); }
+			.button.alt.disabled { background: var(--surface); color: var(--text-secondary) !important; box-shadow: none; cursor: not-allowed; }
 
 			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
             #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
@@ -117,79 +113,59 @@
 							<ul>
 								<li><a href="index.html">Accueil</a></li>
 								<li><a href="about.html">À Propos</a></li>
-								<li class="current"><a href="experiences.html">Expériences</a></li>
+								<li><a href="experiences.html">Expériences</a></li>
 								<li><a href="projects.html">Projets</a></li>
-								<li><a href="articles.html">Articles</a></li>
+								<li class="current"><a href="articles.html">Articles</a></li>
 								<li><a href="#footer">Contact</a></li>
 							</ul>
 						</nav>
 					</div>
 				</section>
 
-			<section id="main">
+			<section id="main" class="section-container">
 					<div class="container">
-
-						<div style="text-align: center; padding: 2em 0 4em 0;">
-							<h2 style="font-size: 2.5em;" class="gradient-title">Un Parcours International</h2>
-							<p </p>
-							<p </p>
-							<p style="font-size: 1.2em; color: var(--text-secondary);">Mon parcours s'est construit entre l'Europe et l'Afrique, au sein de leaders mondiaux dans leurs secteurs respectifs comme Airbus et OCP Group, m'offrant une perspective unique sur des défis technologiques d'envergure.</p>
-							<div style="display: flex; justify-content: center; gap: 2em; margin-top: 2em; align-items: center;">
-								<img src="images/photo-france.jpg" alt="France" title="France" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border-color);" />
-								<img src="images/photo-maroc.jpg" alt="Maroc" title="Maroc" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border-color);" />
-							</div>
-						</div>
-
+						<header class="major">
+							<h2 class="section-title">Articles & Publications</h2>
+							<p style="font-size: 1.2em; color: var(--text-secondary);">Un espace pour partager mes réflexions et analyses sur des sujets qui me passionnent.</p>
+						</header>
 						<div class="row">
-							<div class="col-12">
-								<section class="card" style="margin-bottom: 2em;">
-									<div class="experience-header">
-										<img src="images/logo-airbus.png" alt="Logo Airbus" class="logo" />
-										<div class="title-block">
-											<h3>Stagiaire Architecte de Solutions Informatiques</h3>
-											<p><strong><a href="https://www.airbus.com" target="_blank">Airbus</a></strong> | Toulouse, France 🇫🇷 | Mars 2025 - Sept. 2025</p>
-										</div>
+							
+							<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
+								<section class="article-card">
+									<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank" class="image featured"><img src="images/article-fiabilite.png" alt="Aeronautics IT Architecture Lifecycle" /></a>
+									<div class="content">
+										<h3>Fiabilité en Aéronautique : L'Importance de la Qualification</h3>
+										<p class="meta"><p class="meta">Par Abderrahman El Ouali - Publié le 26/08/2025</p></p>
+										<p>En aéronautique, la fiabilité d'un système IT se joue avant la mise en production. Cet article explore les stratégies de qualification pour neutraliser les faiblesses avant qu'elles ne deviennent critiques.</p>
+										<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank" class="button">Lire sur LinkedIn</a>
 									</div>
-									<p class="company-domain">Leader mondial de la construction aéronautique et spatiale.</p>
-									<ul>
-										<li><strong>Architecture Cloud & Modernisation :</strong> Conception d'architectures serverless sur AWS et migration d'une base de données de S3/Parquet vers DynamoDB pour optimiser les performances (complexité passant de O(N) à O(1)).</li>
-										<li><strong>Ingénierie des Données :</strong> Développement de pipelines de données de bout en bout sur la plateforme "Core S&T" en batch (Spark/PySpark) et en temps réel (AWS Lambda/SQS).</li>
-										<li><strong>Architecture Logicielle & DevOps :</strong> Contribution au projet "ARDmate" et déploiement d'infrastructures en tant que code (IaC avec AWS CDK) via des pipelines CI/CD (Git, Jenkins).</li>
-									</ul>
 								</section>
 							</div>
-							<div class="col-12">
-								<section class="card" style="margin-bottom: 2em;">
-									<div class="experience-header">
-										<img src="images/logo-ocp.png" alt="Logo OCP Group" class="logo" />
-										<div class="title-block">
-											<h3>Stagiaire Data Analyst</h3>
-											<p><strong><a href="https://www.ocpgroup.ma" target="_blank">OCP Group</a></strong> | Casablanca, Maroc 🇲🇦 | Juil. 2024 - Sept. 2024</p>
-										</div>
+
+							<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
+								<section class="article-card">
+									<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank" class="image featured"><img src="images/offre.png" alt="internship offre" /></a>
+									<div class="content">
+										<h3>Here we go!  : Internship Offer</h3>
+										<p class="meta"><p class="meta">Par Abderrahman El Ouali - Publié le 25/07/2024</p></p>
+										<p>I’m thrilled to announce that I’ve been selected for the Growintern internship program ! offered by a forward-thinking Indian company. During this time, I will focus on Cloud Computing and Data Science through hands-on projects that align with my interests and skills.</p>
+										<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank" class="button">Lire sur LinkedIn</a>
 									</div>
-									<p class="company-domain">Leader mondial de la production de phosphate et d'engrais phosphatés.</p>
-									<ul>
-										<li><strong>Analyse et Visualisation :</strong> Création de dashboards interactifs (Power BI) pour la visualisation des KPIs.</li>
-										<li><strong>Machine Learning :</strong> Entraînement et déploiement d'un modèle pour prédire la performance de compresseurs, et déploiement via une API RESTful (FastAPI).</li>
-									</ul>
 								</section>
 							</div>
-							<div class="col-12">
-								<section class="card">
-									<div class="experience-header">
-										<img src="images/logo-webhelp.png" alt="Logo Webhelp" class="logo" />
-										<div class="title-block">
-											<h3>Stagiaire Développeur Java Full-Stack</h3>
-											<p><strong><a href="https://www.webhelp.com" target="_blank">Webhelp</a></strong> | Fès, Maroc 🇲🇦 | Juil. 2023 - Août 2023</p>
-										</div>
+
+							<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
+								<section class="article-card">
+									<a href="#" class="image featured"><img src="images/pic01.jpg" alt="Placeholder" /></a>
+									<div class="content">
+										<h3>Nouvel Article</h3>
+										<p class="meta">Prochainement</p>
+										<p>Un nouveau sujet technique sera exploré en détail ici. Restez à l'écoute pour de nouvelles publications.</p>
+										<a href="#" class="button alt disabled">À venir</a>
 									</div>
-									<p class="company-domain">Acteur mondial spécialisé dans l'expérience client et les solutions d'entreprise externalisées.</p>
-									<ul>
-										<li><strong>Développement Back-End :</strong> Conception et développement d'une API RESTful en Java avec le framework Spring Boot.</li>
-										<li><strong>Persistance des Données :</strong> Intégration de la couche de persistance avec Spring Data JPA et une base de données SQL (PostgreSQL).</li>
-									</ul>
 								</section>
 							</div>
+
 						</div>
 					</div>
 				</section>
@@ -221,8 +197,8 @@
 						</ul>
 					</div>
 				</section>
-		</div>
 
+		</div>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
