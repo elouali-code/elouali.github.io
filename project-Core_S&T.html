@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Étude de Cas : Industrialisation de la Chaîne d'Outils ARDmate - Abderrahman El Ouali</title>
+        <title>Étude de Cas : Data Transformation sur Skywise - Abderrahman El Ouali</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
@@ -27,10 +27,9 @@
             }
             #page-wrapper { background: none; }
             h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-            h4 { color: var(--accent-blue); }
             a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
             a:hover { color: var(--accent-blue); }
-            hr { border-bottom-color: var(--border-color); margin: 3em 0; }
+            hr { border-bottom-color: var(--border-color); margin: 3em 0;}
 
             #header {
                 background: var(--background);
@@ -69,7 +68,6 @@
             article.box.post section h3 {
                 font-size: 1.8em;
                 margin-bottom: 1em;
-                color: var(--accent-blue);
             }
 
             .project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
@@ -122,22 +120,22 @@
                 <div class="container">
                     <article class="box post">
                         <header style="text-align:center; margin-bottom: 2em;">
-                            <h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Industrialisation de la Chaîne d'Outils ARDmate</h2>
-                            <p style="font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Comment j'ai transformé un prototype en une solution DevOps robuste pour automatiser la génération de documents d'architecture critiques chez Airbus.</p>
+                            <h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Data Transformation sur Skywise</h2>
+                            <p style="font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Industrialisation du traitement de données d'ingénierie complexes pour créer des "Data Products" fiables chez Airbus.</p>
                         </header>
 
                         <ul class="project-meta">
-                            <li><strong>Rôle</strong><span> Ingénieur logiciel & Développeur Python</span></li>
+                            <li><strong>Rôle</strong><span>Data Engineer</span></li>
                             <li><strong>Entreprise</strong><span>Airbus</span></li>
                             <li><strong>Durée</strong><span>6 mois</span></li>
-                            <li><strong>Technologies</strong><span>Python, ArchiMate, Design Patterns, Git, Jenkins, CI/CD, Pytest, PDM</span></li>
+                            <li><strong>Technologies</strong><span>Palantir Foundry, PySpark, Python, Data Modeling, Git, CI/CD</span></li>
                         </ul>
                         
                         <div class="slider-container">
                             <div class="slider">
-                                <div class="slide"><img src="images/projet-ardmate.jpg" alt="Architecture cible de la chaîne d'outils ARDmate"></div>
-                                <div class="slide"><img src="images/ardmate-design-pattern.jpg" alt="Design Pattern Composite avec l'interface TransformationStep"></div>
-                                <div class="slide"><img src="images/ardmate-cicd.jpg" alt="Cycle de vie du build avec hooks CI/CD automatisés via PDM"></div>
+                                <div class="slide"><img src="images/pipline.PNG" alt="Vue du Data Lineage complet d'un pipeline sur Foundry"></div>
+                                <div class="slide"><img src="images/corest-qos-dashboard.jpg" alt="Dashboard de suivi de la qualité des données (QoS)"></div>
+                                <div class="slide"><img src="images/corest-uml-model.jpg" alt="Modèle de données UML du Data Product FLS"></div>
                             </div>
                             <div class="slider-nav">
                                 <a class="prev">&#10094;</a>
@@ -147,78 +145,70 @@
 
                         <div style="max-width: 800px; margin: 2em auto 0 auto;">
                             <section>
-                                <h3 class="gradient-title">Le Contexte : La Problématique des Documents d'Architecture</h3>
-                                <p>Chez Airbus, chaque application informatique doit être accompagnée d'un Architecture Dossier (ARD), un document technique de plus de 50 pages qui détaille son fonctionnement. La rédaction manuelle de ces documents était un goulot d'étranglement majeur : un processus lent, coûteux, et sujet aux erreurs et aux incohérences.</p>
-                                <p>Pour résoudre ce problème, le projet ARDmate a été créé : un outil en ligne de commande capable de générer automatiquement un ARD à partir d'un modèle d'architecture standardisé (ArchiMate). Cependant, l'outil initial n'était qu'un prototype. Il souffrait de nombreux problèmes : une base de code monolithique de plus de 2000 lignes, une forte dépendance au format XML, une absence totale de tests unitaires et aucune pratique de développement collaboratif. Il était donc impossible de le maintenir ou de le faire évoluer de manière fiable.</p>
+                                <h3 class="gradient-title">Le Contexte : La Problématique de la Donnée Brute et Hétérogène</h3>
+                                <p>Les données d'ingénierie critiques d'Airbus étaient inutilisables en l'état : dispersées dans des systèmes legacy (LTM, TrackDev, Jira), elles souffraient d'hétérogénéité, d'incohérences et de problèmes de qualité. Mon défi en tant que Data Engineer était de transformer ce chaos de données brutes en un actif fiable et stratégique.</p>
                             </section>
 
                             <hr/>
 
                             <section>
-                                <h3 class="gradient-title">Mon Défi : Transformer un Prototype en une Solution Industrielle</h3>
-                                <p>Ma mission était claire : prendre ce prototype et le transformer en une chaîne d'outils logicielle robuste, scalable et entièrement industrialisée. Il ne s'agissait pas seulement de corriger des bugs, mais de repenser fondamentalement l'architecture logicielle et le processus de développement. Les objectifs principaux étaient :</p>
+                                <h3 class="gradient-title">Mes Réalisations en Data Engineering sur Foundry</h3>
+                                <p>J'ai mené de bout en bout la création de "Data Products" à forte valeur ajoutée en utilisant la plateforme Palantir Foundry. Mon travail s'est concentré sur trois axes majeurs :</p>
+                                
+                                <h4><strong>Développement de Pipelines de Transformation avec PySpark</strong></h4>
+                                <p>Le cœur de ma mission a été de construire des pipelines de transformation (ETL) robustes et performants. En utilisant les "Code Repositories" de Foundry, j'ai développé en PySpark des logiques complexes pour :</p>
                                 <ul>
-                                    <li><strong>Fiabiliser la chaîne d'outils</strong> en garantissant des résultats prévisibles et corrects à chaque exécution.</li>
-                                    <li><strong>Appliquer les meilleures pratiques de génie logiciel pour rendre le projet maintenable et permettre une collaboration efficace.</li>
-                                    <li><strong>Mettre en place un pipeline CI/CD complet pour automatiser les tests, la validation et le packaging des outils.</li>
-                                    <li><strong>Développer de nouveaux outils (Updater, Injector) pour gérer l'intégralité du cycle de vie des modèles ArchiMate.</li>
+                                    <li><strong>Nettoyer et standardiser</strong> les données brutes ingérées depuis les différentes sources.</li>
+                                    <li><strong>Enrichir les datasets</strong> en les joignant pour créer une vision à 360° (par exemple, agréger les données du "Field Loadable Software" depuis 3 systèmes différents).</li>
+                                    <li><strong>Gérer la complexité :</strong> J'ai notamment développé des logiques de parsing pour extraire des informations pertinentes de champs contenant du code HTML non structuré.</li>
+                                </ul>
+
+                                <h4><strong>Modélisation et Création de "Data Products"</strong></h4>
+                                <p>Une fois transformées, j'ai structuré les données selon des modèles sémantiques clairs (Ontology), en collaboration avec les experts métier. Le résultat est la création de "Data Products" : des jeux de données propres, documentés, fiables et prêts à être utilisés par les analystes ou des applications en aval.</p>
+
+                                <h4><strong>Industrialisation et Monitoring de la Qualité</strong></h4>
+                                <p>Un pipeline n'est utile que s'il est fiable sur le long terme. J'ai donc mis en place un cadre d'industrialisation complet :</p>
+                                 <ul>
+                                    <li><strong>Data Health Checks :</strong> J'ai configuré des contrôles automatisés sur les datasets pour surveiller en continu la fraîcheur des données, la conformité des valeurs et le succès des builds, avec un système d'alerting en cas d'anomalie.</li>
+                                    <li><strong>CI/CD pour la Donnée :</strong> J'ai appliqué les principes du CI/CD (intégration et déploiement continus) aux pipelines de données, en utilisant le système de branches de Foundry pour développer, valider et déployer les nouvelles transformations de manière sécurisée et tracée.</li>
                                 </ul>
                             </section>
 
                             <hr/>
 
                             <section>
-                                <h3 class="gradient-title">Ma Solution : Une Approche "Model-Driven" et DevOps</h3>
-                                <h4>1. La Bibliothèque AMT : Le Cœur de la Transformation</h4>
-                                <p>Le principal défaut de l'ancien code était sa manipulation directe de fichiers XML via des requêtes XPath complexes et fragiles. Pour y remédier, j'ai conçu et développé la bibliothèque ArchiMate Model Transformer (AMT). Au lieu de travailler sur du texte, l'AMT charge le fichier XML en mémoire sous forme d'objets Python. Pour cela, j'ai utilisé `xsdata` pour générer automatiquement un méta-modèle Python complet à partir du schéma XSD officiel d'ArchiMate. Cette abstraction a permis de découpler totalement la logique métier du format de fichier, rendant le code plus lisible, plus sûr et plus simple à tester.</p>
-
-                                <h4>2. Design Patterns pour la Modularité : `TransformationStep`</h4>
-                                <p>Pour décomposer la logique complexe des outils (notamment l'Updater), j'ai implémenté le Design Pattern Composite. J'ai défini une interface `TransformationStep` que chaque étape de transformation devait implémenter (par exemple, `CopyElementsStep`, `MergeViewsStep`, `RenameModelStep`).Une classe `CompositeTransformationStep` permettait d'enchaîner ces étapes séquentiellement. Cette architecture a transformé un script monolithique et illisible en un ensemble de composants modulaires, réutilisables et testables unitairement.</p>
-
-                                <h4>3. Industrialisation Complète via CI/CD</h4>
-                                <p>J'ai structuré le projet en un mono-repository géré par PDM, hébergeant les différents sous-projets (AMT, ATI, ATU, ARDmate) de manière cohérente. J'ai ensuite mis en place un pipeline CI/CD robuste en utilisant les "hooks" de PDM:</p>
-                                <ul>
-                                    <li><strong>Tests Automatisés :</strong> J'ai écrit plus de 130 tests unitaires avec Pytest, couvrant tous les cas d'usage des transformations.Ces tests sont automatiquement exécutés via un hook `pre_build` avant chaque construction, garantissant qu'aucune régression n'est introduite.</li>
-                                    <li><strong>Packaging Automatisé : Un hook `post_build` déclenche la création d'un exécutable binaire avec PyInstaller, assurant que chaque version validée est prête à être déployée.</li>
-                                    <li><strong>Collaboration Structurée : J'ai instauré l'utilisation du modèle de branche GitHub Flow et de la convention Conventional Commits pour standardiser le travail d'équipe et rendre l'historique Git clair et compréhensible.</li>
-                                </ul>
+                                <h3 class="gradient-title">Résultats & Impact</h3>
+                                <div class="row results-grid">
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-cogs"></span>
+                                            <h4 style="color: var(--accent-blue);">Pipelines Robustes et Automatisés</h4>
+                                            <p style="color: var(--text-primary);">Mise en production de pipelines de données qui s'exécutent de manière autonome, transformant quotidiennement des millions de lignes de données brutes.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-check-circle"></span>
+                                            <h4 style="color: var(--accent-blue);">Qualité de Donnée Garantie</h4>
+                                            <p style="color: var(--text-primary);">Grâce aux "Health Checks", la fiabilité des "Data Products" est surveillée en continu, renforçant la confiance des utilisateurs finaux.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-chart-bar"></span>
+                                            <h4 style="color: var(--accent-blue);">Donnée Prête pour l'Analyse</h4>
+                                            <p style="color: var(--text-primary);">Les "Data Products" propres et structurés ont permis aux équipes métier de construire des dashboards pertinents et d'accélérer leurs analyses.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-layer-group"></span>
+                                            <h4 style="color: var(--accent-blue);">Valorisation des Données Legacy</h4>
+                                            <p style="color: var(--text-primary);">Mon travail a permis de transformer des données auparavant inexploitables et silotées en un véritable actif informationnel pour l'entreprise.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </section>
-
-                            <hr/>
-                            
-									<section>
-										<h3 class="gradient-title">Résultats & Impact</h3>
-										<div class="row results-grid">
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-shield-alt"></span>
-													<h4>Fiabilité Industrielle</h4>
-													<p style="color: var(--text-primary);">Avec plus de 130 tests unitaires et un pipeline CI/CD, la couverture de tests a dépassé 90%, rendant la chaîne d'outils extrêmement stable et éliminant les erreurs de génération.</p>
-												</div>
-											</div>
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-code-branch"></span>
-													<h4>Maintenabilité à Long Terme</h4>
-													<p style="color: var(--text-primary);">Grâce à la bibliothèque AMT et aux design patterns, le code est devenu modulaire et agnostique du format XML, ce qui simplifie radicalement les futures évolutions.</p>
-												</div>
-											</div>
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-rocket"></span>
-													<h4>Productivité des Architectes</h4>
-													<p style="color: var(--text-primary);">L'automatisation fiable a libéré un temps considérable pour les architectes, leur permettant de se concentrer sur la conception de solutions plutôt que sur la rédaction manuelle.</p>
-												</div>
-											</div>
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-check-double"></span>
-													<h4>Qualité et Standardisation</h4>
-													<p style="color: var(--text-primary);">La chaîne garantit que tous les documents ARD sont cohérents, complets et conformes aux standards Airbus, renforçant la qualité des livrables d'architecture.</p>
-												</div>
-											</div>
-										</div>
-									</section>
                         </div>
                     </article>
                 </div>
@@ -238,6 +228,7 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script>
+            // Script pour la galerie d'images
             document.addEventListener('DOMContentLoaded', function() {
                 let currentSlide = 0;
                 const slides = document.querySelectorAll('.slide');

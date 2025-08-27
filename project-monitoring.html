@@ -1,255 +1,260 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Étude de Cas : Solution d'Observabilité - Abderrahman El Ouali</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-		
-		<style>
-			:root {
-				--background: #0A0F1E;
-				--surface: #161B29;
-				--text-primary: #F0F0F0;
-				--text-secondary: #A0A0B0;
-				--accent-blue: #5271FF;
-				--accent-purple: #C652FF;
-				--border-color: #2a3042;
-			}
+    <head>
+        <title>Étude de Cas : Architecture d'une Solution d'Observabilité sur AWS - Abderrahman El Ouali</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+        
+        <style>
+            :root {
+                --background: #0A0F1E;
+                --surface: #161B29;
+                --text-primary: #F0F0F0;
+                --text-secondary: #A0A0B0;
+                --accent-blue: #5271FF;
+                --accent-purple: #C652FF;
+                --border-color: #2a3042;
+            }
 
-			body {
-				background: var(--background);
-				color: var(--text-secondary);
-				font-family: 'Poppins', sans-serif;
-			}
-			#page-wrapper { background: none; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
-			a:hover { color: var(--accent-blue); }
-			hr { border-bottom-color: var(--border-color); }
+            body {
+                background: var(--background);
+                color: var(--text-secondary);
+                font-family: 'Poppins', sans-serif;
+            }
+            #page-wrapper { background: none; }
+            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+            a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
+            a:hover { color: var(--accent-blue); }
+            hr { border-bottom-color: var(--border-color); margin: 3em 0;}
 
-			#header {
-				background: var(--background);
-				border-bottom: 1px solid var(--border-color);
-				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em;
-			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
-			
-			#nav ul li a {
-				color: var(--text-secondary);
-				position: relative;
-				padding-bottom: 5px;
-				font-weight: 500;
-			}
-			#nav ul li a:after {
-				content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-				width: 0; height: 2px; background-color: var(--accent-blue);
-				transition: width 0.3s ease;
-			}
-			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+            #header {
+                background: var(--background);
+                border-bottom: 1px solid var(--border-color);
+                position: sticky; top: 0; z-index: 1000;
+                padding: 0.5em 2em;
+            }
+            #header > .container { display: flex; justify-content: space-between; align-items: center; }
+            #logo { display: flex; align-items: center; }
+            #logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+            #logo h1 { font-size: 1.2em; margin: 0; }
+            
+            #nav ul li a {
+                color: var(--text-secondary);
+                position: relative;
+                padding-bottom: 5px;
+                font-weight: 500;
+            }
+            #nav ul li a:after {
+                content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+                width: 0; height: 2px; background-color: var(--accent-blue);
+                transition: width 0.3s ease;
+            }
+            #nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
+            #nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
 
-			.gradient-title {
-				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				display: inline-block;
-				line-height: 1.4; 
-			}
-			
-			article.box.post section { margin-bottom: 2.5em; }
-			article.box.post section h3 {
-				font-size: 1.8em;
-				margin-bottom: 1em;
-			}
+            .gradient-title {
+                background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+                line-height: 1.4; 
+            }
+            
+            article.box.post section { margin-bottom: 2.5em; }
+            article.box.post section h3 {
+                font-size: 1.8em;
+                margin-bottom: 1em;
+            }
 
-			.project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
-			.project-meta li { flex: 1; min-width: 200px; text-align: center; padding: 0.5em; }
-			.project-meta li strong { display: block; font-size: 0.9em; color: var(--text-secondary); text-transform: uppercase; }
-			.project-meta li span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
-			
-			.slider-container { max-width: 800px; margin: 3em auto; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
-			.slider { display: flex; transition: transform 0.5s ease-in-out; }
-			.slide { min-width: 100%; box-sizing: border-box; }
-			.slide img { width: 100%; display: block; }
-			.slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
-			.slider-nav a { background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 15px; cursor: pointer; user-select: none; border-radius: 50%; }
-			.slider-nav a:hover { background-color: rgba(0, 0, 0, 0.8); }
-			.prev { margin-left: 1em; }
-			.next { margin-right: 1em; }
-			
-			.results-grid { margin-top: 2em; }
-			.result-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5em; text-align: center; height: 100%; transition: transform 0.3s ease; }
-			.result-card:hover { transform: translateY(-5px); }
-			.result-card .icon { font-size: 2em; color: var(--accent-blue); }
-			.result-card h4 { margin: 0.5em 0; }
-			
-			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
-            #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
-            #footer-copy { flex-basis: 55%; padding-right: 2em; }
-            #footer-details { flex-basis: 35%; }
-            #footer-details ul { list-style: none; padding: 0; }
-            #footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
-            #footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
-		</style>
-	</head>
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
+            .project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
+            .project-meta li { flex: 1; min-width: 200px; text-align: center; padding: 0.5em; }
+            .project-meta li strong { display: block; font-size: 0.9em; color: var(--text-secondary); text-transform: uppercase; }
+            .project-meta li span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
+            
+            .slider-container { max-width: 800px; margin: 3em auto; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
+            .slider { display: flex; transition: transform 0.5s ease-in-out; }
+            .slide { min-width: 100%; box-sizing: border-box; }
+            .slide img { width: 100%; display: block; }
+            .slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+            .slider-nav a { background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 15px; cursor: pointer; user-select: none; border-radius: 50%; }
+            .slider-nav a:hover { background-color: rgba(0, 0, 0, 0.8); }
+            .prev { margin-left: 1em; }
+            .next { margin-right: 1em; }
+            
+            .results-grid { margin-top: 2em; }
+            .result-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5em; text-align: center; height: 100%; transition: transform 0.3s ease; }
+            .result-card:hover { transform: translateY(-5px); }
+            .result-card .icon { font-size: 2em; color: var(--accent-blue); }
+            .result-card h4 { margin: 0.5em 0; }
+            
+            #footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
+        </style>
+    </head>
+    <body class="no-sidebar is-preload">
+        <div id="page-wrapper">
 
-			<section id="header">
-					<div class="container">
-						<div id="logo">
-							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-						</div>
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Accueil</a></li>
-								<li><a href="about.html">À Propos</a></li>
-								<li><a href="experiences.html">Expériences</a></li>
-								<li class="current"><a href="projects.html">Projets</a></li>
-								<li><a href="articles.html">Articles</a></li>
-								<li><a href="#footer">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</section>
+            <section id="header">
+                <div class="container">
+                    <div id="logo">
+                        <img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+                        <h1><a href="index.html">Abderrahman El Ouali</a></h1>
+                    </div>
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="about.html">À Propos</a></li>
+                            <li><a href="experiences.html">Expériences</a></li>
+                            <li class="current"><a href="projets-hub.html">Projets</a></li>
+                            <li><a href="articles.html">Articles</a></li>
+                            <li><a href="index.html#footer">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
 
-			<section id="main">
-					<div class="container">
-						<article class="box post">
-							<header style="text-align:center; margin-bottom: 2em;">
-								<h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Solution d'Observabilité Cloud</h2>
-								<p style="font-size: 1.2em; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">Transformer une "boîte noire" en un système transparent et résilient.</p>
-							</header>
+            <section id="main">
+                <div class="container">
+                    <article class="box post">
+                        <header style="text-align:center; margin-bottom: 2em;">
+                            <h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Architecture d'une Solution d'Observabilité sur AWS</h2>
+                            <p style="font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Conception d'une architecture de monitoring robuste et automatisée pour garantir la fiabilité d'un système critique chez Airbus.</p>
+                        </header>
 
-							<ul class="project-meta">
-								<li><strong>Rôle</strong><span>Architecte & Développeur DevOps</span></li>
-								<li><strong>Entreprise</strong><span>Airbus</span></li>
-								<li><strong>Durée</strong><span>2 mois</span></li>
-								<li><strong>Technologies</strong><span>AWS CloudWatch, AWS CDK, Python, IaC</span></li>
-							</ul>
-							
-							<div class="slider-container">
-								<div class="slider">
-									<div class="slide"><img src="images/projet-monitoring.jpg" alt="Schéma de la solution de monitoring"></div>
-									<div class="slide"><img src="images/projet-monitoring.jpg" alt="Dashboard CloudWatch"></div>
-									<div class="slide"><img src="images/projet-monitoring.jpg" alt="Exemple d'alerte sur Google Chat"></div>
-								</div>
-								<div class="slider-nav">
-									<a class="prev">&#10094;</a>
-									<a class="next">&#10095;</a>
-								</div>
-							</div>
+                        <ul class="project-meta">
+                            <li><strong>Rôle</strong><span>Architecte Cloud / DevOps</span></li>
+                            <li><strong>Entreprise</strong><span>Airbus</span></li>
+                            <li><strong>Durée</strong><span>2 mois</span></li>
+                            <li><strong>Technologies</strong><span>AWS (CloudWatch, SNS, Lambda), AWS CDK, Python, IaC, Architecture Serverless</span></li>
+                        </ul>
+                        
+                        <div class="slider-container">
+                            <div class="slider">
+                                <div class="slide"><img src="images/monitoring1 (1).PNG" alt="Dashboard de monitoring sur CloudWatch"></div>
+                                <div class="slide"><img src="images/monitoring1 (2).PNG" alt="Architecture du flux d'alerting event-driven"></div>
+                                <div class="slide"><img src="images/monitoring.PNG" alt="Stack de monitoring réutilisable en AWS CDK"></div>
+                            </div>
+                            <div class="slider-nav">
+                                <a class="prev">&#10094;</a>
+                                <a class="next">&#10095;</a>
+                            </div>
+                        </div>
 
-							<div style="max-width: 800px; margin: 2em auto 0 auto;">
-								<section>
-									<h3 class="gradient-title">Le Contexte</h3>
-									<p>La plateforme de traitement de données Core S&T, bien que fonctionnelle, opérait comme une "boîte noire", avec une visibilité très limitée sur sa santé et ses performances en temps réel. La détection d'erreurs était réactive, rendant le diagnostic des incidents long et complexe.</p>
-								</section>
+                        <div style="max-width: 800px; margin: 2em auto 0 auto;">
+                            <section>
+                                <h3 class="gradient-title">Le Contexte : Le Risque Architectural d'un Système "Boîte Noire"</h3>
+                                <p>L'application Core S&T, bien que fonctionnelle, souffrait d'un défaut de conception majeur : elle n'avait aucune observabilité. Ce manque de visibilité la rendait fragile et exposait l'entreprise à des risques opérationnels, car toute défaillance était détectée tardivement, avec un temps de diagnostic et de résolution (MTTD) élevé.</p>
+                            </section>
 
-								<section>
-									<h3 class="gradient-title">Les Objectifs</h3>
-									<p>La mission était de concevoir et d'implémenter une pile de surveillance complète pour garantir la fiabilité du système. Les objectifs étaient clairs : visualiser les KPIs, détecter proactivement les pannes, réduire le temps de résolution des incidents (MTTD) et automatiser entièrement la configuration via l'Infrastructure as Code (IaC).</p>
-								</section>
+                            <hr/>
 
-								<section>
-									<h3 class="gradient-title">Ma Solution : Une Stack de Monitoring Modulaire</h3>
-									<p>J'ai développé une solution de surveillance entièrement codée avec l'AWS CDK en Python. L'approche était modulaire : une "stack" CDK réutilisable qui génère dynamiquement des dashboards et des alarmes pour n'importe quelle ressource (Lambda, SQS) qui lui est fournie.</p>
-									<ul>
-										<li><strong>Dashboards Centralisés :</strong> Un tableau de bord CloudWatch unique a été créé pour agréger toutes les métriques clés : latence de l'API Gateway, nombre de messages dans les files SQS, et surtout, l'utilisation mémoire et la durée d'exécution de chaque fonction Lambda.</li>
-										<li><strong>Alertes Proactives :</strong> Des alarmes critiques ont été configurées pour les points de défaillance majeurs (erreurs 5XX, messages dans la DLQ, erreurs Lambda). Les alertes sont envoyées via un topic SNS vers les canaux de communication de l'équipe pour une réaction immédiate.</li>
-									</ul>
-								</section>
-								
-								<section>
-									<h3 class="gradient-title">Résultats & Impact</h3>
-									<div class="row results-grid">
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-eye"></span><h4>Observabilité Complète</h4><p>Le système n'est plus une "boîte noire", permettant de visualiser la santé de chaque composant en temps réel.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-bell"></span><h4>Détection Proactive</h4><p>Les pannes sont détectées et notifiées instantanément, avant qu'elles n'impactent les utilisateurs.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-shipping-fast"></span><h4>Réponse Rapide</h4><p>Le temps de détection et de diagnostic des incidents (MTTD) a été drastiquement réduit.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-cogs"></span><h4>Configuration Fiable</h4><p>La solution 100% en code (IaC) élimine les erreurs manuelles et garantit la cohérence.</p></div></div>
-									</div>
-								</section>
-							</div>
-						</article>
-					</div>
-				</section>
+                            <section>
+                                <h3 class="gradient-title">Ma Mission : Concevoir une Architecture d'Observabilité</h3>
+                                <p>Ma mission était d'architecturer une solution complète pour transformer ce système opaque en une application entièrement observable. Les principes directeurs de mon architecture étaient : la visualisation en temps réel, la détection proactive des anomalies, la réduction du MTTD et l'automatisation intégrale de la configuration via l'Infrastructure as Code (IaC).</p>
+                            </section>
 
-			<section id="footer">
-					<div class="container">
-						<div id="footer-grid">
-							<div id="footer-copy">
-								<h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
-								<p>   </p>
-								<p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
-							</div>
-							<div id="footer-details">
-								<h3>Informations</h3>
-								<ul>
-									<p>   </p>
-									<li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
-									<li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
-									<li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
-									<li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a> </li>
-									<li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="container" style="margin-top: 3em; padding-top: 3em; border-top: 1px solid var(--border-color); text-align: center;">
-						<ul class="links" style="list-style: none; padding: 0;">
-							<li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-						</ul>
-					</div>
-				</section>
-		</div>
+                            <hr/>
 
-		<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				// Script pour la galerie d'images
-				document.addEventListener('DOMContentLoaded', function() {
-					let currentSlide = 0;
-					const slides = document.querySelectorAll('.slide');
-					if (slides.length === 0) return;
-					const slideCount = slides.length;
-					const slider = document.querySelector('.slider');
-					const prevButton = document.querySelector('.prev');
-					const nextButton = document.querySelector('.next');
+                            <section>
+                                <h3 class="gradient-title">Ma Solution : Une Architecture Modulaire et Événementielle</h3>
+                                <p>J'ai conçu la solution autour de patterns d'architecture cloud modernes pour garantir sa modularité, sa scalabilité et sa fiabilité.</p>
+                                
+                                <h4><strong>1. Pattern de Stack Réutilisable avec AWS CDK</strong></h4>
+                                <p>Pour éviter les configurations manuelles et garantir la cohérence, j'ai architecturé la solution sous forme d'une "stack" AWS CDK réutilisable. Ce composant, codé en Python, est un patron de conception qui prend en entrée une liste de ressources (ex: des fonctions Lambda) et génère dynamiquement toute l'infrastructure de monitoring associée : dashboards, widgets et alarmes. Cette approche modulaire permet d'étendre facilement la surveillance à de nouveaux services.</p>
 
-					function showSlide(index) {
-						if (index >= slideCount) {
-							currentSlide = 0;
-						} else if (index < 0) {
-							currentSlide = slideCount - 1;
-						} else {
-							currentSlide = index;
-						}
-						const offset = -currentSlide * 100;
-						slider.style.transform = 'translateX(' + offset + '%)';
-					}
+                                <h4><strong>2. Architecture d'Alerting "Event-Driven"</strong></h4>
+                                <p>Le système d'alerting a été conçu selon une architecture événementielle. Une anomalie (ex: une erreur 5xx) n'est plus un simple log, mais un  événement  qui déclenche une alarme CloudWatch. Cette alarme publie une notification dans un topic  Amazon SNS , qui agit comme un bus d'événements. Différents services peuvent s'abonner à ce bus pour réagir : une souscription email envoie une alerte par mail, et une fonction Lambda dédiée met en forme et pousse un message sur Google Chat. Ce découplage rend le système d'alerte flexible et résilient.</p>
+                            </section>
 
-					nextButton.addEventListener('click', function() {
-						showSlide(currentSlide + 1);
-					});
+                            <hr/>
 
-					prevButton.addEventListener('click', function() {
-						showSlide(currentSlide - 1);
-					});
-				});
-			</script>
+                            <section>
+                                <h3 class="gradient-title">Résultats & Impact</h3>
+                                <div class="row results-grid">
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-sitemap"></span>
+                                            <h4 style="color: var(--accent-blue);">Système Observable</h4>
+                                            <p style="color: var(--text-primary);">L'architecture fournit une visibilité complète sur la santé et les performances du système en temps réel, éliminant la "boîte noire".</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-shield-alt"></span>
+                                            <h4 style="color: var(--accent-blue);">Architecture Résiliente</h4>
+                                            <p style="color: var(--text-primary);">Le système d'alerting proactif renforce la résilience globale de l'application en permettant une réaction immédiate aux pannes.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-cogs"></span>
+                                            <h4 style="color: var(--accent-blue);">Déploiement Fiable (IaC)</h4>
+                                            <p style="color: var(--text-primary);">La solution 100% en code (IaC) garantit des déploiements de monitoring cohérents, rapides et sans erreur manuelle.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+                                        <div class="result-card">
+                                            <span class="icon solid fa-chart-line"></span>
+                                            <h4 style="color: var(--accent-blue);">Réduction du Risque Opérationnel</h4>
+                                            <p style="color: var(--text-primary);">En réduisant drastiquement le temps de détection des incidents (MTTD), l'architecture de monitoring diminue l'impact métier des pannes.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+                </div>
+            </section>
 
-	</body>
+            <section id="footer" style="text-align: center; padding: 20px 0;">
+                <ul class="links" style="list-style: none; padding: 0;">
+                    <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.dropotron.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script>
+                // Script pour la galerie d'images
+                document.addEventListener('DOMContentLoaded', function() {
+                    let currentSlide = 0;
+                    const slides = document.querySelectorAll('.slide');
+                    if (slides.length === 0) return;
+                    const slideCount = slides.length;
+                    const slider = document.querySelector('.slider');
+                    const prevButton = document.querySelector('.prev');
+                    const nextButton = document.querySelector('.next');
+
+                    function showSlide(index) {
+                        if (index >= slideCount) {
+                            currentSlide = 0;
+                        } else if (index < 0) {
+                            currentSlide = slideCount - 1;
+                        } else {
+                            currentSlide = index;
+                        }
+                        const offset = -currentSlide * 100;
+                        slider.style.transform = 'translateX(' + offset + '%)';
+                    }
+
+                    nextButton.addEventListener('click', function() {
+                        showSlide(currentSlide + 1);
+                    });
+
+                    prevButton.addEventListener('click', function() {
+                        showSlide(currentSlide - 1);
+                    });
+                });
+            </script>
+
+    </body>
 </html>

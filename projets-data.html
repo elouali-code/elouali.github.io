@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Projets Data & IA - Abderrahman El Ouali</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+		
+		<style>
+			:root {
+				--background: #0A0F1E;
+				--surface: #161B29;
+				--text-primary: #F0F0F0;
+				--text-secondary: #A0A0B0;
+				--accent-blue: #5271FF;
+				--accent-purple: #C652FF;
+				--border-color: #2a3042;
+			}
+			body { background: var(--background); color: var(--text-secondary); font-family: 'Poppins', sans-serif; }
+			#page-wrapper { background: none; }
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+			a { color: var(--text-primary); text-decoration: none; transition: all 0.2s ease; }
+			a:hover { color: var(--accent-blue); }
+			#header { background: var(--background); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 0.5em 2em; }
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
+			#logo { display: flex; align-items: center; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+			#logo h1 { font-size: 1.2em; margin: 0; }
+			#nav ul li a { color: var(--text-secondary); position: relative; padding-bottom: 5px; font-weight: 500; }
+			#nav ul li a:after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--accent-blue); transition: width 0.3s ease; }
+			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
+			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+			.section-title {
+				font-size: 2.8em;
+				text-align: center;
+				margin-bottom: 1.5em;
+				line-height: 1.4;
+				color: var(--accent-blue); 
+			}			.section-container { padding: 4em 0; }
+			.section-title { font-size: 2.8em; text-align: center; margin-bottom: 1.5em; }
+			.project-entry { background: var(--surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 2em; margin-bottom: 3em; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+			.project-entry:hover { transform: translateY(-8px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
+			.project-entry .row { align-items: center; }
+			.tech-pills { list-style: none; padding: 0; margin: 1.5em 0; }
+			.tech-pills li { display: inline-block; background: rgba(82, 113, 255, 0.1); border: 1px solid rgba(82, 113, 255, 0.2); border-radius: 6px; margin: 0.3em; }
+			.tech-pills li a { color: var(--accent-blue) !important; padding: 0.4em 1em; font-size: 0.8em; font-weight: 500; display: block; }
+			.button { background: var(--accent-purple); color: #fff !important; border: 0; border-radius: 8px; box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4); }
+			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
+		</style>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+			<section id="header">
+				<div class="container">
+					<div id="logo">
+						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
+					</div>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Accueil</a></li>
+							<li><a href="about.html">À Propos</a></li>
+							<li><a href="experiences.html">Expériences</a></li>
+							<li class="current"><a href="projets-hub.html">Projets</a></li>
+							<li><a href="articles.html">Articles</a></li>
+							<li><a href="index.html#footer">Contact</a></li>
+
+						</ul>
+					</nav>
+				</div>
+			</section>
+			<section id="main" class="section-container">
+				<div class="container">
+					<header class="major">
+						<h2 class="section-title gradient-title">Projets : Data & IA</h2>
+						<p style="font-size: 1.2em; color: var(--text-secondary);">De l'analyse de données au déploiement de modèles d'intelligence artificielle.</p>
+					</header>
+					
+					<section class="project-entry">
+						<div class="row">
+							<div class="col-5 col-12-medium">
+								<a href="project-Core_S&T.html" class="image featured"><img src="images/pipline.PNG" alt="Pipeline de transformation de données sur Foundry" style="border-radius: 8px;" /></a>
+							</div>
+							<div class="col-7 col-12-medium">
+								<h3>  Data Transformation sur Skywise</h3>
+								<p>Développement de pipelines de données de bout en bout sur la plateforme Skywise pour transformer des données d'ingénierie brutes en 'Data Products' fiables et prêts pour l'analyse chez Airbus.</p>
+								<ul class="tech-pills">
+									<li><a>Palantir Foundry</a></li>
+									<li><a>PySpark</a></li>
+									<li><a>Python</a></li>
+									<li><a>CI/CD</a></li>
+								</ul>
+								<a href="project-Core_S&T.html" class="button">Étude de cas</a>
+							</div>
+						</div>
+					</section>
+
+					<section class="project-entry">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h3>IA & Vision par Ordinateur</h3>
+								<p>Création d'un système de reconnaissance d'émotions en temps réel à partir d'un flux vidéo, en utilisant un réseau de neurones convolutif (CNN).</p>
+								<ul class="tech-pills"><li><a>Python</a></li><li><a>TensorFlow</a></li><li><a>Keras</a></li><li><a>OpenCV</a></li></ul>
+								<a href="#" class="button">Étude de cas</a>
+							</div>
+							<div class="col-5 col-12-medium"><a href="#" class="image featured"><img src="images/projet-ia.png" alt="IA Vision par Ordinateur" style="border-radius: 8px;" /></a></div>
+						</div>
+					</section>
+
+				</div>
+			</section>
+            <section id="footer" style="text-align: center; padding: 20px 0;">
+                <ul class="links" style="list-style: none; padding: 0;">
+                    <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+                </ul>
+            </section>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

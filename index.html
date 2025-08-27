@@ -8,7 +8,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-		
+		<link rel="icon" type="images/logo2.png" href="favicon.png"> 
 		<style>
 			:root {
 				--background-start: #0c0a1f;
@@ -108,7 +108,7 @@
 			}
 			.project-card .content { padding: 1.5em; flex-grow: 1; }
 			
-			#footer { background: var(--background-end); border-top: 1px solid var(--border-glass); padding: 4em 0; }
+			#footer { background: var(--background-end); border-top: 1px solid var(--border-glass); padding: 1em 0; }
 			#footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
 			#footer-copy { flex-basis: 55%; padding-right: 2em; }
 			#footer-details { flex-basis: 35%; }
@@ -137,7 +137,7 @@
 								<li class="current"><a href="index.html">Accueil</a></li>
 								<li><a href="about.html">À Propos</a></li>
 								<li><a href="experiences.html">Expériences</a></li>
-								<li><a href="projects.html">Projets</a></li>
+								<li><a href="projets-hub.html">Projets</a></li>
 								<li><a href="articles.html">Articles</a></li>
 								<li><a href="#footer">Contact</a></li>
 							</ul>
@@ -149,19 +149,19 @@
 					<h1>Ingénieur en Data & Architecture Cloud</h1>
 					<p class="subtitle">Spécialisé en Data Engineering, Data Science et Architecture de solutions. Je transforme les données en produits scalables et à forte valeur ajoutée.</p>
 					<ul class="actions">
-						<li><a href="projects.html" class="button">Explorer mes projets</a></li>
+						<li><a href="projets-hub.html" class="button">Explorer mes projets</a></li>
 						<li><a href="Cv_EL_OUALI_2025.pdf" class="button alt" target="_blank">Télécharger le CV</a></li>
 					</ul>
 				</section>
 			
 			<section class="section-container container">
-					<h2 class="section-title">Expérience en Entreprise</h2>
+					<h2 class="section-title">Expérience Professionnelle</h2>
 					<a href="experiences.html" class="experience-card">
 						<div class="header">
 							<img src="images/logo-airbus.png" alt="Logo Airbus" class="logo"/>
 							<div>
-								<h3>Architecte de Solutions IT chez Airbus</h3>
-								<p>Conception d'architectures Cloud Serverless, développement de pipelines data et automatisation DevOps (IaC, CI/CD).</p>
+								<h3>IT Solution Architect Intern</h3>
+								<p>Architecture Cloud, Data Engineering et Automatisation DevOps au service de l'ingénierie aéronautique.</p>
 							</div>
 						</div>
 					</a>
@@ -175,58 +175,58 @@
 					<div class="row">
 						<div class="col-6 col-12-medium">
 							<div class="project-card">
-								<a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture DynamoDB"/></a>
+								<a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture serverless AWS avec DynamoDB"/></a>
 								<div class="content">
-									<h3>Migration d'une Architecture Data</h3>
-									<p>Refonte d'une architecture S3 pour réduire la latence de O(N) à O(1) avec DynamoDB et Lambda.</p>
+									<h3>Architecture Data Serverless sur AWS</h3>
+									<p>Conception d'une architecture serverless, remplaçant une solution S3 inefficace. Latence réduite de   O(N)   à   O(1)   grâce à DynamoDB, Lambda et SQS, le tout déployé via IaC.</p>
 									<a href="project-dynamodb.html" class="button">Étude de cas</a>
 								</div>
 							</div>
 						</div>
 						<div class="col-6 col-12-medium">
 							<div class="project-card">
-								<a href="#" class="image featured"><img src="images/projet-ardmate.jpg" alt="Chaîne d'outils du projet ARDmate"/></a>
+								<a href="project-ardmate.html" class="image featured"><img src="images/projet-ardmate.jpg" alt="Chaîne d'outils du projet ARDmate"/></a>
 								<div class="content">
-									<h3>Industrialisation d'Outils DevOps</h3>
-									<p>Fiabilisation d'une chaîne d'outils Python par la mise en œuvre d'un cycle de développement complet (CI/CD, tests unitaires) pour améliorer la maintenabilité.</p>
+									<h3>ARDmate : Automatisation DevOps chez Airbus</h3>
+									<p>Transformation d'un prototype en une chaîne d'outils CI/CD robuste pour automatiser la génération de documents d'architecture critiques. Création d'une librairie de transformation et mise en place de plus de 130 tests.</p>
 									<a href="project-ardmate.html" class="button">Étude de cas</a>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div style="text-align: center; margin-top: 2em;">
-						<a href="projects.html" class="button alt">Voir tous mes projets</a>
+						<a href="projets-hub.html" class="button alt">Voir tous mes projets</a>
 					</div>
 				</section>
 
-			<section id="footer">
-					<div class="container">
-						<div id="footer-grid">
-							<div id="footer-copy">
-								<h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
-								<p>   </p>
-								<p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
-							</div>
-							<div id="footer-details">
-								<h3>Informations</h3>
-								<ul>
-									<p>   </p>
-									<li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
-									<li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
-									<li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
-									<li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a> </li>
-									<li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+            <section id="footer">
+                <div class="container">
+                    <div id="footer-grid">
+                        <div id="footer-copy">
+                            <h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
+                            <p> </p>
+                            <p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
+                        </div>
+                        <div id="footer-details">
+                            <h3>Informations</h3>
+                            <ul>
+                            <p> </p>
+                                <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
+                                <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
+                                <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
+                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
+                                <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-					<div class="container" style="margin-top: 3em; padding-top: 3em; border-top: 1px solid var(--border-color); text-align: center;">
-						<ul class="links" style="list-style: none; padding: 0;">
-							<li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-						</ul>
-					</div>
-				</section>
+                <div class="container" style="margin-top: 2.5em; padding-top: 2.5em; border-top: 1px solid var(--border-color); text-align: center;">
+                    <ul class="links" style="list-style: none; padding: 0;">
+                        <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+                    </ul>
+                </div>
+            </section>
 		</div>
 
 		<script src="assets/js/jquery.min.js"></script>

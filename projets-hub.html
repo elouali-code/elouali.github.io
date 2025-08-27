@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Projets - Abderrahman El Ouali</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+		
+		<style>
+			:root {
+				--background: #0A0F1E;
+				--surface: #161B29;
+				--text-primary: #F0F0F0;
+				--text-secondary: #A0A0B0;
+				--accent-blue: #5271FF;
+				--accent-purple: #C652FF;
+				--border-color: #2a3042;
+			}
+			body { background: var(--background); color: var(--text-secondary); font-family: 'Poppins', sans-serif; }
+			#page-wrapper { background: none; }
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+			a { color: var(--text-primary); text-decoration: none; transition: all 0.2s ease; }
+			a:hover { color: var(--accent-blue); }
+			#header { background: var(--background); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 0.5em 2em; }
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
+			#logo { display: flex; align-items: center; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+			#logo h1 { font-size: 1.2em; margin: 0; }
+			#nav ul li a { color: var(--text-secondary); position: relative; padding-bottom: 5px; font-weight: 500; }
+			#nav ul li a:after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--accent-blue); transition: width 0.3s ease; }
+			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
+			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+			.section-title {
+				font-size: 2.8em;
+				text-align: center;
+				margin-bottom: 1.5em;
+				line-height: 1.4;
+				color: var(--accent-blue); 
+			}		
+            .section-container { padding: 4em 0; }
+			.section-title { font-size: 2.8em; text-align: center; margin-bottom: 1.5em; }
+			.category-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 2em; text-align: center; display: flex; flex-direction: column; height: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+			.category-card:hover { transform: translateY(-8px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
+			.category-card .icon { font-size: 3em; color: var(--accent-blue); }
+			.category-card h3 { margin-top: 0.5em; }
+			.category-card p { flex-grow: 1; }
+			.button { background: var(--accent-purple); color: #fff !important; border: 0; border-radius: 8px; box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4); }
+			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 1em 0; }
+            #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
+            #footer-copy { flex-basis: 55%; padding-right: 2em; }
+            #footer-details { flex-basis: 35%; }
+            #footer-details ul { list-style: none; padding: 0; }
+            #footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
+            #footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
+            @media (max-width: 768px) {
+                #footer-grid { flex-direction: column; }
+                #footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
+                #footer-details { margin-top: 2em; }
+            }
+		</style>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+			<section id="header">
+				<div class="container">
+					<div id="logo">
+						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
+					</div>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Accueil</a></li>
+							<li><a href="about.html">À Propos</a></li>
+							<li><a href="experiences.html">Expériences</a></li>
+							<li class="current"><a href="projets-hub.html">Projets</a></li>
+							<li><a href="articles.html">Articles</a></li>
+							<li><a href="#footer">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+			<section id="main" class="section-container">
+				<div class="container">
+					<header class="major">
+						<h2 class="section-title gradient-title">Mes Projets</h2>
+						<p style="font-size: 1.2em; color: var(--text-secondary);">Une sélection de projets qui illustrent mon expertise technique et ma démarche de résolution de problèmes.</p>
+					</header>
+					<div class="row">
+						<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
+							<a href="projets-archi.html" style="text-decoration: none;">
+								<section class="category-card">
+									<span class="icon solid fa-cloud"></span>
+									<h3>Architecture & Cloud</h3>
+									<p>Conception de systèmes scalables, résilients et optimisés sur le Cloud AWS, en utilisant des approches modernes comme le serverless et l'Infrastructure as Code.</p>
+									<span class="button" style="display: inline-block;">Voir les projets</span>
+								</section>
+							</a>
+						</div>
+						<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
+							<a href="projets-data.html" style="text-decoration: none;">
+								<section class="category-card">
+									<span class="icon solid fa-database"></span>
+									<h3>Data & IA</h3>
+									<p>Développement de pipelines de données, de la collecte à la valorisation, et déploiement de modèles de Machine Learning pour résoudre des problématiques concrètes.</p>
+									<span class="button" style="display: inline-block;">Voir les projets</span>
+								</section>
+							</a>
+						</div>
+						<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
+							<a href="projets-dev.html" style="text-decoration: none;">
+								<section class="category-card">
+									<span class="icon solid fa-code"></span>
+									<h3>DevOps & Développement</h3>
+									<p>Industrialisation de chaînes logicielles via des pipelines CI/CD et développement d'applications robustes en appliquant les meilleures pratiques du génie logiciel.</p>
+									<span class="button" style="display: inline-block;">Voir les projets</span>
+								</section>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+            <section id="footer">
+                <div class="container">
+                    <div id="footer-grid">
+                        <div id="footer-copy">
+                            <h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
+                            <p> </p>
+                            <p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
+                        </div>
+                        <div id="footer-details">
+                            <h3>Informations</h3>
+                            <ul>
+                            <p> </p>
+                                <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
+                                <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
+                                <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
+                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
+                                <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" style="margin-top: 2.5em; padding-top: 2.5em; border-top: 1px solid var(--border-color); text-align: center;">
+                    <ul class="links" style="list-style: none; padding: 0;">
+                        <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+                    </ul>
+                </div>
+            </section>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

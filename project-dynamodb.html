@@ -1,254 +1,257 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Étude de Cas : Migration Data Serverless - Abderrahman El Ouali</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-		
-		<style>
-			:root {
-				--background: #0A0F1E;
-				--surface: #161B29;
-				--text-primary: #F0F0F0;
-				--text-secondary: #A0A0B0;
-				--accent-blue: #5271FF;
-				--accent-purple: #C652FF;
-				--border-color: #2a3042;
-			}
+    <head>
+        <title>Étude de Cas : Migration Data Serverless O(1) sur AWS - Abderrahman El Ouali</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+        
+        <style>
+            :root {
+                --background: #0A0F1E;
+                --surface: #161B29;
+                --text-primary: #F0F0F0;
+                --text-secondary: #A0A0B0;
+                --accent-blue: #5271FF;
+                --accent-purple: #C652FF;
+                --border-color: #2a3042;
+            }
 
-			body {
-				background: var(--background);
-				color: var(--text-secondary);
-				font-family: 'Poppins', sans-serif;
-			}
-			#page-wrapper { background: none; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
-			a:hover { color: var(--accent-blue); }
-			hr { border-bottom-color: var(--border-color); }
+            body {
+                background: var(--background);
+                color: var(--text-secondary);
+                font-family: 'Poppins', sans-serif;
+            }
+            #page-wrapper { background: none; }
+            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+            a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
+            a:hover { color: var(--accent-blue); }
+            hr { border-bottom-color: var(--border-color); margin: 3em 0;}
 
-			#header {
-				background: var(--background);
-				border-bottom: 1px solid var(--border-color);
-				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em;
-			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
-			
-			#nav ul li a {
-				color: var(--text-secondary);
-				position: relative;
-				padding-bottom: 5px;
-				font-weight: 500;
-			}
-			#nav ul li a:after {
-				content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-				width: 0; height: 2px; background-color: var(--accent-blue);
-				transition: width 0.3s ease;
-			}
-			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+            #header {
+                background: var(--background);
+                border-bottom: 1px solid var(--border-color);
+                position: sticky; top: 0; z-index: 1000;
+                padding: 0.5em 2em;
+            }
+            #header > .container { display: flex; justify-content: space-between; align-items: center; }
+            #logo { display: flex; align-items: center; }
+            #logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+            #logo h1 { font-size: 1.2em; margin: 0; }
+            
+            #nav ul li a {
+                color: var(--text-secondary);
+                position: relative;
+                padding-bottom: 5px;
+                font-weight: 500;
+            }
+            #nav ul li a:after {
+                content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+                width: 0; height: 2px; background-color: var(--accent-blue);
+                transition: width 0.3s ease;
+            }
+            #nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
+            #nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
 
-			.gradient-title {
-				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				display: inline-block;
-				line-height: 1.4; 
-			}
-			
-			article.box.post section { margin-bottom: 2.5em; }
-			article.box.post section h3 {
-				font-size: 1.8em;
-				margin-bottom: 1em;
-			}
+            .gradient-title {
+                background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+                line-height: 1.4; 
+            }
+            
+            article.box.post section { margin-bottom: 2.5em; }
+            article.box.post section h3 {
+                font-size: 1.8em;
+                margin-bottom: 1em;
+            }
 
-			.project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
-			.project-meta li { flex: 1; min-width: 200px; text-align: center; padding: 0.5em; }
-			.project-meta li strong { display: block; font-size: 0.9em; color: var(--text-secondary); text-transform: uppercase; }
-			.project-meta li span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
-			
-			.slider-container { max-width: 800px; margin: 3em auto; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
-			.slider { display: flex; transition: transform 0.5s ease-in-out; }
-			.slide { min-width: 100%; box-sizing: border-box; }
-			.slide img { width: 100%; display: block; }
-			.slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
-			.slider-nav a { background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 15px; cursor: pointer; user-select: none; border-radius: 50%; }
-			.slider-nav a:hover { background-color: rgba(0, 0, 0, 0.8); }
-			.prev { margin-left: 1em; }
-			.next { margin-right: 1em; }
-			
-			.results-grid { margin-top: 2em; }
-			.result-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5em; text-align: center; height: 100%; transition: transform 0.3s ease; }
-			.result-card:hover { transform: translateY(-5px); }
-			.result-card .icon { font-size: 2em; color: var(--accent-blue); }
-			.result-card h4 { margin: 0.5em 0; }
-			
-			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
-            #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
-            #footer-copy { flex-basis: 55%; padding-right: 2em; }
-            #footer-details { flex-basis: 35%; }
-            #footer-details ul { list-style: none; padding: 0; }
-            #footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
-            #footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
-		</style>
-	</head>
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
+            .project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
+            .project-meta li { flex: 1; min-width: 200px; text-align: center; padding: 0.5em; }
+            .project-meta li strong { display: block; font-size: 0.9em; color: var(--text-secondary); text-transform: uppercase; }
+            .project-meta li span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
+            
+            .slider-container { max-width: 800px; margin: 3em auto; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
+            .slider { display: flex; transition: transform 0.5s ease-in-out; }
+            .slide { min-width: 100%; box-sizing: border-box; }
+            .slide img { width: 100%; display: block; }
+            .slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+            .slider-nav a { background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 15px; cursor: pointer; user-select: none; border-radius: 50%; }
+            .slider-nav a:hover { background-color: rgba(0, 0, 0, 0.8); }
+            .prev { margin-left: 1em; }
+            .next { margin-right: 1em; }
+            
+            .results-grid { margin-top: 2em; }
+            .result-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5em; text-align: center; height: 100%; transition: transform 0.3s ease; }
+            .result-card:hover { transform: translateY(-5px); }
+            .result-card .icon { font-size: 2em; color: var(--accent-blue); }
+            .result-card h4 { margin: 0.5em 0; }
+            
+            #footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
+        </style>
+    </head>
+    <body class="no-sidebar is-preload">
+        <div id="page-wrapper">
 
-			<section id="header">
-					<div class="container">
-						<div id="logo">
-							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-						</div>
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Accueil</a></li>
-								<li><a href="about.html">À Propos</a></li>
-								<li><a href="experiences.html">Expériences</a></li>
-								<li class="current"><a href="projects.html">Projets</a></li>
-            					<li><a href="articles.html">Articles</a></li>
-								<li><a href="#footer">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</section>
+            <section id="header">
+                <div class="container">
+                    <div id="logo">
+                        <img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+                        <h1><a href="index.html">Abderrahman El Ouali</a></h1>
+                    </div>
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="about.html">À Propos</a></li>
+                            <li><a href="experiences.html">Expériences</a></li>
+                            <li class="current"><a href="projets-hub.html">Projets</a></li>
+                            <li><a href="articles.html">Articles</a></li>
+                            <li><a href="index.html#footer">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
 
-			<section id="main">
-					<div class="container">
-						<article class="box post">
-							<header style="text-align:center; margin-bottom: 2em;">
-								<h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Migration Data Serverless</h2>
-								<p style="font-size: 1.2em; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">Optimisation des performances et des coûts pour la plateforme Core S&T chez Airbus.</p>
-							</header>
+            <section id="main">
+                <div class="container">
+                    <article class="box post">
+                        <header style="text-align:center; margin-bottom: 2em;">
+                            <h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Migration vers une Architecture de Données Serverless sur AWS</h2>
+                            <p style="font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Conception et implémentation d'une solution data moderne pour résoudre les problèmes de performance et de scalabilité chez Airbus.</p>
+                        </header>
 
-							<ul class="project-meta">
-								<li><strong>Rôle</strong><span>Architecte & Développeur</span></li>
-								<li><strong>Entreprise</strong><span>Airbus</span></li>
-								<li><strong>Durée</strong><span>3 mois</span></li>
-								<li><strong>Technologies</strong><span>AWS, Python, DynamoDB, IaC</span></li>
-							</ul>
-							
-							<div class="slider-container">
-								<div class="slider">
-									<div class="slide"><img src="images/projet-dynamodb.jpg" alt="Schéma d'architecture de la solution"></div>
-									<div class="slide"><img src="images/projet-dynamodb.jpg" alt="Dashboard de monitoring"></div>
-									<div class="slide"><img src="images/projet-dynamodb.jpg" alt="Exemple d'alerte"></div>
-								</div>
-								<div class="slider-nav">
-									<a class="prev">&#10094;</a>
-									<a class="next">&#10095;</a>
-								</div>
-							</div>
+                        <ul class="project-meta">
+                            <li><strong>Rôle</strong><span>Architecte Cloud & Développeur Python</span></li>
+                            <li><strong>Entreprise</strong><span>Airbus</span></li>
+                            <li><strong>Durée</strong><span>3 mois</span></li>
+                            <li><strong>Technologies</strong><span>AWS (DynamoDB, Lambda, SQS, API Gateway), Python, IaC (AWS CDK)</span></li>
+                        </ul>
+                        
+                        <div class="slider-container">
+                            <div class="slider">
+                                <div class="slide"><img src="images/projet-dynamodb.jpg" alt="Schéma de la nouvelle architecture serverless sur AWS"></div>
+                                <div class="slide"><img src="images/projet-dynamodb.jpg" alt="Extrait du code d'Infrastructure as Code"></div>
+                                <div class="slide"><img src="images/projet-dynamodb.jpg" alt="Dashboard de monitoring des performances"></div>
+                            </div>
+                            <div class="slider-nav">
+                                <a class="prev">&#10094;</a>
+                                <a class="next">&#10095;</a>
+                            </div>
+                        </div>
 
-							<div style="max-width: 800px; margin: 2em auto 0 auto;">
-								<section>
-									<h3 class="gradient-title">Le Contexte</h3>
-									<p>L'architecture précédente de la plateforme reposait sur le stockage des données dans un fichier unique au format Parquet sur Amazon S3. Bien que simple, cette approche a révélé des limitations critiques avec l'augmentation du volume de données, notamment pour des accès transactionnels fréquents.</p>
-								</section>
+                        <div style="max-width: 800px; margin: 2em auto 0 auto;">
+                            <section>
+                                <h3 class="gradient-title">Le Contexte : Un Stockage Inadapté</h3>
+                                <p>L'architecture initiale pour les données de produits de simulation reposait sur un unique fichier Parquet stocké sur Amazon S3. Cette approche, bien qu'efficace pour des analyses en batch, était totalement inadaptée aux accès transactionnels fréquents. Chaque mise à jour, même pour une seule donnée, forçait la lecture et la réécriture de l'intégralité du fichier, un processus lourd et coûteux.</p>
+                            </section>
 
-								<section>
-									<h3 class="gradient-title">La Problématique : Complexité en $O(N)$</h3>
-									<p>Le défi majeur était une inadéquation entre le pattern d'accès (mises à jour d'items individuels) et l'architecture de stockage (fichier monolithique optimisé pour le batch). Chaque mise à jour, même mineure, nécessitait la lecture et la réécriture complètes du fichier, induisant une latence importante et une complexité temporelle directement proportionnelle à la taille des données, soit $O(N)$.</p>
-								</section>
+                            <hr/>
+                            
+                            <section>
+                                <h3 class="gradient-title">La Problématique : Une Complexité en O(N)</h3>
+                                <p>Le problème fondamental de l'ancienne architecture résidait dans sa complexité algorithmique. Les opérations de lecture et d'écriture avaient une complexité temporelle linéaire, notée  O(N) , où  N  est le nombre total de produits. Cela signifie que le temps de réponse se dégradait proportionnellement à l'augmentation du volume de données, rendant le système non scalable et voué à l'échec à long terme.</p>
+                            </section>
 
-								<section>
-									<h3 class="gradient-title">Ma Solution : Une Architecture Serverless</h3>
-									<p>Pour résoudre cette problématique, j'ai conçu et implémenté une nouvelle architecture entièrement serverless sur AWS, dissociant les opérations de lecture et d'écriture pour une performance optimale et une complexité constante en $O(1)$.</p>
-									<ul>
-										<li><strong>Flux d'écriture asynchrone :</strong> Pour garantir rapidité et fiabilité, une requête de mise à jour est envoyée à une file d'attente Amazon SQS. Un Lambda "Consumer" est déclenché de manière asynchrone pour traiter le message et exécuter une opération `PutItem` ciblée sur la table DynamoDB.</li>
-										<li><strong>Flux de lecture synchrone :</strong> Pour des consultations instantanées, une API Gateway expose un endpoint qui déclenche un Lambda "Getter". Celui-ci exécute une opération `GetItem` ultra-performante sur DynamoDB en utilisant la clé primaire.</li>
-									</ul>
-								</section>
-								
-								<section>
-									<h3 class="gradient-title">Résultats & Impact</h3>
-									<div class="row results-grid">
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-rocket"></span><h4>Performance Drastique</h4><p>Latence réduite de secondes à millisecondes.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-expand-arrows-alt"></span><h4>Scalabilité Native</h4><p>Gère des milliers de requêtes sans intervention.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-euro-sign"></span><h4>Optimisation des Coûts</h4><p>Facturation à l'usage, éliminant les coûts fixes.</p></div></div>
-										<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;"><div class="result-card"><span class="icon solid fa-code"></span><h4>Maintenabilité Accrue</h4><p>Infrastructure 100% en code (IaC) pour des déploiements fiables.</p></div></div>
-									</div>
-								</section>
-							</div>
-						</article>
-					</div>
-				</section>
+                            <hr/>
 
-			<section id="footer">
-					<div class="container">
-						<div id="footer-grid">
-							<div id="footer-copy">
-								<h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
-								<p>   </p>
-								<p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
-							</div>
-							<div id="footer-details">
-								<h3>Informations</h3>
-								<ul>
-									<p>   </p>
-									<li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
-									<li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
-									<li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
-									<li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a> </li>
-									<li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="container" style="margin-top: 3em; padding-top: 3em; border-top: 1px solid var(--border-color); text-align: center;">
-						<ul class="links" style="list-style: none; padding: 0;">
-							<li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-						</ul>
-					</div>
-				</section>
-		</div>
+                            <section>
+                                <h3 class="gradient-title">Ma Solution : Une Architecture Serverless en  O(1) </h3>
+                                <p>Pour garantir des performances constantes quelle que soit la charge, j'ai conçu et implémenté une architecture serverless dont les opérations clés s'exécutent en temps constant, soit une complexité de  O(1) . La démarche a d'abord été validée par une Preuve de Concept (PoC) avant d'être entièrement codée via l'Infrastructure as Code (IaC) avec AWS CDK.</p>
+                                <ul>
+                                    <li><strong>Flux d'Écriture Asynchrone :</strong> Pour garantir la fiabilité, une requête de mise à jour est postée dans une file d'attente Amazon SQS. Ce découplage permet au client de recevoir une réponse immédiate. En parallèle, une fonction AWS Lambda "Consumer" est déclenchée par la file pour exécuter une opération `PutItem` atomique sur une table Amazon DynamoDB. Cette opération sur la clé primaire a une complexité de  O(1) .</li>
+                                    <li><strong>Flux de Lecture Synchrone : Une API Gateway expose un point de terminaison HTTP sécurisé. Un appel à cette API déclenche une fonction AWS Lambda "Getter" qui exécute une opération `GetItem` sur DynamoDB, en utilisant également la clé primaire. Cette lecture, d'une complexité de  O(1) , retourne la donnée requise en quelques millisecondes.</li>
+                                </ul>
+                            </section>
 
-		<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				// Script pour la galerie d'images
-				document.addEventListener('DOMContentLoaded', function() {
-					let currentSlide = 0;
-					const slides = document.querySelectorAll('.slide');
-					const slideCount = slides.length;
-					const slider = document.querySelector('.slider');
-					const prevButton = document.querySelector('.prev');
-					const nextButton = document.querySelector('.next');
+                            <hr/>
 
-					function showSlide(index) {
-						if (index >= slideCount) {
-							currentSlide = 0;
-						} else if (index < 0) {
-							currentSlide = slideCount - 1;
-						} else {
-							currentSlide = index;
-						}
-						const offset = -currentSlide * 100;
-						slider.style.transform = 'translateX(' + offset + '%)';
-					}
+									<section>
+										<h3 class="gradient-title">Résultats & Impact</h3>
+										<div class="row results-grid">
+											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+												<div class="result-card">
+													<span class="icon solid fa-rocket"></span>
+													<h4 style="color: var(--accent-blue);">Performance   O(1)  </h4>
+													<p style="color: var(--text-primary);">La latence des opérations est passée de plusieurs secondes à quelques millisecondes, indépendamment du volume de données.</p>
+												</div>
+											</div>
+											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+												<div class="result-card">
+													<span class="icon solid fa-expand-arrows-alt"></span>
+													<h4 style="color: var(--accent-blue);">Scalabilité Native</h4>
+													<p style="color: var(--text-primary);">L'architecture peut gérer des milliers de requêtes simultanées grâce aux services managés AWS, sans intervention.</p>
+												</div>
+											</div>
+											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+												<div class="result-card">
+													<span class="icon solid fa-euro-sign"></span>
+													<h4 style="color: var(--accent-blue);">Optimisation des Coûts</h4>
+													<p style="color: var(--text-primary);">Le modèle serverless "pay-as-you-go" a éliminé les coûts fixes superflus liés au traitement de fichiers volumineux.</p>
+												</div>
+											</div>
+											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+												<div class="result-card">
+													<span class="icon solid fa-code"></span>
+													<h4 style="color: var(--accent-blue);">Déploiement Fiable (IaC)</h4>
+													<p style="color: var(--text-primary);">L'infrastructure, entièrement définie en code avec AWS CDK, est versionnable, reproductible et facile à maintenir.</p>
+												</div>
+											</div>
+										</div>
+									</section>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section id="footer" style="text-align: center; padding: 20px 0;">
+                <ul class="links" style="list-style: none; padding: 0;">
+                    <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+                </ul>
+            </section>
 
-					nextButton.addEventListener('click', function() {
-						showSlide(currentSlide + 1);
-					});
+        </div>
 
-					prevButton.addEventListener('click', function() {
-						showSlide(currentSlide - 1);
-					});
-				});
-			</script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            // Script pour la galerie d'images
+            document.addEventListener('DOMContentLoaded', function() {
+                let currentSlide = 0;
+                const slides = document.querySelectorAll('.slide');
+                if (slides.length === 0) return;
+                const slideCount = slides.length;
+                const slider = document.querySelector('.slider');
+                const prevButton = document.querySelector('.prev');
+                const nextButton = document.querySelector('.next');
 
-	</body>
+                function showSlide(index) {
+                    if (index >= slideCount) {
+                        currentSlide = 0;
+                    } else if (index < 0) {
+                        currentSlide = slideCount - 1;
+                    } else {
+                        currentSlide = index;
+                    }
+                    const offset = -currentSlide * 100;
+                    slider.style.transform = 'translateX(' + offset + '%)';
+                }
+
+                nextButton.addEventListener('click', function() {
+                    showSlide(currentSlide + 1);
+                });
+
+                prevButton.addEventListener('click', function() {
+                    showSlide(currentSlide - 1);
+                });
+            });
+        </script>
+
+    </body>
 </html>
