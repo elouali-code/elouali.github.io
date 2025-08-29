@@ -126,15 +126,15 @@
 
 						<ul class="project-meta">
 							<li><strong>Rôle</strong><span>Architecte Cloud / Développeur</span></li>
-							<li><strong>Type</strong><span>Projet Personnel</span></li>
-							<li><strong>Durée</strong><span>Concept & Développement</span></li>
+							<li><strong>Entreprise</strong><span>Airbus</span></li>
+                            <li><strong>Durée</strong><span>4 mois</span></li>
 							<li><strong>Technologies</strong><span>AWS Lambda, API Gateway, S3, DynamoDB, EventBridge, AWS CDK, Python</span></li>
 						</ul>
 						
 						<div class="slider-container">
 							<div class="slider">
-								<div class="slide"><img src="images/freeze4.PNG" alt="Architecture d'ensemble du service FREEZE"></div>
-								<div class="slide"><img src="images/freeze5.PNG" alt="Processus d'ajout de fichier (upload)"></div>
+								<div class="slide"><img src="images/freeze-architecture-globale.png" alt="Architecture d'ensemble du service FREEZE"></div>
+								<div class="slide"><img src="images/freeze-upload.png" alt="Processus d'ajout de fichier (upload)"></div>
 								<div class="slide"><img src="images/freeze-migration.png" alt="Logique de migration automatique des fichiers"></div>
 								<div class="slide"><img src="images/freeze-download.png" alt="Processus de téléchargement de fichier (download)"></div>
 							</div>
@@ -147,33 +147,33 @@
 						<div style="max-width: 800px; margin: 2em auto 0 auto;">
 							<section>
 								<h3 class="gradient-title">Le Contexte : Un Stockage Intelligent et Économique</h3>
-								[cite_start]<p>Le défi était de concevoir un service de stockage (nommé "FREEZE") où les fichiers sont accessibles via une URI unique et immuable, même si leur emplacement physique change[cite: 4, 5]. [cite_start]L'objectif principal est de réduire les coûts de stockage en déplaçant automatiquement les fichiers entre différentes classes de stockage AWS (chaud, tiède, froid) en fonction de leur fréquence d'accès[cite: 2, 3]. [cite_start]Seul le service FREEZE lui-même peut effectuer des opérations d'écriture (création, suppression, déplacement) pour garantir l'intégrité du système[cite: 1].</p>
+								<p>Le défi était de concevoir un service de stockage (nommé "FREEZE") où les fichiers sont accessibles via une URI unique et immuable, même si leur emplacement physique change. L'objectif principal est de réduire les coûts de stockage en déplaçant automatiquement les fichiers entre différentes classes de stockage AWS (chaud, tiède, froid) en fonction de leur fréquence d'accès. Seul le service FREEZE lui-même peut effectuer des opérations d'écriture (création, suppression, déplacement) pour garantir l'intégrité du système.</p>
 							</section>
 
 							<hr/>
 
 							<section>
 								<h3 class="gradient-title">Architecture & Fonctionnalités Clés</h3>
-								[cite_start]<p>La solution est entièrement basée sur une architecture "serverless" sur AWS, ce qui la rend hautement scalable, résiliente et rentable[cite: 7]. Elle s'articule autour de plusieurs services managés :</p>
+								<p>La solution est entièrement basée sur une architecture "serverless" sur AWS, ce qui la rend hautement scalable, résiliente et rentable. Elle s'articule autour de plusieurs services managés :</p>
 								
-								[cite_start]<h4><strong>Architecture "Serverless" sur AWS [cite: 38]</strong></h4>
+								<h4><strong>Architecture "Serverless" sur AWS</strong></h4>
 								<p>Le cœur du système repose sur des services qui ne nécessitent aucune gestion de serveur :</p>
 								<ul>
-									[cite_start]<li><strong>AWS Lambda :</strong> Exécute toute la logique métier : ajout, suppression, résolution d'URI et gestion du cycle de vie des fichiers[cite: 22, 111, 114].</li>
-									[cite_start]<li><strong>Amazon API Gateway :</strong> Sert de point d'entrée HTTP sécurisé pour toutes les interactions des clients avec le service[cite: 37].</li>
-									[cite_start]<li><strong>Amazon S3 :</strong> Assure le stockage physique des fichiers, en utilisant différentes classes (Standard, Infrequent Access, Glacier) pour l'optimisation[cite: 16, 17, 18].</li>
-									[cite_start]<li><strong>Amazon DynamoDB :</strong> Une base de données NoSQL qui stocke les métadonnées de chaque fichier (ID, URI S3, classe de stockage, date de dernier accès, compteur d'accès)[cite: 31, 36, 47].</li>
+									<li><strong>AWS Lambda :</strong> Exécute toute la logique métier : ajout, suppression, résolution d'URI et gestion du cycle de vie des fichiers.</li>
+									<li><strong>Amazon API Gateway :</strong> Sert de point d'entrée HTTP sécurisé pour toutes les interactions des clients avec le service.</li>
+									<li><strong>Amazon S3 :</strong> Assure le stockage physique des fichiers, en utilisant différentes classes (Standard, Infrequent Access, Glacier) pour l'optimisation.</li>
+									<li><strong>Amazon DynamoDB :</strong> Une base de données NoSQL qui stocke les métadonnées de chaque fichier (ID, URI S3, classe de stockage, date de dernier accès, compteur d'accès).</li>
 								</ul>
 
 								<h4><strong>Gestion Intelligente du Cycle de Vie des Fichiers</strong></h4>
-								[cite_start]<p>Une fonction Lambda ("Storage Manager") est exécutée quotidiennement via une règle Amazon EventBridge pour analyser les métadonnées des fichiers[cite: 22, 417, 979]. [cite_start]Elle applique un algorithme hybride (combinant la récence LRU et la fréquence LFU) pour décider de "refroidir" ou de "réchauffer" un fichier[cite: 767, 844]:</p>
+								<p>Une fonction Lambda ("Storage Manager") est exécutée quotidiennement via une règle Amazon EventBridge pour analyser les métadonnées des fichiers. Elle applique un algorithme hybride (combinant la récence LRU et la fréquence LFU) pour décider de "refroidir" ou de "réchauffer" un fichier :</p>
 								<ul>
-									[cite_start]<li><strong>Refroidissement (Cool-down) :</strong> Un fichier peu consulté (ex: moins de 5 accès, ou non accédé depuis 30 jours) est déplacé de S3 Standard vers S3 IA, puis vers Glacier[cite: 821, 822].</li>
-									[cite_start]<li><strong>Réchauffement (Warm-up) :</strong> Un fichier dans Glacier ou S3 IA qui redevient populaire (ex: accédé plus de 10 fois en 30 jours) est automatiquement ramené vers S3 Standard pour un accès plus rapide[cite: 824, 825].</li>
+									<li><strong>Refroidissement (Cool-down) :</strong> Un fichier peu consulté (ex: moins de 5 accès, ou non accédé depuis 30 jours) est déplacé de S3 Standard vers S3 IA, puis vers Glacier.</li>
+									<li><strong>Réchauffement (Warm-up) :</strong> Un fichier dans Glacier ou S3 IA qui redevient populaire (ex: accédé plus de 10 fois en 30 jours) est automatiquement ramené vers S3 Standard pour un accès plus rapide.</li>
 								</ul>
 
 								<h4><strong>Déploiement via Infrastructure-as-Code (IaC)</strong></h4>
-								[cite_start]<p>L'ensemble de l'infrastructure est défini en Python à l'aide du AWS Cloud Development Kit (CDK)[cite: 768]. [cite_start]Cette approche garantit des déploiements fiables, reproductibles et automatisés, tout en supprimant les conflits potentiels, comme entre les règles de cycle de vie S3 natives et la logique Lambda personnalisée[cite: 998, 1004, 1082].</p>
+								<p>L'ensemble de l'infrastructure est défini en Python à l'aide du AWS Cloud Development Kit (CDK). Cette approche garantit des déploiements fiables, reproductibles et automatisés, tout en supprimant les conflits potentiels, comme entre les règles de cycle de vie S3 natives et la logique Lambda personnalisée.</p>
 							</section>
 
 							<hr/>
@@ -185,7 +185,7 @@
 										<div class="result-card">
 											<span class="icon solid fa-dollar-sign"></span>
 											<h4 style="color: var(--accent-blue);">Optimisation des Coûts</h4>
-											[cite_start]<p style="color: var(--text-primary);">Réduction significative des coûts de stockage grâce à la migration automatique et intelligente des fichiers vers les classes S3 les plus économiques[cite: 2, 3].</p>
+											<p style="color: var(--text-primary);">Réduction significative des coûts de stockage grâce à la migration automatique et intelligente des fichiers vers les classes S3 les plus économiques.</p>
 										</div>
 									</div>
 									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
@@ -199,14 +199,14 @@
 										<div class="result-card">
 											<span class="icon solid fa-link"></span>
 											<h4 style="color: var(--accent-blue);">Accès Simplifié et Stable</h4>
-											[cite_start]<p style="color: var(--text-primary);">Les clients bénéficient d'une URI unique et permanente pour chaque fichier, masquant toute la complexité de la gestion du stockage sous-jacent[cite: 4, 5].</p>
+											<p style="color: var(--text-primary);">Les clients bénéficient d'une URI unique et permanente pour chaque fichier, masquant toute la complexité de la gestion du stockage sous-jacent.</p>
 										</div>
 									</div>
 									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
 										<div class="result-card">
 											<span class="icon solid fa-code"></span>
 											<h4 style="color: var(--accent-blue);">Déploiement Automatisé (IaC)</h4>
-											[cite_start]<p style="color: var(--text-primary);">L'utilisation d'AWS CDK permet de déployer et de mettre à jour l'ensemble de l'infrastructure de manière fiable et reproductible[cite: 768, 903].</p>
+											<p style="color: var(--text-primary);">L'utilisation d'AWS CDK permet de déployer et de mettre à jour l'ensemble de l'infrastructure de manière fiable et reproductible.</p>
 										</div>
 									</div>
 								</div>
