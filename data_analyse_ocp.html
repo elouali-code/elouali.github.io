@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Étude de Cas : Maintenance Prédictive chez OCP - Abderrahman El Ouali</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+		
+		<style>
+			:root {
+				--background: #0A0F1E;
+				--surface: #161B29;
+				--text-primary: #F0F0F0;
+				--text-secondary: #A0A0B0;
+				--accent-blue: #5271FF;
+				--accent-purple: #C652FF;
+				--border-color: #2a3042;
+			}
+
+			body {
+				background: var(--background);
+				color: var(--text-secondary);
+				font-family: 'Poppins', sans-serif;
+			}
+			#page-wrapper { background: none; }
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
+			a:hover { color: var(--accent-blue); }
+			hr { border-bottom-color: var(--border-color); margin: 3em 0;}
+
+			#header {
+				background: var(--background);
+				border-bottom: 1px solid var(--border-color);
+				position: sticky; top: 0; z-index: 1000;
+				padding: 0.5em 2em;
+			}
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
+			#logo { display: flex; align-items: center; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+			#logo h1 { font-size: 1.2em; margin: 0; }
+			
+			#nav ul li a {
+				color: var(--text-secondary);
+				position: relative;
+				padding-bottom: 5px;
+				font-weight: 500;
+			}
+			#nav ul li a:after {
+				content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+				width: 0; height: 2px; background-color: var(--accent-blue);
+				transition: width 0.3s ease;
+			}
+			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
+			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+
+			.gradient-title {
+				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				display: inline-block;
+				line-height: 1.4; 
+			}
+			
+			article.box.post section { margin-bottom: 2.5em; }
+			article.box.post section h3 {
+				font-size: 1.8em;
+				margin-bottom: 1em;
+			}
+
+			.project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
+			.project-meta li { flex: 1; min-width: 200px; text-align: center; padding: 0.5em; }
+			.project-meta li strong { display: block; font-size: 0.9em; color: var(--text-secondary); text-transform: uppercase; }
+			.project-meta li span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
+			
+			.slider-container { max-width: 800px; margin: 3em auto; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
+			.slider { display: flex; transition: transform 0.5s ease-in-out; }
+			.slide { min-width: 100%; box-sizing: border-box; }
+			.slide img { width: 100%; display: block; }
+			.slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+			.slider-nav a { background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 15px; cursor: pointer; user-select: none; border-radius: 50%; }
+			.slider-nav a:hover { background-color: rgba(0, 0, 0, 0.8); }
+			.prev { margin-left: 1em; }
+			.next { margin-right: 1em; }
+			
+			.results-grid { margin-top: 2em; }
+			.result-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5em; text-align: center; height: 100%; transition: transform 0.3s ease; }
+			.result-card:hover { transform: translateY(-5px); }
+			.result-card .icon { font-size: 2em; color: var(--accent-blue); }
+			.result-card h4 { margin: 0.5em 0; }
+			
+			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
+		</style>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<section id="header">
+				<div class="container">
+					<div id="logo">
+						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
+					</div>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Accueil</a></li>
+							<li><a href="about.html">À Propos</a></li>
+							<li><a href="experiences.html">Expériences</a></li>
+							<li class="current"><a href="projets-hub.html">Projets</a></li>
+							<li><a href="articles.html">Articles</a></li>
+							<li><a href="index.html#footer">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+			<section id="main">
+				<div class="container">
+					<article class="box post">
+						<header style="text-align:center; margin-bottom: 2em;">
+							<h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Maintenance Prédictive pour Compresseurs Industriels avec le Machine Learning</h2>
+							<p style="font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Développement d'une solution de bout en bout pour prédire la performance des compresseurs et optimiser la production d'acide sulfurique chez OCP Group.</p>
+						</header>
+
+						<ul class="project-meta">
+							<li><strong>Rôle</strong><span>Data Analyst & Développeur Machine Learning</span></li>
+							<li><strong>Entreprise</strong><span>OCP Group (Stage)</span></li>
+							<li><strong>Durée</strong><span>3 mois (Juil. - Sept. 2024)</span></li>
+							[cite_start]<li><strong>Technologies</strong><span>Python, Scikit-learn, Pandas, Flask [cite: 41, 44, 53]</span></li>
+						</ul>
+						
+						<div class="slider-container">
+							<div class="slider">
+								<div class="slide"><img src="images/ocp-interface-app.jpg" alt="Interface de l'application web Flask pour la prédiction de performance"></div>
+								<div class="slide"><img src="images/ocp-model-performance.jpg" alt="Graphique de performance du modèle : valeurs réelles vs. valeurs prédites"></div>
+								<div class="slide"><img src="images/ocp-evolution-performance.jpg" alt="Évolution simulée de la performance du compresseur au cours du cycle"></div>
+								<div class="slide"><img src="images/ocp-random-forest.jpg" alt="Schéma de l'architecture du modèle Random Forest"></div>
+							</div>
+							<div class="slider-nav">
+								<a class="prev">&#10094;</a>
+								<a class="next">&#10095;</a>
+							</div>
+						</div>
+
+						<div style="max-width: 800px; margin: 2em auto 0 auto;">
+							<section>
+								<h3 class="gradient-title">Le Contexte : Un Équipement Stratégique</h3>
+								[cite_start]<p>Au sein de la ligne de production d'acide sulfurique du groupe OCP, le compresseur radial Siemens de type SFO est un équipement critique[cite: 10, 277]. [cite_start]Sa performance conditionne directement l'efficacité et la fiabilité de tout le processus industriel[cite: 278, 282]. Une défaillance ou une simple baisse de rendement peut entraîner des arrêts de production coûteux et des pertes d'efficacité énergétique.</p>
+							</section>
+
+							<hr/>
+							
+							<section>
+								<h3 class="gradient-title">La Problématique : De la Maintenance Réactive à Prédictive</h3>
+								[cite_start]<p>Le principal défi était la surveillance et la gestion des variations des paramètres critiques du compresseur (débit, pression, température)[cite: 285]. [cite_start]Des fluctuations non contrôlées peuvent indiquer une dégradation progressive, menant à des pannes imprévues[cite: 286]. [cite_start]L'objectif de ce projet était de passer d'une maintenance réactive (réparer après la panne) à une approche prédictive, en anticipant les besoins de maintenance avant qu'une dégradation significative ne se produise[cite: 292].</p>
+							</section>
+
+							<hr/>
+
+							<section>
+								<h3 class="gradient-title">Ma Solution : Une Application de Machine Learning Complète</h3>
+								<p>Pour résoudre ce problème, j'ai développé une solution complète de machine learning, de l'analyse des données au déploiement d'un outil accessible aux équipes opérationnelles. La démarche s'est articulée autour de trois axes :</p>
+								<ul>
+									[cite_start]<li><strong>Analyse et Modélisation :</strong> J'ai analysé un historique de 24 mois de données de production[cite: 17, 40]. [cite_start]J'ai ensuite entraîné un modèle de régression de type <strong>Random Forest</strong> sur ces données pour sa robustesse et sa grande précision[cite: 48].</li>
+									[cite_start]<li><strong>Développement de l'API :</strong> Pour rendre le modèle utilisable, j'ai développé une API RESTful avec Flask[cite: 53]. Cette API sert de pont entre les données d'entrée et le modèle de machine learning.</li>
+									[cite_start]<li><strong>Interface Web Utilisateur :</strong> J'ai créé une interface web simple où les techniciens peuvent télécharger un fichier Excel contenant les derniers relevés du compresseur et obtenir en retour une prédiction instantanée de sa performance en pourcentage[cite: 53, 440]. [cite_start]Le code source est disponible sur <a href="https://github.com/elouali-code/OCP-Projet" target="_blank">mon dépôt GitHub</a>[cite: 434].</li>
+								</ul>
+							</section>
+
+							<hr/>
+
+							<section>
+								<h3 class="gradient-title">Résultats & Impact</h3>
+								<div class="row results-grid">
+									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+										<div class="result-card">
+											<span class="icon solid fa-chart-line"></span>
+											<h4 style="color: var(--accent-blue);">Modèle Haute Précision</h4>
+											[cite_start]<p style="color: var(--text-primary);">Le modèle a atteint un coefficient de détermination (R²) de <strong>0.9997</strong>, signifiant qu'il explique la quasi-totalité de la variance des données et fournit des prédictions très fiables[cite: 51, 406].</p>
+										</div>
+									</div>
+									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+										<div class="result-card">
+											<span class="icon solid fa-cogs"></span>
+											<h4 style="color: var(--accent-blue);">Maintenance Prédictive</h4>
+											<p style="color: var(--text-primary);">L'outil permet d'anticiper la dégradation des performances, donnant aux équipes les moyens d'intervenir avant une panne et de planifier la maintenance.</p>
+										</div>
+									</div>
+									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+										<div class="result-card">
+											<span class="icon solid fa-desktop"></span>
+											<h4 style="color: var(--accent-blue);">Outil Opérationnel</h4>
+											[cite_start]<p style="color: var(--text-primary);">La solution n'est pas restée un simple notebook : une application web fonctionnelle a été livrée, la rendant directement utilisable par les équipes sur site[cite: 53, 440].</p>
+										</div>
+									</div>
+									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
+										<div class="result-card">
+											<span class="icon solid fa-industry"></span>
+											<h4 style="color: var(--accent-blue);">Fiabilité Améliorée</h4>
+											<p style="color: var(--text-primary);">En fournissant des prédictions en temps réel, l'outil contribue à améliorer la fiabilité du processus de production et à réduire les coûts opérationnels liés aux arrêts imprévus.</p>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</article>
+				</div>
+			</section>
+			
+			<section id="footer" style="text-align: center; padding: 20px 0;">
+				<ul class="links" style="list-style: none; padding: 0;">
+					<li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+				</ul>
+			</section>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			// Script pour la galerie d'images
+			document.addEventListener('DOMContentLoaded', function() {
+				let currentSlide = 0;
+				const slides = document.querySelectorAll('.slide');
+				if (slides.length === 0) return;
+				const slideCount = slides.length;
+				const slider = document.querySelector('.slider');
+				const prevButton = document.querySelector('.prev');
+				const nextButton = document.querySelector('.next');
+
+				function showSlide(index) {
+					if (index >= slideCount) {
+						currentSlide = 0;
+					} else if (index < 0) {
+						currentSlide = slideCount - 1;
+					} else {
+						currentSlide = index;
+					}
+					const offset = -currentSlide * 100;
+					slider.style.transform = 'translateX(' + offset + '%)';
+				}
+
+				nextButton.addEventListener('click', function() {
+					showSlide(currentSlide + 1);
+				});
+
+				prevButton.addEventListener('click', function() {
+					showSlide(currentSlide - 1);
+				});
+			});
+		</script>
+
+	</body>
+</html>
