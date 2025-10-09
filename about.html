@@ -79,6 +79,11 @@
                 /* Application du style de cadre/halo au conteneur */
                 border: 3px solid var(--border-color); 
                 box-shadow: 0 0 30px rgba(82, 113, 255, 0.2);
+                
+                /* Optionnel: pour centrer le contenu de l'image si elle est plus petite que le cadre */
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             
             .about-content .profile-image { 
@@ -86,8 +91,8 @@
                 width: 100%; 
                 height: 100%; 
                 border-radius: 50%;
-                object-fit: cover; /* Assure que l'image couvre l'espace sans étirement */
-                margin: 0; /* Important : on ne veut plus de marge sur l'image elle-même */
+                object-fit: contain; /* <-- MODIFIÉ ICI : pour afficher toute l'image sans la couper */
+                margin: 0; 
             }
             /* Fin des styles CORRIGÉS */
 
