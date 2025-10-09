@@ -69,10 +69,9 @@
             
             /* Styles CORRIGÉS pour le cadre et l'image */
             .profile-frame {
-                /* Cadre circulaire et centré */
-                width: 250px;
-                height: 250px;
-                margin: 2em auto;
+                /* Le cadre s'adapte maintenant à la taille de l'image */
+                display: inline-block; /* Permet au div de prendre la taille de son contenu */
+                margin: 2em auto; /* Centre le cadre et ajoute les marges */
                 border-radius: 50%;
                 overflow: hidden; /* Important pour couper l'image à la forme du cadre */
                 
@@ -80,18 +79,20 @@
                 border: 3px solid var(--border-color); 
                 box-shadow: 0 0 30px rgba(82, 113, 255, 0.2);
                 
-                /* Optionnel: pour centrer le contenu de l'image si elle est plus petite que le cadre */
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                /* Positionnement pour centrer l'élément inline-block */
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
             }
             
             .about-content .profile-image { 
-                /* L'image remplit complètement son cadre conteneur */
-                width: 100%; 
-                height: 100%; 
-                border-radius: 50%;
-                object-fit: contain; /* <-- MODIFIÉ ICI : pour afficher toute l'image sans la couper */
+                /* L'image définit la taille du cadre */
+                /* Il est essentiel que votre image source (IMG_0318.jpg) soit déjà carrée pour un rendu parfait */
+                /* Si l'image n'est pas carrée, elle sera déformée ou une partie sera coupée. */
+                width: 250px; /* Définissez ici la taille désirée de votre photo */
+                height: 250px; /* Assurez-vous que c'est la même valeur que la largeur pour un cercle */
+                border-radius: 50%; /* L'image elle-même devient ronde */
+                object-fit: cover; /* Recadre l'image pour qu'elle remplisse parfaitement le cercle, sans laisser d'espaces */
                 margin: 0; 
             }
             /* Fin des styles CORRIGÉS */
