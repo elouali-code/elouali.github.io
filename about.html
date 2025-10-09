@@ -67,27 +67,46 @@
             
             .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
             
-            /* STYLES CORRIGÉS pour le cadre RECTANGULAIRE (maintenus) */
-            .about-content .profile-image { 
-                /* Définit la taille maximale pour que l'image reste centrée */
-                max-width: 250px; 
+            /* NOUVEAU STYLE : Cadre Asymétrique */
+            .profile-frame {
+                /* Définit la taille maximale pour que le conteneur prenne la taille de l'image */
+                display: inline-block; 
+                margin: 3em auto; /* Espace autour du cadre */
                 
-                /* Retire le border-radius pour la forme rectangulaire */
-                border-radius: 10px; /* Conserve un léger arrondi */
-                
-                /* Centre l'image */
-                display: block; 
-                margin: 2em auto; 
-                
-                /* Le style de cadre/halo */
+                /* Centre l'élément inline-block */
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%) rotate(-3deg); /* L'EFFET CLÉ : Légère inclinaison */
+                transition: transform 0.3s ease-in-out;
+
+                /* Le style de cadre/halo est sur le conteneur */
                 border: 3px solid var(--border-color); 
-                box-shadow: 0 0 30px rgba(82, 113, 255, 0.2); 
-                
-                /* Assure que l'image utilise toute la largeur disponible (jusqu'à 250px) */
-                width: 100%; 
-                height: auto; 
+                box-shadow: 0 5px 30px rgba(82, 113, 255, 0.4); 
+                border-radius: 8px; /* Coins légèrement arrondis */
+                overflow: hidden;
             }
-            /* FIN DES STYLES CORRIGÉS */
+
+            .profile-frame:hover {
+                transform: translateX(-50%) rotate(0deg) scale(1.02); /* Effet d'animation au survol */
+            }
+            
+            .about-content .profile-image { 
+                /* L'image est contenue et définie par la taille */
+                max-width: 280px; 
+                width: 100%; 
+                height: auto;
+                
+                /* Retire tous les styles de bordure de l'image elle-même */
+                border-radius: 0;
+                display: block;
+                margin: 0; 
+                object-fit: cover;
+                transition: transform 0.3s ease-in-out;
+            }
+            
+            .profile-frame:hover .profile-image {
+                transform: scale(1.05); /* Zoom subtil de l'image au survol */
+            }
 
             .about-content .narrative { text-align: justify; }
 
@@ -145,7 +164,9 @@
                             <h2 class="gradient-title" style="font-size: 3em; line-height: 1.4;">Data Engineer en formation  Spécialiste Big Data</h2>
                         </header>
 
-                        <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
+                        <div class="profile-frame">
+                            <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
+                        </div>
 
                         <div class="narrative">
                             <p>
