@@ -11,7 +11,7 @@
         
         <style>
             :root {
-                --background: #0A0F1E; /* Note : Votre page semble avoir un fond blanc, mais le CSS dit noir. Je vais utiliser le blanc pur pour le fond du site pour la lisibilité ici, mais veuillez adapter la couleur dans le CSS si elle est différente de la couleur du fond du site. */
+                --background: #0A0F1E;
                 --surface: #161B29;
                 --text-primary: #F0F0F0;
                 --text-secondary: #A0A0B0;
@@ -21,19 +21,16 @@
             }
 
             body {
-                /* Pour un site à fond blanc comme sur l'image, changez ceci si vous voulez le fond foncé */
-                background: white; 
-                color: #555; 
+                background: var(--background);
+                color: var(--text-secondary);
                 font-family: 'Poppins', sans-serif;
             }
             #page-wrapper { background: none; }
-            h1, h2, h3, h4 { color: #333; font-weight: 600; }
-            a { color: #333; text-decoration: none; transition: color 0.2s ease; }
+            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+            a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
             a:hover { color: var(--accent-blue); }
-            hr { border-bottom-color: #eee; }
+            hr { border-bottom-color: var(--border-color); }
 
-            /* ... (Le reste de votre CSS non lié au problème) ... */
-            
             #header {
                 background: var(--background);
                 border-bottom: 1px solid var(--border-color);
@@ -70,34 +67,25 @@
             
             .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
             
-            /* STYLES CORRIGÉS POUR LE CADRE ET L'IMAGE */
-            .profile-frame {
-                /* Cadre circulaire et centré */
-                width: 250px; 
-                height: 250px; 
-                margin: 2em auto; 
-                border-radius: 50%;
-                overflow: hidden; 
-                
-                /* Application du style de cadre/halo au conteneur */
-                border: 3px solid var(--border-color); 
-                box-shadow: 0 0 30px rgba(82, 113, 255, 0.2);
-                
-                /* Centrage pour Object-fit: contain */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            
+            /* STYLES CORRIGÉS pour le cadre RECTANGULAIRE */
             .about-content .profile-image { 
+                /* Définit la taille maximale pour que l'image reste centrée */
+                max-width: 250px; 
+                
+                /* Retire le border-radius pour la forme rectangulaire */
+                border-radius: 10px; 
+                
+                /* Centre l'image */
+                display: block; 
+                margin: 2em auto; 
+                
+                /* Le style de cadre/halo */
+                border: 3px solid var(--border-color); 
+                box-shadow: 0 0 30px rgba(82, 113, 255, 0.2); 
+                
+                /* Assure que l'image utilise toute la largeur disponible (jusqu'à 250px) */
                 width: 100%; 
-                height: 100%; 
-                border-radius: 50%;
-                /* Le changement clé : affiche l'image entière et laisse de l'espace */
-                object-fit: contain; 
-                /* L'arrière-plan du vide doit correspondre au fond du site (ici c'est blanc) */
-                background-color: white; 
-                margin: 0; 
+                height: auto; /* Maintient le rapport hauteur/largeur de l'image source */
             }
             /* FIN DES STYLES CORRIGÉS */
 
@@ -157,9 +145,7 @@
                             <h2 class="gradient-title" style="font-size: 3em; line-height: 1.4;">Data Engineer en formation  Spécialiste Big Data</h2>
                         </header>
 
-                        <div class="profile-frame">
-                            <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
-                        </div>
+                        <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
 
                         <div class="narrative">
                             <p>
@@ -174,37 +160,38 @@
                             </p>
                         </div>
                     </div>
-
-                    <div class="section-container tech-stack">
-                        <h2 class="section-title gradient-title">Stack Technique</h2>
-                        <div class="tech-logos">
-                            <div class="tech-logo"><img src="images/logo-aws.png" alt="AWS"><span>AWS</span></div>
-                            <div class="tech-logo"><img src="images/logo-docker.png" alt="Docker"><span>Docker</span></div>
-                            <div class="tech-logo"><img src="images/logo-jenkins.png" alt="Jenkins"><span>Jenkins</span></div>
-                            <div class="tech-logo"><img src="images/logo-git.png" alt="Git"><span>Git</span></div>
-                            <div class="tech-logo"><img src="images/logo-spark.png" alt="Spark"><span>Spark</span></div>
-                            <div class="tech-logo"><img src="images/logo-dynamodb.png" alt="DynamoDB"><span>DynamoDB</span></div>
-                            <div class="tech-logo"><img src="images/logo-python.png" alt="Python"><span>Python</span></div>
-                            <div class="tech-logo"><img src="images/logo-java.png" alt="Java"><span>Java</span></div>
-                            <div class="tech-logo"><img src="images/logo-sql.png" alt="SQL"><span>SQL</span></div>
-                            <div class="tech-logo"><img src="images/logo-angular.png" alt="Angular"><span>Angular</span></div>
-                        </div>
                     </div>
-                    
-                    <div class="section-container languages-section">
-                        <h2 class="section-title gradient-title">Langues</h2>
-                        <ul class="languages-list">
-                            <li>🇫🇷 Français</li>
-                            <li>🇬🇧 Anglais</li>
-                            <li>🇲🇦 Marocain (Darija)</li>
-                            <li>🇸🇦 Arabe</li>
-                            <li>🇪🇸 Espagnol</li>
-                        </ul>
-                    </div>
-                </div>
             </section>
             
-            </div>
+            <section id="footer">
+                <div class="container">
+                    <div id="footer-grid">
+                        <div id="footer-copy">
+                            <h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
+                            <p> </p>
+                            <p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
+                        </div>
+                        <div id="footer-details">
+                            <h3>Informations</h3>
+                            <ul>
+                            <p> </p>
+                                <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
+                                <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
+                                <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
+                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
+                                <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" style="margin-top: 2.5em; padding-top: 2.5em; border-top: 1px solid var(--border-color); text-align: center;">
+                    <ul class="links" style="list-style: none; padding: 0;">
+                        <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
 
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.dropotron.min.js"></script>
