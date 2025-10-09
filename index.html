@@ -1,239 +1,237 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Abderrahman El Ouali - Portfolio d'Ingénieur</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-		<link rel="icon" type="images/logo2.png" href="favicon.png"> 
-		<style>
-			:root {
-				--background-start: #0c0a1f;
-				--background-end: #1f1d36;
-				--surface-glass: rgba(31, 29, 54, 0.5);
-				--border-glass: rgba(255, 255, 255, 0.1);
-				--text-primary: #ffffff;
-				--text-secondary: #c3c1d3;
-				--accent-purple: #8c52ff;
-				--accent-cyan: #00d4ff;
-			}
-			body {
-				background-color: var(--background-start);
-				background-image: radial-gradient(circle at 10% 20%, var(--background-end) 0%, var(--background-start) 50%);
-				color: var(--text-secondary);
-				font-family: 'Poppins', sans-serif;
-			}
-			#page-wrapper { background: none; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--accent-cyan); text-decoration: none; transition: color 0.2s ease; }
-			a:hover { color: #fff; }
+    <head>
+        <title>Abderrahman El Ouali - Portfolio d'Ingénieur</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="icon" type="images/logo2.png" href="favicon.png"> 
+        <style>
+            :root {
+                --background-start: #0c0a1f;
+                --background-end: #1f1d36;
+                --surface-glass: rgba(31, 29, 54, 0.5);
+                --border-glass: rgba(255, 255, 255, 0.1);
+                --text-primary: #ffffff;
+                --text-secondary: #c3c1d3;
+                --accent-purple: #8c52ff;
+                --accent-cyan: #00d4ff;
+            }
+            body {
+                background-color: var(--background-start);
+                background-image: radial-gradient(circle at 10% 20%, var(--background-end) 0%, var(--background-start) 50%);
+                color: var(--text-secondary);
+                font-family: 'Poppins', sans-serif;
+            }
+            #page-wrapper { background: none; }
+            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+            a { color: var(--accent-cyan); text-decoration: none; transition: color 0.2s ease; }
+            a:hover { color: #fff; }
 
-			/* --- NOUVEAU HEADER --- */
-			#header {
-				background: rgba(12, 10, 31, 0.7);
-				backdrop-filter: blur(10px);
-				border-bottom: 1px solid var(--border-glass);
-				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em; /* Padding ajusté */
-			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; } /* Ajout pour flexbox */
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
-			#logo h1 a { color: var(--text-primary); }
-			
-			#nav ul li a {
-				color: var(--text-secondary);
-				position: relative;
-				padding-bottom: 5px;
-			}
-			#nav ul li a:after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 0;
-				height: 2px;
-				background-color: var(--accent-cyan);
-				transition: width 0.3s ease;
-			}
-			#nav ul li a:hover:after, #nav ul li.current > a:after {
-				width: 100%;
-			}
-			#nav ul li.current > a {
-				color: var(--text-primary) !important; /* Texte plus clair pour l'actif */
-				background: none !important; /* Suppression du fond de couleur */
-			}
-			/* --- FIN NOUVEAU HEADER --- */
+            /* --- NOUVEAU HEADER --- */
+            #header {
+                background: rgba(12, 10, 31, 0.7);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--border-glass);
+                position: sticky; top: 0; z-index: 1000;
+                padding: 0.5em 2em; /* Padding ajusté */
+            }
+            #header > .container { display: flex; justify-content: space-between; align-items: center; } /* Ajout pour flexbox */
+            #logo { display: flex; align-items: center; }
+            #logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+            #logo h1 { font-size: 1.2em; margin: 0; }
+            #logo h1 a { color: var(--text-primary); }
+            
+            #nav ul li a {
+                color: var(--text-secondary);
+                position: relative;
+                padding-bottom: 5px;
+            }
+            #nav ul li a:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--accent-cyan);
+                transition: width 0.3s ease;
+            }
+            #nav ul li a:hover:after, #nav ul li.current > a:after {
+                width: 100%;
+            }
+            #nav ul li.current > a {
+                color: var(--text-primary) !important; /* Texte plus clair pour l'actif */
+                background: none !important; /* Suppression du fond de couleur */
+            }
+            /* --- FIN NOUVEAU HEADER --- */
 
-			.hero { padding: 8em 0; text-align: center; }
-			.hero h1 { font-size: 3.2em; font-weight: 700; line-height: 1.2; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-			.hero .subtitle { font-size: 1.3em; max-width: 700px; margin: 1em auto 1.5em auto; }
-			
-			.button {
-				background: var(--accent-purple);
-				color: #fff !important; border: 0; border-radius: 8px;
-				transition: all 0.2s ease-in-out;
-				box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4);
-			}
-			.button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(140, 82, 255, 0.6); }
-			.button.alt {
-				background: transparent; color: #fff !important;
-				box-shadow: inset 0 0 0 2px var(--border-glass);
-			}
-			.button.alt:hover { background: var(--surface-glass); border-color: var(--accent-cyan); }
-			
-			.section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
-			.section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
-			
-			.experience-card {
-				background: var(--surface-glass); backdrop-filter: blur(10px);
-				border: 1px solid var(--border-glass); border-radius: 12px;
-				padding: 1.5em; text-decoration:none; display:block;
-				transition: all 0.2s ease;
-			}
-			.experience-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
-			.experience-card .header { display: flex; align-items: center; }
-			.experience-card .logo { width: 45px; height: 45px; margin-right: 1em; object-fit: contain; flex-shrink: 0; }
-			.experience-card h3 { font-size: 1.2em; margin: 0; line-height: 1.2; }
-			.experience-card p { margin: 0; font-size: 0.9em; }
+            .hero { padding: 8em 0; text-align: center; }
+            .hero h1 { font-size: 3.2em; font-weight: 700; line-height: 1.2; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+            .hero .subtitle { font-size: 1.3em; max-width: 700px; margin: 1em auto 1.5em auto; }
+            
+            .button {
+                background: var(--accent-purple);
+                color: #fff !important; border: 0; border-radius: 8px;
+                transition: all 0.2s ease-in-out;
+                box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4);
+            }
+            .button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(140, 82, 255, 0.6); }
+            .button.alt {
+                background: transparent; color: #fff !important;
+                box-shadow: inset 0 0 0 2px var(--border-glass);
+            }
+            .button.alt:hover { background: var(--surface-glass); border-color: var(--accent-cyan); }
+            
+            .section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
+            .section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
+            
+            .experience-card {
+                background: var(--surface-glass); backdrop-filter: blur(10px);
+                border: 1px solid var(--border-glass); border-radius: 12px;
+                padding: 1.5em; text-decoration:none; display:block;
+                transition: all 0.2s ease;
+            }
+            .experience-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
+            .experience-card .header { display: flex; align-items: center; }
+            .experience-card .logo { width: 45px; height: 45px; margin-right: 1em; object-fit: contain; flex-shrink: 0; }
+            .experience-card h3 { font-size: 1.2em; margin: 0; line-height: 1.2; }
+            .experience-card p { margin: 0; font-size: 0.9em; }
 
-			.project-card {
-				background: var(--surface-glass); backdrop-filter: blur(10px);
-				border: 1px solid var(--border-glass); border-radius: 12px;
-				height: 100%; display: flex; flex-direction: column; overflow: hidden;
-			}
-			.project-card .content { padding: 1.5em; flex-grow: 1; }
-			
-			#footer { background: var(--background-end); border-top: 1px solid var(--border-glass); padding: 1em 0; }
-			#footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
-			#footer-copy { flex-basis: 55%; padding-right: 2em; }
-			#footer-details { flex-basis: 35%; }
-			#footer-details ul { list-style: none; padding: 0; }
-			#footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
-			#footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-cyan); width: 20px; }
-			
-			@media (max-width: 768px) {
-				#footer-grid { flex-direction: column; }
-				#footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
-				#footer-details { margin-top: 2em; }
-			}
-		</style>
-	</head>
-	<body class="homepage is-preload">
-		<div id="page-wrapper">
+            .project-card {
+                background: var(--surface-glass); backdrop-filter: blur(10px);
+                border: 1px solid var(--border-glass); border-radius: 12px;
+                height: 100%; display: flex; flex-direction: column; overflow: hidden;
+            }
+            .project-card .content { padding: 1.5em; flex-grow: 1; }
+            
+            #footer { background: var(--background-end); border-top: 1px solid var(--border-glass); padding: 1em 0; }
+            #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
+            #footer-copy { flex-basis: 55%; padding-right: 2em; }
+            #footer-details { flex-basis: 35%; }
+            #footer-details ul { list-style: none; padding: 0; }
+            #footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
+            #footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-cyan); width: 20px; }
+            
+            @media (max-width: 768px) {
+                #footer-grid { flex-direction: column; }
+                #footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
+                #footer-details { margin-top: 2em; }
+            }
+        </style>
+    </head>
+    <body class="homepage is-preload">
+        <div id="page-wrapper">
 
-			<section id="header">
-					<div class="container">
-						<div id="logo">
-							<img src="images/logo.jpg"" alt="Abderrahman El Ouali" />
-							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-						</div>
-						<nav id="nav">
-							<ul>
-								<li class="current"><a href="index.html">Accueil</a></li>
-								<li><a href="about.html">À Propos</a></li>
-								<li><a href="experiences.html">Expériences</a></li>
-								<li><a href="projets-hub.html">Projets</a></li>
-								<li><a href="articles.html">Articles</a></li>
-								<li><a href="#footer">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</section>
+            <section id="header">
+                    <div class="container">
+                        <div id="logo">
+                            <img src="images/logo.jpg"" alt="Abderrahman El Ouali" />
+                            <h1><a href="index.html">Abderrahman El Ouali</a></h1>
+                        </div>
+                        <nav id="nav">
+                            <ul>
+                                <li class="current"><a href="index.html">Accueil</a></li>
+                                <li><a href="about.html">À Propos</a></li>
+                                <li><a href="experiences.html">Expériences</a></li>
+                                <li><a href="projets-hub.html">Projets</a></li>
+                                <li><a href="articles.html">Articles</a></li>
+                                <li><a href="#footer">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
 
-			<section class="hero container">
-					<h1>Ingénieur en Data & Architecture Cloud</h1>
-					<p class="subtitle">Spécialisé en Data Engineering, Data Science et Architecture de solutions. Je transforme les données en produits scalables et à forte valeur ajoutée.</p>
-					<ul class="actions">
-						<li><a href="projets-hub.html" class="button">Explorer mes projets</a></li>
-						<li><a href="Cv_EL_OUALI_2025.pdf" class="button alt" target="_blank">Télécharger le CV</a></li>
-					</ul>
-				</section>
-			
-			<section class="section-container container">
-					<h2 class="section-title">Expérience Professionnelle</h2>
-					<a href="experiences.html" class="experience-card">
-						<div class="header">
-							<img src="images/logo-airbus.png" alt="Logo Airbus" class="logo"/>
-							<div>
-								<h3>IT Solution Architect Intern</h3>
-								<p>Architecture Cloud, Data Engineering et Automatisation DevOps au service de l'ingénierie aéronautique.</p>
-							</div>
-						</div>
-					</a>
-					<div style="text-align: center; margin-top: 2em;">
-						<a href="experiences.html" class="button alt">Explorer mon parcours complet</a>
-					</div>
-				</section>
-			
-			<section class="section-container container">
-					<h2 class="section-title">Mes Derniers Projets</h2>
-					<div class="row">
-						<div class="col-6 col-12-medium">
-							<div class="project-card">
-								<a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture serverless AWS avec DynamoDB"/></a>
-								<div class="content">
-									<h3>Architecture Data Serverless sur AWS</h3>
-									<p>Conception d'une architecture serverless, remplaçant une solution S3 inefficace. Latence réduite de   O(N)   à   O(1)   grâce à DynamoDB, Lambda et SQS, le tout déployé via IaC.</p>
-									<a href="project-dynamodb.html" class="button">Étude de cas</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-6 col-12-medium">
-							<div class="project-card">
-								<a href="project-ardmate.html" class="image featured"><img src="images/projet-ardmate.jpg" alt="Chaîne d'outils du projet ARDmate"/></a>
-								<div class="content">
-									<h3>ARDmate : Automatisation DevOps chez Airbus</h3>
-									<p>Transformation d'un prototype en une chaîne d'outils CI/CD robuste pour automatiser la génération de documents d'architecture critiques. Création d'une librairie de transformation et mise en place de plus de 130 tests.</p>
-									<a href="project-ardmate.html" class="button">Étude de cas</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div style="text-align: center; margin-top: 2em;">
-						<a href="projets-hub.html" class="button alt">Voir tous mes projets</a>
-					</div>
-				</section>
+            <section class="hero container">
+                    <h1>Ingénieur en Data & Architecture Cloud</h1>
+                    <p class="subtitle">Spécialisé en Data Engineering, Data Science et Architecture de solutions. Je transforme les données en produits scalables et à forte valeur ajoutée.</p>
+                    <ul class="actions">
+                        <li><a href="projets-hub.html" class="button">Explorer mes projets</a></li>
+                        <li><a href="Cv_EL_OUALI_2025.pdf" class="button alt" target="_blank">Télécharger le CV</a></li>
+                    </ul>
+                </section>
+            
+            <section class="section-container container">
+                    <h2 class="section-title">Expérience Professionnelle</h2>
+                    <a href="experiences.html" class="experience-card">
+                        <div class="header">
+                            <img src="images/logo-airbus.png" alt="Logo Airbus" class="logo"/>
+                            <div>
+                                <h3>IT Solution Architect Intern</h3>
+                                <p>Architecture Cloud, Data Engineering et Automatisation DevOps au service de l'ingénierie aéronautique.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div style="text-align: center; margin-top: 2em;">
+                        <a href="experiences.html" class="button alt">Explorer mon parcours complet</a>
+                    </div>
+                </section>
+            
+            <section class="section-container container">
+                    <h2 class="section-title">Mes Derniers Projets</h2>
+                    <div class="row">
+                        <div class="col-6 col-12-medium">
+                            <div class="project-card">
+                                <a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture serverless AWS avec DynamoDB"/></a>
+                                <div class="content">
+                                    <h3>Architecture Data Serverless sur AWS</h3>
+                                    <p>Conception d'une architecture serverless, remplaçant une solution S3 inefficace. Latence réduite de   O(N)   à   O(1)   grâce à DynamoDB, Lambda et SQS, le tout déployé via IaC.</p>
+                                    <a href="project-dynamodb.html" class="button">Étude de cas</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-12-medium">
+                            <div class="project-card">
+                                <a href="project-ardmate.html" class="image featured"><img src="images/projet-ardmate.jpg" alt="Chaîne d'outils du projet ARDmate"/></a>
+                                <div class="content">
+                                    <h3>ARDmate : Automatisation DevOps chez Airbus</h3>
+                                    <p>Transformation d'un prototype en une chaîne d'outils CI/CD robuste pour automatiser la génération de documents d'architecture critiques. Création d'une librairie de transformation et mise en place de plus de 130 tests.</p>
+                                    <a href="project-ardmate.html" class="button">Étude de cas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2em;">
+                        <a href="projets-hub.html" class="button alt">Voir tous mes projets</a>
+                    </div>
+                </section>
 
-            <section id="footer">
-                <div class="container">
-                    <div id="footer-grid">
-                        <div id="footer-copy">
-                            <h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
-                            <p> </p>
-                            <p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
-                        </div>
-                        <div id="footer-details">
-                            <h3>Informations</h3>
-                            <ul>
-                            <p> </p>
-                                <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
-                                <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
-                                <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
-                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
-                                <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <section id="footer">
+                <div class="container">
+                    <div id="footer-grid">
+                        <div id="footer-copy">
+                            <h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
+                            <p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
+                        </div>
+                        <div id="footer-details">
+                            <h3>Informations</h3>
+                            <ul>
+                                <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
+                                <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
+                                <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
+                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
+                                <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="container" style="margin-top: 2.5em; padding-top: 2.5em; border-top: 1px solid var(--border-color); text-align: center;">
-                    <ul class="links" style="list-style: none; padding: 0;">
-                        <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-                    </ul>
-                </div>
-            </section>
-		</div>
+                <div class="container" style="margin-top: 2.5em; padding-top: 2.5em; border-top: 1px solid var(--border-glass); text-align: center;">
+                    <ul class="links" style="list-style: none; padding: 0;">
+                        <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-	</body>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
 </html>
