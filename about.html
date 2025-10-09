@@ -67,46 +67,27 @@
             
             .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
             
-            /* NOUVEAU STYLE : Cadre Asymétrique */
-            .profile-frame {
-                /* Définit la taille maximale pour que le conteneur prenne la taille de l'image */
-                display: inline-block; 
-                margin: 3em auto; /* Espace autour du cadre */
-                
-                /* Centre l'élément inline-block */
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%) rotate(-3deg); /* L'EFFET CLÉ : Légère inclinaison */
-                transition: transform 0.3s ease-in-out;
-
-                /* Le style de cadre/halo est sur le conteneur */
-                border: 3px solid var(--border-color); 
-                box-shadow: 0 5px 30px rgba(82, 113, 255, 0.4); 
-                border-radius: 8px; /* Coins légèrement arrondis */
-                overflow: hidden;
-            }
-
-            .profile-frame:hover {
-                transform: translateX(-50%) rotate(0deg) scale(1.02); /* Effet d'animation au survol */
-            }
-            
+            /* STYLES CORRIGÉS pour le cadre RECTANGULAIRE (maintenus) */
             .about-content .profile-image { 
-                /* L'image est contenue et définie par la taille */
-                max-width: 280px; 
-                width: 100%; 
-                height: auto;
+                /* Définit la taille maximale pour que l'image reste centrée */
+                max-width: 250px; 
                 
-                /* Retire tous les styles de bordure de l'image elle-même */
-                border-radius: 0;
-                display: block;
-                margin: 0; 
-                object-fit: cover;
-                transition: transform 0.3s ease-in-out;
+                /* Retire le border-radius pour la forme rectangulaire */
+                border-radius: 10px; /* Conserve un léger arrondi */
+                
+                /* Centre l'image */
+                display: block; 
+                margin: 2em auto; 
+                
+                /* Le style de cadre/halo */
+                border: 3px solid var(--border-color); 
+                box-shadow: 0 0 30px rgba(82, 113, 255, 0.2); 
+                
+                /* Assure que l'image utilise toute la largeur disponible (jusqu'à 250px) */
+                width: 100%; 
+                height: auto; 
             }
-            
-            .profile-frame:hover .profile-image {
-                transform: scale(1.05); /* Zoom subtil de l'image au survol */
-            }
+            /* FIN DES STYLES CORRIGÉS */
 
             .about-content .narrative { text-align: justify; }
 
@@ -164,9 +145,7 @@
                             <h2 class="gradient-title" style="font-size: 3em; line-height: 1.4;">Data Engineer en formation  Spécialiste Big Data</h2>
                         </header>
 
-                        <div class="profile-frame">
-                            <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
-                        </div>
+                        <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
 
                         <div class="narrative">
                             <p>
@@ -211,34 +190,7 @@
                 </div>
             </section>
             
-            <section id="footer">
-                <div class="container">
-                    <div id="footer-grid">
-                        <div id="footer-copy">
-                            <h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
-                            <p> </p>
-                            <p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
-                        </div>
-                        <div id="footer-details">
-                            <h3>Informations</h3>
-                            <ul>
-                            <p> </p>
-                                <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
-                                <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
-                                <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
-                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
-                                <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="container" style="margin-top: 2.5em; padding-top: 2.5em; border-top: 1px solid var(--border-color); text-align: center;">
-                    <ul class="links" style="list-style: none; padding: 0;">
-                        <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-                    </ul>
-                </div>
-            </section>
         </div>
 
         <script src="assets/js/jquery.min.js"></script>
