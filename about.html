@@ -1,172 +1,199 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>À Propos - Abderrahman El Ouali</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
-		
-		<style>
-			:root {
-				--background: #0A0F1E;
-				--surface: #161B29;
-				--text-primary: #F0F0F0;
-				--text-secondary: #A0A0B0;
-				--accent-blue: #5271FF;
-				--accent-purple: #C652FF;
-				--border-color: #2a3042;
-			}
+    <head>
+        <title>À Propos - Abderrahman El Ouali</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+        
+        <style>
+            :root {
+                --background: #0A0F1E;
+                --surface: #161B29;
+                --text-primary: #F0F0F0;
+                --text-secondary: #A0A0B0;
+                --accent-blue: #5271FF;
+                --accent-purple: #C652FF;
+                --border-color: #2a3042;
+            }
 
-			body {
-				background: var(--background);
-				color: var(--text-secondary);
-				font-family: 'Poppins', sans-serif;
-			}
-			#page-wrapper { background: none; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
-			a:hover { color: var(--accent-blue); }
-			hr { border-bottom-color: var(--border-color); }
+            body {
+                background: var(--background);
+                color: var(--text-secondary);
+                font-family: 'Poppins', sans-serif;
+            }
+            #page-wrapper { background: none; }
+            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
+            a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
+            a:hover { color: var(--accent-blue); }
+            hr { border-bottom-color: var(--border-color); }
 
-			#header {
-				background: var(--background);
-				border-bottom: 1px solid var(--border-color);
-				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em;
-			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
-			
-			#nav ul li a {
-				color: var(--text-secondary);
-				position: relative;
-				padding-bottom: 5px;
-				font-weight: 500;
-			}
-			#nav ul li a:after {
-				content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-				width: 0; height: 2px; background-color: var(--accent-blue);
-				transition: width 0.3s ease;
-			}
-			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+            #header {
+                background: var(--background);
+                border-bottom: 1px solid var(--border-color);
+                position: sticky; top: 0; z-index: 1000;
+                padding: 0.5em 2em;
+            }
+            #header > .container { display: flex; justify-content: space-between; align-items: center; }
+            #logo { display: flex; align-items: center; }
+            #logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
+            #logo h1 { font-size: 1.2em; margin: 0; }
+            
+            #nav ul li a {
+                color: var(--text-secondary);
+                position: relative;
+                padding-bottom: 5px;
+                font-weight: 500;
+            }
+            #nav ul li a:after {
+                content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+                width: 0; height: 2px; background-color: var(--accent-blue);
+                transition: width 0.3s ease;
+            }
+            #nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
+            #nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
 
-			.gradient-title {
-				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-			}
+            .gradient-title {
+                background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
-			.section-container { padding: 5em 0; }
-			.section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
-			
-			.about-content { max-width: 800px; margin: 0 auto; text-align: center; }
-			.about-content .profile-image { width: 100%; max-width: 250px; border-radius: 50%; margin: 2em 0; border: 3px solid var(--border-color); box-shadow: 0 0 30px rgba(82, 113, 255, 0.2); }
-			.about-content .narrative { text-align: justify; }
+            .section-container { padding: 5em 0; }
+            .section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
+            
+            .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+            
+            /* Styles CORRIGÉS pour le cadre et l'image */
+            .profile-frame {
+                /* Cadre circulaire et centré */
+                width: 250px;
+                height: 250px;
+                margin: 2em auto;
+                border-radius: 50%;
+                overflow: hidden; /* Important pour couper l'image à la forme du cadre */
+                
+                /* Application du style de cadre/halo au conteneur */
+                border: 3px solid var(--border-color); 
+                box-shadow: 0 0 30px rgba(82, 113, 255, 0.2);
+            }
+            
+            .about-content .profile-image { 
+                /* L'image remplit complètement son cadre conteneur */
+                width: 100%; 
+                height: 100%; 
+                border-radius: 50%;
+                object-fit: cover; /* Assure que l'image couvre l'espace sans étirement */
+                margin: 0; /* Important : on ne veut plus de marge sur l'image elle-même */
+            }
+            /* Fin des styles CORRIGÉS */
 
-			.tech-stack { text-align: center; }
-			.tech-stack .section-title { color: var(--accent-purple); }
-			.tech-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5em; }
-			.tech-logo { display: flex; flex-direction: column; align-items: center; width: 80px; text-align: center; }
-			.tech-logo img { height: 40px; max-width: 80px; object-fit: contain; transition: transform 0.2s ease; }
-			.tech-logo img:hover { transform: scale(1.1); }
-			.tech-logo span { font-family: 'Source Code Pro', monospace; font-size: 0.8em; color: var(--text-secondary); margin-top: 0.8em; text-transform: uppercase; }
-			
-			.languages-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; list-style: none; padding: 0; font-size: 1.1em; }
+            .about-content .narrative { text-align: justify; }
 
-			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 1em 0; }
-			#footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
-			#footer-copy { flex-basis: 55%; padding-right: 2em; }
-			#footer-details { flex-basis: 35%; }
-			#footer-details ul { list-style: none; padding: 0; }
-			#footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
-			#footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
+            .tech-stack { text-align: center; }
+            .tech-stack .section-title { color: var(--accent-purple); }
+            .tech-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5em; }
+            .tech-logo { display: flex; flex-direction: column; align-items: center; width: 80px; text-align: center; }
+            .tech-logo img { height: 40px; max-width: 80px; object-fit: contain; transition: transform 0.2s ease; }
+            .tech-logo img:hover { transform: scale(1.1); }
+            .tech-logo span { font-family: 'Source Code Pro', monospace; font-size: 0.8em; color: var(--text-secondary); margin-top: 0.8em; text-transform: uppercase; }
+            
+            .languages-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; list-style: none; padding: 0; font-size: 1.1em; }
 
-			@media (max-width: 768px) {
-				#footer-grid { flex-direction: column; }
-				#footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
-				#footer-details { margin-top: 2em; }
-			}
-		</style>
-	</head>
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
+            #footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 1em 0; }
+            #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
+            #footer-copy { flex-basis: 55%; padding-right: 2em; }
+            #footer-details { flex-basis: 35%; }
+            #footer-details ul { list-style: none; padding: 0; }
+            #footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
+            #footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
 
-			<section id="header">
-					<div class="container">
-						<div id="logo">
-							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-						</div>
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Accueil</a></li>
-								<li class="current"><a href="about.html">À Propos</a></li>
-								<li><a href="experiences.html">Expériences</a></li>
-								<li><a href="projets-hub.html">Projets</a></li>
-								<li><a href="articles.html">Articles</a></li> 								
-								<li><a href="#footer">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</section>
+            @media (max-width: 768px) {
+                #footer-grid { flex-direction: column; }
+                #footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
+                #footer-details { margin-top: 2em; }
+            }
+        </style>
+    </head>
+    <body class="no-sidebar is-preload">
+        <div id="page-wrapper">
 
-			<section id="main">
-					<div class="container">
-						<div class="about-content">
-							<header>
-								<h2 class="gradient-title" style="font-size: 3em; line-height: 1.4;">Data Engineer en formation  Spécialiste Big Data</h2>
-							</header>
+            <section id="header">
+                <div class="container">
+                    <div id="logo">
+                        <img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+                        <h1><a href="index.html">Abderrahman El Ouali</a></h1>
+                    </div>
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="index.html">Accueil</a></li>
+                            <li class="current"><a href="about.html">À Propos</a></li>
+                            <li><a href="experiences.html">Expériences</a></li>
+                            <li><a href="projets-hub.html">Projets</a></li>
+                            <li><a href="articles.html">Articles</a></li>                       
+                            <li><a href="#footer">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
 
-							<img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
+            <section id="main">
+                <div class="container">
+                    <div class="about-content">
+                        <header>
+                            <h2 class="gradient-title" style="font-size: 3em; line-height: 1.4;">Data Engineer en formation  Spécialiste Big Data</h2>
+                        </header>
 
-							<div class="narrative">
-								<p>
-									Ingénieur en formation à l'INSA Toulouse, ma véritable passion est de plonger au cœur des systèmes complexes. J'aime décortiquer un problème, en comprendre les rouages, et architecturer une solution qui soit non seulement efficace, mais aussi élégante et durable.
-								</p>
-								<p>
-									Je transforme les données brutes en opportunités. Ma mission est d'architecturer des écosystèmes data complets, depuis l'ingestion initiale jusqu'à la création de valeur via l'analyse et le Machine Learning.
+                        <div class="profile-frame">
+                            <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
+                        </div>
 
-									Concrètement, je bâtis des flux de transformation qui nettoient et enrichissent la donnée, pour ensuite la structurer en Data Products performants qui servent de socle à la prise de décision.
+                        <div class="narrative">
+                            <p>
+                                Ingénieur en formation à l'INSA Toulouse, ma véritable passion est de plonger au cœur des systèmes complexes. J'aime décortiquer un problème, en comprendre les rouages, et architecturer une solution qui soit non seulement efficace, mais aussi élégante et durable.
+                            </p>
+                            <p>
+                                Je transforme les données brutes en opportunités. Ma mission est d'architecturer des écosystèmes data complets, depuis l'ingestion initiale jusqu'à la création de valeur via l'analyse et le Machine Learning.
 
-									Je vous invite à parcourir mes différents projets pour voir comment je mets cette vision en pratique.
-								</p>
-							</div>
-						</div>
+                                Concrètement, je bâtis des flux de transformation qui nettoient et enrichissent la donnée, pour ensuite la structurer en Data Products performants qui servent de socle à la prise de décision.
 
-						<div class="section-container tech-stack">
-							<h2 class="section-title gradient-title">Stack Technique</h2>
-							<div class="tech-logos">
-								<div class="tech-logo"><img src="images/logo-aws.png" alt="AWS"><span>AWS</span></div>
-								<div class="tech-logo"><img src="images/logo-docker.png" alt="Docker"><span>Docker</span></div>
-								<div class="tech-logo"><img src="images/logo-jenkins.png" alt="Jenkins"><span>Jenkins</span></div>
-								<div class="tech-logo"><img src="images/logo-git.png" alt="Git"><span>Git</span></div>
-								<div class="tech-logo"><img src="images/logo-spark.png" alt="Spark"><span>Spark</span></div>
-								<div class="tech-logo"><img src="images/logo-dynamodb.png" alt="DynamoDB"><span>DynamoDB</span></div>
-								<div class="tech-logo"><img src="images/logo-python.png" alt="Python"><span>Python</span></div>
-								<div class="tech-logo"><img src="images/logo-java.png" alt="Java"><span>Java</span></div>
-								<div class="tech-logo"><img src="images/logo-sql.png" alt="SQL"><span>SQL</span></div>
-								<div class="tech-logo"><img src="images/logo-angular.png" alt="Angular"><span>Angular</span></div>
-							</div>
-						</div>
-						
-						<div class="section-container languages-section">
-							<h2 class="section-title gradient-title">Langues</h2>
-							<ul class="languages-list">
-								<li>🇫🇷 Français</li>
-								<li>🇬🇧 Anglais</li>
-								<li>🇲🇦 Marocain (Darija)</li>
-								<li>🇸🇦 Arabe</li>
-                                <li>🇪🇸 Espagnol</li>
-							</ul>
-						</div>
-					</div>
-				</section>
+                                Je vous invite à parcourir mes différents projets pour voir comment je mets cette vision en pratique.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="section-container tech-stack">
+                        <h2 class="section-title gradient-title">Stack Technique</h2>
+                        <div class="tech-logos">
+                            <div class="tech-logo"><img src="images/logo-aws.png" alt="AWS"><span>AWS</span></div>
+                            <div class="tech-logo"><img src="images/logo-docker.png" alt="Docker"><span>Docker</span></div>
+                            <div class="tech-logo"><img src="images/logo-jenkins.png" alt="Jenkins"><span>Jenkins</span></div>
+                            <div class="tech-logo"><img src="images/logo-git.png" alt="Git"><span>Git</span></div>
+                            <div class="tech-logo"><img src="images/logo-spark.png" alt="Spark"><span>Spark</span></div>
+                            <div class="tech-logo"><img src="images/logo-dynamodb.png" alt="DynamoDB"><span>DynamoDB</span></div>
+                            <div class="tech-logo"><img src="images/logo-python.png" alt="Python"><span>Python</span></div>
+                            <div class="tech-logo"><img src="images/logo-java.png" alt="Java"><span>Java</span></div>
+                            <div class="tech-logo"><img src="images/logo-sql.png" alt="SQL"><span>SQL</span></div>
+                            <div class="tech-logo"><img src="images/logo-angular.png" alt="Angular"><span>Angular</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="section-container languages-section">
+                        <h2 class="section-title gradient-title">Langues</h2>
+                        <ul class="languages-list">
+                            <li>🇫🇷 Français</li>
+                            <li>🇬🇧 Anglais</li>
+                            <li>🇲🇦 Marocain (Darija)</li>
+                            <li>🇸🇦 Arabe</li>
+                            <li>🇪🇸 Espagnol</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
             <section id="footer">
                 <div class="container">
                     <div id="footer-grid">
@@ -195,14 +222,14 @@
                     </ul>
                 </div>
             </section>
-		</div>
+        </div>
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
 
-	</body>
+    </body>
 </html>
