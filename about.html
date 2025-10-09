@@ -67,13 +67,13 @@
             
             .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
             
-            /* STYLES CORRIGÉS pour le cadre RECTANGULAIRE */
+            /* STYLES CORRIGÉS pour le cadre RECTANGULAIRE (maintenus) */
             .about-content .profile-image { 
                 /* Définit la taille maximale pour que l'image reste centrée */
                 max-width: 250px; 
                 
                 /* Retire le border-radius pour la forme rectangulaire */
-                border-radius: 10px; 
+                border-radius: 10px; /* Conserve un léger arrondi */
                 
                 /* Centre l'image */
                 display: block; 
@@ -85,7 +85,7 @@
                 
                 /* Assure que l'image utilise toute la largeur disponible (jusqu'à 250px) */
                 width: 100%; 
-                height: auto; /* Maintient le rapport hauteur/largeur de l'image source */
+                height: auto; 
             }
             /* FIN DES STYLES CORRIGÉS */
 
@@ -160,7 +160,34 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="section-container tech-stack">
+                        <h2 class="section-title gradient-title">Stack Technique</h2>
+                        <div class="tech-logos">
+                            <div class="tech-logo"><img src="images/logo-aws.png" alt="AWS"><span>AWS</span></div>
+                            <div class="tech-logo"><img src="images/logo-docker.png" alt="Docker"><span>Docker</span></div>
+                            <div class="tech-logo"><img src="images/logo-jenkins.png" alt="Jenkins"><span>Jenkins</span></div>
+                            <div class="tech-logo"><img src="images/logo-git.png" alt="Git"><span>Git</span></div>
+                            <div class="tech-logo"><img src="images/logo-spark.png" alt="Spark"><span>Spark</span></div>
+                            <div class="tech-logo"><img src="images/logo-dynamodb.png" alt="DynamoDB"><span>DynamoDB</span></div>
+                            <div class="tech-logo"><img src="images/logo-python.png" alt="Python"><span>Python</span></div>
+                            <div class="tech-logo"><img src="images/logo-java.png" alt="Java"><span>Java</span></div>
+                            <div class="tech-logo"><img src="images/logo-sql.png" alt="SQL"><span>SQL</span></div>
+                            <div class="tech-logo"><img src="images/logo-angular.png" alt="Angular"><span>Angular</span></div>
+                        </div>
                     </div>
+                    
+                    <div class="section-container languages-section">
+                        <h2 class="section-title gradient-title">Langues</h2>
+                        <ul class="languages-list">
+                            <li>🇫🇷 Français</li>
+                            <li>🇬🇧 Anglais</li>
+                            <li>🇲🇦 Marocain (Darija)</li>
+                            <li>🇸🇦 Arabe</li>
+                            <li>🇪🇸 Espagnol</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
             
             <section id="footer">
