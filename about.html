@@ -65,36 +65,35 @@
             .section-container { padding: 5em 0; }
             .section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
             
-            .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
-            
-            /* NOUVELLE MISE EN PAGE : Mise en page de la section "À Propos" */
+            /* NOUVELLE MISE EN PAGE : Mise en page Asymétrique (60/40) */
             .about-container {
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* Deux colonnes de taille égale */
-                gap: 4em; /* Espace entre les colonnes */
+                grid-template-columns: 3fr 2fr; /* 60% pour le texte, 40% pour l'image */
+                gap: 4em; 
                 align-items: center;
                 padding-top: 3em;
             }
 
             .about-text-content {
-                text-align: left; /* Aligner le texte à gauche dans cette colonne */
+                text-align: left; 
                 padding-right: 2em;
             }
 
             .about-image-content {
                 display: flex;
-                justify-content: center;
+                justify-content: flex-end; /* Aligner l'image à droite */
                 align-items: center;
             }
 
-            /* Maintenir le style rectangulaire de la photo, mais centré dans sa colonne */
+            /* Style de la photo dans sa colonne */
             .about-image-content .profile-image {
-                max-width: 300px; /* J'augmente légèrement la taille pour plus d'impact */
+                max-width: 350px; 
+                max-height: 450px;
                 border-radius: 10px; 
                 display: block; 
                 margin: 0; 
                 border: 3px solid var(--border-color); 
-                box-shadow: 0 0 40px rgba(82, 113, 255, 0.3); /* Halo plus prononcé */
+                box-shadow: 0 0 50px rgba(82, 113, 255, 0.4); 
                 width: 100%; 
                 height: auto;
             }
@@ -103,16 +102,19 @@
             @media (max-width: 980px) {
                 .about-container {
                     grid-template-columns: 1fr; /* Une seule colonne sur mobile */
-                    gap: 2em;
+                    gap: 3em;
                 }
                 .about-text-content {
-                    text-align: center; /* Centrer le texte sur mobile */
+                    text-align: center; 
                     padding-right: 0;
+                }
+                .about-image-content {
+                    justify-content: center; /* Centrer l'image sur mobile */
                 }
             }
 
 
-            .about-content .narrative { text-align: justify; }
+            .about-content .narrative { text-align: justify; } /* Ce style n'est plus utilisé directement */
 
             .tech-stack { text-align: center; }
             .tech-stack .section-title { color: var(--accent-purple); }
@@ -168,17 +170,16 @@
                         
                         <div class="about-text-content">
                             <header>
-                                <h2 class="gradient-title" style="font-size: 3.5em; line-height: 1.2; margin-bottom: 0;">Data Engineer en formation</h2>
-                                <h1 class="gradient-title" style="font-size: 4.5em; line-height: 1.1; margin-top: 0;">Spécialiste Big Data</h1>
+                                <h1 class="gradient-title" style="font-size: 4.5em; line-height: 1.1; margin-bottom: 0;">Spécialiste Big Data</h1>
+                                <h2 class="gradient-title" style="font-size: 2.5em; line-height: 1.2; margin-top: 0;">Data Engineer en formation</h2>
                             </header>
 
                             <div class="narrative">
-                                <p style="font-size: 1.1em;">
+                                <p style="font-size: 1.1em; margin-top: 2em;">
                                     Ingénieur en formation à l'INSA Toulouse, ma véritable passion est de plonger au cœur des systèmes complexes. J'aime décortiquer un problème, en comprendre les rouages, et architecturer une solution qui soit non seulement efficace, mais aussi élégante et durable.
                                 </p>
                                 <p style="font-size: 1.1em;">
-                                    Je transforme les données brutes en opportunités. Ma mission est d'architecturer des écosystèmes data complets, depuis l'ingestion initiale jusqu'à la création de valeur via l'analyse et le Machine Learning.
-
+                                    **Je transforme les données brutes en opportunités.** Ma mission est d'architecturer des écosystèmes data complets, depuis l'ingestion initiale jusqu'à la création de valeur via l'analyse et le Machine Learning.
                                     Je vous invite à parcourir mes différents projets pour voir comment je mets cette vision en pratique.
                                 </p>
                             </div>
