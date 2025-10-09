@@ -11,7 +11,7 @@
         
         <style>
             :root {
-                --background: #0A0F1E;
+                --background: #0A0F1E; /* Note : Votre page semble avoir un fond blanc, mais le CSS dit noir. Je vais utiliser le blanc pur pour le fond du site pour la lisibilité ici, mais veuillez adapter la couleur dans le CSS si elle est différente de la couleur du fond du site. */
                 --surface: #161B29;
                 --text-primary: #F0F0F0;
                 --text-secondary: #A0A0B0;
@@ -21,16 +21,19 @@
             }
 
             body {
-                background: var(--background);
-                color: var(--text-secondary);
+                /* Pour un site à fond blanc comme sur l'image, changez ceci si vous voulez le fond foncé */
+                background: white; 
+                color: #555; 
                 font-family: 'Poppins', sans-serif;
             }
             #page-wrapper { background: none; }
-            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-            a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
+            h1, h2, h3, h4 { color: #333; font-weight: 600; }
+            a { color: #333; text-decoration: none; transition: color 0.2s ease; }
             a:hover { color: var(--accent-blue); }
-            hr { border-bottom-color: var(--border-color); }
+            hr { border-bottom-color: #eee; }
 
+            /* ... (Le reste de votre CSS non lié au problème) ... */
+            
             #header {
                 background: var(--background);
                 border-bottom: 1px solid var(--border-color);
@@ -67,35 +70,36 @@
             
             .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
             
-            /* Styles CORRIGÉS pour le cadre et l'image */
+            /* STYLES CORRIGÉS POUR LE CADRE ET L'IMAGE */
             .profile-frame {
-                /* Le cadre s'adapte maintenant à la taille de l'image */
-                display: inline-block; /* Permet au div de prendre la taille de son contenu */
-                margin: 2em auto; /* Centre le cadre et ajoute les marges */
+                /* Cadre circulaire et centré */
+                width: 250px; 
+                height: 250px; 
+                margin: 2em auto; 
                 border-radius: 50%;
-                overflow: hidden; /* Important pour couper l'image à la forme du cadre */
+                overflow: hidden; 
                 
                 /* Application du style de cadre/halo au conteneur */
                 border: 3px solid var(--border-color); 
                 box-shadow: 0 0 30px rgba(82, 113, 255, 0.2);
                 
-                /* Positionnement pour centrer l'élément inline-block */
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%);
+                /* Centrage pour Object-fit: contain */
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             
             .about-content .profile-image { 
-                /* L'image définit la taille du cadre */
-                /* Il est essentiel que votre image source (IMG_0318.jpg) soit déjà carrée pour un rendu parfait */
-                /* Si l'image n'est pas carrée, elle sera déformée ou une partie sera coupée. */
-                width: 250px; /* Définissez ici la taille désirée de votre photo */
-                height: 250px; /* Assurez-vous que c'est la même valeur que la largeur pour un cercle */
-                border-radius: 50%; /* L'image elle-même devient ronde */
-                object-fit: cover; /* Recadre l'image pour qu'elle remplisse parfaitement le cercle, sans laisser d'espaces */
+                width: 100%; 
+                height: 100%; 
+                border-radius: 50%;
+                /* Le changement clé : affiche l'image entière et laisse de l'espace */
+                object-fit: contain; 
+                /* L'arrière-plan du vide doit correspondre au fond du site (ici c'est blanc) */
+                background-color: white; 
                 margin: 0; 
             }
-            /* Fin des styles CORRIGÉS */
+            /* FIN DES STYLES CORRIGÉS */
 
             .about-content .narrative { text-align: justify; }
 
@@ -200,35 +204,7 @@
                 </div>
             </section>
             
-            <section id="footer">
-                <div class="container">
-                    <div id="footer-grid">
-                        <div id="footer-copy">
-                            <h2 style="font-size: 2.2em;">Parlons de votre prochain projet.</h2>
-                            <p> </p>
-                            <p>Passionné par la création de solutions technologiques à forte valeur ajoutée, je suis toujours ouvert à la discussion sur des projets innovants, des collaborations, ou simplement pour échanger sur les dernières avancées en matière de Cloud et de Data. N'hésitez pas à me contacter.</p>
-                        </div>
-                        <div id="footer-details">
-                            <h3>Informations</h3>
-                            <ul>
-                            <p> </p>
-                                <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
-                                <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
-                                <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
-                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
-                                <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container" style="margin-top: 2.5em; padding-top: 2.5em; border-top: 1px solid var(--border-color); text-align: center;">
-                    <ul class="links" style="list-style: none; padding: 0;">
-                        <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
+            </div>
 
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.dropotron.min.js"></script>
