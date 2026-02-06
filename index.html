@@ -4,267 +4,272 @@
 		<title>Abderrahman El Ouali - Portfolio d'Ingénieur</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
 		<link rel="stylesheet" href="assets/css/main.css" />
+		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
 		<link rel="icon" type="image/png" href="favicon.png"> 
+		
 		<style>
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
-				--surface-glass: rgba(31, 29, 54, 0.5);
+				--surface-glass: rgba(31, 29, 54, 0.6);
 				--surface-glass-dark: rgba(12, 10, 31, 0.95);
-				--border-glass: rgba(255, 255, 255, 0.1);
+				--border-glass: rgba(255, 255, 255, 0.08);
 				--text-primary: #ffffff;
 				--text-secondary: #c3c1d3;
 				--accent-purple: #8c52ff;
 				--accent-cyan: #00d4ff;
+				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
 			}
+
+			/* --- RESET & BASE --- */
+			* { box-sizing: border-box; }
 			body {
 				background-color: var(--background-start);
-				background-image: radial-gradient(circle at 10% 20%, var(--background-end) 0%, var(--background-start) 50%);
+				background-image: radial-gradient(circle at 15% 50%, rgba(140, 82, 255, 0.08) 0%, transparent 25%), 
+                                  radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 25%);
 				color: var(--text-secondary);
 				font-family: 'Poppins', sans-serif;
-				overflow-x: hidden; /* Empêche le scroll horizontal quand le menu est ouvert */
+				overflow-x: hidden;
+				margin: 0;
 			}
-			#page-wrapper { background: none; transition: filter 0.3s ease; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--accent-cyan); text-decoration: none; transition: color 0.2s ease; }
-			a:hover { color: #fff; }
+			#page-wrapper { overflow: hidden; } /* Fix pour éviter le scroll horizontal */
+			
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; }
+			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
+			a:hover { color: #fff; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+			
+			/* --- ANIMATIONS (Scroll Reveal) --- */
+			.reveal {
+				opacity: 0;
+				transform: translateY(30px);
+				transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+			}
+			.reveal.active {
+				opacity: 1;
+				transform: translateY(0);
+			}
 
 			/* --- HEADER MINIMALISTE --- */
 			#header {
-				background: rgba(12, 10, 31, 0.7);
-				backdrop-filter: blur(10px);
+				position: fixed; top: 0; left: 0; width: 100%;
+				background: rgba(12, 10, 31, 0.85);
+				backdrop-filter: blur(12px);
 				border-bottom: 1px solid var(--border-glass);
-				position: sticky; top: 0; z-index: 1000;
-				padding: 1em 2em;
+				z-index: 1000;
+				padding: 1em 0;
+				transition: all 0.3s ease;
 			}
-			#header > .container { 
-				display: flex; 
-				justify-content: space-between; 
-				align-items: center; 
-			}
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
+			#header.scrolled { padding: 0.5em 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+			#header > .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2em; }
+			
+			#logo { display: flex; align-items: center; gap: 1em; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); }
+			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; letter-spacing: 0.5px; }
 			#logo h1 a { color: var(--text-primary); }
 
-			/* --- BOUTON MENU BURGER --- */
+			/* --- MENU BURGER & SIDEBAR --- */
 			.menu-toggle {
-				display: flex;
-				align-items: center;
-				gap: 0.5em;
-				background: rgba(255, 255, 255, 0.05);
+				display: flex; align-items: center; gap: 0.8em;
+				background: rgba(255, 255, 255, 0.03);
 				border: 1px solid var(--border-glass);
-				padding: 0.5em 1em;
-				border-radius: 30px;
+				padding: 0.6em 1.2em;
+				border-radius: 50px;
 				cursor: pointer;
 				transition: all 0.3s ease;
 				color: var(--text-primary);
 			}
-			.menu-toggle:hover {
-				background: rgba(255, 255, 255, 0.1);
-				border-color: var(--accent-cyan);
-			}
-			.menu-toggle i { font-size: 1.2em; }
-			.menu-toggle span { font-weight: 500; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
-
-			/* --- SIDEBAR NAVIGATION (PANNEAU LATÉRAL) --- */
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-cyan); transform: translateY(-2px); }
+			
 			#sidebar-menu {
-				position: fixed;
-				top: 0;
-				right: 0;
-				width: 320px;
-				height: 100vh;
+				position: fixed; top: 0; right: 0; width: 350px; height: 100vh;
 				background: var(--surface-glass-dark);
-				backdrop-filter: blur(20px);
+				backdrop-filter: blur(25px);
 				border-left: 1px solid var(--border-glass);
 				z-index: 2000;
-				transform: translateX(100%); /* Caché par défaut */
-				transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-				padding: 2em;
-				display: flex;
-				flex-direction: column;
-				box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+				transform: translateX(100%);
+				transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+				padding: 3em 2.5em;
+				display: flex; flex-direction: column;
+				box-shadow: -20px 0 50px rgba(0,0,0,0.5);
 			}
-
-			#sidebar-menu.active {
-				transform: translateX(0); /* Visible */
-			}
-
-			.menu-close {
-				align-self: flex-end;
-				font-size: 1.5em;
-				color: var(--text-secondary);
-				cursor: pointer;
-				margin-bottom: 2em;
-				transition: color 0.3s ease;
-			}
-			.menu-close:hover { color: var(--accent-purple); }
-
-			.menu-links {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-				display: flex;
-				flex-direction: column;
-				gap: 1.5em;
-			}
-
-			.menu-links li a {
-				font-size: 1.4em;
-				font-weight: 600;
-				color: var(--text-primary);
-				display: block;
-				border-bottom: 1px solid transparent;
-				padding-bottom: 0.2em;
-				transition: all 0.3s ease;
-			}
-
-			.menu-links li a:hover {
-				color: var(--accent-cyan);
-				transform: translateX(10px);
-			}
+			#sidebar-menu.active { transform: translateX(0); }
 			
-			.menu-footer {
-				margin-top: auto; /* Pousse vers le bas */
-				padding-top: 2em;
-				border-top: 1px solid var(--border-glass);
-			}
-			.menu-footer p { font-size: 0.8em; color: var(--text-secondary); margin-bottom: 1em; }
-			.menu-socials { display: flex; gap: 1em; }
-			.menu-socials a { font-size: 1.2em; color: var(--text-primary); opacity: 0.7; transition: opacity 0.3s; }
-			.menu-socials a:hover { opacity: 1; color: var(--accent-cyan); }
+			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; }
+			.menu-title { font-size: 0.9em; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); }
+			.menu-close { font-size: 1.5em; cursor: pointer; color: var(--text-primary); transition: transform 0.3s; }
+			.menu-close:hover { transform: rotate(90deg); color: var(--accent-purple); }
 
-			/* Overlay sombre quand le menu est ouvert */
+			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
+			.menu-links a {
+				font-size: 1.5em; font-weight: 600; color: var(--text-primary);
+				display: inline-block; position: relative;
+			}
+			.menu-links a::after {
+				content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+				background: var(--gradient-primary); transition: width 0.3s ease;
+			}
+			.menu-links a:hover::after { width: 100%; }
+			.menu-links a:hover { color: transparent; background: var(--gradient-primary); -webkit-background-clip: text; }
+
 			#menu-overlay {
 				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-				background: rgba(0,0,0,0.6);
-				z-index: 1500;
-				opacity: 0;
-				visibility: hidden;
-				transition: all 0.3s ease;
-				backdrop-filter: blur(2px);
+				background: rgba(0,0,0,0.7); z-index: 1500;
+				opacity: 0; visibility: hidden; transition: all 0.3s ease;
+				backdrop-filter: blur(3px);
 			}
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-
-			/* --- Styles existants (Hero, Cards, etc.) --- */
-			.hero { padding: 8em 0; text-align: center; }
-			.hero h1 { font-size: 3.2em; font-weight: 700; line-height: 1.2; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-			.hero .subtitle { font-size: 1.3em; max-width: 700px; margin: 1em auto 1.5em auto; }
+			/* --- HERO SECTION --- */
+			.hero { padding: 10em 0 8em 0; text-align: center; max-width: 900px; margin: 0 auto; }
+			.hero h1 { 
+				font-size: 3.5em; font-weight: 700; line-height: 1.1; margin-bottom: 0.5em;
+				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+			}
+			.hero .highlight { color: var(--accent-purple); }
+			.hero .subtitle { font-size: 1.25em; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2.5em; font-weight: 300; }
 			
+			.cta-group { display: flex; justify-content: center; gap: 1.5em; flex-wrap: wrap; margin-bottom: 3em; }
 			.button {
-				background: var(--accent-purple);
-				color: #fff !important; border: 0; border-radius: 8px;
-				transition: all 0.2s ease-in-out;
-				box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4);
+				background: var(--gradient-primary);
+				color: #fff !important; border: 0; border-radius: 50px;
+				padding: 0.9em 2.5em; font-weight: 600; font-size: 1em;
+				transition: all 0.3s ease; position: relative; overflow: hidden;
+				box-shadow: 0 10px 20px rgba(140, 82, 255, 0.3);
 			}
-			.button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(140, 82, 255, 0.6); }
+			.button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(140, 82, 255, 0.5); }
 			.button.alt {
-				background: transparent; color: #fff !important;
-				box-shadow: inset 0 0 0 2px var(--border-glass);
+				background: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
 			}
-			.button.alt:hover { background: var(--surface-glass); border-color: var(--accent-cyan); }
-			
-			.section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
-			.section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
-			
+			.button.alt:hover { background: rgba(255,255,255,0.05); border-color: #fff; box-shadow: inset 0 0 0 1px #fff; }
+
+			/* --- SOCIAL ICONS HERO --- */
+			.social-hub { display: flex; justify-content: center; gap: 1.5em; }
+			.social-icon-link {
+				display: flex; align-items: center; justify-content: center;
+				width: 55px; height: 55px;
+				background: rgba(255, 255, 255, 0.03);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 50%; color: var(--text-secondary);
+				font-size: 24px; transition: all 0.3s ease;
+			}
+			.social-icon-link:hover {
+				background: #fff; color: #0c0a1f;
+				transform: translateY(-5px) scale(1.1);
+				border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.4);
+			}
+			.social-icon-link.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5; }
+
+			/* --- SECTIONS GLOBALES --- */
+			.section-container { padding: 6em 0; border-top: 1px solid var(--border-glass); }
+			.container { max-width: 1200px; margin: 0 auto; padding: 0 2em; }
+			.section-title { 
+				font-size: 2.2em; text-align: center; margin-bottom: 2em; 
+				position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
+			}
+			.section-title::after {
+				content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+				width: 60px; height: 3px; background: var(--gradient-primary); border-radius: 3px;
+			}
+
+			/* --- CARDS EXPÉRIENCE --- */
 			.experience-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
-				border: 1px solid var(--border-glass); border-radius: 12px;
-				padding: 1.5em; text-decoration:none; display:block;
-				transition: all 0.2s ease;
-				height: 100%; text-align: center; 
+				border: 1px solid var(--border-glass); border-radius: 16px;
+				padding: 2em; text-align: center; height: 100%;
+				transition: all 0.3s ease;
 			}
-			.experience-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-			.experience-card .header { display: flex; flex-direction: column; align-items: center; gap: 1em; }
-			.experience-card .logo { width: 60px; height: 60px; object-fit: contain; margin-bottom: 0.5em; }
-			.experience-card h3 { font-size: 1.1em; margin: 0; line-height: 1.3; color: var(--text-primary); }
-			.experience-card p { margin: 0; font-size: 0.9em; color: var(--text-secondary); }
+			.experience-card:hover { 
+				transform: translateY(-10px); 
+				border-color: rgba(255,255,255,0.3); 
+				background: rgba(31, 29, 54, 0.8);
+			}
+			.experience-card .logo { width: 64px; height: 64px; object-fit: contain; margin-bottom: 1em; filter: grayscale(100%); transition: filter 0.3s; }
+			.experience-card:hover .logo { filter: grayscale(0%); }
+			.experience-card h3 { font-size: 1.1em; margin-bottom: 0.5em; }
+			.experience-card .role-highlight { color: var(--accent-cyan); font-weight: 500; font-size: 0.9em; margin-bottom: 0.5em; display: block; }
+			.experience-card .date { font-size: 0.85em; opacity: 0.6; }
 
+			/* --- NOUVEAU : STACK TECHNIQUE (TILES) --- */
+			.tech-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+				gap: 1.5em;
+				margin-top: 2em;
+			}
+			.tech-item {
+				background: rgba(255,255,255,0.03);
+				border: 1px solid var(--border-glass);
+				border-radius: 12px;
+				padding: 1.5em 1em;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+			.tech-item:hover {
+				background: rgba(255,255,255,0.08);
+				transform: translateY(-5px);
+				border-color: var(--accent-purple);
+			}
+			.tech-item i { font-size: 2em; margin-bottom: 0.5em; color: var(--text-primary); }
+			.tech-item span { display: block; font-size: 0.9em; font-weight: 500; color: var(--text-secondary); }
+
+			/* --- CARDS PROJETS --- */
 			.project-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
-				border: 1px solid var(--border-glass); border-radius: 12px;
-				height: 100%; display: flex; flex-direction: column; overflow: hidden;
-				transition: transform 0.2s ease;
+				border: 1px solid var(--border-glass); border-radius: 16px;
+				overflow: hidden; height: 100%; display: flex; flex-direction: column;
+				transition: all 0.3s ease;
 			}
-			.project-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
-			.project-card .image.featured img { width: 100%; height: 180px; object-fit: cover; }
-			.project-card .content { padding: 1.2em; flex-grow: 1; display: flex; flex-direction: column; }
-			.project-card h3 { font-size: 1.1em; margin-bottom: 0.5em; min-height: 2.4em; }
-			.project-card p { font-size: 0.85em; flex-grow: 1; margin-bottom: 1em; }
-			.project-card .button { font-size: 0.8em; padding: 0.5em 1em; align-self: flex-start; }
-			
-			#footer { background: var(--background-end); border-top: 1px solid var(--border-glass); padding: 4em 0 2em 0; }
-			
-			.contact-wrapper {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				background: var(--surface-glass);
-				backdrop-filter: blur(10px);
-				border: 1px solid var(--border-glass);
-				border-radius: 16px;
-				padding: 3em;
-				margin-bottom: 3em;
-			}
-			.contact-text { flex: 1; padding-right: 2em; }
-			.contact-text h2 { font-size: 2em; margin-bottom: 0.5em; color: var(--accent-cyan); }
-			.contact-info { flex: 1; display: flex; flex-direction: column; gap: 1em; border-left: 1px solid var(--border-glass); padding-left: 3em; }
-			.contact-item { display: flex; align-items: center; font-size: 1.1em; color: var(--text-primary); }
-			.contact-item .icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(82, 113, 255, 0.1); border-radius: 50%; margin-right: 1em; color: var(--accent-blue); }
-			.contact-item a { color: var(--text-primary); }
-			.contact-item a:hover { color: var(--accent-cyan); }
+			.project-card:hover { transform: translateY(-10px); border-color: var(--accent-cyan); }
+			.project-card img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s; }
+			.project-card:hover img { transform: scale(1.05); }
+			.project-card .content { padding: 1.5em; flex-grow: 1; display: flex; flex-direction: column; }
+			.project-card h3 { font-size: 1.2em; margin-bottom: 0.5em; }
+			.project-card p { font-size: 0.9em; line-height: 1.6; margin-bottom: 1.5em; flex-grow: 1; }
+			.project-card .button { align-self: flex-start; padding: 0.6em 1.5em; font-size: 0.85em; }
 
-			@media (max-width: 768px) {
-				.contact-wrapper { flex-direction: column; padding: 2em; }
-				.contact-text { padding-right: 0; margin-bottom: 2em; text-align: center; }
-				.contact-info { border-left: none; padding-left: 0; width: 100%; }
+			/* --- CONTACT CARD --- */
+			.contact-card {
+				background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+				border: 1px solid var(--border-glass); border-radius: 20px;
+				padding: 4em; display: flex; align-items: center; justify-content: space-between;
+				position: relative; overflow: hidden;
 			}
+			.contact-card::before {
+				content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px;
+				background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
+				pointer-events: none;
+			}
+			.contact-left h2 { font-size: 2.5em; margin-bottom: 0.5em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+			.contact-left p { max-width: 500px; font-size: 1.1em; margin-bottom: 2em; }
+			.contact-right { display: flex; flex-direction: column; gap: 1.5em; border-left: 1px solid var(--border-glass); padding-left: 4em; }
+			.info-item { display: flex; align-items: center; gap: 1em; color: var(--text-primary); font-size: 1.1em; }
+			.info-item i { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border-radius: 50%; color: var(--accent-cyan); }
 
-			.social-hub {
-				margin-top: 2.5em;
-				display: flex;
-				justify-content: center;
-				gap: 1.5em;
+			/* --- RESPONSIVE --- */
+			@media (max-width: 992px) {
+				.hero h1 { font-size: 2.5em; }
+				.contact-card { flex-direction: column; padding: 2em; text-align: center; }
+				.contact-right { border-left: none; padding-left: 0; margin-top: 2em; width: 100%; align-items: center; }
 			}
-
-			.social-icon-link {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 60px;
-				height: 60px;
-				background: rgba(255, 255, 255, 0.05);
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				border-radius: 50%;
-				color: var(--text-primary);
-				font-size: 28px;
-				text-decoration: none;
-				transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-			}
-
-			.social-icon-link:hover {
-				background: #ffffff;
-				color: #000000;
-				transform: translateY(-5px) scale(1.1);
-				box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-				border-color: #fff;
-			}
-			.social-icon-link.linkedin:hover { color: #0077b5; } 
 		</style>
 	</head>
-	<body class="homepage is-preload">
+	<body class="is-preload">
 		
 		<div id="menu-overlay"></div>
 
 		<nav id="sidebar-menu">
-			<div class="menu-close">
-				<i class="fas fa-times"></i>
+			<div class="menu-header">
+				<span class="menu-title">Navigation</span>
+				<div class="menu-close"><i class="fas fa-times"></i></div>
 			</div>
 			<ul class="menu-links">
 				<li><a href="index.html">Accueil</a></li>
@@ -274,190 +279,175 @@
 				<li><a href="articles.html">Articles</a></li>
 				<li><a href="#footer">Contact</a></li>
 			</ul>
-			<div class="menu-footer">
-				<p>Réseaux Sociaux</p>
-				<div class="menu-socials">
-					<a href="https://github.com/elouali-code" target="_blank"><i class="fab fa-github"></i></a>
-					<a href="https://www.linkedin.com/in/elouali/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-					<a href="mailto:el-ouali@insa-toulouse.fr"><i class="fas fa-envelope"></i></a>
-				</div>
+			<div style="margin-top: auto; opacity: 0.5; font-size: 0.9em;">
+				<p>el-ouali@insa-toulouse.fr</p>
 			</div>
 		</nav>
 
 		<div id="page-wrapper">
 
 			<section id="header">
-					<div class="container">
-						<div id="logo">
-							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-						</div>
-						<div class="menu-toggle" id="menu-btn">
-							<span>Menu</span>
-							<i class="fas fa-bars"></i>
-						</div>
+				<div class="container">
+					<div id="logo">
+						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
+					<div class="menu-toggle" id="menu-btn">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+				</div>
 			</section>
 
-			<section class="hero container">
-					<h1>Ingénieur en Data & Architecture Cloud</h1>
-					<p class="subtitle">Spécialisé en Data Engineering, Data Science et Architecture de solutions. Je transforme les données en produits scalables et à forte valeur ajoutée.</p>
-					<ul class="actions">
-						<li><a href="projets-hub.html" class="button">Explorer mes projets</a></li>
-						<li><a href="Cv_EL_OUALI_2025.pdf" class="button alt" target="_blank">Télécharger le CV</a></li>
-					</ul>
+			<section class="hero reveal">
+				<div class="container">
+					<h1>Ingénieur <br> Data & Cloud Architecture</h1>
+					<p class="subtitle">Je conçois des écosystèmes de données scalables et des architectures cloud résilientes pour transformer la donnée brute en <span style="color:#fff; font-weight:500;">valeur stratégique</span>.</p>
+					
+					<div class="cta-group">
+						<a href="projets-hub.html" class="button">Voir mes projets</a>
+						<a href="Cv_EL_OUALI_2025.pdf" target="_blank" class="button alt"><i class="fas fa-download" style="margin-right:10px;"></i> Télécharger CV</a>
+					</div>
 					
 					<div class="social-hub">
-						<a href="https://github.com/elouali-code" target="_blank" class="social-icon-link" title="Mon GitHub">
-							<span class="icon brands fa-github"></span>
-						</a>
-						<a href="https://www.linkedin.com/in/elouali/" target="_blank" class="social-icon-link linkedin" title="Mon LinkedIn">
-							<span class="icon brands fa-linkedin-in"></span>
-						</a>
+						<a href="https://github.com/elouali-code" target="_blank" class="social-icon-link" title="GitHub"><i class="fab fa-github"></i></a>
+						<a href="https://www.linkedin.com/in/elouali/" target="_blank" class="social-icon-link linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+						<a href="mailto:el-ouali@insa-toulouse.fr" class="social-icon-link" title="Email"><i class="fas fa-envelope"></i></a>
 					</div>
-
-				</section>
+				</div>
+			</section>
 			
-			<section class="section-container container">
-					<h2 class="section-title">Expérience Professionnelle</h2>
-					
+			<section class="section-container">
+				<div class="container">
+					<h2 class="section-title reveal">Parcours Professionnel</h2>
 					<div class="row">
-						<div class="col-4 col-12-medium">
+						<div class="col-4 col-12-medium reveal">
 							<a href="experiences.html" class="experience-card">
-								<div class="header">
-									<img src="images/logo-airbus.png" alt="Logo Airbus" class="logo"/>
-									<div>
-										<h3>Architecte Cloud (Stage)</h3>
-										<p style="color: var(--accent-blue); font-weight: 500;">Airbus</p>
-										<p>Mars 2025 - Sept. 2025</p>
-									</div>
-								</div>
+								<img src="images/logo-airbus.png" alt="Airbus" class="logo"/>
+								<span class="role-highlight">Architecte Cloud (Stage)</span>
+								<h3>Airbus</h3>
+								<span class="date">Mars 2025 - Sept. 2025</span>
 							</a>
 						</div>
-						
-						<div class="col-4 col-12-medium">
+						<div class="col-4 col-12-medium reveal">
 							<a href="experiences.html" class="experience-card">
-								<div class="header">
-									<img src="images/logo-ocp.png" alt="Logo OCP" class="logo"/>
-									<div>
-										<h3>Data Analyst (Stage)</h3>
-										<p style="color: var(--accent-blue); font-weight: 500;">OCP Group</p>
-										<p>Juil. 2024 - Sept. 2024</p>
-									</div>
-								</div>
+								<img src="images/logo-ocp.png" alt="OCP" class="logo"/>
+								<span class="role-highlight">Data Analyst (Stage)</span>
+								<h3>OCP Group</h3>
+								<span class="date">Juil. 2024 - Sept. 2024</span>
 							</a>
 						</div>
-						
-						<div class="col-4 col-12-medium">
+						<div class="col-4 col-12-medium reveal">
 							<a href="experiences.html" class="experience-card">
-								<div class="header">
-									<img src="images/logo-webhelp.png" alt="Logo Webhelp" class="logo"/>
-									<div>
-										<h3>Dev Full-Stack (Stage)</h3>
-										<p style="color: var(--accent-blue); font-weight: 500;">Webhelp</p>
-										<p>Juil. 2023 - Août 2023</p>
-									</div>
-								</div>
+								<img src="images/logo-webhelp.png" alt="Webhelp" class="logo"/>
+								<span class="role-highlight">Dev Full-Stack (Stage)</span>
+								<h3>Webhelp</h3>
+								<span class="date">Juil. 2023 - Août 2023</span>
 							</a>
 						</div>
 					</div>
+				</div>
+			</section>
 
-					<div style="text-align: center; margin-top: 2em;">
-						<a href="experiences.html" class="button alt">Explorer mon parcours complet</a>
+			<section class="section-container" style="background: rgba(255,255,255,0.01);">
+				<div class="container">
+					<h2 class="section-title reveal">Stack Technique</h2>
+					<p style="text-align: center; max-width: 600px; margin: 0 auto 2em auto;" class="reveal">Les technologies que j'utilise au quotidien pour bâtir des solutions robustes.</p>
+					
+					<div class="tech-grid reveal">
+						<div class="tech-item"><i class="fab fa-aws" style="color:#FF9900;"></i><span>AWS</span></div>
+						<div class="tech-item"><i class="fab fa-python" style="color:#3776AB;"></i><span>Python</span></div>
+						<div class="tech-item"><i class="fab fa-java" style="color:#007396;"></i><span>Java</span></div>
+						<div class="tech-item"><i class="fab fa-docker" style="color:#2496ED;"></i><span>Docker</span></div>
+						<div class="tech-item"><i class="fas fa-database" style="color:#4DB33D;"></i><span>SQL / NoSQL</span></div>
+						<div class="tech-item"><i class="fab fa-jenkins" style="color:#D24939;"></i><span>CI/CD</span></div>
+						<div class="tech-item"><i class="fas fa-brain" style="color:#F7DF1E;"></i><span>AI / ML</span></div>
+						<div class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Git</span></div>
 					</div>
-				</section>
+				</div>
+			</section>
 			
-			<section class="section-container container">
-					<h2 class="section-title">Mes Derniers Projets</h2>
+			<section class="section-container">
+				<div class="container">
+					<h2 class="section-title reveal">Projets Récents</h2>
 					<div class="row">
-						
-						<div class="col-3 col-12-medium">
+						<div class="col-3 col-12-medium reveal">
 							<div class="project-card">
-								<a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture Serverless AWS"/></a>
+								<a href="project-dynamodb.html" style="overflow:hidden;"><img src="images/projet-dynamodb.jpg" alt="AWS Serverless"/></a>
 								<div class="content">
-									<h3>Architecture Data Serverless</h3>
-									<p>Optimisation d'une architecture S3 vers DynamoDB/Lambda pour une latence en O(1).</p>
-									<a href="project-dynamodb.html" class="button">Étude de cas</a>
+									<h3>Data Serverless</h3>
+									<p>Architecture AWS optimisée (DynamoDB/Lambda) réduisant la latence de O(N) à O(1).</p>
+									<a href="project-dynamodb.html" class="button alt">Détails</a>
 								</div>
 							</div>
 						</div>
-
-						<div class="col-3 col-12-medium">
+						<div class="col-3 col-12-medium reveal">
 							<div class="project-card">
-								<a href="project-Core_S&T.html" class="image featured"><img src="images/pipline.PNG" alt="Pipeline Data Skywise"/></a>
+								<a href="project-Core_S&T.html" style="overflow:hidden;"><img src="images/pipline.PNG" alt="Data Pipeline"/></a>
 								<div class="content">
-									<h3>Data Pipelines Skywise</h3>
-									<p>ETL Engineering et création de Data Products fiables sur la plateforme Foundry.</p>
-									<a href="project-Core_S&T.html" class="button">Étude de cas</a>
+									<h3>Skywise Pipelines</h3>
+									<p>ETL complexes et Data Products industriels sur la plateforme Palantir Foundry.</p>
+									<a href="project-Core_S&T.html" class="button alt">Détails</a>
 								</div>
 							</div>
 						</div>
-
-						<div class="col-3 col-12-medium">
+						<div class="col-3 col-12-medium reveal">
 							<div class="project-card">
-								<a href="project-football-ai.html" class="image featured"><img src="images/football-detection.jpg" alt="AI Football Analysis"/></a>
+								<a href="project-football-ai.html" style="overflow:hidden;"><img src="images/football-detection.jpg" alt="AI Football"/></a>
 								<div class="content">
-									<h3>AI Football Tactical Analysis</h3>
-									<p>Vision par ordinateur avec YOLOv8 pour l'analyse tactique de matchs en temps réel.</p>
-									<a href="project-football-ai.html" class="button">Étude de cas</a>
+									<h3>AI Football Analysis</h3>
+									<p>Computer Vision (YOLOv8) pour l'analyse tactique de matchs en temps réel.</p>
+									<a href="project-football-ai.html" class="button alt">Détails</a>
 								</div>
 							</div>
 						</div>
-
-						<div class="col-3 col-12-medium">
+						<div class="col-3 col-12-medium reveal">
 							<div class="project-card">
-								<a href="project-ardmate.html" class="image featured"><img src="images/projet-ardmate.jpg" alt="ARDmate DevOps Tool"/></a>
+								<a href="project-ardmate.html" style="overflow:hidden;"><img src="images/projet-ardmate.jpg" alt="DevOps Tool"/></a>
 								<div class="content">
-									<h3>ARDmate : Outils DevOps</h3>
-									<p>Chaîne CI/CD et librairie Python pour l'automatisation de la documentation d'architecture.</p>
-									<a href="project-ardmate.html" class="button">Étude de cas</a>
+									<h3>Outils DevOps</h3>
+									<p>Automatisation CI/CD pour la génération de documentation d'architecture.</p>
+									<a href="project-ardmate.html" class="button alt">Détails</a>
 								</div>
 							</div>
 						</div>
-
 					</div>
-					<div style="text-align: center; margin-top: 2em;">
-						<a href="projets-hub.html" class="button alt">Voir tous mes projets</a>
-					</div>
-				</section>
-
-            <section id="footer">
-                <div class="container">
-					<h2 class="section-title">Contact</h2>
 					
-					<div class="contact-wrapper">
-						<div class="contact-text">
-							<h2>Discutons de votre prochain projet</h2>
-							<p>Je suis toujours ouvert aux opportunités d'ingénierie Data, Cloud et DevOps. Que vous ayez une question ou juste envie de dire bonjour, ma boîte de réception est ouverte !</p>
-							<a href="mailto:el-ouali@insa-toulouse.fr" class="button">M'envoyer un email</a>
+					<div style="text-align: center; margin-top: 3em;" class="reveal">
+						<a href="projets-hub.html" class="button">Voir le catalogue complet</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="footer">
+				<div class="container reveal">
+					<div class="contact-card">
+						<div class="contact-left">
+							<h2>Prêt à collaborer ?</h2>
+							<p>Je suis toujours à l'écoute d'opportunités challengeantes en Data Engineering et Cloud Architecture. Construisons ensemble des solutions d'avenir.</p>
+							<a href="mailto:el-ouali@insa-toulouse.fr" class="button">Me contacter</a>
 						</div>
-						
-						<div class="contact-info">
-							<div class="contact-item">
-								<span class="icon solid fa-map-marker-alt"></span>
+						<div class="contact-right">
+							<div class="info-item">
+								<i class="fas fa-map-marker-alt"></i>
 								<span>Toulouse, France</span>
 							</div>
-							<div class="contact-item">
-								<span class="icon solid fa-phone"></span>
+							<div class="info-item">
+								<i class="fas fa-phone"></i>
 								<span>+33 7 52 04 36 70</span>
 							</div>
-							<div class="contact-item">
-								<span class="icon brands fa-linkedin-in"></span>
+							<div class="info-item">
+								<i class="fab fa-linkedin-in"></i>
 								<a href="https://www.linkedin.com/in/elouali/" target="_blank">linkedin.com/in/elouali</a>
-							</div>
-							<div class="contact-item">
-								<span class="icon brands fa-github"></span>
-								<a href="https://github.com/elouali-code" target="_blank">github.com/elouali-code</a>
 							</div>
 						</div>
 					</div>
-
-                </div>
-
-                <div class="container" style="text-align: center; color: var(--text-secondary); font-size: 0.9em;">
-                    <p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p>
-                </div>
-            </section>
+					
+					<div style="text-align: center; margin-top: 4em; font-size: 0.9em; opacity: 0.6;">
+						<p>&copy; 2025 Abderrahman El Ouali. Designed & Engineered with passion.</p>
+					</div>
+				</div>
+			</section>
 		</div>
 
 		<script src="assets/js/jquery.min.js"></script>
@@ -468,43 +458,47 @@
 		<script src="assets/js/main.js"></script>
 		
 		<script>
-			// Script simple pour gérer le menu latéral
-			document.addEventListener('DOMContentLoaded', function() {
-				const menuBtn = document.getElementById('menu-btn');
-				const closeBtn = document.querySelector('.menu-close');
-				const sidebar = document.getElementById('sidebar-menu');
-				const overlay = document.getElementById('menu-overlay');
-				const body = document.body;
+			// Gestion Menu Burger
+			const menuBtn = document.getElementById('menu-btn');
+			const closeBtn = document.querySelector('.menu-close');
+			const sidebar = document.getElementById('sidebar-menu');
+			const overlay = document.getElementById('menu-overlay');
+			const body = document.body;
 
-				function openMenu() {
+			function toggleMenu() {
+				const isActive = sidebar.classList.contains('active');
+				if(!isActive) {
 					sidebar.classList.add('active');
 					overlay.classList.add('active');
-					// Empêcher le scroll du body
 					body.style.overflow = 'hidden';
-				}
-
-				function closeMenu() {
+				} else {
 					sidebar.classList.remove('active');
 					overlay.classList.remove('active');
-					// Réactiver le scroll
 					body.style.overflow = 'auto';
 				}
+			}
 
-				if(menuBtn) {
-					menuBtn.addEventListener('click', openMenu);
-				}
-				if(closeBtn) {
-					closeBtn.addEventListener('click', closeMenu);
-				}
-				if(overlay) {
-					overlay.addEventListener('click', closeMenu);
-				}
-				
-				// Fermer le menu si on clique sur un lien du menu
-				const menuLinks = document.querySelectorAll('.menu-links a');
-				menuLinks.forEach(link => {
-					link.addEventListener('click', closeMenu);
+			if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
+			if(overlay) overlay.addEventListener('click', toggleMenu);
+
+			// Animation au Scroll (Intersection Observer)
+			const observerOptions = { threshold: 0.1 };
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+					}
 				});
+			}, observerOptions);
+
+			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+			
+			// Header Scroll Effect
+			window.addEventListener('scroll', () => {
+				const header = document.getElementById('header');
+				if(window.scrollY > 50) header.classList.add('scrolled');
+				else header.classList.remove('scrolled');
 			});
 		</script>
 	</body>
