@@ -19,8 +19,8 @@
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
-				--surface-glass: rgba(22, 27, 41, 0.85);
-				--border-glass: rgba(255, 255, 255, 0.15);
+				--surface-glass: rgba(22, 27, 41, 0.7);
+				--border-glass: rgba(255, 255, 255, 0.1);
 				--text-primary: #ffffff;
 				--text-secondary: #c3c1d3;
 				--accent-purple: #8c52ff;
@@ -28,99 +28,76 @@
 				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
 			}
 
-			/* --- RESET FORCE --- */
+			/* --- RESET & BASE --- */
 			* { box-sizing: border-box; }
 			
 			html, body {
-				margin: 0 !important;
-				padding: 0 !important;
-				width: 100% !important;
-				overflow-x: hidden !important;
+				margin: 0; padding: 0; width: 100%;
+				overflow-x: hidden; /* Empêche le scroll horizontal */
 			}
 
 			body {
 				background-color: var(--background-start);
-				background-image: radial-gradient(circle at 15% 50%, rgba(140, 82, 255, 0.1) 0%, transparent 25%), 
-                                  radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 25%);
+				background-image: 
+					radial-gradient(circle at 0% 0%, rgba(82, 113, 255, 0.1) 0%, transparent 50%),
+					radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%);
 				color: var(--text-secondary);
 				font-family: 'Poppins', sans-serif;
+				line-height: 1.8;
 			}
 
 			#page-wrapper { 
-				overflow-x: hidden; /* CORRECTION : On autorise le scroll vertical */
 				position: relative; 
-				width: 100%;
-				min-height: 100vh;
-				display: flex;
-				flex-direction: column;
+				display: flex; flex-direction: column; min-height: 100vh;
 			}
 			
 			.container { 
-				max-width: 1200px !important; 
-				width: 100% !important;
-				margin: 0 auto !important; 
-				padding: 0 20px !important;
+				max-width: 1100px; margin: 0 auto; padding: 0 25px; 
 			}
 
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 1em 0; }
+			h1, h2, h3 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 0.8em 0; line-height: 1.3; }
 			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
 			a:hover { color: #fff; }
-			
-			/* --- ANIMATIONS --- */
-			.reveal {
-				opacity: 0;
-				transform: translateY(30px);
-				transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-			}
-			.reveal.active { opacity: 1; transform: translateY(0); }
 
 			/* --- HEADER --- */
 			#header {
 				position: fixed; top: 0; left: 0; width: 100%;
 				background: rgba(12, 10, 31, 0.95);
+				backdrop-filter: blur(15px);
 				border-bottom: 1px solid var(--border-glass);
 				z-index: 1000;
 				padding: 0.8em 0;
 			}
 			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			
 			#logo { display: flex; align-items: center; gap: 1em; }
 			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
 			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; }
-			#logo h1 a { color: var(--text-primary); text-decoration: none; border: 0; }
+			#logo h1 a { color: #fff; }
 
 			/* --- MENU BURGER --- */
 			.menu-toggle {
 				display: flex; align-items: center; gap: 0.5em;
-				background: rgba(255, 255, 255, 0.1);
+				background: rgba(255, 255, 255, 0.08);
 				border: 1px solid var(--border-glass);
-				padding: 0.5em 1em;
-				border-radius: 50px;
-				cursor: pointer;
-				color: var(--text-primary);
-				transition: background 0.3s;
+				padding: 0.5em 1.2em; border-radius: 50px;
+				cursor: pointer; color: var(--text-primary); transition: background 0.3s;
 			}
 			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
 			
+			/* Sidebar Menu */
 			#sidebar-menu {
 				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
-				background: #0e0b1f;
-				border-left: 1px solid var(--border-glass);
-				z-index: 2000;
-				transform: translateX(100%);
-				transition: transform 0.4s ease;
-				padding: 2em;
-				display: flex; flex-direction: column;
-				box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+				background: #0e0b1f; border-left: 1px solid var(--border-glass);
+				z-index: 2000; transform: translateX(100%); transition: transform 0.4s ease;
+				padding: 2em; display: flex; flex-direction: column;
+				box-shadow: -10px 0 40px rgba(0,0,0,0.8);
 			}
 			#sidebar-menu.active { transform: translateX(0); }
-			
-			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; }
-			.menu-close { font-size: 1.5em; cursor: pointer; color: var(--text-primary); }
+			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
+			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
 			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
-			.menu-links a { font-size: 1.2em; font-weight: 600; color: var(--text-primary); display: block; border: 0; }
-			.menu-links a:hover { color: var(--accent-cyan); transform: translateX(10px); }
-
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
+			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
 			#menu-overlay {
 				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 				background: rgba(0,0,0,0.8); z-index: 1500;
@@ -128,126 +105,120 @@
 			}
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-			/* --- HERO & TITRE --- */
-			.hero { padding: 10em 0 4em 0; text-align: center; }
-			.hero h1 { 
-				font-size: 3em; font-weight: 700; margin-bottom: 0.5em;
-				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
-				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
-			}
-			.hero .subtitle { font-size: 1.2em; color: var(--text-secondary); max-width: 700px; margin: 0 auto; line-height: 1.6; }
-
-			/* --- CONTENU À PROPOS --- */
-			.section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
-			.section-title { font-size: 2em; text-align: center; margin-bottom: 2em; color: var(--text-primary); }
-
-			.about-wrapper {
-				display: flex;
-				align-items: center; /* Aligné verticalement au centre */
-				justify-content: center;
-				gap: 4em;
-				flex-wrap: wrap; /* Permet le passage à la ligne sur mobile */
-			}
-
-			/* Style de l'image de profil */
-			.profile-frame {
-				position: relative;
-				width: 300px;
-				height: 300px;
-				flex-shrink: 0;
-			}
-			.profile-frame img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				border-radius: 20px;
-				box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-				border: 1px solid var(--border-glass);
-				position: relative;
-				z-index: 2;
-			}
-			/* Élément décoratif */
-			.profile-frame::before {
-				content: ''; position: absolute; top: -20px; left: -20px;
-				width: 100%; height: 100%;
-				border: 2px solid var(--accent-cyan); border-radius: 20px;
-				z-index: 1; opacity: 0.5;
-			}
-			.profile-frame::after {
-				content: ''; position: absolute; bottom: -20px; right: -20px;
-				width: 100%; height: 100%;
-				border: 2px solid var(--accent-purple); border-radius: 20px;
-				z-index: 1; opacity: 0.5;
-			}
-
-			/* Carte de texte style verre */
-			.about-card {
-				flex: 1; /* Prend l'espace restant */
-				min-width: 300px; /* Largeur min pour éviter l'écrasement */
-				max-width: 650px;
-				background: var(--surface-glass);
-				border: 1px solid var(--border-glass);
-				border-radius: 20px;
-				padding: 2.5em;
-				box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-			}
-			.about-card p {
-				font-size: 1.05em;
-				line-height: 1.8;
-				margin-bottom: 1.5em;
-				color: var(--text-secondary);
-				text-align: justify; /* Texte justifié pour faire propre */
-			}
-			.about-card p:last-child { margin-bottom: 0; }
-
-			/* --- LANGUES --- */
-			.languages-grid {
-				display: flex;
-				justify-content: center;
-				gap: 1.5em;
-				flex-wrap: wrap;
-				margin-top: 1em;
-			}
-			.lang-item {
-				background: rgba(255,255,255,0.05);
-				border: 1px solid var(--border-glass);
-				border-radius: 12px;
-				padding: 1em 1.5em;
-				display: flex;
-				align-items: center;
-				gap: 0.8em;
-				transition: all 0.3s ease;
-			}
-			.lang-item:hover {
-				background: rgba(255,255,255,0.1);
-				transform: translateY(-5px);
-				border-color: var(--accent-cyan);
-			}
-			.lang-item span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
-			.lang-flag { font-size: 1.5em; }
-
-			/* --- FOOTER SIMPLE --- */
-			#footer { 
-				background: var(--surface-glass); 
-				border-top: 1px solid var(--border-glass); 
-				padding: 2em 0; 
-				margin-top: auto; /* Pousse le footer en bas */
+			/* --- HERO TEXT (CENTRALISÉ & CORRIGÉ) --- */
+			.page-header {
+				padding: 10em 0 3em 0; /* Padding-top augmenté pour éviter que le texte soit caché par le header */
 				text-align: center;
 			}
-			#footer ul.links { list-style: none; padding: 0; margin: 0; }
-			#footer ul.links li { display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary); }
+			.page-header h1 {
+				font-size: 3.5em;
+				background: var(--gradient-primary);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin-bottom: 0.2em;
+			}
+			.page-header p {
+				font-size: 1.3em;
+				color: var(--text-secondary);
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			/* --- SECTION À PROPOS (STYLE ASYMÉTRIQUE) --- */
+			.about-split {
+				display: flex;
+				align-items: flex-start; /* Alignement haut pour éviter l'étirement */
+				gap: 4em;
+				margin-bottom: 6em;
+			}
+
+			/* Image à gauche */
+			.about-image {
+				flex: 0 0 350px; /* Largeur fixe de la colonne image */
+				position: sticky;
+				top: 100px; /* L'image suit le scroll si le texte est long */
+			}
+			.image-card {
+				position: relative;
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+				border: 1px solid var(--border-glass);
+			}
+			.image-card img {
+				width: 100%;
+				display: block;
+				transition: transform 0.5s ease;
+			}
+			.image-card:hover img { transform: scale(1.03); }
+			
+			/* Glow effect derrière l'image */
+			.about-image::before {
+				content: ''; position: absolute; top: 10%; left: -10%; width: 120%; height: 80%;
+				background: var(--gradient-primary); filter: blur(50px); opacity: 0.2; z-index: -1;
+			}
+
+			/* Texte à droite */
+			.about-text { flex: 1; }
+			.about-text h2 { font-size: 2.2em; color: #fff; margin-bottom: 1em; }
+			.about-text p { margin-bottom: 1.5em; font-size: 1.05em; text-align: justify; }
+			.highlight { color: var(--accent-cyan); font-weight: 500; }
+
+			/* --- SECTION LANGUES (NOUVEAU DESIGN "PILLS") --- */
+			.languages-section {
+				text-align: center;
+				padding: 4em 0;
+				border-top: 1px solid var(--border-glass);
+				background: rgba(255,255,255,0.02);
+			}
+			.lang-pills-container {
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 1.5em;
+				margin-top: 2em;
+			}
+			.lang-pill {
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				padding: 0.8em 2em;
+				border-radius: 50px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				transition: all 0.3s ease;
+				cursor: default;
+			}
+			.lang-pill:hover {
+				background: rgba(255,255,255,0.1);
+				border-color: var(--accent-cyan);
+				transform: translateY(-5px);
+				box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+			}
+			.lang-pill .flag { font-size: 1.5em; }
+			.lang-pill .name { font-weight: 600; color: #fff; font-size: 1.1em; }
+
+			/* --- FOOTER --- */
+			#footer {
+				background: rgba(12, 10, 31, 0.8);
+				border-top: 1px solid var(--border-glass);
+				padding: 2em 0;
+				margin-top: auto;
+				text-align: center;
+				font-size: 0.9em;
+			}
 
 			/* --- RESPONSIVE --- */
 			@media (max-width: 980px) {
-				.about-wrapper { flex-direction: column; text-align: center; gap: 3em; }
-				.about-card { width: 100%; } /* Pleine largeur sur mobile */
-				.profile-frame { width: 250px; height: 250px; margin: 0 auto; }
+				.about-split { flex-direction: column; align-items: center; gap: 3em; }
+				.about-image { flex: auto; width: 100%; max-width: 350px; position: relative; top: 0; }
+				.about-text { width: 100%; }
+				.page-header h1 { font-size: 2.5em; }
 			}
-			@media (max-width: 736px) {
-				.hero h1 { font-size: 2.2em; }
-				.menu-toggle { padding: 0.4em 0.8em; font-size: 0.9em; }
-				#sidebar-menu { width: 100%; max-width: 300px; }
-				.about-card { padding: 1.5em; } /* Moins de padding sur mobile */
+			@media (max-width: 480px) {
+				.page-header { padding-top: 8em; }
+				.about-image { max-width: 100%; }
+				.lang-pill { padding: 0.6em 1.2em; width: 100%; justify-content: center; }
 			}
 		</style>
 	</head>
@@ -285,55 +256,65 @@
 				</div>
 			</section>
 
-			<section class="hero reveal">
-				<div class="container">
-					<h1>À Propos de Moi</h1>
-					<p class="subtitle">Ingénieur en formation & Passionné de Data.</p>
-				</div>
-			</section>
+			<div class="container">
+				<header class="page-header reveal">
+					<h1>L'Ingénieur derrière la Data</h1>
+					<p>Curieux, rigoureux et passionné par l'innovation.</p>
+				</header>
 
-			<section class="section-container">
-				<div class="container">
-					<div class="about-wrapper reveal">
-						
-						<div class="profile-frame">
-							<img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+				<div class="about-split reveal">
+					
+					<div class="about-image">
+						<div class="image-card">
+							<img src="images/IMG_0318.jpg" alt="Portrait Abderrahman El Ouali" />
 						</div>
+					</div>
 
-						<div class="about-card">
-							<p>
-                                Ingénieur en formation à l'INSA Toulouse, ma véritable passion est de plonger au cœur des systèmes complexes. J'aime décortiquer un problème, en comprendre les rouages, et architecturer une solution qui soit non seulement efficace, mais aussi élégante et durable.
-                            </p>
-                            <p>
-                                Je transforme les données brutes en opportunités. Ma mission est d'architecturer des écosystèmes data complets, depuis l'ingestion initiale jusqu'à la création de valeur via l'analyse et le Machine Learning.
-                            </p>
-                            <p>
-                                Concrètement, je bâtis des flux de transformation qui nettoient et enrichissent la donnée, pour ensuite la structurer en "Data Products" performants qui servent de socle à la prise de décision.
-                            </p>
-						</div>
-
+					<div class="about-text">
+						<h2>Mon Histoire</h2>
+						<p>
+							Ingénieur en formation à l'<strong>INSA Toulouse</strong>, j'ai toujours été fasciné par la manière dont la technologie peut résoudre des problèmes complexes. Mon parcours n'est pas linéaire : il est guidé par une soif constante d'apprendre et de comprendre ce qui se passe "sous le capot".
+						</p>
+						<p>
+							Aujourd'hui, je me spécialise dans <span class="highlight">l'Ingénierie des Données et l'Architecture Cloud</span>. Pourquoi ? Parce que je crois que la donnée brute est le nouveau pétrole, mais qu'elle ne vaut rien sans un moteur (pipeline) performant pour la raffiner.
+						</p>
+						<p>
+							Mon approche est pragmatique : je ne cherche pas seulement à écrire du code qui fonctionne, mais à concevoir des systèmes <strong>scalables, maintenables et résilients</strong>. Que ce soit pour optimiser des coûts sur AWS ou structurer des Data Warehouses sur Palantir Foundry, mon objectif reste le même : transformer la complexité technique en valeur métier simple et exploitable.
+						</p>
+						<p>
+							En dehors du code, je suis un passionné d'aéronautique et de football, deux domaines où la précision, la stratégie et le travail d'équipe sont les clés du succès.
+						</p>
 					</div>
 				</div>
-			</section>
+			</div>
 
-			<section class="section-container" style="background: rgba(255,255,255,0.02); margin-bottom: 2em;">
+			<section class="languages-section">
 				<div class="container">
-					<h2 class="section-title reveal">Langues</h2>
-					<div class="languages-grid reveal">
-						<div class="lang-item"><span class="lang-flag">🇫🇷</span><span>Français</span></div>
-						<div class="lang-item"><span class="lang-flag">🇬🇧</span><span>Anglais</span></div>
-						<div class="lang-item"><span class="lang-flag">🇲🇦</span><span>Marocain (Darija)</span></div>
-						<div class="lang-item"><span class="lang-flag">🇸🇦</span><span>Arabe</span></div>
-						<div class="lang-item"><span class="lang-flag">🇪🇸</span><span>Espagnol</span></div>
+					<h2 class="reveal" style="color: #fff;">Langues & Communication</h2>
+					<div class="lang-pills-container reveal">
+						<div class="lang-pill">
+							<span class="flag">🇫🇷</span>
+							<span class="name">Français (Bilingue)</span>
+						</div>
+						<div class="lang-pill">
+							<span class="flag">🇬🇧</span>
+							<span class="name">Anglais (Professionnel)</span>
+						</div>
+						<div class="lang-pill">
+							<span class="flag">🇲🇦</span>
+							<span class="name">Arabe (Natif)</span>
+						</div>
+						<div class="lang-pill">
+							<span class="flag">🇪🇸</span>
+							<span class="name">Espagnol (Débutant)</span>
+						</div>
 					</div>
 				</div>
 			</section>
 
 			<section id="footer">
 				<div class="container">
-					<ul class="links">
-						<li>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-					</ul>
+					<p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p>
 				</div>
 			</section>
 
@@ -347,7 +328,7 @@
 		<script src="assets/js/main.js"></script>
 		
 		<script>
-			// Menu Burger
+			// Menu Burger Logic
 			const menuBtn = document.getElementById('menu-btn');
 			const closeBtn = document.querySelector('.menu-close');
 			const sidebar = document.getElementById('sidebar-menu');
