@@ -19,13 +19,13 @@
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
-				--surface-glass: rgba(22, 27, 41, 0.7);
-				--border-glass: rgba(255, 255, 255, 0.1);
+				--surface-glass: rgba(22, 27, 41, 0.85); /* Plus opaque pour le contraste */
+				--border-glass: rgba(255, 255, 255, 0.15);
 				--text-primary: #ffffff;
-				--text-secondary: #c3c1d3;
+				--text-secondary: #dcdcdc; /* Gris plus clair pour la lisibilité */
+				--accent-bright: #4CC9F0; /* CYAN LUMINEUX pour la lisibilité sur fond noir */
 				--accent-purple: #8c52ff;
-				--accent-cyan: #00d4ff;
-				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+				--gradient-primary: linear-gradient(135deg, var(--accent-bright), var(--accent-purple));
 			}
 
 			/* --- RESET & BASE --- */
@@ -33,13 +33,13 @@
 			
 			html, body {
 				margin: 0; padding: 0; width: 100%;
-				overflow-x: hidden; /* Empêche le scroll horizontal */
+				overflow-x: hidden;
 			}
 
 			body {
 				background-color: var(--background-start);
 				background-image: 
-					radial-gradient(circle at 0% 0%, rgba(82, 113, 255, 0.1) 0%, transparent 50%),
+					radial-gradient(circle at 0% 0%, rgba(76, 201, 240, 0.1) 0%, transparent 50%),
 					radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%);
 				color: var(--text-secondary);
 				font-family: 'Poppins', sans-serif;
@@ -56,8 +56,11 @@
 			}
 
 			h1, h2, h3 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 0.8em 0; line-height: 1.3; }
-			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
-			a:hover { color: #fff; }
+			
+			/* LIENS ET HIGHLIGHTS LUMINEUX */
+			a { color: var(--accent-bright); text-decoration: none; transition: all 0.3s ease; font-weight: 500; }
+			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-bright); }
+			.highlight { color: var(--accent-bright); font-weight: 600; }
 
 			/* --- HEADER --- */
 			#header {
@@ -82,9 +85,8 @@
 				padding: 0.5em 1.2em; border-radius: 50px;
 				cursor: pointer; color: var(--text-primary); transition: background 0.3s;
 			}
-			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-bright); }
 			
-			/* Sidebar Menu */
 			#sidebar-menu {
 				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
 				background: #0e0b1f; border-left: 1px solid var(--border-glass);
@@ -97,7 +99,7 @@
 			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
 			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
 			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
-			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
+			.menu-links a:hover { color: var(--accent-bright); padding-left: 10px; }
 			#menu-overlay {
 				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 				background: rgba(0,0,0,0.8); z-index: 1500;
@@ -105,9 +107,9 @@
 			}
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-			/* --- HERO TEXT (CENTRALISÉ & CORRIGÉ) --- */
+			/* --- HERO TEXT --- */
 			.page-header {
-				padding: 10em 0 3em 0; /* Padding-top augmenté pour éviter que le texte soit caché par le header */
+				padding: 10em 0 3em 0;
 				text-align: center;
 			}
 			.page-header h1 {
@@ -124,19 +126,19 @@
 				margin: 0 auto;
 			}
 
-			/* --- SECTION À PROPOS (STYLE ASYMÉTRIQUE) --- */
+			/* --- SECTION À PROPOS --- */
 			.about-split {
 				display: flex;
-				align-items: flex-start; /* Alignement haut pour éviter l'étirement */
+				align-items: flex-start;
 				gap: 4em;
 				margin-bottom: 6em;
 			}
 
-			/* Image à gauche */
+			/* Image */
 			.about-image {
-				flex: 0 0 350px; /* Largeur fixe de la colonne image */
+				flex: 0 0 350px;
 				position: sticky;
-				top: 100px; /* L'image suit le scroll si le texte est long */
+				top: 100px;
 			}
 			.image-card {
 				position: relative;
@@ -152,19 +154,22 @@
 			}
 			.image-card:hover img { transform: scale(1.03); }
 			
-			/* Glow effect derrière l'image */
 			.about-image::before {
 				content: ''; position: absolute; top: 10%; left: -10%; width: 120%; height: 80%;
 				background: var(--gradient-primary); filter: blur(50px); opacity: 0.2; z-index: -1;
 			}
 
-			/* Texte à droite */
+			/* Texte */
 			.about-text { flex: 1; }
 			.about-text h2 { font-size: 2.2em; color: #fff; margin-bottom: 1em; }
-			.about-text p { margin-bottom: 1.5em; font-size: 1.05em; text-align: justify; }
-			.highlight { color: var(--accent-cyan); font-weight: 500; }
+			.about-text p { 
+				margin-bottom: 1.5em; 
+				font-size: 1.1em; /* Texte légèrement plus grand */
+				text-align: justify; 
+				color: #e0e0e0; /* Blanc cassé pour lisibilité */
+			}
 
-			/* --- SECTION LANGUES (NOUVEAU DESIGN "PILLS") --- */
+			/* --- SECTION LANGUES (BADGES) --- */
 			.languages-section {
 				text-align: center;
 				padding: 4em 0;
@@ -189,9 +194,15 @@
 				transition: all 0.3s ease;
 				cursor: default;
 			}
+			/* Style Spécial pour la langue maternelle */
+			.lang-pill.native {
+				border-color: var(--accent-bright);
+				background: rgba(76, 201, 240, 0.1);
+			}
+			
 			.lang-pill:hover {
 				background: rgba(255,255,255,0.1);
-				border-color: var(--accent-cyan);
+				border-color: var(--accent-bright);
 				transform: translateY(-5px);
 				box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
 			}
@@ -292,6 +303,12 @@
 				<div class="container">
 					<h2 class="reveal" style="color: #fff;">Langues & Communication</h2>
 					<div class="lang-pills-container reveal">
+						
+						<div class="lang-pill native">
+							<span class="flag">🇲🇦</span>
+							<span class="name">Marocain (Darija) - Langue Maternelle</span>
+						</div>
+
 						<div class="lang-pill">
 							<span class="flag">🇫🇷</span>
 							<span class="name">Français (Bilingue)</span>
@@ -299,10 +316,6 @@
 						<div class="lang-pill">
 							<span class="flag">🇬🇧</span>
 							<span class="name">Anglais (Professionnel)</span>
-						</div>
-						<div class="lang-pill">
-							<span class="flag">🇲🇦</span>
-							<span class="name">Arabe (Natif)</span>
 						</div>
 						<div class="lang-pill">
 							<span class="flag">🇪🇸</span>
