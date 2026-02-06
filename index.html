@@ -8,7 +8,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-		<link rel="icon" type="images/logo2.png" href="favicon.png"> 
+		<link rel="icon" type="image/png" href="favicon.png"> 
 		<style>
 			:root {
 				--background-start: #0c0a1f;
@@ -37,9 +37,9 @@
 				backdrop-filter: blur(10px);
 				border-bottom: 1px solid var(--border-glass);
 				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em; /* Padding ajusté */
+				padding: 0.5em 2em;
 			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; } /* Ajout pour flexbox */
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
 			#logo { display: flex; align-items: center; }
 			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
 			#logo h1 { font-size: 1.2em; margin: 0; }
@@ -64,8 +64,8 @@
 				width: 100%;
 			}
 			#nav ul li.current > a {
-				color: var(--text-primary) !important; /* Texte plus clair pour l'actif */
-				background: none !important; /* Suppression du fond de couleur */
+				color: var(--text-primary) !important;
+				background: none !important;
 			}
 			/* --- FIN NOUVEAU HEADER --- */
 
@@ -121,6 +121,38 @@
 				#footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
 				#footer-details { margin-top: 2em; }
 			}
+
+			/* --- STYLE BOUTON GITHUB PRO --- */
+			.social-hub {
+				margin-top: 2.5em;
+				display: flex;
+				justify-content: center;
+				gap: 1.5em;
+			}
+
+			.github-icon-link {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 60px;       /* Largeur du cercle */
+				height: 60px;      /* Hauteur du cercle */
+				background: rgba(255, 255, 255, 0.05); /* Fond transparent léger */
+				border: 1px solid rgba(255, 255, 255, 0.2); /* Bordure fine */
+				border-radius: 50%; /* Cercle parfait */
+				color: var(--text-primary);
+				font-size: 32px;   /* Taille de l'icône */
+				text-decoration: none;
+				transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animation fluide */
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+			}
+
+			.github-icon-link:hover {
+				background: #ffffff;    /* Devient blanc au survol */
+				color: #000000;         /* L'icône devient noire */
+				transform: translateY(-5px) scale(1.1); /* Monte légèrement et grossit */
+				box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* Effet de lueur */
+				border-color: #fff;
+			}
 		</style>
 	</head>
 	<body class="homepage is-preload">
@@ -129,7 +161,7 @@
 			<section id="header">
 					<div class="container">
 						<div id="logo">
-							<img src="images/logo.jpg"" alt="Abderrahman El Ouali" />
+							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
 							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 						</div>
 						<nav id="nav">
@@ -152,6 +184,13 @@
 						<li><a href="projets-hub.html" class="button">Explorer mes projets</a></li>
 						<li><a href="Cv_EL_OUALI_2025.pdf" class="button alt" target="_blank">Télécharger le CV</a></li>
 					</ul>
+					
+					<div class="social-hub">
+						<a href="https://github.com/elouali-code" target="_blank" class="github-icon-link" title="Voir mon code sur GitHub">
+							<span class="icon brands fa-github"></span>
+						</a>
+					</div>
+
 				</section>
 			
 			<section class="section-container container">
@@ -214,7 +253,7 @@
                                 <li><span class="icon solid fa-envelope"></span> <a href="mailto:el-ouali@insa-toulouse.fr">el-ouali@insa-toulouse.fr</a></li>
                                 <li><span class="icon solid fa-phone"></span> +33 7 52 04 36 70</li>
                                 <li><span class="icon brands fa-linkedin-in"></span> <a href="https://www.linkedin.com/in/elouali" target="_blank">linkedin.com/in/elouali</a></li>
-                                <li><span class="icon brands fa-github"></span> <a href="#" target="_blank">github.com/mon-profil</a></li>
+                                <li><span class="icon brands fa-github"></span> <a href="https://github.com/elouali-code" target="_blank">github.com/elouali-code</a></li>
                                 <li><span class="icon solid fa-map-marker-alt"></span> Toulouse, France</li>
                             </ul>
                         </div>
