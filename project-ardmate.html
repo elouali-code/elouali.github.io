@@ -1,273 +1,195 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Étude de Cas : Industrialisation de la Chaîne d'Outils ARDmate - Abderrahman El Ouali</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-        
-        <style>
-            :root {
-                --background: #0A0F1E;
-                --surface: #161B29;
-                --text-primary: #F0F0F0;
-                --text-secondary: #A0A0B0;
-                --accent-blue: #5271FF;
-                --accent-purple: #C652FF;
-                --border-color: #2a3042;
-            }
+	<head>
+		<title>Projet : ARDmate DevOps - Abderrahman El Ouali</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link rel="icon" type="image/png" href="favicon.png"> 
+		
+		<style>
+			:root {
+				--background-start: #0c0a1f; --background-end: #1f1d36;
+				--surface-glass: rgba(22, 27, 41, 0.9); --border-glass: rgba(255, 255, 255, 0.15);
+				--text-primary: #ffffff; --text-secondary: #e0e0e0;
+				--accent-cyan: #00d4ff; --accent-purple: #8c52ff;
+				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+			}
+			* { box-sizing: border-box; }
+			html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+			body { background-color: var(--background-start); background-image: radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%); color: var(--text-secondary); font-family: 'Poppins', sans-serif; line-height: 1.8; }
+			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
+			.container { max-width: 900px; margin: 0 auto; padding: 0 25px; }
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; margin: 0 0 0.8em 0; line-height: 1.3; }
+			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
+			a:hover { color: #fff; } strong, b { color: #fff; font-weight: 700; }
 
-            body {
-                background: var(--background);
-                color: var(--text-secondary);
-                font-family: 'Poppins', sans-serif;
-            }
-            #page-wrapper { background: none; }
-            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-            h4 { color: var(--accent-blue); }
-            a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
-            a:hover { color: var(--accent-blue); }
-            hr { border-bottom-color: var(--border-color); margin: 3em 0; }
+			#header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(12, 10, 31, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-glass); z-index: 1000; padding: 0.8em 0; }
+			#header > .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+			#logo { display: flex; align-items: center; gap: 1em; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
+			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; }
+			#logo h1 a { color: #fff; }
 
-            #header {
-                background: var(--background);
-                border-bottom: 1px solid var(--border-color);
-                position: sticky; top: 0; z-index: 1000;
-                padding: 0.5em 2em;
-            }
-            #header > .container { display: flex; justify-content: space-between; align-items: center; }
-            #logo { display: flex; align-items: center; }
-            #logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-            #logo h1 { font-size: 1.2em; margin: 0; }
-            
-            #nav ul li a {
-                color: var(--text-secondary);
-                position: relative;
-                padding-bottom: 5px;
-                font-weight: 500;
-            }
-            #nav ul li a:after {
-                content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-                width: 0; height: 2px; background-color: var(--accent-blue);
-                transition: width 0.3s ease;
-            }
-            #nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-            #nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+			.menu-toggle { display: flex; align-items: center; gap: 0.5em; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); padding: 0.5em 1.2em; border-radius: 50px; cursor: pointer; color: var(--text-primary); transition: background 0.3s; }
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
+			#sidebar-menu { position: fixed; top: 0; right: 0; width: 300px; height: 100vh; background: #0e0b1f; border-left: 1px solid var(--border-glass); z-index: 2000; transform: translateX(100%); transition: transform 0.4s ease; padding: 2em; display: flex; flex-direction: column; box-shadow: -10px 0 40px rgba(0,0,0,0.8); }
+			#sidebar-menu.active { transform: translateX(0); }
+			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
+			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
+			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
+			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
+			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-            .gradient-title {
-                background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                display: inline-block;
-                line-height: 1.4; 
-            }
-            
-            article.box.post section { margin-bottom: 2.5em; }
-            article.box.post section h3 {
-                font-size: 1.8em;
-                margin-bottom: 1em;
-                color: var(--accent-blue);
-            }
+			.project-hero { padding: 10em 0 4em 0; text-align: center; }
+			.project-hero h1 { font-size: 2.8em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5em; }
+			.project-hero p { font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto; }
 
-            .project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
-            .project-meta li { flex: 1; min-width: 200px; text-align: center; padding: 0.5em; }
-            .project-meta li strong { display: block; font-size: 0.9em; color: var(--text-secondary); text-transform: uppercase; }
-            .project-meta li span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
-            
-            .slider-container { max-width: 800px; margin: 3em auto; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
-            .slider { display: flex; transition: transform 0.5s ease-in-out; }
-            .slide { min-width: 100%; box-sizing: border-box; }
-            .slide img { width: 100%; display: block; }
-            .slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
-            .slider-nav a { background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 15px; cursor: pointer; user-select: none; border-radius: 50%; }
-            .slider-nav a:hover { background-color: rgba(0, 0, 0, 0.8); }
-            .prev { margin-left: 1em; }
-            .next { margin-right: 1em; }
-            
-            .results-grid { margin-top: 2em; }
-            .result-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5em; text-align: center; height: 100%; transition: transform 0.3s ease; }
-            .result-card:hover { transform: translateY(-5px); }
-            .result-card .icon { font-size: 2em; color: var(--accent-blue); }
-            .result-card h4 { margin: 0.5em 0; }
-            
-            #footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
-        </style>
-    </head>
-    <body class="no-sidebar is-preload">
-        <div id="page-wrapper">
+			.project-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 1em; margin: 3em 0; }
+			.meta-item { background: var(--surface-glass); border: 1px solid var(--border-glass); padding: 0.8em 1.5em; border-radius: 12px; text-align: center; }
+			.meta-item strong { display: block; color: var(--accent-cyan); font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3em; }
+			.meta-item span { color: #fff; font-weight: 500; }
 
-            <section id="header">
-                <div class="container">
-                    <div id="logo">
-                        <img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-                        <h1><a href="index.html">Abderrahman El Ouali</a></h1>
-                    </div>
-                    <nav id="nav">
-                        <ul>
-                            <li><a href="index.html">Accueil</a></li>
-                            <li><a href="about.html">À Propos</a></li>
-                            <li><a href="experiences.html">Expériences</a></li>
-                            <li class="current"><a href="projets-hub.html">Projets</a></li>
-                            <li><a href="articles.html">Articles</a></li>
-                            <li><a href="index.html#footer">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </section>
+			.slider-container { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid var(--border-glass); margin-bottom: 4em; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+			.slider { display: flex; transition: transform 0.5s ease-in-out; }
+			.slide { min-width: 100%; } .slide img { width: 100%; display: block; }
+			.slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); padding: 0 1em; pointer-events: none; }
+			.slider-nav a { background: rgba(0,0,0,0.6); color: #fff; padding: 15px; border-radius: 50%; cursor: pointer; pointer-events: auto; transition: background 0.3s; }
+			.slider-nav a:hover { background: var(--accent-cyan); color: #000; }
 
-            <section id="main">
-                <div class="container">
-                    <article class="box post">
-                        <header style="text-align:center; margin-bottom: 2em;">
-                            <h2 style="font-size: 2.8em;" class="gradient-title">Étude de Cas : Industrialisation de la Chaîne d'Outils ARDmate</h2>
-                            <p style="font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Comment j'ai transformé un prototype en une solution DevOps robuste pour automatiser la génération de documents d'architecture critiques chez Airbus.</p>
-                        </header>
+			.content-section { margin-bottom: 4em; }
+			.content-section h3 { color: #fff; font-size: 1.8em; margin-bottom: 1em; border-left: 4px solid var(--accent-purple); padding-left: 15px; }
+			.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2em; margin-top: 2em; }
+			.result-card { background: var(--surface-glass); border: 1px solid var(--border-glass); border-radius: 16px; padding: 2em; text-align: center; transition: transform 0.3s ease; }
+			.result-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
+			.result-card i { font-size: 2.5em; color: var(--accent-cyan); margin-bottom: 0.5em; }
+			.result-card h4 { font-size: 1.2em; color: #fff; margin-bottom: 0.5em; }
+			.result-card p { font-size: 0.95em; margin: 0; color: var(--text-secondary); }
 
-                        <ul class="project-meta">
-                            <li><strong>Rôle</strong><span> Ingénieur logiciel & Développeur Python</span></li>
-                            <li><strong>Entreprise</strong><span>Airbus</span></li>
-                            <li><strong>Durée</strong><span>6 mois</span></li>
-                            <li><strong>Technologies</strong><span>Python, ArchiMate, Design Patterns, Git, Jenkins, CI/CD, Pytest, PDM</span></li>
-                        </ul>
-                        
-                        <div class="slider-container">
-                            <div class="slider">
-                                <div class="slide"><img src="images/projet-ardmate.jpg" alt="Architecture cible de la chaîne d'outils ARDmate"></div>
-                                <div class="slide"><img src="images/ardmate-design-pattern.jpg" alt="Design Pattern Composite avec l'interface TransformationStep"></div>
-                                <div class="slide"><img src="images/ardmate-cicd.jpg" alt="Cycle de vie du build avec hooks CI/CD automatisés via PDM"></div>
-                            </div>
-                            <div class="slider-nav">
-                                <a class="prev">&#10094;</a>
-                                <a class="next">&#10095;</a>
-                            </div>
-                        </div>
+			#footer { background: rgba(12, 10, 31, 0.8); border-top: 1px solid var(--border-glass); padding: 2em 0; margin-top: auto; text-align: center; font-size: 0.9em; }
+			@media (max-width: 768px) { .project-hero h1 { font-size: 2.2em; } .meta-item { width: 100%; } }
+		</style>
+	</head>
+	<body class="is-preload">
+		
+		<div id="menu-overlay"></div>
+		<nav id="sidebar-menu">
+			<div class="menu-header"><span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
+			<ul class="menu-links">
+				<li><a href="index.html">Accueil</a></li><li><a href="about.html">À Propos</a></li><li><a href="experiences.html">Expériences</a></li><li><a href="projets-hub.html">Projets</a></li><li><a href="articles.html">Articles</a></li><li><a href="index.html#footer">Contact</a></li>
+			</ul>
+		</nav>
 
-                        <div style="max-width: 800px; margin: 2em auto 0 auto;">
-                            <section>
-                                <h3 class="gradient-title">Le Contexte : La Problématique des Documents d'Architecture</h3>
-                                <p>Chez Airbus, chaque application informatique doit être accompagnée d'un Architecture Dossier (ARD), un document technique de plus de 50 pages qui détaille son fonctionnement. La rédaction manuelle de ces documents était un goulot d'étranglement majeur : un processus lent, coûteux, et sujet aux erreurs et aux incohérences.</p>
-                                <p>Pour résoudre ce problème, le projet ARDmate a été créé : un outil en ligne de commande capable de générer automatiquement un ARD à partir d'un modèle d'architecture standardisé (ArchiMate). Cependant, l'outil initial n'était qu'un prototype. Il souffrait de nombreux problèmes : une base de code monolithique de plus de 2000 lignes, une forte dépendance au format XML, une absence totale de tests unitaires et aucune pratique de développement collaboratif. Il était donc impossible de le maintenir ou de le faire évoluer de manière fiable.</p>
-                            </section>
+		<div id="page-wrapper">
+			<section id="header">
+				<div class="container">
+					<div id="logo"><img src="images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="index.html">Abderrahman El Ouali</a></h1></div>
+					<div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div>
+				</div>
+			</section>
 
-                            <hr/>
+			<section class="project-hero">
+				<div class="container">
+					<h1>Industrialisation DevOps ARDmate</h1>
+					<p>Transformation d'un prototype en chaîne d'outils industrielle chez Airbus. Mise en place de pipelines CI/CD, tests automatisés et refonte architecturale.</p>
+					
+					<div class="project-meta">
+						<div class="meta-item"><strong>Rôle</strong><span>Ingénieur DevOps</span></div>
+						<div class="meta-item"><strong>Entreprise</strong><span>Airbus</span></div>
+						<div class="meta-item"><strong>Tech Stack</strong><span>Python, Jenkins, Git, Pytest</span></div>
+					</div>
+				</div>
+			</section>
 
-                            <section>
-                                <h3 class="gradient-title">Mon Défi : Transformer un Prototype en une Solution Industrielle</h3>
-                                <p>Ma mission était claire : prendre ce prototype et le transformer en une chaîne d'outils logicielle robuste, scalable et entièrement industrialisée. Il ne s'agissait pas seulement de corriger des bugs, mais de repenser fondamentalement l'architecture logicielle et le processus de développement. Les objectifs principaux étaient :</p>
-                                <ul>
-                                    <li><strong>Fiabiliser la chaîne d'outils</strong> en garantissant des résultats prévisibles et corrects à chaque exécution.</li>
-                                    <li><strong>Appliquer les meilleures pratiques de génie logiciel pour rendre le projet maintenable et permettre une collaboration efficace.</li>
-                                    <li><strong>Mettre en place un pipeline CI/CD complet pour automatiser les tests, la validation et le packaging des outils.</li>
-                                    <li><strong>Développer de nouveaux outils (Updater, Injector) pour gérer l'intégralité du cycle de vie des modèles ArchiMate.</li>
-                                </ul>
-                            </section>
+			<div class="container">
+				<div class="slider-container">
+					<div class="slider">
+						<div class="slide"><img src="images/projet-ardmate.jpg" alt="Architecture CI/CD"></div>
+						<div class="slide"><img src="images/ardmate-design-pattern.jpg" alt="Design Pattern Composite"></div>
+						<div class="slide"><img src="images/ardmate-cicd.jpg" alt="Pipeline Jenkins"></div>
+					</div>
+					<div class="slider-nav"><a class="prev">&#10094;</a><a class="next">&#10095;</a></div>
+				</div>
 
-                            <hr/>
+				<section class="content-section">
+					<h3>Le Contexte : Prototype Instable</h3>
+					<p>L'outil existant était un script monolithique de 2000 lignes, sans tests ni documentation. Les mises en production étaient risquées et manuelles, provoquant des erreurs dans la génération des documents d'architecture critiques.</p>
+				</section>
 
-                            <section>
-                                <h3 class="gradient-title">Ma Solution : Une Approche "Model-Driven" et DevOps</h3>
-                                <h4>1. La Bibliothèque AMT : Le Cœur de la Transformation</h4>
-                                <p>Le principal défaut de l'ancien code était sa manipulation directe de fichiers XML via des requêtes XPath complexes et fragiles. Pour y remédier, j'ai conçu et développé la bibliothèque ArchiMate Model Transformer (AMT). Au lieu de travailler sur du texte, l'AMT charge le fichier XML en mémoire sous forme d'objets Python. Pour cela, j'ai utilisé `xsdata` pour générer automatiquement un méta-modèle Python complet à partir du schéma XSD officiel d'ArchiMate. Cette abstraction a permis de découpler totalement la logique métier du format de fichier, rendant le code plus lisible, plus sûr et plus simple à tester.</p>
+				<section class="content-section">
+					<h3>Ma Solution : Refonte & Automatisation</h3>
+					<p>J'ai mené une refonte complète en appliquant les standards industriels du développement logiciel :</p>
+					<ul>
+						<li><strong>Refactoring :</strong> Découpage du code en modules réutilisables avec le pattern <strong>Composite</strong>.</li>
+						<li><strong>Testing :</strong> Écriture de <strong>130+ tests unitaires</strong> (Pytest) pour garantir la non-régression.</li>
+						<li><strong>CI/CD :</strong> Création de pipelines <strong>Jenkins</strong> automatisés pour le build, le test et le packaging.</li>
+						<li><strong>Collaboration :</strong> Mise en place du <strong>Git Flow</strong> et des Conventional Commits.</li>
+					</ul>
+				</section>
 
-                                <h4>2. Design Patterns pour la Modularité : `TransformationStep`</h4>
-                                <p>Pour décomposer la logique complexe des outils (notamment l'Updater), j'ai implémenté le Design Pattern Composite. J'ai défini une interface `TransformationStep` que chaque étape de transformation devait implémenter (par exemple, `CopyElementsStep`, `MergeViewsStep`, `RenameModelStep`).Une classe `CompositeTransformationStep` permettait d'enchaîner ces étapes séquentiellement. Cette architecture a transformé un script monolithique et illisible en un ensemble de composants modulaires, réutilisables et testables unitairement.</p>
+				<section class="content-section">
+					<h3>Résultats & Impact</h3>
+					<div class="results-grid">
+						<div class="result-card">
+							<i class="fas fa-shield-alt"></i>
+							<h4>Fiabilité Totale</h4>
+							<p>Couverture de tests > 90%, éliminant les bugs critiques en production.</p>
+						</div>
+						<div class="result-card">
+							<i class="fas fa-code-branch"></i>
+							<h4>Maintenance Facile</h4>
+							<p>Code modulaire et documenté, réduisant le temps de correction de 50%.</p>
+						</div>
+						<div class="result-card">
+							<i class="fas fa-check-circle"></i>
+							<h4>Qualité Garantie</h4>
+							<p>Validation automatique de chaque commit avant fusion.</p>
+						</div>
+					</div>
+				</section>
+			</div>
 
-                                <h4>3. Industrialisation Complète via CI/CD</h4>
-                                <p>J'ai structuré le projet en un mono-repository géré par PDM, hébergeant les différents sous-projets (AMT, ATI, ATU, ARDmate) de manière cohérente. J'ai ensuite mis en place un pipeline CI/CD robuste en utilisant les "hooks" de PDM:</p>
-                                <ul>
-                                    <li><strong>Tests Automatisés :</strong> J'ai écrit plus de 130 tests unitaires avec Pytest, couvrant tous les cas d'usage des transformations.Ces tests sont automatiquement exécutés via un hook `pre_build` avant chaque construction, garantissant qu'aucune régression n'est introduite.</li>
-                                    <li><strong>Packaging Automatisé : Un hook `post_build` déclenche la création d'un exécutable binaire avec PyInstaller, assurant que chaque version validée est prête à être déployée.</li>
-                                    <li><strong>Collaboration Structurée : J'ai instauré l'utilisation du modèle de branche GitHub Flow et de la convention Conventional Commits pour standardiser le travail d'équipe et rendre l'historique Git clair et compréhensible.</li>
-                                </ul>
-                            </section>
+			<section id="footer">
+				<div class="container"><p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p></div>
+			</section>
+		</div>
 
-                            <hr/>
-                            
-									<section>
-										<h3 class="gradient-title">Résultats & Impact</h3>
-										<div class="row results-grid">
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-shield-alt"></span>
-													<h4>Fiabilité Industrielle</h4>
-													<p style="color: var(--text-primary);">Avec plus de 130 tests unitaires et un pipeline CI/CD, la couverture de tests a dépassé 90%, rendant la chaîne d'outils extrêmement stable et éliminant les erreurs de génération.</p>
-												</div>
-											</div>
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-code-branch"></span>
-													<h4>Maintenabilité à Long Terme</h4>
-													<p style="color: var(--text-primary);">Grâce à la bibliothèque AMT et aux design patterns, le code est devenu modulaire et agnostique du format XML, ce qui simplifie radicalement les futures évolutions.</p>
-												</div>
-											</div>
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-rocket"></span>
-													<h4>Productivité des Architectes</h4>
-													<p style="color: var(--text-primary);">L'automatisation fiable a libéré un temps considérable pour les architectes, leur permettant de se concentrer sur la conception de solutions plutôt que sur la rédaction manuelle.</p>
-												</div>
-											</div>
-											<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-												<div class="result-card">
-													<span class="icon solid fa-check-double"></span>
-													<h4>Qualité et Standardisation</h4>
-													<p style="color: var(--text-primary);">La chaîne garantit que tous les documents ARD sont cohérents, complets et conformes aux standards Airbus, renforçant la qualité des livrables d'architecture.</p>
-												</div>
-											</div>
-										</div>
-									</section>
-                        </div>
-                    </article>
-                </div>
-            </section>
-            <section id="footer" style="text-align: center; padding: 20px 0;">
-                <ul class="links" style="list-style: none; padding: 0;">
-                    <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-                </ul>
-            </section>
-
-        </div>
-
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.dropotron.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                let currentSlide = 0;
-                const slides = document.querySelectorAll('.slide');
-                if (slides.length === 0) return;
-                const slideCount = slides.length;
-                const slider = document.querySelector('.slider');
-                const prevButton = document.querySelector('.prev');
-                const nextButton = document.querySelector('.next');
-
-                function showSlide(index) {
-                    if (index >= slideCount) {
-                        currentSlide = 0;
-                    } else if (index < 0) {
-                        currentSlide = slideCount - 1;
-                    } else {
-                        currentSlide = index;
-                    }
-                    const offset = -currentSlide * 100;
-                    slider.style.transform = 'translateX(' + offset + '%)';
-                }
-
-                nextButton.addEventListener('click', function() {
-                    showSlide(currentSlide + 1);
-                });
-
-                prevButton.addEventListener('click', function() {
-                    showSlide(currentSlide - 1);
-                });
-            });
-        </script>
-
-    </body>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			const menuBtn=document.getElementById('menu-btn'),closeBtn=document.querySelector('.menu-close'),sidebar=document.getElementById('sidebar-menu'),overlay=document.getElementById('menu-overlay'),body=document.body;
+			function toggleMenu(){const e=sidebar.classList.contains('active');e?(sidebar.classList.remove('active'),overlay.classList.remove('active'),body.style.overflow='auto'):(sidebar.classList.add('active'),overlay.classList.add('active'),body.style.overflow='hidden')}
+			menuBtn&&menuBtn.addEventListener('click',toggleMenu),closeBtn&&closeBtn.addEventListener('click',toggleMenu),overlay&&overlay.addEventListener('click',toggleMenu);
+			
+			// Slider Logic
+			document.addEventListener('DOMContentLoaded', function() {
+				const slides = document.querySelectorAll('.slide');
+				if(slides.length > 0) {
+					let currentSlide = 0;
+					const slider = document.querySelector('.slider');
+					const prev = document.querySelector('.prev');
+					const next = document.querySelector('.next');
+					
+					function show(index) {
+						if(index >= slides.length) currentSlide = 0;
+						else if(index < 0) currentSlide = slides.length - 1;
+						else currentSlide = index;
+						slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+					}
+					prev.addEventListener('click', () => show(currentSlide - 1));
+					next.addEventListener('click', () => show(currentSlide + 1));
+				}
+			});
+		</script>
+	</body>
 </html>
