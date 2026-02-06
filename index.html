@@ -67,7 +67,6 @@
 				color: var(--text-primary) !important;
 				background: none !important;
 			}
-			/* --- FIN NOUVEAU HEADER --- */
 
 			.hero { padding: 8em 0; text-align: center; }
 			.hero h1 { font-size: 3.2em; font-weight: 700; line-height: 1.2; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -89,17 +88,29 @@
 			.section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
 			.section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
 			
+			/* STYLE DES CARTES EXPÉRIENCE MIS À JOUR */
 			.experience-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
 				border: 1px solid var(--border-glass); border-radius: 12px;
 				padding: 1.5em; text-decoration:none; display:block;
 				transition: all 0.2s ease;
+				height: 100%; /* Important pour l'alignement */
+				text-align: center; /* Centrer le contenu */
 			}
-			.experience-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
-			.experience-card .header { display: flex; align-items: center; }
-			.experience-card .logo { width: 45px; height: 45px; margin-right: 1em; object-fit: contain; flex-shrink: 0; }
-			.experience-card h3 { font-size: 1.2em; margin: 0; line-height: 1.2; }
-			.experience-card p { margin: 0; font-size: 0.9em; }
+			.experience-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+			.experience-card .header { 
+				display: flex; 
+				flex-direction: column; /* Vertical */
+				align-items: center; 
+				gap: 1em;
+			}
+			.experience-card .logo { 
+				width: 60px; height: 60px; /* Logos plus grands */
+				object-fit: contain; 
+				margin-bottom: 0.5em;
+			}
+			.experience-card h3 { font-size: 1.1em; margin: 0; line-height: 1.3; color: var(--text-primary); }
+			.experience-card p { margin: 0; font-size: 0.9em; color: var(--text-secondary); }
 
 			.project-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
@@ -195,15 +206,48 @@
 			
 			<section class="section-container container">
 					<h2 class="section-title">Expérience Professionnelle</h2>
-					<a href="experiences.html" class="experience-card">
-						<div class="header">
-							<img src="images/logo-airbus.png" alt="Logo Airbus" class="logo"/>
-							<div>
-								<h3>IT Solution Architect Intern</h3>
-								<p>Architecture Cloud, Data Engineering et Automatisation DevOps au service de l'ingénierie aéronautique.</p>
-							</div>
+					
+					<div class="row">
+						<div class="col-4 col-12-medium">
+							<a href="experiences.html" class="experience-card">
+								<div class="header">
+									<img src="images/logo-airbus.png" alt="Logo Airbus" class="logo"/>
+									<div>
+										<h3>Architecte Cloud (Stage)</h3>
+										<p style="color: var(--accent-blue); font-weight: 500;">Airbus</p>
+										<p>Mars 2025 - Sept. 2025</p>
+									</div>
+								</div>
+							</a>
 						</div>
-					</a>
+						
+						<div class="col-4 col-12-medium">
+							<a href="experiences.html" class="experience-card">
+								<div class="header">
+									<img src="images/logo-ocp.png" alt="Logo OCP" class="logo"/>
+									<div>
+										<h3>Data Analyst (Stage)</h3>
+										<p style="color: var(--accent-blue); font-weight: 500;">OCP Group</p>
+										<p>Juil. 2024 - Sept. 2024</p>
+									</div>
+								</div>
+							</a>
+						</div>
+						
+						<div class="col-4 col-12-medium">
+							<a href="experiences.html" class="experience-card">
+								<div class="header">
+									<img src="images/logo-webhelp.png" alt="Logo Webhelp" class="logo"/>
+									<div>
+										<h3>Dev Full-Stack (Stage)</h3>
+										<p style="color: var(--accent-blue); font-weight: 500;">Webhelp</p>
+										<p>Juil. 2023 - Août 2023</p>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+
 					<div style="text-align: center; margin-top: 2em;">
 						<a href="experiences.html" class="button alt">Explorer mon parcours complet</a>
 					</div>
