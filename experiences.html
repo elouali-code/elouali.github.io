@@ -19,7 +19,7 @@
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
-				--surface-glass: rgba(22, 27, 41, 0.9); /* Opaque pour contraste */
+				--surface-glass: rgba(22, 27, 41, 0.9);
 				--border-glass: rgba(255, 255, 255, 0.15);
 				--text-primary: #ffffff;
 				--text-secondary: #e0e0e0;
@@ -61,6 +61,7 @@
 			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; font-weight: 500; }
 			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
 			
+			strong, b { color: #fff; font-weight: 700; }
 			.highlight { color: var(--accent-cyan); font-weight: 600; }
 
 			/* --- HEADER --- */
@@ -127,42 +128,52 @@
 				margin: 0 auto 3em auto;
 			}
 
-			/* --- SECTION INTERNATIONAL (New Design) --- */
+			/* --- SECTION INTERNATIONAL (NOUVEAU DESIGN CÔTE À CÔTE) --- */
 			.international-section {
 				text-align: center;
 				margin-bottom: 6em;
 			}
-			.mobility-grid {
+			.mobility-row {
 				display: flex;
 				justify-content: center;
-				gap: 2em;
-				flex-wrap: wrap;
+				align-items: center;
+				gap: 3em; /* Espace entre les deux pays */
 				margin-top: 2em;
+				flex-wrap: wrap;
 			}
-			.mobility-card {
-				background: var(--surface-glass);
-				border: 1px solid var(--border-glass);
-				border-radius: 16px;
-				padding: 1.5em;
-				width: 220px;
-				transition: transform 0.3s ease;
+			
+			.country-item {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				transition: transform 0.3s ease;
 			}
-			.mobility-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
-			.mobility-img {
-				width: 80px; height: 80px;
+			.country-item:hover { transform: translateY(-5px); }
+			
+			.flag-round {
+				width: 90px; height: 90px;
 				border-radius: 50%;
 				object-fit: cover;
 				border: 3px solid var(--accent-purple);
-				margin-bottom: 1em;
-				box-shadow: 0 0 15px rgba(140, 82, 255, 0.3);
+				margin-bottom: 0.8em;
+				box-shadow: 0 0 20px rgba(140, 82, 255, 0.4);
 			}
-			.mobility-card h4 { margin: 0; color: #fff; }
-			.mobility-card span { font-size: 0.9em; color: var(--accent-cyan); }
+			
+			.country-name {
+				font-size: 1.2em;
+				font-weight: 600;
+				color: #fff;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
 
-			/* --- TIMELINE EXPERIENCE (Style Pro) --- */
+			.connector-icon {
+				color: var(--accent-cyan);
+				font-size: 1.5em;
+				opacity: 0.7;
+			}
+
+			/* --- TIMELINE EXPERIENCE --- */
 			.timeline {
 				position: relative;
 				max-width: 900px;
@@ -172,7 +183,7 @@
 			.timeline::before {
 				content: '';
 				position: absolute;
-				top: 0; bottom: 0; left: 30px; /* Position de la ligne */
+				top: 0; bottom: 0; left: 30px;
 				width: 2px;
 				background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
 				opacity: 0.5;
@@ -181,7 +192,7 @@
 			.timeline-item {
 				position: relative;
 				margin-bottom: 4em;
-				padding-left: 80px; /* Espace pour la ligne et le logo */
+				padding-left: 80px;
 			}
 
 			/* Point sur la timeline (Logo) */
@@ -194,7 +205,7 @@
 				display: flex; align-items: center; justify-content: center;
 				box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 				z-index: 2;
-				border: 3px solid #0c0a1f; /* Bordure pour séparer de la ligne */
+				border: 3px solid #0c0a1f;
 			}
 			.timeline-logo img { width: 70%; height: auto; object-fit: contain; }
 
@@ -272,6 +283,7 @@
 				.timeline-content { padding: 1.5em; }
 				.hero h1 { font-size: 2.2em; }
 				.period-location { flex-direction: column; align-items: flex-start; gap: 0.5em; }
+				.mobility-row { gap: 1.5em; } /* Moins d'espace sur mobile */
 			}
 		</style>
 	</head>
@@ -318,17 +330,21 @@
 
 			<div class="container international-section reveal">
 				<h3 style="color:#fff;">Mobilité Internationale</h3>
-				<p style="color:var(--text-secondary);">Une expérience multiculturelle entre l'Europe et l'Afrique.</p>
-				<div class="mobility-grid">
-					<div class="mobility-card">
-						<img src="images/photo-france.jpg" alt="France" class="mobility-img">
-						<h4>France</h4>
-						<span>Toulouse</span>
+				<p style="color:var(--text-secondary); margin-bottom: 2em;">Une expérience multiculturelle entre l'Europe et l'Afrique.</p>
+				
+				<div class="mobility-row">
+					<div class="country-item">
+						<img src="images/photo-france.jpg" alt="France" class="flag-round">
+						<span class="country-name">France</span>
 					</div>
-					<div class="mobility-card">
-						<img src="images/photo-maroc.jpg" alt="Maroc" class="mobility-img">
-						<h4>Maroc</h4>
-						<span>Casablanca / Fès</span>
+
+					<div class="connector-icon">
+						<i class="fas fa-plane"></i>
+					</div>
+
+					<div class="country-item">
+						<img src="images/photo-maroc.jpg" alt="Maroc" class="flag-round">
+						<span class="country-name">Maroc</span>
 					</div>
 				</div>
 			</div>
