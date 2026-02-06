@@ -19,9 +19,9 @@
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
-				--surface-glass: rgba(31, 29, 54, 0.6);
-				--surface-glass-dark: rgba(12, 10, 31, 0.95);
-				--border-glass: rgba(255, 255, 255, 0.08);
+				--surface-glass: rgba(22, 27, 41, 0.7); /* Fond plus opaque pour la lisibilité */
+				--surface-glass-dark: rgba(12, 10, 31, 0.98);
+				--border-glass: rgba(255, 255, 255, 0.1);
 				--text-primary: #ffffff;
 				--text-secondary: #c3c1d3;
 				--accent-purple: #8c52ff;
@@ -40,225 +40,204 @@
 				overflow-x: hidden;
 				margin: 0;
 			}
-			#page-wrapper { overflow: hidden; } /* Fix pour éviter le scroll horizontal */
+			#page-wrapper { overflow: hidden; }
 			
 			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; }
 			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
 			a:hover { color: #fff; text-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
 			
-			/* --- ANIMATIONS (Scroll Reveal) --- */
+			/* --- ANIMATIONS --- */
 			.reveal {
 				opacity: 0;
 				transform: translateY(30px);
 				transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
 			}
-			.reveal.active {
-				opacity: 1;
-				transform: translateY(0);
-			}
+			.reveal.active { opacity: 1; transform: translateY(0); }
 
-			/* --- HEADER MINIMALISTE --- */
+			/* --- HEADER --- */
 			#header {
 				position: fixed; top: 0; left: 0; width: 100%;
-				background: rgba(12, 10, 31, 0.85);
+				background: rgba(12, 10, 31, 0.9);
 				backdrop-filter: blur(12px);
 				border-bottom: 1px solid var(--border-glass);
 				z-index: 1000;
 				padding: 1em 0;
-				transition: all 0.3s ease;
 			}
-			#header.scrolled { padding: 0.5em 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 			#header > .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2em; }
 			
 			#logo { display: flex; align-items: center; gap: 1em; }
 			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); }
-			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; letter-spacing: 0.5px; }
-			#logo h1 a { color: var(--text-primary); }
+			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; }
+			#logo h1 a { color: var(--text-primary); text-decoration: none; border: 0; }
 
-			/* --- MENU BURGER & SIDEBAR --- */
+			/* --- MENU BURGER --- */
 			.menu-toggle {
 				display: flex; align-items: center; gap: 0.8em;
-				background: rgba(255, 255, 255, 0.03);
+				background: rgba(255, 255, 255, 0.05);
 				border: 1px solid var(--border-glass);
 				padding: 0.6em 1.2em;
 				border-radius: 50px;
 				cursor: pointer;
-				transition: all 0.3s ease;
 				color: var(--text-primary);
 			}
-			.menu-toggle:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-cyan); transform: translateY(-2px); }
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--accent-cyan); }
 			
 			#sidebar-menu {
-				position: fixed; top: 0; right: 0; width: 350px; height: 100vh;
+				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
 				background: var(--surface-glass-dark);
-				backdrop-filter: blur(25px);
 				border-left: 1px solid var(--border-glass);
 				z-index: 2000;
 				transform: translateX(100%);
-				transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-				padding: 3em 2.5em;
+				transition: transform 0.4s ease;
+				padding: 2em;
 				display: flex; flex-direction: column;
-				box-shadow: -20px 0 50px rgba(0,0,0,0.5);
 			}
 			#sidebar-menu.active { transform: translateX(0); }
 			
 			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; }
-			.menu-title { font-size: 0.9em; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); }
-			.menu-close { font-size: 1.5em; cursor: pointer; color: var(--text-primary); transition: transform 0.3s; }
-			.menu-close:hover { transform: rotate(90deg); color: var(--accent-purple); }
-
+			.menu-close { font-size: 1.5em; cursor: pointer; color: var(--text-primary); }
 			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
-			.menu-links a {
-				font-size: 1.5em; font-weight: 600; color: var(--text-primary);
-				display: inline-block; position: relative;
-			}
-			.menu-links a::after {
-				content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-				background: var(--gradient-primary); transition: width 0.3s ease;
-			}
-			.menu-links a:hover::after { width: 100%; }
-			.menu-links a:hover { color: transparent; background: var(--gradient-primary); -webkit-background-clip: text; }
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: var(--text-primary); display: block; border: 0; }
+			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
 
 			#menu-overlay {
 				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-				background: rgba(0,0,0,0.7); z-index: 1500;
+				background: rgba(0,0,0,0.8); z-index: 1500;
 				opacity: 0; visibility: hidden; transition: all 0.3s ease;
-				backdrop-filter: blur(3px);
 			}
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-			/* --- HERO SECTION --- */
-			.hero { padding: 10em 0 8em 0; text-align: center; max-width: 900px; margin: 0 auto; }
+			/* --- HERO --- */
+			.hero { padding: 12em 0 8em 0; text-align: center; max-width: 900px; margin: 0 auto; }
 			.hero h1 { 
-				font-size: 3.5em; font-weight: 700; line-height: 1.1; margin-bottom: 0.5em;
+				font-size: 3em; font-weight: 700; margin-bottom: 0.5em;
 				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
 				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
 			}
-			.hero .highlight { color: var(--accent-purple); }
-			.hero .subtitle { font-size: 1.25em; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2.5em; font-weight: 300; }
+			.hero .subtitle { font-size: 1.2em; line-height: 1.6; color: var(--text-secondary); margin-bottom: 2.5em; }
 			
-			.cta-group { display: flex; justify-content: center; gap: 1.5em; flex-wrap: wrap; margin-bottom: 3em; }
+			.cta-group { display: flex; justify-content: center; gap: 1.5em; margin-bottom: 3em; }
 			.button {
 				background: var(--gradient-primary);
 				color: #fff !important; border: 0; border-radius: 50px;
-				padding: 0.9em 2.5em; font-weight: 600; font-size: 1em;
-				transition: all 0.3s ease; position: relative; overflow: hidden;
+				padding: 0.8em 2em; font-weight: 600;
 				box-shadow: 0 10px 20px rgba(140, 82, 255, 0.3);
 			}
 			.button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(140, 82, 255, 0.5); }
-			.button.alt {
-				background: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
-			}
-			.button.alt:hover { background: rgba(255,255,255,0.05); border-color: #fff; box-shadow: inset 0 0 0 1px #fff; }
+			.button.alt { background: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3); }
+			.button.alt:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
-			/* --- SOCIAL ICONS HERO --- */
 			.social-hub { display: flex; justify-content: center; gap: 1.5em; }
 			.social-icon-link {
 				display: flex; align-items: center; justify-content: center;
-				width: 55px; height: 55px;
-				background: rgba(255, 255, 255, 0.03);
-				border: 1px solid rgba(255, 255, 255, 0.1);
+				width: 50px; height: 50px;
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.2);
 				border-radius: 50%; color: var(--text-secondary);
-				font-size: 24px; transition: all 0.3s ease;
+				font-size: 20px; transition: all 0.3s ease; border-bottom: 0;
 			}
-			.social-icon-link:hover {
-				background: #fff; color: #0c0a1f;
-				transform: translateY(-5px) scale(1.1);
-				border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.4);
-			}
-			.social-icon-link.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5; }
+			.social-icon-link:hover { background: #fff; color: #0c0a1f; transform: translateY(-5px); }
 
-			/* --- SECTIONS GLOBALES --- */
+			/* --- SECTIONS --- */
 			.section-container { padding: 6em 0; border-top: 1px solid var(--border-glass); }
 			.container { max-width: 1200px; margin: 0 auto; padding: 0 2em; }
-			.section-title { 
-				font-size: 2.2em; text-align: center; margin-bottom: 2em; 
-				position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
-			}
-			.section-title::after {
-				content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
-				width: 60px; height: 3px; background: var(--gradient-primary); border-radius: 3px;
-			}
+			.section-title { font-size: 2.2em; text-align: center; margin-bottom: 2em; color: var(--text-primary); }
 
-			/* --- CARDS EXPÉRIENCE --- */
+			/* --- CARDS EXPÉRIENCE (CORRIGÉES) --- */
+			.row { display: flex; flex-wrap: wrap; margin: 0 -1em; }
+			.col-4 { width: 33.33%; padding: 0 1em; }
+			.col-12-medium { width: 100%; }
+
 			.experience-card {
-				background: var(--surface-glass); backdrop-filter: blur(10px);
-				border: 1px solid var(--border-glass); border-radius: 16px;
-				padding: 2em; text-align: center; height: 100%;
-				transition: all 0.3s ease;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				border-radius: 16px;
+				padding: 2.5em 1.5em;
+				text-align: center;
+				margin-bottom: 1.5em; /* Espace entre les lignes */
+				min-height: 280px; /* Hauteur minimale pour éviter l'écrasement */
+				transition: transform 0.3s ease;
+				position: relative;
+				border-bottom: 0; /* Override template default */
 			}
 			.experience-card:hover { 
-				transform: translateY(-10px); 
-				border-color: rgba(255,255,255,0.3); 
-				background: rgba(31, 29, 54, 0.8);
+				transform: translateY(-5px); 
+				border-color: var(--accent-purple); 
+				background: rgba(30, 30, 50, 0.8);
 			}
-			.experience-card .logo { width: 64px; height: 64px; object-fit: contain; margin-bottom: 1em; filter: grayscale(100%); transition: filter 0.3s; }
-			.experience-card:hover .logo { filter: grayscale(0%); }
-			.experience-card h3 { font-size: 1.1em; margin-bottom: 0.5em; }
-			.experience-card .role-highlight { color: var(--accent-cyan); font-weight: 500; font-size: 0.9em; margin-bottom: 0.5em; display: block; }
-			.experience-card .date { font-size: 0.85em; opacity: 0.6; }
+			.experience-card .logo-container {
+				width: 80px; height: 80px;
+				background: #fff;
+				border-radius: 50%;
+				display: flex; align-items: center; justify-content: center;
+				margin-bottom: 1.5em;
+				box-shadow: 0 0 15px rgba(255,255,255,0.1);
+			}
+			.experience-card .logo { 
+				width: 50px; height: auto; 
+				object-fit: contain; 
+			}
+			.experience-card h3 { 
+				font-size: 1.2em; margin-bottom: 0.5em; 
+				color: var(--text-primary);
+			}
+			.experience-card .role-highlight { 
+				color: var(--accent-cyan); font-weight: 500; font-size: 0.95em; 
+				margin-bottom: 0.5em; display: block; 
+			}
+			.experience-card .date { 
+				font-size: 0.85em; opacity: 0.7; color: var(--text-secondary);
+			}
 
-			/* --- NOUVEAU : STACK TECHNIQUE (TILES) --- */
+			/* --- STACK TECHNIQUE --- */
 			.tech-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-				gap: 1.5em;
-				margin-top: 2em;
+				display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5em; margin-top: 2em;
 			}
 			.tech-item {
 				background: rgba(255,255,255,0.03);
 				border: 1px solid var(--border-glass);
 				border-radius: 12px;
-				padding: 1.5em 1em;
+				padding: 1em 1.5em;
 				text-align: center;
-				transition: all 0.3s ease;
+				min-width: 100px;
 			}
-			.tech-item:hover {
-				background: rgba(255,255,255,0.08);
-				transform: translateY(-5px);
-				border-color: var(--accent-purple);
-			}
-			.tech-item i { font-size: 2em; margin-bottom: 0.5em; color: var(--text-primary); }
-			.tech-item span { display: block; font-size: 0.9em; font-weight: 500; color: var(--text-secondary); }
+			.tech-item:hover { background: rgba(255,255,255,0.08); border-color: var(--accent-cyan); }
+			.tech-item i { font-size: 1.8em; margin-bottom: 0.5em; display: block; color: var(--text-primary); }
+			.tech-item span { font-size: 0.9em; color: var(--text-secondary); }
 
-			/* --- CARDS PROJETS --- */
+			/* --- PROJETS --- */
 			.project-card {
-				background: var(--surface-glass); backdrop-filter: blur(10px);
-				border: 1px solid var(--border-glass); border-radius: 16px;
-				overflow: hidden; height: 100%; display: flex; flex-direction: column;
-				transition: all 0.3s ease;
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				border-radius: 16px;
+				overflow: hidden;
+				display: flex; flex-direction: column;
+				margin-bottom: 2em;
+				border-bottom: 0;
 			}
-			.project-card:hover { transform: translateY(-10px); border-color: var(--accent-cyan); }
-			.project-card img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s; }
-			.project-card:hover img { transform: scale(1.05); }
-			.project-card .content { padding: 1.5em; flex-grow: 1; display: flex; flex-direction: column; }
+			.project-card img { width: 100%; height: 200px; object-fit: cover; }
+			.project-card .content { padding: 1.5em; }
 			.project-card h3 { font-size: 1.2em; margin-bottom: 0.5em; }
-			.project-card p { font-size: 0.9em; line-height: 1.6; margin-bottom: 1.5em; flex-grow: 1; }
-			.project-card .button { align-self: flex-start; padding: 0.6em 1.5em; font-size: 0.85em; }
+			.project-card p { font-size: 0.9em; margin-bottom: 1.5em; color: var(--text-secondary); }
 
-			/* --- CONTACT CARD --- */
+			/* --- CONTACT --- */
 			.contact-card {
-				background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+				background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
 				border: 1px solid var(--border-glass); border-radius: 20px;
-				padding: 4em; display: flex; align-items: center; justify-content: space-between;
-				position: relative; overflow: hidden;
+				padding: 3em; text-align: center;
 			}
-			.contact-card::before {
-				content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px;
-				background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
-				pointer-events: none;
-			}
-			.contact-left h2 { font-size: 2.5em; margin-bottom: 0.5em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-			.contact-left p { max-width: 500px; font-size: 1.1em; margin-bottom: 2em; }
-			.contact-right { display: flex; flex-direction: column; gap: 1.5em; border-left: 1px solid var(--border-glass); padding-left: 4em; }
-			.info-item { display: flex; align-items: center; gap: 1em; color: var(--text-primary); font-size: 1.1em; }
-			.info-item i { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border-radius: 50%; color: var(--accent-cyan); }
+			.info-item { margin: 1em 0; font-size: 1.1em; color: var(--text-primary); }
+			.info-item i { color: var(--accent-cyan); margin-right: 10px; }
 
-			/* --- RESPONSIVE --- */
-			@media (max-width: 992px) {
-				.hero h1 { font-size: 2.5em; }
-				.contact-card { flex-direction: column; padding: 2em; text-align: center; }
-				.contact-right { border-left: none; padding-left: 0; margin-top: 2em; width: 100%; align-items: center; }
+			/* --- RESPONSIVE FIXES --- */
+			@media (max-width: 980px) {
+				.col-4 { width: 100%; margin-bottom: 2em; }
+				.hero { padding: 8em 0 4em 0; }
+				.hero h1 { font-size: 2.2em; }
 			}
 		</style>
 	</head>
@@ -268,7 +247,7 @@
 
 		<nav id="sidebar-menu">
 			<div class="menu-header">
-				<span class="menu-title">Navigation</span>
+				<span style="color:#fff; font-weight:bold;">MENU</span>
 				<div class="menu-close"><i class="fas fa-times"></i></div>
 			</div>
 			<ul class="menu-links">
@@ -279,9 +258,6 @@
 				<li><a href="articles.html">Articles</a></li>
 				<li><a href="#footer">Contact</a></li>
 			</ul>
-			<div style="margin-top: auto; opacity: 0.5; font-size: 0.9em;">
-				<p>el-ouali@insa-toulouse.fr</p>
-			</div>
 		</nav>
 
 		<div id="page-wrapper">
@@ -302,7 +278,7 @@
 			<section class="hero reveal">
 				<div class="container">
 					<h1>Ingénieur <br> Data & Cloud Architecture</h1>
-					<p class="subtitle">Je conçois des écosystèmes de données scalables et des architectures cloud résilientes pour transformer la donnée brute en <span style="color:#fff; font-weight:500;">valeur stratégique</span>.</p>
+					<p class="subtitle">Je conçois des écosystèmes de données scalables et des architectures cloud résilientes pour transformer la donnée brute en valeur stratégique.</p>
 					
 					<div class="cta-group">
 						<a href="projets-hub.html" class="button">Voir mes projets</a>
@@ -311,7 +287,7 @@
 					
 					<div class="social-hub">
 						<a href="https://github.com/elouali-code" target="_blank" class="social-icon-link" title="GitHub"><i class="fab fa-github"></i></a>
-						<a href="https://www.linkedin.com/in/elouali/" target="_blank" class="social-icon-link linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+						<a href="https://www.linkedin.com/in/elouali/" target="_blank" class="social-icon-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
 						<a href="mailto:el-ouali@insa-toulouse.fr" class="social-icon-link" title="Email"><i class="fas fa-envelope"></i></a>
 					</div>
 				</div>
@@ -321,25 +297,31 @@
 				<div class="container">
 					<h2 class="section-title reveal">Parcours Professionnel</h2>
 					<div class="row">
-						<div class="col-4 col-12-medium reveal">
+						<div class="col-4 reveal">
 							<a href="experiences.html" class="experience-card">
-								<img src="images/logo-airbus.png" alt="Airbus" class="logo"/>
+								<div class="logo-container">
+									<img src="images/logo-airbus.png" alt="Airbus" class="logo"/>
+								</div>
 								<span class="role-highlight">Architecte Cloud (Stage)</span>
 								<h3>Airbus</h3>
 								<span class="date">Mars 2025 - Sept. 2025</span>
 							</a>
 						</div>
-						<div class="col-4 col-12-medium reveal">
+						<div class="col-4 reveal">
 							<a href="experiences.html" class="experience-card">
-								<img src="images/logo-ocp.png" alt="OCP" class="logo"/>
+								<div class="logo-container">
+									<img src="images/logo-ocp.png" alt="OCP" class="logo"/>
+								</div>
 								<span class="role-highlight">Data Analyst (Stage)</span>
 								<h3>OCP Group</h3>
 								<span class="date">Juil. 2024 - Sept. 2024</span>
 							</a>
 						</div>
-						<div class="col-4 col-12-medium reveal">
+						<div class="col-4 reveal">
 							<a href="experiences.html" class="experience-card">
-								<img src="images/logo-webhelp.png" alt="Webhelp" class="logo"/>
+								<div class="logo-container">
+									<img src="images/logo-webhelp.png" alt="Webhelp" class="logo"/>
+								</div>
 								<span class="role-highlight">Dev Full-Stack (Stage)</span>
 								<h3>Webhelp</h3>
 								<span class="date">Juil. 2023 - Août 2023</span>
@@ -349,10 +331,10 @@
 				</div>
 			</section>
 
-			<section class="section-container" style="background: rgba(255,255,255,0.01);">
+			<section class="section-container" style="background: rgba(255,255,255,0.02);">
 				<div class="container">
 					<h2 class="section-title reveal">Stack Technique</h2>
-					<p style="text-align: center; max-width: 600px; margin: 0 auto 2em auto;" class="reveal">Les technologies que j'utilise au quotidien pour bâtir des solutions robustes.</p>
+					<p style="text-align: center; margin-bottom: 2em;" class="reveal">Les technologies que j'utilise au quotidien pour bâtir des solutions robustes.</p>
 					
 					<div class="tech-grid reveal">
 						<div class="tech-item"><i class="fab fa-aws" style="color:#FF9900;"></i><span>AWS</span></div>
@@ -371,49 +353,39 @@
 				<div class="container">
 					<h2 class="section-title reveal">Projets Récents</h2>
 					<div class="row">
-						<div class="col-3 col-12-medium reveal">
+						<div class="col-4 reveal">
 							<div class="project-card">
-								<a href="project-dynamodb.html" style="overflow:hidden;"><img src="images/projet-dynamodb.jpg" alt="AWS Serverless"/></a>
+								<a href="project-dynamodb.html"><img src="images/projet-dynamodb.jpg" alt="AWS Serverless"/></a>
 								<div class="content">
 									<h3>Data Serverless</h3>
 									<p>Architecture AWS optimisée (DynamoDB/Lambda) réduisant la latence de O(N) à O(1).</p>
-									<a href="project-dynamodb.html" class="button alt">Détails</a>
+									<a href="project-dynamodb.html" class="button alt" style="border:1px solid #fff;">Détails</a>
 								</div>
 							</div>
 						</div>
-						<div class="col-3 col-12-medium reveal">
+						<div class="col-4 reveal">
 							<div class="project-card">
-								<a href="project-Core_S&T.html" style="overflow:hidden;"><img src="images/pipline.PNG" alt="Data Pipeline"/></a>
+								<a href="project-Core_S&T.html"><img src="images/pipline.PNG" alt="Data Pipeline"/></a>
 								<div class="content">
 									<h3>Skywise Pipelines</h3>
 									<p>ETL complexes et Data Products industriels sur la plateforme Palantir Foundry.</p>
-									<a href="project-Core_S&T.html" class="button alt">Détails</a>
+									<a href="project-Core_S&T.html" class="button alt" style="border:1px solid #fff;">Détails</a>
 								</div>
 							</div>
 						</div>
-						<div class="col-3 col-12-medium reveal">
+						<div class="col-4 reveal">
 							<div class="project-card">
-								<a href="project-football-ai.html" style="overflow:hidden;"><img src="images/football-detection.jpg" alt="AI Football"/></a>
+								<a href="project-football-ai.html"><img src="images/football-detection.jpg" alt="AI Football"/></a>
 								<div class="content">
 									<h3>AI Football Analysis</h3>
 									<p>Computer Vision (YOLOv8) pour l'analyse tactique de matchs en temps réel.</p>
-									<a href="project-football-ai.html" class="button alt">Détails</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-3 col-12-medium reveal">
-							<div class="project-card">
-								<a href="project-ardmate.html" style="overflow:hidden;"><img src="images/projet-ardmate.jpg" alt="DevOps Tool"/></a>
-								<div class="content">
-									<h3>Outils DevOps</h3>
-									<p>Automatisation CI/CD pour la génération de documentation d'architecture.</p>
-									<a href="project-ardmate.html" class="button alt">Détails</a>
+									<a href="project-football-ai.html" class="button alt" style="border:1px solid #fff;">Détails</a>
 								</div>
 							</div>
 						</div>
 					</div>
 					
-					<div style="text-align: center; margin-top: 3em;" class="reveal">
+					<div style="text-align: center; margin-top: 2em;" class="reveal">
 						<a href="projets-hub.html" class="button">Voir le catalogue complet</a>
 					</div>
 				</div>
@@ -422,25 +394,16 @@
 			<section id="footer">
 				<div class="container reveal">
 					<div class="contact-card">
-						<div class="contact-left">
-							<h2>Prêt à collaborer ?</h2>
-							<p>Je suis toujours à l'écoute d'opportunités challengeantes en Data Engineering et Cloud Architecture. Construisons ensemble des solutions d'avenir.</p>
-							<a href="mailto:el-ouali@insa-toulouse.fr" class="button">Me contacter</a>
+						<h2>Prêt à collaborer ?</h2>
+						<p>Je suis toujours à l'écoute d'opportunités challengeantes en Data Engineering et Cloud Architecture.</p>
+						<br>
+						<div style="display:flex; justify-content:center; gap:2em; flex-wrap:wrap;">
+							<div class="info-item"><i class="fas fa-envelope"></i> el-ouali@insa-toulouse.fr</div>
+							<div class="info-item"><i class="fas fa-phone"></i> +33 7 52 04 36 70</div>
+							<div class="info-item"><i class="fab fa-linkedin"></i> linkedin.com/in/elouali</div>
 						</div>
-						<div class="contact-right">
-							<div class="info-item">
-								<i class="fas fa-map-marker-alt"></i>
-								<span>Toulouse, France</span>
-							</div>
-							<div class="info-item">
-								<i class="fas fa-phone"></i>
-								<span>+33 7 52 04 36 70</span>
-							</div>
-							<div class="info-item">
-								<i class="fab fa-linkedin-in"></i>
-								<a href="https://www.linkedin.com/in/elouali/" target="_blank">linkedin.com/in/elouali</a>
-							</div>
-						</div>
+						<br>
+						<a href="mailto:el-ouali@insa-toulouse.fr" class="button">Me contacter</a>
 					</div>
 					
 					<div style="text-align: center; margin-top: 4em; font-size: 0.9em; opacity: 0.6;">
@@ -458,7 +421,7 @@
 		<script src="assets/js/main.js"></script>
 		
 		<script>
-			// Gestion Menu Burger
+			// Menu Burger
 			const menuBtn = document.getElementById('menu-btn');
 			const closeBtn = document.querySelector('.menu-close');
 			const sidebar = document.getElementById('sidebar-menu');
@@ -482,24 +445,14 @@
 			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
 			if(overlay) overlay.addEventListener('click', toggleMenu);
 
-			// Animation au Scroll (Intersection Observer)
-			const observerOptions = { threshold: 0.1 };
+			// Animation Reveal
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('active');
-					}
+					if (entry.isIntersecting) entry.target.classList.add('active');
 				});
-			}, observerOptions);
+			}, { threshold: 0.1 });
 
 			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-			
-			// Header Scroll Effect
-			window.addEventListener('scroll', () => {
-				const header = document.getElementById('header');
-				if(window.scrollY > 50) header.classList.add('scrolled');
-				else header.classList.remove('scrolled');
-			});
 		</script>
 	</body>
 </html>
