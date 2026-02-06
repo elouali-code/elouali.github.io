@@ -88,36 +88,43 @@
 			.section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
 			.section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
 			
-			/* STYLE DES CARTES EXPÉRIENCE MIS À JOUR */
+			/* STYLE DES CARTES EXPÉRIENCE */
 			.experience-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
 				border: 1px solid var(--border-glass); border-radius: 12px;
 				padding: 1.5em; text-decoration:none; display:block;
 				transition: all 0.2s ease;
-				height: 100%; /* Important pour l'alignement */
-				text-align: center; /* Centrer le contenu */
+				height: 100%; 
+				text-align: center; 
 			}
 			.experience-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 			.experience-card .header { 
 				display: flex; 
-				flex-direction: column; /* Vertical */
+				flex-direction: column; 
 				align-items: center; 
 				gap: 1em;
 			}
 			.experience-card .logo { 
-				width: 60px; height: 60px; /* Logos plus grands */
+				width: 60px; height: 60px; 
 				object-fit: contain; 
 				margin-bottom: 0.5em;
 			}
 			.experience-card h3 { font-size: 1.1em; margin: 0; line-height: 1.3; color: var(--text-primary); }
 			.experience-card p { margin: 0; font-size: 0.9em; color: var(--text-secondary); }
 
+			/* STYLE DES PROJETS */
 			.project-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
 				border: 1px solid var(--border-glass); border-radius: 12px;
 				height: 100%; display: flex; flex-direction: column; overflow: hidden;
+				transition: transform 0.2s ease;
 			}
-			.project-card .content { padding: 1.5em; flex-grow: 1; }
+			.project-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
+			.project-card .image.featured img { width: 100%; height: 180px; object-fit: cover; } /* Images uniformes */
+			.project-card .content { padding: 1.2em; flex-grow: 1; display: flex; flex-direction: column; }
+			.project-card h3 { font-size: 1.1em; margin-bottom: 0.5em; min-height: 2.4em; } /* Hauteur titre fixe pour alignement */
+			.project-card p { font-size: 0.85em; flex-grow: 1; margin-bottom: 1em; }
+			.project-card .button { font-size: 0.8em; padding: 0.5em 1em; align-self: flex-start; }
 			
 			#footer { background: var(--background-end); border-top: 1px solid var(--border-glass); padding: 1em 0; }
 			#footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
@@ -256,26 +263,51 @@
 			<section class="section-container container">
 					<h2 class="section-title">Mes Derniers Projets</h2>
 					<div class="row">
-						<div class="col-6 col-12-medium">
+						
+						<div class="col-3 col-12-medium">
 							<div class="project-card">
-								<a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture serverless AWS avec DynamoDB"/></a>
+								<a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture Serverless AWS"/></a>
 								<div class="content">
-									<h3>Architecture Data Serverless sur AWS</h3>
-									<p>Conception d'une architecture serverless, remplaçant une solution S3 inefficace. Latence réduite de   O(N)   à   O(1)   grâce à DynamoDB, Lambda et SQS, le tout déployé via IaC.</p>
+									<h3>Architecture Data Serverless</h3>
+									<p>Optimisation d'une architecture S3 vers DynamoDB/Lambda pour une latence en O(1).</p>
 									<a href="project-dynamodb.html" class="button">Étude de cas</a>
 								</div>
 							</div>
 						</div>
-						<div class="col-6 col-12-medium">
+
+						<div class="col-3 col-12-medium">
 							<div class="project-card">
-								<a href="project-ardmate.html" class="image featured"><img src="images/projet-ardmate.jpg" alt="Chaîne d'outils du projet ARDmate"/></a>
+								<a href="project-Core_S&T.html" class="image featured"><img src="images/pipline.PNG" alt="Pipeline Data Skywise"/></a>
 								<div class="content">
-									<h3>ARDmate : Automatisation DevOps chez Airbus</h3>
-									<p>Transformation d'un prototype en une chaîne d'outils CI/CD robuste pour automatiser la génération de documents d'architecture critiques. Création d'une librairie de transformation et mise en place de plus de 130 tests.</p>
+									<h3>Data Pipelines Skywise</h3>
+									<p>ETL Engineering et création de Data Products fiables sur la plateforme Foundry.</p>
+									<a href="project-Core_S&T.html" class="button">Étude de cas</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-3 col-12-medium">
+							<div class="project-card">
+								<a href="project-football-ai.html" class="image featured"><img src="images/football-detection.jpg" alt="AI Football Analysis"/></a>
+								<div class="content">
+									<h3>AI Football Tactical Analysis</h3>
+									<p>Vision par ordinateur avec YOLOv8 pour l'analyse tactique de matchs en temps réel.</p>
+									<a href="project-football-ai.html" class="button">Étude de cas</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-3 col-12-medium">
+							<div class="project-card">
+								<a href="project-ardmate.html" class="image featured"><img src="images/projet-ardmate.jpg" alt="ARDmate DevOps Tool"/></a>
+								<div class="content">
+									<h3>ARDmate : Outils DevOps</h3>
+									<p>Chaîne CI/CD et librairie Python pour l'automatisation de la documentation d'architecture.</p>
 									<a href="project-ardmate.html" class="button">Étude de cas</a>
 								</div>
 							</div>
 						</div>
+
 					</div>
 					<div style="text-align: center; margin-top: 2em;">
 						<a href="projets-hub.html" class="button alt">Voir tous mes projets</a>
