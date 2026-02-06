@@ -19,7 +19,7 @@
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
-				--surface-glass: rgba(22, 27, 41, 0.85); /* Plus opaque pour éviter les bugs visuels */
+				--surface-glass: rgba(22, 27, 41, 0.85);
 				--border-glass: rgba(255, 255, 255, 0.15);
 				--text-primary: #ffffff;
 				--text-secondary: #c3c1d3;
@@ -28,19 +28,42 @@
 				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
 			}
 
-			/* --- RESET & BASE --- */
+			/* --- RESET FORCE (POUR CORRIGER LE DÉCALAGE) --- */
 			* { box-sizing: border-box; }
+			
+			html, body {
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100% !important;
+				overflow-x: hidden !important;
+			}
+
 			body {
 				background-color: var(--background-start);
 				background-image: radial-gradient(circle at 15% 50%, rgba(140, 82, 255, 0.1) 0%, transparent 25%), 
                                   radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 25%);
 				color: var(--text-secondary);
 				font-family: 'Poppins', sans-serif;
-				overflow-x: hidden;
-				margin: 0;
 			}
-			#page-wrapper { overflow: hidden; position: relative; }
+
+			#page-wrapper { 
+				overflow: hidden; 
+				position: relative; 
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
 			
+			/* Centrage universel des conteneurs */
+			.container { 
+				max-width: 1200px !important; 
+				width: 100% !important;
+				margin-left: auto !important; 
+				margin-right: auto !important; 
+				padding-left: 20px !important; 
+				padding-right: 20px !important;
+			}
+
 			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 1em 0; }
 			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
 			a:hover { color: #fff; }
@@ -62,7 +85,7 @@
 				padding: 0.8em 0;
 				height: auto;
 			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1.5em; }
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
 			
 			#logo { display: flex; align-items: center; gap: 1em; }
 			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
@@ -84,7 +107,7 @@
 			
 			#sidebar-menu {
 				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
-				background: #0e0b1f; /* Fond opaque solide */
+				background: #0e0b1f;
 				border-left: 1px solid var(--border-glass);
 				z-index: 2000;
 				transform: translateX(100%);
@@ -108,22 +131,34 @@
 			}
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-			/* --- HERO --- */
+			/* --- HERO CORRIGÉ (CENTRAGE) --- */
 			.hero { 
 				padding: 12em 0 6em 0; 
 				text-align: center; 
-				max-width: 1000px; 
-				margin: 0 auto; 
+				width: 100% !important;
+				margin: 0 auto !important;
+			}
+			.hero .container {
+				max-width: 900px !important;
+				margin: 0 auto !important;
 			}
 			.hero h1 { 
 				font-size: 3.2em; 
 				font-weight: 700; 
-				margin-bottom: 0.8em;
-				line-height: 1.4; /* Augmenté pour éviter le chevauchement */
+				margin-bottom: 0.5em; /* Espace augmenté */
+				line-height: 1.3; /* Interligne augmenté pour éviter le chevauchement */
 				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
 				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
 			}
-			.hero .subtitle { font-size: 1.3em; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2.5em; max-width: 800px; margin-left: auto; margin-right: auto; }
+			.hero .subtitle { 
+				font-size: 1.3em; 
+				line-height: 1.8; 
+				color: var(--text-secondary); 
+				margin-bottom: 2.5em; 
+				max-width: 800px; 
+				margin-left: auto; 
+				margin-right: auto; 
+			}
 			
 			.cta-group { display: flex; justify-content: center; gap: 1.5em; margin-bottom: 3em; flex-wrap: wrap; }
 			.button {
@@ -151,18 +186,19 @@
 
 			/* --- SECTIONS --- */
 			.section-container { padding: 5em 0; border-top: 1px solid var(--border-glass); }
-			.container { max-width: 1200px; margin: 0 auto; padding: 0 2em; }
 			.section-title { font-size: 2.2em; text-align: center; margin-bottom: 2em; color: var(--text-primary); }
 
 			/* --- CORRECTION GRILLE & CARTES --- */
-			/* On force le display block pour éviter les conflits flex du template parent */
-			.row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+			.row { 
+				display: flex; 
+				flex-wrap: wrap; 
+				margin: 0 -15px; 
+				justify-content: center; /* Assure que les colonnes sont centrées si elles ne remplissent pas la ligne */
+			}
 			
-			/* Correction des largeurs de colonnes */
 			.col-4 { width: 33.33%; padding: 0 15px; box-sizing: border-box; }
 			.col-3 { width: 25%; padding: 0 15px; box-sizing: border-box; }
 			
-			/* Carte Expérience RÉPARÉE */
 			.experience-card {
 				display: flex;
 				flex-direction: column;
@@ -172,19 +208,14 @@
 				border-radius: 16px;
 				padding: 2em 1.5em;
 				text-align: center;
-				/* IMPORTANT : On ne met PAS height 100% ici pour éviter l'écrasement */
 				min-height: 320px; 
 				margin-bottom: 2em;
 				transition: transform 0.3s ease;
 				position: relative;
 				box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 			}
-			.experience-card:hover { 
-				transform: translateY(-8px); 
-				border-color: var(--accent-purple); 
-			}
+			.experience-card:hover { transform: translateY(-8px); border-color: var(--accent-purple); }
 			
-			/* Bulle blanche pour le logo */
 			.experience-card .logo-wrapper {
 				width: 90px; height: 90px;
 				background: #ffffff;
@@ -194,19 +225,14 @@
 				box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 				padding: 10px;
 			}
-			.experience-card .logo { 
-				width: 100%; height: 100%; 
-				object-fit: contain; 
-			}
+			.experience-card .logo { width: 100%; height: 100%; object-fit: contain; }
 			
 			.experience-card h3 { font-size: 1.3em; margin: 0.5em 0; color: #fff; }
 			.experience-card .role-highlight { color: var(--accent-cyan); font-weight: 600; font-size: 1em; display: block; margin-bottom: 0.5em; }
 			.experience-card .date { font-size: 0.9em; color: var(--text-secondary); opacity: 0.8; }
 
 			/* --- STACK TECHNIQUE --- */
-			.tech-grid {
-				display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5em; margin-top: 2em;
-			}
+			.tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5em; margin-top: 2em; }
 			.tech-item {
 				background: rgba(255,255,255,0.05);
 				border: 1px solid var(--border-glass);
