@@ -14,6 +14,7 @@
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
 				--surface-glass: rgba(31, 29, 54, 0.5);
+				--surface-glass-dark: rgba(12, 10, 31, 0.95);
 				--border-glass: rgba(255, 255, 255, 0.1);
 				--text-primary: #ffffff;
 				--text-secondary: #c3c1d3;
@@ -25,31 +26,132 @@
 				background-image: radial-gradient(circle at 10% 20%, var(--background-end) 0%, var(--background-start) 50%);
 				color: var(--text-secondary);
 				font-family: 'Poppins', sans-serif;
+				overflow-x: hidden; /* Empêche le scroll horizontal quand le menu est ouvert */
 			}
-			#page-wrapper { background: none; }
+			#page-wrapper { background: none; transition: filter 0.3s ease; }
 			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
 			a { color: var(--accent-cyan); text-decoration: none; transition: color 0.2s ease; }
 			a:hover { color: #fff; }
 
-			/* --- HEADER --- */
+			/* --- HEADER MINIMALISTE --- */
 			#header {
 				background: rgba(12, 10, 31, 0.7);
 				backdrop-filter: blur(10px);
 				border-bottom: 1px solid var(--border-glass);
 				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em;
+				padding: 1em 2em;
 			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; }
+			#header > .container { 
+				display: flex; 
+				justify-content: space-between; 
+				align-items: center; 
+			}
 			#logo { display: flex; align-items: center; }
 			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
 			#logo h1 { font-size: 1.2em; margin: 0; }
 			#logo h1 a { color: var(--text-primary); }
-			
-			#nav ul li a { color: var(--text-secondary); position: relative; padding-bottom: 5px; }
-			#nav ul li a:after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-cyan); transition: width 0.3s ease; }
-			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
 
+			/* --- BOUTON MENU BURGER --- */
+			.menu-toggle {
+				display: flex;
+				align-items: center;
+				gap: 0.5em;
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid var(--border-glass);
+				padding: 0.5em 1em;
+				border-radius: 30px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				color: var(--text-primary);
+			}
+			.menu-toggle:hover {
+				background: rgba(255, 255, 255, 0.1);
+				border-color: var(--accent-cyan);
+			}
+			.menu-toggle i { font-size: 1.2em; }
+			.menu-toggle span { font-weight: 500; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
+
+			/* --- SIDEBAR NAVIGATION (PANNEAU LATÉRAL) --- */
+			#sidebar-menu {
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 320px;
+				height: 100vh;
+				background: var(--surface-glass-dark);
+				backdrop-filter: blur(20px);
+				border-left: 1px solid var(--border-glass);
+				z-index: 2000;
+				transform: translateX(100%); /* Caché par défaut */
+				transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+				padding: 2em;
+				display: flex;
+				flex-direction: column;
+				box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+			}
+
+			#sidebar-menu.active {
+				transform: translateX(0); /* Visible */
+			}
+
+			.menu-close {
+				align-self: flex-end;
+				font-size: 1.5em;
+				color: var(--text-secondary);
+				cursor: pointer;
+				margin-bottom: 2em;
+				transition: color 0.3s ease;
+			}
+			.menu-close:hover { color: var(--accent-purple); }
+
+			.menu-links {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 1.5em;
+			}
+
+			.menu-links li a {
+				font-size: 1.4em;
+				font-weight: 600;
+				color: var(--text-primary);
+				display: block;
+				border-bottom: 1px solid transparent;
+				padding-bottom: 0.2em;
+				transition: all 0.3s ease;
+			}
+
+			.menu-links li a:hover {
+				color: var(--accent-cyan);
+				transform: translateX(10px);
+			}
+			
+			.menu-footer {
+				margin-top: auto; /* Pousse vers le bas */
+				padding-top: 2em;
+				border-top: 1px solid var(--border-glass);
+			}
+			.menu-footer p { font-size: 0.8em; color: var(--text-secondary); margin-bottom: 1em; }
+			.menu-socials { display: flex; gap: 1em; }
+			.menu-socials a { font-size: 1.2em; color: var(--text-primary); opacity: 0.7; transition: opacity 0.3s; }
+			.menu-socials a:hover { opacity: 1; color: var(--accent-cyan); }
+
+			/* Overlay sombre quand le menu est ouvert */
+			#menu-overlay {
+				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+				background: rgba(0,0,0,0.6);
+				z-index: 1500;
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.3s ease;
+				backdrop-filter: blur(2px);
+			}
+			#menu-overlay.active { opacity: 1; visibility: visible; }
+
+
+			/* --- Styles existants (Hero, Cards, etc.) --- */
 			.hero { padding: 8em 0; text-align: center; }
 			.hero h1 { font-size: 3.2em; font-weight: 700; line-height: 1.2; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 			.hero .subtitle { font-size: 1.3em; max-width: 700px; margin: 1em auto 1.5em auto; }
@@ -70,7 +172,6 @@
 			.section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
 			.section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
 			
-			/* STYLE DES CARTES EXPÉRIENCE */
 			.experience-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
 				border: 1px solid var(--border-glass); border-radius: 12px;
@@ -84,7 +185,6 @@
 			.experience-card h3 { font-size: 1.1em; margin: 0; line-height: 1.3; color: var(--text-primary); }
 			.experience-card p { margin: 0; font-size: 0.9em; color: var(--text-secondary); }
 
-			/* STYLE DES PROJETS */
 			.project-card {
 				background: var(--surface-glass); backdrop-filter: blur(10px);
 				border: 1px solid var(--border-glass); border-radius: 12px;
@@ -98,7 +198,6 @@
 			.project-card p { font-size: 0.85em; flex-grow: 1; margin-bottom: 1em; }
 			.project-card .button { font-size: 0.8em; padding: 0.5em 1em; align-self: flex-start; }
 			
-			/* --- NOUVEAU STYLE FOOTER PRO --- */
 			#footer { background: var(--background-end); border-top: 1px solid var(--border-glass); padding: 4em 0 2em 0; }
 			
 			.contact-wrapper {
@@ -126,7 +225,6 @@
 				.contact-info { border-left: none; padding-left: 0; width: 100%; }
 			}
 
-			/* --- STYLE BOUTONS SOCIAUX (GITHUB & LINKEDIN) --- */
 			.social-hub {
 				margin-top: 2.5em;
 				display: flex;
@@ -157,11 +255,35 @@
 				box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
 				border-color: #fff;
 			}
-			/* Couleur spécifique pour LinkedIn au survol */
 			.social-icon-link.linkedin:hover { color: #0077b5; } 
 		</style>
 	</head>
 	<body class="homepage is-preload">
+		
+		<div id="menu-overlay"></div>
+
+		<nav id="sidebar-menu">
+			<div class="menu-close">
+				<i class="fas fa-times"></i>
+			</div>
+			<ul class="menu-links">
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="about.html">À Propos</a></li>
+				<li><a href="experiences.html">Expériences</a></li>
+				<li><a href="projets-hub.html">Projets</a></li>
+				<li><a href="articles.html">Articles</a></li>
+				<li><a href="#footer">Contact</a></li>
+			</ul>
+			<div class="menu-footer">
+				<p>Réseaux Sociaux</p>
+				<div class="menu-socials">
+					<a href="https://github.com/elouali-code" target="_blank"><i class="fab fa-github"></i></a>
+					<a href="https://www.linkedin.com/in/elouali/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+					<a href="mailto:el-ouali@insa-toulouse.fr"><i class="fas fa-envelope"></i></a>
+				</div>
+			</div>
+		</nav>
+
 		<div id="page-wrapper">
 
 			<section id="header">
@@ -170,18 +292,12 @@
 							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
 							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 						</div>
-						<nav id="nav">
-							<ul>
-								<li class="current"><a href="index.html">Accueil</a></li>
-								<li><a href="about.html">À Propos</a></li>
-								<li><a href="experiences.html">Expériences</a></li>
-								<li><a href="projets-hub.html">Projets</a></li>
-								<li><a href="articles.html">Articles</a></li>
-								<li><a href="#footer">Contact</a></li>
-							</ul>
-						</nav>
+						<div class="menu-toggle" id="menu-btn">
+							<span>Menu</span>
+							<i class="fas fa-bars"></i>
+						</div>
 					</div>
-				</section>
+			</section>
 
 			<section class="hero container">
 					<h1>Ingénieur en Data & Architecture Cloud</h1>
@@ -350,5 +466,46 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		
+		<script>
+			// Script simple pour gérer le menu latéral
+			document.addEventListener('DOMContentLoaded', function() {
+				const menuBtn = document.getElementById('menu-btn');
+				const closeBtn = document.querySelector('.menu-close');
+				const sidebar = document.getElementById('sidebar-menu');
+				const overlay = document.getElementById('menu-overlay');
+				const body = document.body;
+
+				function openMenu() {
+					sidebar.classList.add('active');
+					overlay.classList.add('active');
+					// Empêcher le scroll du body
+					body.style.overflow = 'hidden';
+				}
+
+				function closeMenu() {
+					sidebar.classList.remove('active');
+					overlay.classList.remove('active');
+					// Réactiver le scroll
+					body.style.overflow = 'auto';
+				}
+
+				if(menuBtn) {
+					menuBtn.addEventListener('click', openMenu);
+				}
+				if(closeBtn) {
+					closeBtn.addEventListener('click', closeMenu);
+				}
+				if(overlay) {
+					overlay.addEventListener('click', closeMenu);
+				}
+				
+				// Fermer le menu si on clique sur un lien du menu
+				const menuLinks = document.querySelectorAll('.menu-links a');
+				menuLinks.forEach(link => {
+					link.addEventListener('click', closeMenu);
+				});
+			});
+		</script>
 	</body>
 </html>
