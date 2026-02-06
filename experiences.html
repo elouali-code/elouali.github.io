@@ -128,51 +128,6 @@
 				margin: 0 auto 3em auto;
 			}
 
-			/* --- SECTION INTERNATIONAL (NOUVEAU DESIGN CÔTE À CÔTE) --- */
-			.international-section {
-				text-align: center;
-				margin-bottom: 6em;
-			}
-			.mobility-row {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				gap: 3em; /* Espace entre les deux pays */
-				margin-top: 2em;
-				flex-wrap: wrap;
-			}
-			
-			.country-item {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				transition: transform 0.3s ease;
-			}
-			.country-item:hover { transform: translateY(-5px); }
-			
-			.flag-round {
-				width: 90px; height: 90px;
-				border-radius: 50%;
-				object-fit: cover;
-				border: 3px solid var(--accent-purple);
-				margin-bottom: 0.8em;
-				box-shadow: 0 0 20px rgba(140, 82, 255, 0.4);
-			}
-			
-			.country-name {
-				font-size: 1.2em;
-				font-weight: 600;
-				color: #fff;
-				text-transform: uppercase;
-				letter-spacing: 1px;
-			}
-
-			.connector-icon {
-				color: var(--accent-cyan);
-				font-size: 1.5em;
-				opacity: 0.7;
-			}
-
 			/* --- TIMELINE EXPERIENCE --- */
 			.timeline {
 				position: relative;
@@ -234,15 +189,28 @@
 
 			.role-title { font-size: 1.4em; color: #fff; margin-bottom: 0.2em; }
 			.company-name { font-size: 1.1em; color: var(--accent-cyan); font-weight: 500; margin-bottom: 0.5em; display: block; }
+			
 			.period-location { 
-				font-size: 0.9em; 
+				font-size: 0.95em; 
 				color: var(--text-secondary); 
 				margin-bottom: 1.5em; 
 				display: flex; gap: 1.5em; align-items: center;
 				border-bottom: 1px solid var(--border-glass);
 				padding-bottom: 1em;
+				flex-wrap: wrap;
 			}
 			.period-location i { color: var(--accent-purple); margin-right: 5px; }
+			
+			/* Style pour le drapeau intégré */
+			.flag-inline {
+				width: 24px;
+				height: 24px;
+				border-radius: 50%;
+				object-fit: cover;
+				vertical-align: middle;
+				border: 2px solid var(--accent-purple);
+				margin-left: 8px;
+			}
 
 			.task-list { list-style: none; padding: 0; margin: 0; }
 			.task-list li {
@@ -283,7 +251,6 @@
 				.timeline-content { padding: 1.5em; }
 				.hero h1 { font-size: 2.2em; }
 				.period-location { flex-direction: column; align-items: flex-start; gap: 0.5em; }
-				.mobility-row { gap: 1.5em; } /* Moins d'espace sur mobile */
 			}
 		</style>
 	</head>
@@ -328,27 +295,6 @@
 				</div>
 			</section>
 
-			<div class="container international-section reveal">
-				<h3 style="color:#fff;">Mobilité Internationale</h3>
-				<p style="color:var(--text-secondary); margin-bottom: 2em;">Une expérience multiculturelle entre l'Europe et l'Afrique.</p>
-				
-				<div class="mobility-row">
-					<div class="country-item">
-						<img src="images/photo-france.jpg" alt="France" class="flag-round">
-						<span class="country-name">France</span>
-					</div>
-
-					<div class="connector-icon">
-						<i class="fas fa-plane"></i>
-					</div>
-
-					<div class="country-item">
-						<img src="images/photo-maroc.jpg" alt="Maroc" class="flag-round">
-						<span class="country-name">Maroc</span>
-					</div>
-				</div>
-			</div>
-
 			<div class="container">
 				<div class="timeline">
 					
@@ -361,7 +307,10 @@
 							<span class="company-name">Airbus</span>
 							<div class="period-location">
 								<span><i class="far fa-calendar-alt"></i> Mars 2025 - Sept. 2025</span>
-								<span><i class="fas fa-map-marker-alt"></i> Toulouse, France</span>
+								<span>
+									<i class="fas fa-map-marker-alt"></i> Toulouse, France 
+									<img src="images/photo-france.jpg" alt="France" class="flag-inline">
+								</span>
 							</div>
 							<p>Modernisation et optimisation des infrastructures Data critiques pour l'ingénierie aéronautique.</p>
 							<ul class="task-list">
@@ -381,7 +330,10 @@
 							<span class="company-name">OCP Group</span>
 							<div class="period-location">
 								<span><i class="far fa-calendar-alt"></i> Juil. 2024 - Sept. 2024</span>
-								<span><i class="fas fa-map-marker-alt"></i> Casablanca, Maroc</span>
+								<span>
+									<i class="fas fa-map-marker-alt"></i> Casablanca, Maroc
+									<img src="images/photo-maroc.jpg" alt="Maroc" class="flag-inline">
+								</span>
 							</div>
 							<p>Mise en place de solutions de maintenance prédictive pour optimiser la production industrielle.</p>
 							<ul class="task-list">
@@ -401,7 +353,10 @@
 							<span class="company-name">Webhelp</span>
 							<div class="period-location">
 								<span><i class="far fa-calendar-alt"></i> Juil. 2023 - Août 2023</span>
-								<span><i class="fas fa-map-marker-alt"></i> Fès, Maroc</span>
+								<span>
+									<i class="fas fa-map-marker-alt"></i> Fès, Maroc
+									<img src="images/photo-maroc.jpg" alt="Maroc" class="flag-inline">
+								</span>
 							</div>
 							<p>Développement d'applications web robustes pour la gestion des ressources internes.</p>
 							<ul class="task-list">
