@@ -1,187 +1,387 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Articles - Abderrahman El Ouali</title>
+		<title>Articles & Publications - Abderrahman El Ouali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
 		<link rel="stylesheet" href="assets/css/main.css" />
+		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<link rel="icon" type="image/png" href="favicon.png"> 
 		
 		<style>
 			:root {
-				--background: #0A0F1E;
-				--surface: #161B29;
-				--text-primary: #F0F0F0;
-				--text-secondary: #A0A0B0;
-				--accent-blue: #5271FF;
-				--accent-purple: #C652FF;
-				--border-color: #2a3042;
+				--background-start: #0c0a1f;
+				--background-end: #1f1d36;
+				--surface-glass: rgba(22, 27, 41, 0.9);
+				--border-glass: rgba(255, 255, 255, 0.15);
+				--text-primary: #ffffff;
+				--text-secondary: #e0e0e0;
+				--accent-cyan: #00d4ff;
+				--accent-purple: #8c52ff;
+				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+			}
+
+			/* --- RESET & BASE --- */
+			* { box-sizing: border-box; }
+			
+			html, body {
+				margin: 0; padding: 0; width: 100%;
+				overflow-x: hidden;
 			}
 
 			body {
-				background: var(--background);
+				background-color: var(--background-start);
+				background-image: 
+					radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+					radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%);
 				color: var(--text-secondary);
 				font-family: 'Poppins', sans-serif;
+				line-height: 1.8;
 			}
-			#page-wrapper { background: none; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
-			a:hover { color: var(--accent-blue); }
 
+			#page-wrapper { 
+				position: relative; 
+				display: flex; flex-direction: column; min-height: 100vh;
+			}
+			
+			.container { 
+				max-width: 1200px; margin: 0 auto; padding: 0 25px; 
+			}
+
+			h1, h2, h3 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 0.5em 0; }
+			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
+			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
+
+			/* --- HEADER --- */
 			#header {
-				background: var(--background);
-				border-bottom: 1px solid var(--border-color);
-				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em;
+				position: fixed; top: 0; left: 0; width: 100%;
+				background: rgba(12, 10, 31, 0.95);
+				backdrop-filter: blur(15px);
+				border-bottom: 1px solid var(--border-glass);
+				z-index: 1000;
+				padding: 0.8em 0;
 			}
 			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
-			
-			#nav ul li a {
-				color: var(--text-secondary);
-				position: relative;
-				padding-bottom: 5px;
-				font-weight: 500;
-			}
-			#nav ul li a:after {
-				content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-				width: 0; height: 2px; background-color: var(--accent-blue);
-				transition: width 0.3s ease;
-			}
-			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+			#logo { display: flex; align-items: center; gap: 1em; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
+			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; }
+			#logo h1 a { color: #fff; }
 
-			.section-container { padding: 4em 0; }
-			.section-title {
-				font-size: 2.8em;
+			/* --- MENU BURGER --- */
+			.menu-toggle {
+				display: flex; align-items: center; gap: 0.5em;
+				background: rgba(255, 255, 255, 0.08);
+				border: 1px solid var(--border-glass);
+				padding: 0.5em 1.2em; border-radius: 50px;
+				cursor: pointer; color: var(--text-primary); transition: background 0.3s;
+			}
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
+			
+			#sidebar-menu {
+				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
+				background: #0e0b1f; border-left: 1px solid var(--border-glass);
+				z-index: 2000; transform: translateX(100%); transition: transform 0.4s ease;
+				padding: 2em; display: flex; flex-direction: column;
+				box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+			}
+			#sidebar-menu.active { transform: translateX(0); }
+			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
+			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
+			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
+			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
+			#menu-overlay {
+				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+				background: rgba(0,0,0,0.8); z-index: 1500;
+				opacity: 0; visibility: hidden; transition: all 0.3s ease;
+			}
+			#menu-overlay.active { opacity: 1; visibility: visible; }
+
+			/* --- HERO SECTION --- */
+			.hero {
+				padding: 12em 0 4em 0;
 				text-align: center;
-				margin-bottom: 1.5em;
-				line-height: 1.4;
-				color: var(--accent-blue);
+			}
+			.hero h1 {
+				font-size: 3em;
+				background: var(--gradient-primary);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin-bottom: 0.2em;
+			}
+			.hero .subtitle {
+				font-size: 1.2em;
+				color: var(--text-secondary);
+				max-width: 700px;
+				margin: 0 auto 3em auto;
+			}
+
+			/* --- ARTICLES GRID --- */
+			.articles-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 2.5em;
+				margin-bottom: 6em;
 			}
 
 			.article-card {
-				background: var(--surface);
-				border: 1px solid var(--border-color);
-				border-radius: 12px;
-				height: 100%;
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				border-radius: 16px;
+				overflow: hidden;
+				transition: all 0.3s ease;
 				display: flex;
 				flex-direction: column;
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				height: 100%;
 			}
+
 			.article-card:hover {
 				transform: translateY(-8px);
-				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+				border-color: var(--accent-cyan);
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 			}
-			.article-card .image.featured { border-bottom: 1px solid var(--border-color); }
-			.article-card .content { padding: 1.5em; flex-grow: 1; display: flex; flex-direction: column; }
-			.article-card .content h3 { font-size: 1.3em; }
-			.article-card .content p { flex-grow: 1; font-size: 0.9em; }
-			.article-card .meta { font-size: 0.8em; color: var(--text-secondary); margin-top: -0.5em; margin-bottom: 1em;}
-			.button { background: var(--accent-purple); color: #fff !important; border: 0; border-radius: 8px; box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4); }
-			.button.alt.disabled { background: var(--surface); color: var(--text-secondary) !important; box-shadow: none; cursor: not-allowed; }
 
-			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 1em 0; }
-            #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
-            #footer-copy { flex-basis: 55%; padding-right: 2em; }
-            #footer-details { flex-basis: 35%; }
-            #footer-details ul { list-style: none; padding: 0; }
-            #footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
-            #footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
+			.article-image {
+				height: 220px;
+				width: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.article-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.5s ease;
+			}
+			
+			.article-card:hover .article-image img { transform: scale(1.05); }
 
-            @media (max-width: 768px) {
-                #footer-grid { flex-direction: column; }
-                #footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
-                #footer-details { margin-top: 2em; }
-            }
+			.article-content {
+				padding: 2em;
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.article-date {
+				font-size: 0.85em;
+				color: var(--accent-cyan);
+				font-weight: 600;
+				margin-bottom: 0.8em;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+
+			.article-title {
+				font-size: 1.4em;
+				margin-bottom: 0.8em;
+				color: #fff;
+				line-height: 1.4;
+			}
+
+			.article-excerpt {
+				font-size: 0.95em;
+				color: var(--text-secondary);
+				margin-bottom: 1.5em;
+				flex-grow: 1;
+			}
+
+			.read-more-btn {
+				align-self: flex-start;
+				padding: 0.6em 1.5em;
+				border: 1px solid var(--border-glass);
+				border-radius: 50px;
+				background: rgba(255,255,255,0.05);
+				color: #fff;
+				font-size: 0.9em;
+				font-weight: 500;
+				transition: all 0.3s;
+			}
+			
+			.read-more-btn:hover {
+				background: var(--accent-cyan);
+				color: #000;
+				border-color: var(--accent-cyan);
+				text-shadow: none;
+			}
+			
+			.read-more-btn.disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+			.read-more-btn.disabled:hover {
+				background: rgba(255,255,255,0.05);
+				color: #fff;
+				border-color: var(--border-glass);
+			}
+
+			/* --- FOOTER --- */
+			#footer {
+				background: rgba(12, 10, 31, 0.8);
+				border-top: 1px solid var(--border-glass);
+				padding: 2em 0;
+				margin-top: auto;
+				text-align: center;
+				font-size: 0.9em;
+			}
+
+			/* --- ANIMATIONS --- */
+			.reveal {
+				opacity: 0; transform: translateY(30px);
+				transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+			}
+			.reveal.active { opacity: 1; transform: translateY(0); }
+
+			/* --- RESPONSIVE --- */
+			@media (max-width: 768px) {
+				.hero h1 { font-size: 2.2em; }
+				.articles-grid { grid-template-columns: 1fr; }
+			}
 		</style>
 	</head>
-	<body class="no-sidebar is-preload">
+	<body class="is-preload">
+		
+		<div id="menu-overlay"></div>
+
+		<nav id="sidebar-menu">
+			<div class="menu-header">
+				<span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span>
+				<div class="menu-close"><i class="fas fa-times"></i></div>
+			</div>
+			<ul class="menu-links">
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="about.html">À Propos</a></li>
+				<li><a href="experiences.html">Expériences</a></li>
+				<li><a href="projets-hub.html">Projets</a></li>
+				<li><a href="articles.html">Articles</a></li>
+				<li><a href="#footer">Contact</a></li>
+			</ul>
+		</nav>
+
 		<div id="page-wrapper">
 
 			<section id="header">
-					<div class="container">
-						<div id="logo">
-							<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-							<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-						</div>
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Accueil</a></li>
-								<li><a href="about.html">À Propos</a></li>
-								<li><a href="experiences.html">Expériences</a></li>
-								<li><a href="projets-hub.html">Projets</a></li>
-								<li class="current"><a href="articles.html">Articles</a></li>
-								<li><a href="#footer">Contact</a></li>
-							</ul>
-						</nav>
+				<div class="container">
+					<div id="logo">
+						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
-				</section>
+					<div class="menu-toggle" id="menu-btn">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+				</div>
+			</section>
 
-			<section id="main" class="section-container">
-					<div class="container">
-						<header class="major">
-							<h2 class="section-title">Articles & Publications</h2>
-							<p style="font-size: 1.2em; color: var(--text-secondary);">Un espace pour partager mes réflexions et analyses sur des sujets qui me passionnent.</p>
-						</header>
-						<div class="row">
-							
-							<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
-								<section class="article-card">
-									<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank" class="image featured"><img src="images/article-fiabilite.png" alt="Aeronautics IT Architecture Lifecycle" /></a>
-									<div class="content">
-										<h3>Fiabilité en Aéronautique : L'Importance de la Qualification</h3>
-										<p class="meta"><p class="meta">Par Abderrahman El Ouali - Publié le 26/08/2025</p></p>
-										<p>En aéronautique, la fiabilité d'un système IT se joue avant la mise en production. Cet article explore les stratégies de qualification pour neutraliser les faiblesses avant qu'elles ne deviennent critiques.</p>
-										<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank" class="button">Lire sur LinkedIn</a>
-									</div>
-								</section>
-							</div>
+			<section class="hero reveal">
+				<div class="container">
+					<h1>Articles & Publications</h1>
+					<p class="subtitle">Réflexions, analyses techniques et actualités de mon parcours professionnel.</p>
+				</div>
+			</section>
 
-							<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
-								<section class="article-card">
-									<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank" class="image featured"><img src="images/offre.png" alt="internship offre" /></a>
-									<div class="content">
-										<h3>Here we go!  : Internship Offer</h3>
-										<p class="meta"><p class="meta">Par Abderrahman El Ouali - Publié le 25/07/2024</p></p>
-										<p>I’m thrilled to announce that I’ve been selected for the Growintern internship program ! offered by a forward-thinking Indian company. During this time, I will focus on Cloud Computing and Data Science through hands-on projects that align with my interests and skills.</p>
-										<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank" class="button">Lire sur LinkedIn</a>
-									</div>
-								</section>
-							</div>
-
-							<div class="col-4 col-12-medium" style="margin-bottom: 2em;">
-								<section class="article-card">
-									<a href="#" class="image featured"><img src="images/new.jpg" alt="Placeholder" /></a>
-									<div class="content">
-										<h3>Nouvel Article</h3>
-										<p class="meta">Prochainement</p>
-										<p>Un nouveau sujet technique sera exploré en détail ici. Restez à l'écoute pour de nouvelles publications.</p>
-										<a href="#" class="button alt disabled">À venir</a>
-									</div>
-								</section>
-							</div>
-
+			<div class="container">
+				<div class="articles-grid">
+					
+					<div class="article-card reveal">
+						<div class="article-image">
+							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank">
+								<img src="images/article-fiabilite.png" alt="Fiabilité en Aéronautique">
+							</a>
+						</div>
+						<div class="article-content">
+							<span class="article-date">26 Août 2025</span>
+							<h3 class="article-title">Fiabilité en Aéronautique : L'Importance de la Qualification</h3>
+							<p class="article-excerpt">En aéronautique, la fiabilité d'un système IT se joue avant la mise en production. Cet article explore les stratégies de qualification pour neutraliser les faiblesses avant qu'elles ne deviennent critiques.</p>
+							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank" class="read-more-btn">Lire sur LinkedIn <i class="fas fa-external-link-alt" style="margin-left:5px;"></i></a>
 						</div>
 					</div>
-				</section>
-			
-				<section id="footer" style="text-align: center; padding: 20px 0;">
-					<ul class="links" style="list-style: none; padding: 0;">
-						<li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-					</ul>
-				</section>
+
+					<div class="article-card reveal" style="transition-delay: 0.1s;">
+						<div class="article-image">
+							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank">
+								<img src="images/offre.png" alt="Internship Offer">
+							</a>
+						</div>
+						<div class="article-content">
+							<span class="article-date">25 Juillet 2024</span>
+							<h3 class="article-title">Here we go! : Internship Offer</h3>
+							<p class="article-excerpt">I’m thrilled to announce that I’ve been selected for the Growintern internship program offered by a forward-thinking Indian company. Focusing on Cloud Computing and Data Science projects.</p>
+							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank" class="read-more-btn">Lire sur LinkedIn <i class="fas fa-external-link-alt" style="margin-left:5px;"></i></a>
+						</div>
+					</div>
+
+					<div class="article-card reveal" style="transition-delay: 0.2s;">
+						<div class="article-image">
+							<img src="images/new.jpg" alt="Prochainement" style="opacity: 0.5;">
+						</div>
+						<div class="article-content">
+							<span class="article-date" style="color:var(--text-secondary);">Prochainement</span>
+							<h3 class="article-title">Nouvel Article Technique</h3>
+							<p class="article-excerpt">Un nouveau sujet technique sera exploré en détail ici prochainement. Restez à l'écoute pour de nouvelles publications sur le Data Engineering et le Cloud.</p>
+							<span class="read-more-btn disabled">À venir</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<section id="footer">
+				<div class="container">
+					<p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p>
+				</div>
+			</section>
 
 		</div>
+
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		
+		<script>
+			// Menu Burger Logic
+			const menuBtn = document.getElementById('menu-btn');
+			const closeBtn = document.querySelector('.menu-close');
+			const sidebar = document.getElementById('sidebar-menu');
+			const overlay = document.getElementById('menu-overlay');
+			const body = document.body;
+
+			function toggleMenu() {
+				const isActive = sidebar.classList.contains('active');
+				if(!isActive) {
+					sidebar.classList.add('active');
+					overlay.classList.add('active');
+					body.style.overflow = 'hidden';
+				} else {
+					sidebar.classList.remove('active');
+					overlay.classList.remove('active');
+					body.style.overflow = 'auto';
+				}
+			}
+
+			if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
+			if(overlay) overlay.addEventListener('click', toggleMenu);
+
+			// Animation Reveal
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) entry.target.classList.add('active');
+				});
+			}, { threshold: 0.1 });
+
+			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+		</script>
 	</body>
 </html>
