@@ -28,7 +28,7 @@
 				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
 			}
 
-			/* --- RESET & BASE --- */
+			/* --- RESET FORCE --- */
 			* { box-sizing: border-box; }
 			
 			html, body {
@@ -47,9 +47,12 @@
 			}
 
 			#page-wrapper { 
-				overflow: hidden; 
+				overflow-x: hidden; /* CORRECTION : On autorise le scroll vertical */
 				position: relative; 
 				width: 100%;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
 			}
 			
 			.container { 
@@ -140,10 +143,10 @@
 
 			.about-wrapper {
 				display: flex;
-				align-items: center;
+				align-items: center; /* Aligné verticalement au centre */
 				justify-content: center;
 				gap: 4em;
-				flex-wrap: wrap;
+				flex-wrap: wrap; /* Permet le passage à la ligne sur mobile */
 			}
 
 			/* Style de l'image de profil */
@@ -163,33 +166,25 @@
 				position: relative;
 				z-index: 2;
 			}
-			/* Élément décoratif derrière l'image */
+			/* Élément décoratif */
 			.profile-frame::before {
-				content: '';
-				position: absolute;
-				top: -20px; left: -20px;
+				content: ''; position: absolute; top: -20px; left: -20px;
 				width: 100%; height: 100%;
-				border: 2px solid var(--accent-cyan);
-				border-radius: 20px;
-				z-index: 1;
-				opacity: 0.5;
+				border: 2px solid var(--accent-cyan); border-radius: 20px;
+				z-index: 1; opacity: 0.5;
 			}
 			.profile-frame::after {
-				content: '';
-				position: absolute;
-				bottom: -20px; right: -20px;
+				content: ''; position: absolute; bottom: -20px; right: -20px;
 				width: 100%; height: 100%;
-				border: 2px solid var(--accent-purple);
-				border-radius: 20px;
-				z-index: 1;
-				opacity: 0.5;
+				border: 2px solid var(--accent-purple); border-radius: 20px;
+				z-index: 1; opacity: 0.5;
 			}
 
 			/* Carte de texte style verre */
 			.about-card {
-				flex: 1;
-				min-width: 300px;
-				max-width: 600px;
+				flex: 1; /* Prend l'espace restant */
+				min-width: 300px; /* Largeur min pour éviter l'écrasement */
+				max-width: 650px;
 				background: var(--surface-glass);
 				border: 1px solid var(--border-glass);
 				border-radius: 20px;
@@ -201,7 +196,7 @@
 				line-height: 1.8;
 				margin-bottom: 1.5em;
 				color: var(--text-secondary);
-				text-align: justify;
+				text-align: justify; /* Texte justifié pour faire propre */
 			}
 			.about-card p:last-child { margin-bottom: 0; }
 
@@ -214,7 +209,7 @@
 				margin-top: 1em;
 			}
 			.lang-item {
-				background: rgba(255,255,255,0.03);
+				background: rgba(255,255,255,0.05);
 				border: 1px solid var(--border-glass);
 				border-radius: 12px;
 				padding: 1em 1.5em;
@@ -224,42 +219,35 @@
 				transition: all 0.3s ease;
 			}
 			.lang-item:hover {
-				background: rgba(255,255,255,0.08);
+				background: rgba(255,255,255,0.1);
 				transform: translateY(-5px);
 				border-color: var(--accent-cyan);
 			}
 			.lang-item span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
 			.lang-flag { font-size: 1.5em; }
 
-			/* --- CONTACT & FOOTER --- */
-			.contact-card {
-				background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-				border: 1px solid var(--border-glass); border-radius: 20px;
-				padding: 3em; text-align: center;
-				max-width: 800px; margin: 0 auto;
+			/* --- FOOTER SIMPLE --- */
+			#footer { 
+				background: var(--surface-glass); 
+				border-top: 1px solid var(--border-glass); 
+				padding: 2em 0; 
+				margin-top: auto; /* Pousse le footer en bas */
+				text-align: center;
 			}
-			.info-grid { display: flex; justify-content: center; gap: 2em; flex-wrap: wrap; margin: 2em 0; }
-			.info-item { display: flex; align-items: center; gap: 0.5em; font-size: 1.1em; color: var(--text-primary); }
-			.info-item i { color: var(--accent-cyan); }
-			
-			.button {
-				background: var(--gradient-primary);
-				color: #fff !important; border: 0; border-radius: 50px;
-				padding: 0.9em 2.5em; font-weight: 600; cursor: pointer;
-				box-shadow: 0 10px 20px rgba(140, 82, 255, 0.3); display: inline-block;
-			}
-			.button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(140, 82, 255, 0.5); }
+			#footer ul.links { list-style: none; padding: 0; margin: 0; }
+			#footer ul.links li { display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary); }
 
 			/* --- RESPONSIVE --- */
 			@media (max-width: 980px) {
-				.about-wrapper { flex-direction: column; text-align: center; }
-				.about-card p { text-align: center; }
+				.about-wrapper { flex-direction: column; text-align: center; gap: 3em; }
+				.about-card { width: 100%; } /* Pleine largeur sur mobile */
 				.profile-frame { width: 250px; height: 250px; margin: 0 auto; }
 			}
 			@media (max-width: 736px) {
 				.hero h1 { font-size: 2.2em; }
 				.menu-toggle { padding: 0.4em 0.8em; font-size: 0.9em; }
 				#sidebar-menu { width: 100%; max-width: 300px; }
+				.about-card { padding: 1.5em; } /* Moins de padding sur mobile */
 			}
 		</style>
 	</head>
@@ -328,7 +316,7 @@
 				</div>
 			</section>
 
-			<section class="section-container" style="background: rgba(255,255,255,0.02);">
+			<section class="section-container" style="background: rgba(255,255,255,0.02); margin-bottom: 2em;">
 				<div class="container">
 					<h2 class="section-title reveal">Langues</h2>
 					<div class="languages-grid reveal">
@@ -342,23 +330,10 @@
 			</section>
 
 			<section id="footer">
-				<div class="container reveal">
-					<div class="contact-card">
-						<h2>Prêt à collaborer ?</h2>
-						<p>Je suis toujours à l'écoute d'opportunités challengeantes en Data Engineering et Cloud Architecture.</p>
-						
-						<div class="info-grid">
-							<div class="info-item"><i class="fas fa-envelope"></i> el-ouali@insa-toulouse.fr</div>
-							<div class="info-item"><i class="fas fa-phone"></i> +33 7 52 04 36 70</div>
-							<div class="info-item"><i class="fab fa-linkedin"></i> linkedin.com/in/elouali</div>
-						</div>
-						
-						<a href="mailto:el-ouali@insa-toulouse.fr" class="button">Me contacter</a>
-					</div>
-					
-					<div style="text-align: center; margin-top: 4em; font-size: 0.9em; opacity: 0.6;">
-						<p>&copy; 2025 Abderrahman El Ouali. Designed & Engineered with passion.</p>
-					</div>
+				<div class="container">
+					<ul class="links">
+						<li>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
+					</ul>
 				</div>
 			</section>
 
