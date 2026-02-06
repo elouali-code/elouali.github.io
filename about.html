@@ -1,208 +1,409 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>À Propos - Abderrahman El Ouali</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
-        
-        <style>
-            :root {
-                --background: #0A0F1E;
-                --surface: #161B29;
-                --text-primary: #F0F0F0;
-                --text-secondary: #A0A0B0;
-                --accent-blue: #5271FF;
-                --accent-purple: #C652FF;
-                --border-color: #2a3042;
-            }
+	<head>
+		<title>À Propos - Abderrahman El Ouali</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<link rel="stylesheet" href="assets/css/main.css" />
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<link rel="icon" type="image/png" href="favicon.png"> 
+		
+		<style>
+			:root {
+				--background-start: #0c0a1f;
+				--background-end: #1f1d36;
+				--surface-glass: rgba(22, 27, 41, 0.85);
+				--border-glass: rgba(255, 255, 255, 0.15);
+				--text-primary: #ffffff;
+				--text-secondary: #c3c1d3;
+				--accent-purple: #8c52ff;
+				--accent-cyan: #00d4ff;
+				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+			}
 
-            body {
-                background: var(--background);
-                color: var(--text-secondary);
-                font-family: 'Poppins', sans-serif;
-            }
-            #page-wrapper { background: none; }
-            h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-            a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
-            a:hover { color: var(--accent-blue); }
-            hr { border-bottom-color: var(--border-color); }
+			/* --- RESET & BASE --- */
+			* { box-sizing: border-box; }
+			
+			html, body {
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100% !important;
+				overflow-x: hidden !important;
+			}
 
-            #header {
-                background: var(--background);
-                border-bottom: 1px solid var(--border-color);
-                position: sticky; top: 0; z-index: 1000;
-                padding: 0.5em 2em;
-            }
-            #header > .container { display: flex; justify-content: space-between; align-items: center; }
-            #logo { display: flex; align-items: center; }
-            #logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-            #logo h1 { font-size: 1.2em; margin: 0; }
-            
-            #nav ul li a {
-                color: var(--text-secondary);
-                position: relative;
-                padding-bottom: 5px;
-                font-weight: 500;
-            }
-            #nav ul li a:after {
-                content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-                width: 0; height: 2px; background-color: var(--accent-blue);
-                transition: width 0.3s ease;
-            }
-            #nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-            #nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+			body {
+				background-color: var(--background-start);
+				background-image: radial-gradient(circle at 15% 50%, rgba(140, 82, 255, 0.1) 0%, transparent 25%), 
+                                  radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 25%);
+				color: var(--text-secondary);
+				font-family: 'Poppins', sans-serif;
+			}
 
-            .gradient-title {
-                background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
+			#page-wrapper { 
+				overflow: hidden; 
+				position: relative; 
+				width: 100%;
+			}
+			
+			.container { 
+				max-width: 1200px !important; 
+				width: 100% !important;
+				margin: 0 auto !important; 
+				padding: 0 20px !important;
+			}
 
-            .section-container { padding: 5em 0; }
-            .section-title { font-size: 2.5em; text-align: center; margin-bottom: 1.5em; }
-            
-            .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
-            
-            /* STYLES CORRIGÉS pour le cadre RECTANGULAIRE (maintenus) */
-            .about-content .profile-image { 
-                /* Définit la taille maximale pour que l'image reste centrée */
-                max-width: 250px; 
-                
-                /* Retire le border-radius pour la forme rectangulaire */
-                border-radius: 10px; /* Conserve un léger arrondi */
-                
-                /* Centre l'image */
-                display: block; 
-                margin: 2em auto; 
-                
-                /* Le style de cadre/halo */
-                border: 3px solid var(--border-color); 
-                box-shadow: 0 0 30px rgba(82, 113, 255, 0.2); 
-                
-                /* Assure que l'image utilise toute la largeur disponible (jusqu'à 250px) */
-                width: 100%; 
-                height: auto; 
-            }
-            /* FIN DES STYLES CORRIGÉS */
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 1em 0; }
+			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
+			a:hover { color: #fff; }
+			
+			/* --- ANIMATIONS --- */
+			.reveal {
+				opacity: 0;
+				transform: translateY(30px);
+				transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+			}
+			.reveal.active { opacity: 1; transform: translateY(0); }
 
-            .about-content .narrative { text-align: justify; }
+			/* --- HEADER --- */
+			#header {
+				position: fixed; top: 0; left: 0; width: 100%;
+				background: rgba(12, 10, 31, 0.95);
+				border-bottom: 1px solid var(--border-glass);
+				z-index: 1000;
+				padding: 0.8em 0;
+			}
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
+			
+			#logo { display: flex; align-items: center; gap: 1em; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
+			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; }
+			#logo h1 a { color: var(--text-primary); text-decoration: none; border: 0; }
 
-            .tech-stack { text-align: center; }
-            .tech-stack .section-title { color: var(--accent-purple); }
-            .tech-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5em; }
-            .tech-logo { display: flex; flex-direction: column; align-items: center; width: 80px; text-align: center; }
-            .tech-logo img { height: 40px; max-width: 80px; object-fit: contain; transition: transform 0.2s ease; }
-            .tech-logo img:hover { transform: scale(1.1); }
-            .tech-logo span { font-family: 'Source Code Pro', monospace; font-size: 0.8em; color: var(--text-secondary); margin-top: 0.8em; text-transform: uppercase; }
-            
-            .languages-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; list-style: none; padding: 0; font-size: 1.1em; }
+			/* --- MENU BURGER --- */
+			.menu-toggle {
+				display: flex; align-items: center; gap: 0.5em;
+				background: rgba(255, 255, 255, 0.1);
+				border: 1px solid var(--border-glass);
+				padding: 0.5em 1em;
+				border-radius: 50px;
+				cursor: pointer;
+				color: var(--text-primary);
+				transition: background 0.3s;
+			}
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
+			
+			#sidebar-menu {
+				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
+				background: #0e0b1f;
+				border-left: 1px solid var(--border-glass);
+				z-index: 2000;
+				transform: translateX(100%);
+				transition: transform 0.4s ease;
+				padding: 2em;
+				display: flex; flex-direction: column;
+				box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+			}
+			#sidebar-menu.active { transform: translateX(0); }
+			
+			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; }
+			.menu-close { font-size: 1.5em; cursor: pointer; color: var(--text-primary); }
+			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: var(--text-primary); display: block; border: 0; }
+			.menu-links a:hover { color: var(--accent-cyan); transform: translateX(10px); }
 
-            #footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 1em 0; }
-            #footer-grid { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; text-align: left; }
-            #footer-copy { flex-basis: 55%; padding-right: 2em; }
-            #footer-details { flex-basis: 35%; }
-            #footer-details ul { list-style: none; padding: 0; }
-            #footer-details li { margin-bottom: 1em; display: flex; align-items: center; }
-            #footer-details .icon { margin-right: 1em; font-size: 1.2em; color: var(--accent-blue); width: 20px; }
+			#menu-overlay {
+				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+				background: rgba(0,0,0,0.8); z-index: 1500;
+				opacity: 0; visibility: hidden; transition: all 0.3s ease;
+			}
+			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-            @media (max-width: 768px) {
-                #footer-grid { flex-direction: column; }
-                #footer-copy, #footer-details { flex-basis: 100%; padding-right: 0; }
-                #footer-details { margin-top: 2em; }
-            }
-        </style>
-    </head>
-    <body class="no-sidebar is-preload">
-        <div id="page-wrapper">
+			/* --- HERO & TITRE --- */
+			.hero { padding: 10em 0 4em 0; text-align: center; }
+			.hero h1 { 
+				font-size: 3em; font-weight: 700; margin-bottom: 0.5em;
+				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+			}
+			.hero .subtitle { font-size: 1.2em; color: var(--text-secondary); max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
-            <section id="header">
-                <div class="container">
-                    <div id="logo">
-                        <img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-                        <h1><a href="index.html">Abderrahman El Ouali</a></h1>
-                    </div>
-                    <nav id="nav">
-                        <ul>
-                            <li><a href="index.html">Accueil</a></li>
-                            <li class="current"><a href="about.html">À Propos</a></li>
-                            <li><a href="experiences.html">Expériences</a></li>
-                            <li><a href="projets-hub.html">Projets</a></li>
-                            <li><a href="articles.html">Articles</a></li>                       
-                            <li><a href="#footer">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </section>
+			/* --- CONTENU À PROPOS --- */
+			.section-container { padding: 4em 0; border-top: 1px solid var(--border-glass); }
+			.section-title { font-size: 2em; text-align: center; margin-bottom: 2em; color: var(--text-primary); }
 
-            <section id="main">
-                <div class="container">
-                    <div class="about-content">
-                        <header>
-                            <h2 class="gradient-title" style="font-size: 3em; line-height: 1.4;">Data Engineer en formation  Spécialiste Big Data</h2>
-                        </header>
+			.about-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 4em;
+				flex-wrap: wrap;
+			}
 
-                        <img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" class="profile-image" />
+			/* Style de l'image de profil */
+			.profile-frame {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				flex-shrink: 0;
+			}
+			.profile-frame img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border-radius: 20px;
+				box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+				border: 1px solid var(--border-glass);
+				position: relative;
+				z-index: 2;
+			}
+			/* Élément décoratif derrière l'image */
+			.profile-frame::before {
+				content: '';
+				position: absolute;
+				top: -20px; left: -20px;
+				width: 100%; height: 100%;
+				border: 2px solid var(--accent-cyan);
+				border-radius: 20px;
+				z-index: 1;
+				opacity: 0.5;
+			}
+			.profile-frame::after {
+				content: '';
+				position: absolute;
+				bottom: -20px; right: -20px;
+				width: 100%; height: 100%;
+				border: 2px solid var(--accent-purple);
+				border-radius: 20px;
+				z-index: 1;
+				opacity: 0.5;
+			}
 
-                        <div class="narrative">
-                            <p>
+			/* Carte de texte style verre */
+			.about-card {
+				flex: 1;
+				min-width: 300px;
+				max-width: 600px;
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				border-radius: 20px;
+				padding: 2.5em;
+				box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+			}
+			.about-card p {
+				font-size: 1.05em;
+				line-height: 1.8;
+				margin-bottom: 1.5em;
+				color: var(--text-secondary);
+				text-align: justify;
+			}
+			.about-card p:last-child { margin-bottom: 0; }
+
+			/* --- LANGUES --- */
+			.languages-grid {
+				display: flex;
+				justify-content: center;
+				gap: 1.5em;
+				flex-wrap: wrap;
+				margin-top: 1em;
+			}
+			.lang-item {
+				background: rgba(255,255,255,0.03);
+				border: 1px solid var(--border-glass);
+				border-radius: 12px;
+				padding: 1em 1.5em;
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				transition: all 0.3s ease;
+			}
+			.lang-item:hover {
+				background: rgba(255,255,255,0.08);
+				transform: translateY(-5px);
+				border-color: var(--accent-cyan);
+			}
+			.lang-item span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
+			.lang-flag { font-size: 1.5em; }
+
+			/* --- CONTACT & FOOTER --- */
+			.contact-card {
+				background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+				border: 1px solid var(--border-glass); border-radius: 20px;
+				padding: 3em; text-align: center;
+				max-width: 800px; margin: 0 auto;
+			}
+			.info-grid { display: flex; justify-content: center; gap: 2em; flex-wrap: wrap; margin: 2em 0; }
+			.info-item { display: flex; align-items: center; gap: 0.5em; font-size: 1.1em; color: var(--text-primary); }
+			.info-item i { color: var(--accent-cyan); }
+			
+			.button {
+				background: var(--gradient-primary);
+				color: #fff !important; border: 0; border-radius: 50px;
+				padding: 0.9em 2.5em; font-weight: 600; cursor: pointer;
+				box-shadow: 0 10px 20px rgba(140, 82, 255, 0.3); display: inline-block;
+			}
+			.button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(140, 82, 255, 0.5); }
+
+			/* --- RESPONSIVE --- */
+			@media (max-width: 980px) {
+				.about-wrapper { flex-direction: column; text-align: center; }
+				.about-card p { text-align: center; }
+				.profile-frame { width: 250px; height: 250px; margin: 0 auto; }
+			}
+			@media (max-width: 736px) {
+				.hero h1 { font-size: 2.2em; }
+				.menu-toggle { padding: 0.4em 0.8em; font-size: 0.9em; }
+				#sidebar-menu { width: 100%; max-width: 300px; }
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		
+		<div id="menu-overlay"></div>
+
+		<nav id="sidebar-menu">
+			<div class="menu-header">
+				<span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span>
+				<div class="menu-close"><i class="fas fa-times"></i></div>
+			</div>
+			<ul class="menu-links">
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="about.html">À Propos</a></li>
+				<li><a href="experiences.html">Expériences</a></li>
+				<li><a href="projets-hub.html">Projets</a></li>
+				<li><a href="articles.html">Articles</a></li>
+				<li><a href="#footer">Contact</a></li>
+			</ul>
+		</nav>
+
+		<div id="page-wrapper">
+
+			<section id="header">
+				<div class="container">
+					<div id="logo">
+						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
+						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
+					</div>
+					<div class="menu-toggle" id="menu-btn">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="hero reveal">
+				<div class="container">
+					<h1>À Propos de Moi</h1>
+					<p class="subtitle">Ingénieur en formation & Passionné de Data.</p>
+				</div>
+			</section>
+
+			<section class="section-container">
+				<div class="container">
+					<div class="about-wrapper reveal">
+						
+						<div class="profile-frame">
+							<img src="images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+						</div>
+
+						<div class="about-card">
+							<p>
                                 Ingénieur en formation à l'INSA Toulouse, ma véritable passion est de plonger au cœur des systèmes complexes. J'aime décortiquer un problème, en comprendre les rouages, et architecturer une solution qui soit non seulement efficace, mais aussi élégante et durable.
                             </p>
                             <p>
                                 Je transforme les données brutes en opportunités. Ma mission est d'architecturer des écosystèmes data complets, depuis l'ingestion initiale jusqu'à la création de valeur via l'analyse et le Machine Learning.
-
-                                Concrètement, je bâtis des flux de transformation qui nettoient et enrichissent la donnée, pour ensuite la structurer en Data Products performants qui servent de socle à la prise de décision.
-
-                                Je vous invite à parcourir mes différents projets pour voir comment je mets cette vision en pratique.
                             </p>
-                        </div>
-                    </div>
+                            <p>
+                                Concrètement, je bâtis des flux de transformation qui nettoient et enrichissent la donnée, pour ensuite la structurer en "Data Products" performants qui servent de socle à la prise de décision.
+                            </p>
+						</div>
 
-                    <div class="section-container tech-stack">
-                        <h2 class="section-title gradient-title">Stack Technique</h2>
-                        <div class="tech-logos">
-                            <div class="tech-logo"><img src="images/logo-aws.png" alt="AWS"><span>AWS</span></div>
-                            <div class="tech-logo"><img src="images/logo-docker.png" alt="Docker"><span>Docker</span></div>
-                            <div class="tech-logo"><img src="images/logo-jenkins.png" alt="Jenkins"><span>Jenkins</span></div>
-                            <div class="tech-logo"><img src="images/logo-git.png" alt="Git"><span>Git</span></div>
-                            <div class="tech-logo"><img src="images/logo-spark.png" alt="Spark"><span>Spark</span></div>
-                            <div class="tech-logo"><img src="images/logo-dynamodb.png" alt="DynamoDB"><span>DynamoDB</span></div>
-                            <div class="tech-logo"><img src="images/logo-python.png" alt="Python"><span>Python</span></div>
-                            <div class="tech-logo"><img src="images/logo-java.png" alt="Java"><span>Java</span></div>
-                            <div class="tech-logo"><img src="images/logo-sql.png" alt="SQL"><span>SQL</span></div>
-                            <div class="tech-logo"><img src="images/logo-angular.png" alt="Angular"><span>Angular</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="section-container languages-section">
-                        <h2 class="section-title gradient-title">Langues</h2>
-                        <ul class="languages-list">
-                            <li>🇫🇷 Français</li>
-                            <li>🇬🇧 Anglais</li>
-                            <li>🇲🇦 Marocain (Darija)</li>
-                            <li>🇸🇦 Arabe</li>
-                            <li>🇪🇸 Espagnol</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-			<section id="footer" style="text-align: center; padding: 20px 0;">
-                <ul class="links" style="list-style: none; padding: 0;">
-                    <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-                </ul>
-            </section>
-        </div>
+					</div>
+				</div>
+			</section>
 
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.dropotron.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
+			<section class="section-container" style="background: rgba(255,255,255,0.02);">
+				<div class="container">
+					<h2 class="section-title reveal">Langues</h2>
+					<div class="languages-grid reveal">
+						<div class="lang-item"><span class="lang-flag">🇫🇷</span><span>Français</span></div>
+						<div class="lang-item"><span class="lang-flag">🇬🇧</span><span>Anglais</span></div>
+						<div class="lang-item"><span class="lang-flag">🇲🇦</span><span>Marocain (Darija)</span></div>
+						<div class="lang-item"><span class="lang-flag">🇸🇦</span><span>Arabe</span></div>
+						<div class="lang-item"><span class="lang-flag">🇪🇸</span><span>Espagnol</span></div>
+					</div>
+				</div>
+			</section>
 
-    </body>
+			<section id="footer">
+				<div class="container reveal">
+					<div class="contact-card">
+						<h2>Prêt à collaborer ?</h2>
+						<p>Je suis toujours à l'écoute d'opportunités challengeantes en Data Engineering et Cloud Architecture.</p>
+						
+						<div class="info-grid">
+							<div class="info-item"><i class="fas fa-envelope"></i> el-ouali@insa-toulouse.fr</div>
+							<div class="info-item"><i class="fas fa-phone"></i> +33 7 52 04 36 70</div>
+							<div class="info-item"><i class="fab fa-linkedin"></i> linkedin.com/in/elouali</div>
+						</div>
+						
+						<a href="mailto:el-ouali@insa-toulouse.fr" class="button">Me contacter</a>
+					</div>
+					
+					<div style="text-align: center; margin-top: 4em; font-size: 0.9em; opacity: 0.6;">
+						<p>&copy; 2025 Abderrahman El Ouali. Designed & Engineered with passion.</p>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		
+		<script>
+			// Menu Burger
+			const menuBtn = document.getElementById('menu-btn');
+			const closeBtn = document.querySelector('.menu-close');
+			const sidebar = document.getElementById('sidebar-menu');
+			const overlay = document.getElementById('menu-overlay');
+			const body = document.body;
+
+			function toggleMenu() {
+				const isActive = sidebar.classList.contains('active');
+				if(!isActive) {
+					sidebar.classList.add('active');
+					overlay.classList.add('active');
+					body.style.overflow = 'hidden';
+				} else {
+					sidebar.classList.remove('active');
+					overlay.classList.remove('active');
+					body.style.overflow = 'auto';
+				}
+			}
+
+			if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
+			if(overlay) overlay.addEventListener('click', toggleMenu);
+
+			// Animation Reveal
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) entry.target.classList.add('active');
+				});
+			}, { threshold: 0.1 });
+
+			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+		</script>
+	</body>
 </html>
