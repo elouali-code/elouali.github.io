@@ -1,140 +1,138 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Projets Architecture & Cloud - Abderrahman El Ouali</title>
+		<title>Projets Cloud & Architecture - Abderrahman El Ouali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link rel="icon" type="image/png" href="favicon.png"> 
 		
 		<style>
-			:root {
-				--background: #0A0F1E;
-				--surface: #161B29;
-				--text-primary: #F0F0F0;
-				--text-secondary: #A0A0B0;
-				--accent-blue: #5271FF;
-				--accent-purple: #C652FF;
-				--border-color: #2a3042;
-			}
-			body { background: var(--background); color: var(--text-secondary); font-family: 'Poppins', sans-serif; }
-			#page-wrapper { background: none; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--text-primary); text-decoration: none; transition: all 0.2s ease; }
-			a:hover { color: var(--accent-blue); }
-			#header { background: var(--background); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 0.5em 2em; }
+			:root { --background-start: #0c0a1f; --background-end: #1f1d36; --surface-glass: rgba(22, 27, 41, 0.9); --border-glass: rgba(255, 255, 255, 0.15); --text-primary: #ffffff; --text-secondary: #e0e0e0; --accent-cyan: #00d4ff; --accent-purple: #8c52ff; --gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); }
+			* { box-sizing: border-box; } html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+			body { background-color: var(--background-start); background-image: radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%); color: var(--text-secondary); font-family: 'Poppins', sans-serif; line-height: 1.8; }
+			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
+			.container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+			h1, h2, h3 { color: var(--text-primary); font-weight: 600; margin: 0 0 0.5em 0; } a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; } a:hover { color: #fff; }
+			#header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(12, 10, 31, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-glass); z-index: 1000; padding: 0.8em 0; }
 			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
-			#nav ul li a { color: var(--text-secondary); position: relative; padding-bottom: 5px; font-weight: 500; }
-			#nav ul li a:after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--accent-blue); transition: width 0.3s ease; }
-			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
-			.section-title {
-				font-size: 2.8em;
-				text-align: center;
-				margin-bottom: 1.5em;
-				line-height: 1.4;
-				color: var(--accent-blue); 
-			}			.section-container { padding: 4em 0; }
-			.section-title { font-size: 2.8em; text-align: center; margin-bottom: 1.5em; }
-			.project-entry { background: var(--surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 2em; margin-bottom: 3em; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-			.project-entry:hover { transform: translateY(-8px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
-			.project-entry .row { align-items: center; }
-			.project-entry h3 { font-size: 1.8em; }
-			.tech-pills { list-style: none; padding: 0; margin: 1.5em 0; }
-			.tech-pills li { display: inline-block; background: rgba(82, 113, 255, 0.1); border: 1px solid rgba(82, 113, 255, 0.2); border-radius: 6px; margin: 0.3em; }
-			.tech-pills li a { color: var(--accent-blue) !important; padding: 0.4em 1em; font-size: 0.8em; font-weight: 500; display: block; }
-			.button { background: var(--accent-purple); color: #fff !important; border: 0; border-radius: 8px; box-shadow: 0 5px 20px rgba(140, 82, 255, 0.4); }
-			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
+			#logo { display: flex; align-items: center; gap: 1em; } #logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); } #logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; } #logo h1 a { color: #fff; }
+			.menu-toggle { display: flex; align-items: center; gap: 0.5em; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); padding: 0.5em 1.2em; border-radius: 50px; cursor: pointer; color: var(--text-primary); }
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
+			#sidebar-menu { position: fixed; top: 0; right: 0; width: 300px; height: 100vh; background: #0e0b1f; border-left: 1px solid var(--border-glass); z-index: 2000; transform: translateX(100%); transition: transform 0.4s ease; padding: 2em; display: flex; flex-direction: column; box-shadow: -10px 0 40px rgba(0,0,0,0.8); }
+			#sidebar-menu.active { transform: translateX(0); }
+			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
+			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
+			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; } .menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
+			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: all 0.3s ease; } #menu-overlay.active { opacity: 1; visibility: visible; }
+			.hero { padding: 12em 0 4em 0; text-align: center; }
+			.hero h1 { font-size: 3em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.2em; }
+			.hero .subtitle { font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto; }
+			.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5em; margin-bottom: 6em; }
+			.project-card { background: var(--surface-glass); border: 1px solid var(--border-glass); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%; }
+			.project-card:hover { transform: translateY(-8px); border-color: var(--accent-cyan); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); }
+			.card-thumb { height: 200px; width: 100%; overflow: hidden; } .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; } .project-card:hover .card-thumb img { transform: scale(1.05); }
+			.card-content { padding: 2em; flex-grow: 1; display: flex; flex-direction: column; }
+			.card-content h3 { font-size: 1.4em; margin-bottom: 0.5em; color: #fff; }
+			.card-content p { font-size: 0.95em; color: var(--text-secondary); margin-bottom: 1.5em; flex-grow: 1; }
+			.tech-stack { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 1.5em; }
+			.tech-tag { font-size: 0.75em; background: rgba(255,255,255,0.05); padding: 0.3em 0.8em; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); color: var(--accent-cyan); }
+			.btn-card { align-self: flex-start; padding: 0.6em 1.5em; border: 1px solid var(--accent-cyan); border-radius: 50px; background: transparent; color: var(--accent-cyan); font-size: 0.9em; font-weight: 500; transition: all 0.3s; }
+			.btn-card:hover { background: var(--accent-cyan); color: #000; }
+			#footer { background: rgba(12, 10, 31, 0.8); border-top: 1px solid var(--border-glass); padding: 2em 0; margin-top: auto; text-align: center; font-size: 0.9em; }
+			.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); } .reveal.active { opacity: 1; transform: translateY(0); }
+			@media (max-width: 768px) { .hero h1 { font-size: 2.2em; } }
 		</style>
 	</head>
-	<body class="no-sidebar is-preload">
+	<body class="is-preload">
+		<div id="menu-overlay"></div>
+		
+		<nav id="sidebar-menu">
+			<div class="menu-header"><span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
+			<ul class="menu-links">
+				<li><a href="index.html">Accueil</a></li><li><a href="about.html">À Propos</a></li><li><a href="experiences.html">Expériences</a></li><li><a href="projets-hub.html">Projets</a></li><li><a href="articles.html">Articles</a></li><li><a href="index.html#footer">Contact</a></li>
+			</ul>
+		</nav>
+
 		<div id="page-wrapper">
 			<section id="header">
 				<div class="container">
-					<div id="logo">
-						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-					</div>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="about.html">À Propos</a></li>
-							<li><a href="experiences.html">Expériences</a></li>
-							<li class="current"><a href="projets-hub.html">Projets</a></li>
-							<li><a href="articles.html">Articles</a></li>
-							<li><a href="index.html#footer">Contact</a></li>
-						</ul>
-					</nav>
+					<div id="logo"><img src="images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="index.html">Abderrahman El Ouali</a></h1></div>
+					<div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div>
 				</div>
 			</section>
-			<section id="main" class="section-container">
+
+			<section class="hero reveal">
 				<div class="container">
-					<header class="major">
-						<h2 class="section-title gradient-title">Projets : Architecture & Cloud</h2>
-						<p style="font-size: 1.2em; color: var(--text-secondary);">Ma démarche dans la conception de systèmes scalables et résilients.</p>
-					</header>
-					
-					<section class="project-entry">
-						<div class="row">
-							<div class="col-5 col-12-medium"><a href="project-dynamodb.html" class="image featured"><img src="images/projet-dynamodb.jpg" alt="Architecture DynamoDB" style="border-radius: 8px;" /></a></div>
-							<div class="col-7 col-12-medium">
-								<h3>Migration d'une Architecture Data</h3>
-								<p>Refonte d'une architecture S3 pour réduire la latence de O(N) à O(1) avec DynamoDB et Lambda.</p>
-								<ul class="tech-pills"><li><a>AWS</a></li><li><a>Serverless</a></li><li><a>DynamoDB</a></li><li><a>Python</a></li></ul>
-								<a href="project-dynamodb.html" class="button">Étude de cas</a>
-							</div>
-						</div>
-					</section>
-
-				<section class="project-entry">
-					<div class="row">
-						<div class="col-7 col-12-medium">
-							<h3>Architecture d'Observabilité sur AWS</h3>
-							<p>Conception d'une architecture de monitoring modulaire et événementielle pour transformer une application "boîte noire" en un système observable et résilient, entièrement déployé via IaC.</p>
-							<ul class="tech-pills">
-								<li><a>AWS CDK</a></li>
-								<li><a>IaC</a></li>
-								<li><a>CloudWatch</a></li>
-								<li><a>Serverless</a></li>
-							</ul>
-							<a href="project-monitoring.html" class="button">Étude de cas</a>
-						</div>
-						<div class="col-5 col-12-medium">
-							<a href="project-monitoring.html" class="image featured"><img src="images/monitoring1 (1).PNG" alt="Dashboard de monitoring sur AWS CloudWatch" style="border-radius: 8px;" /></a>
-						</div>
-					</div>
-				</section>
-
-					<section class="project-entry">
-						<div class="row">
-							<div class="col-5 col-12-medium"><a href="#" class="image featured"><img src="images/projet-freeze.jpg" alt="Architecture du service FREEZE" style="border-radius: 8px;" /></a></div>
-							<div class="col-7 col-12-medium">
-								<h3>Service de Stockage Intelligent</h3>
-								<p>Architecture d'un service de stockage sur AWS optimisant les coûts via un algorithme hybride (LFU/LRU).</p>
-								<ul class="tech-pills"><li><a>Architecture</a></li><li><a>AWS S3</a></li><li><a>Lambda</a></li><li><a>Cost Optimization</a></li></ul>
-								<a href="project-freeze.html" class="button">Étude de cas</a>
-							</div>
-						</div>
-					</section>
-
+					<h1>Architecture & Cloud</h1>
+					<p class="subtitle">Conception de systèmes résilients, Serverless et Infrastructure as Code.</p>
 				</div>
 			</section>
-            <section id="footer" style="text-align: center; padding: 20px 0;">
-                <ul class="links" style="list-style: none; padding: 0;">
-                    <li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-                </ul>
-            </section>
+
+			<div class="container">
+				<div class="projects-grid">
+					
+					<div class="project-card reveal">
+						<div class="card-thumb"><img src="images/projet-dynamodb.jpg" alt="Serverless Architecture"></div>
+						<div class="card-content">
+							<h3>Architecture Serverless O(1)</h3>
+							<p>Migration complète d'un système S3 vers DynamoDB/Lambda pour Airbus. Gain de performance critique et réduction des coûts.</p>
+							<div class="tech-stack">
+								<span class="tech-tag">AWS Lambda</span>
+								<span class="tech-tag">DynamoDB</span>
+								<span class="tech-tag">CDK</span>
+							</div>
+							<a href="project-dynamodb.html" class="btn-card">Voir l'étude de cas</a>
+						</div>
+					</div>
+
+					<div class="project-card reveal" style="transition-delay: 0.1s;">
+						<div class="card-thumb"><img src="images/logo.jpg" alt="IaC" style="object-fit: cover; filter: brightness(0.5);"></div>
+						<div class="card-content">
+							<h3>Secure Cloud Infrastructure</h3>
+							<p>Déploiement automatisé d'environnements sécurisés (VPC, IAM, EKS) via Terraform et Ansible.</p>
+							<div class="tech-stack">
+								<span class="tech-tag">Terraform</span>
+								<span class="tech-tag">AWS</span>
+								<span class="tech-tag">Kubernetes</span>
+							</div>
+							<a href="#" class="btn-card" onclick="alert('Détails bientôt disponibles')">Voir le projet</a>
+						</div>
+					</div>
+
+					<div class="project-card reveal" style="transition-delay: 0.2s;">
+						<div class="card-thumb"><img src="images/logo-webhelp.png" alt="API Gateway" style="object-fit: contain; padding: 2em; background: #fff;"></div>
+						<div class="card-content">
+							<h3>API Microservices Scalable</h3>
+							<p>Architecture en microservices pour une application à fort trafic, avec gestion de charge et tolérance aux pannes.</p>
+							<div class="tech-stack">
+								<span class="tech-tag">API Gateway</span>
+								<span class="tech-tag">Docker</span>
+								<span class="tech-tag">Spring Cloud</span>
+							</div>
+							<a href="#" class="btn-card" onclick="alert('Détails bientôt disponibles')">Voir le projet</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<section id="footer">
+				<div class="container"><p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p></div>
+			</section>
 		</div>
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+
+		<script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.dropotron.min.js"></script><script src="assets/js/browser.min.js"></script><script src="assets/js/breakpoints.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script>
+		<script>
+			const menuBtn=document.getElementById('menu-btn'),closeBtn=document.querySelector('.menu-close'),sidebar=document.getElementById('sidebar-menu'),overlay=document.getElementById('menu-overlay'),body=document.body;
+			function toggleMenu(){const e=sidebar.classList.contains('active');e?(sidebar.classList.remove('active'),overlay.classList.remove('active'),body.style.overflow='auto'):(sidebar.classList.add('active'),overlay.classList.add('active'),body.style.overflow='hidden')}
+			menuBtn&&menuBtn.addEventListener('click',toggleMenu),closeBtn&&closeBtn.addEventListener('click',toggleMenu),overlay&&overlay.addEventListener('click',toggleMenu);
+			const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('active')})},{threshold:.1});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+		</script>
 	</body>
 </html>
