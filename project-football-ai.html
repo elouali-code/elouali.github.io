@@ -6,13 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
 		<link rel="stylesheet" href="assets/css/main.css" />
+		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 		<link rel="icon" type="image/png" href="favicon.png"> 
 		
 		<style>
-			/* --- 1. CONFIGURATION IDENTIQUE HOME --- */
+			/* --- 1. BASE IDENTIQUE AUX AUTRES PAGES --- */
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
@@ -38,15 +39,15 @@
 				line-height: 1.8;
 			}
 
-			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
-			.container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-
 			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin-bottom: 0.8em; }
 			p, li { font-size: 1.1em; color: var(--text-secondary); }
 			a { color: var(--accent-cyan); text-decoration: none; transition: 0.3s; }
-			a:hover { color: #fff; }
+			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
 
-			/* --- HEADER & MENU --- */
+			.container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
+
+			/* --- 2. HEADER & MENU (STANDARDISE) --- */
 			#header {
 				position: fixed; top: 0; left: 0; width: 100%;
 				background: rgba(12, 10, 31, 0.95);
@@ -76,15 +77,17 @@
 				box-shadow: -10px 0 40px rgba(0,0,0,0.8);
 			}
 			#sidebar-menu.active { transform: translateX(0); }
+			
 			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
 			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
 			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
 			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
 			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
+			
 			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: 0.3s; }
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-			/* --- HERO PROJET --- */
+			/* --- 3. HERO --- */
 			.project-hero { padding: 12em 0 4em 0; text-align: center; }
 			.project-hero h1 { 
 				font-size: 3em; 
@@ -101,57 +104,45 @@
 				color: var(--accent-cyan); display: flex; align-items: center; gap: 8px; font-weight: 500;
 			}
 
-			/* --- SLIDER CORRECT (BOUTONS PROPRES) --- */
+			/* --- 4. SLIDER PROPRE (SANS TEXTE DESSUS) --- */
 			.slider-wrapper {
-				position: relative;
-				max-width: 900px; margin: 0 auto 5em auto;
+				max-width: 900px; margin: 0 auto 2em auto;
 				border-radius: 16px; overflow: hidden;
 				border: 1px solid var(--border-glass);
 				box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 				background: #000;
+				position: relative;
 			}
+			
 			.slider-container { display: flex; transition: transform 0.5s ease-in-out; height: 500px; }
-			.slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+			
+			.slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 			.slide img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-			
-			/* Légende sur l'image */
-			.slide-caption {
-				position: absolute; bottom: 0; width: 100%;
-				background: rgba(0, 0, 0, 0.8); color: #fff;
-				padding: 1em; text-align: center; backdrop-filter: blur(5px);
-				border-top: 1px solid rgba(255,255,255,0.1);
-			}
-			.slide-caption h3 { margin: 0 0 0.2em 0; font-size: 1.2em; color: var(--accent-cyan); }
-			.slide-caption p { margin: 0; font-size: 0.9em; color: #ddd; }
 
-			/* BOUTONS SLIDER STYLÉS */
-			.slider-btn {
+			/* FLÈCHES DE NAVIGATION DISCRÈTES */
+			.slider-arrow {
 				position: absolute; top: 50%; transform: translateY(-50%);
-				/* Fond transparent léger */
-				background: rgba(255, 255, 255, 0.1);
-				color: #fff;
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				/* Taille fixe pour cercle parfait */
-				width: 45px; height: 45px;
-				border-radius: 50%;
-				cursor: pointer; z-index: 10;
+				background: rgba(255,255,255,0.1); color: #fff;
+				width: 50px; height: 50px; border-radius: 50%;
 				display: flex; align-items: center; justify-content: center;
-				transition: all 0.3s ease;
-				backdrop-filter: blur(2px);
+				cursor: pointer; transition: 0.3s; z-index: 10;
+				border: 1px solid rgba(255,255,255,0.1);
 			}
-			.slider-btn i { font-size: 1em; } /* Taille icône */
-			
-			/* Effet au survol */
-			.slider-btn:hover {
-				background: var(--accent-cyan);
-				color: #000;
-				border-color: var(--accent-cyan);
-				box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
-			}
+			.slider-arrow:hover { background: var(--accent-cyan); color: #000; border-color: var(--accent-cyan); }
 			.prev-btn { left: 20px; }
 			.next-btn { right: 20px; }
 
-			/* --- CONTENU DU PROJET --- */
+			/* LÉGENDE SOUS LE SLIDER */
+			.caption-box {
+				max-width: 900px; margin: 0 auto 5em auto;
+				text-align: center; background: var(--surface-glass);
+				border: 1px solid var(--border-glass); border-radius: 12px;
+				padding: 1.5em;
+			}
+			.caption-box h3 { color: var(--accent-cyan); margin: 0 0 0.5em 0; font-size: 1.3em; }
+			.caption-box p { margin: 0; font-size: 1em; color: #fff; }
+
+			/* --- 5. CONTENU --- */
 			.content-section { margin-bottom: 4em; }
 			.content-section h3 { border-left: 4px solid var(--accent-purple); padding-left: 15px; margin-bottom: 1em; font-size: 1.8em; color: #fff; }
 			.content-section p, .content-section li { text-align: justify; margin-bottom: 1em; }
@@ -169,8 +160,19 @@
 			}
 			.btn-git:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(255,255,255,0.5); }
 
-			/* FOOTER */
-			#footer { background: rgba(12, 10, 31, 0.9); border-top: 1px solid var(--border-glass); padding: 3em 0; text-align: center; margin-top: auto; }
+			/* --- 6. FOOTER (CORRIGÉ & UNIFORMISÉ) --- */
+			#footer { 
+				background: rgba(12, 10, 31, 0.8); /* Même fond que les autres pages */
+				border-top: 1px solid var(--border-glass); 
+				padding: 2em 0; /* Même padding standard */
+				text-align: center; 
+				margin-top: auto; /* Pousse le footer en bas */
+			}
+			#footer p {
+				margin: 0;
+				font-size: 0.9em; /* Même taille de police */
+				color: var(--text-secondary);
+			}
 			
 			@media (max-width: 768px) {
 				.project-hero h1 { font-size: 2.2em; }
@@ -229,32 +231,25 @@
 			<div class="container">
 				
 				<div class="slider-wrapper">
-					<button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-					<button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+					<div class="slider-arrow prev-btn"><i class="fas fa-chevron-left"></i></div>
+					<div class="slider-arrow next-btn"><i class="fas fa-chevron-right"></i></div>
 					
 					<div class="slider-container">
 						<div class="slide">
 							<img src="images/football-detection.jpg" alt="Détection">
-							<div class="slide-caption">
-								<h3>Détection Automatique</h3>
-								<p>Identification des joueurs et du ballon par Vision par Ordinateur.</p>
-							</div>
 						</div>
 						<div class="slide">
-							<img src="images/football-heatmap.jpg" alt="Tactique">
-							<div class="slide-caption">
-								<h3>Projection Tactique 2D</h3>
-								<p>Transformation de la perspective vidéo en carte vue de dessus.</p>
-							</div>
+							<img src="images/football-tactic.jpg" alt="Tactique">
 						</div>
 						<div class="slide">
-							<img src="images/football-heatmap.jpg" alt="Stats">
-							<div class="slide-caption">
-								<h3>Analyse de Possession</h3>
-								<p>Calcul des statistiques d'équipe sur la séquence vidéo.</p>
-							</div>
+							<img src="images/football-analysis.jpg" alt="Stats">
 						</div>
 					</div>
+				</div>
+
+				<div class="caption-box">
+					<h3 id="caption-title">Détection Automatique</h3>
+					<p id="caption-desc">Identification des joueurs et du ballon par Vision par Ordinateur.</p>
 				</div>
 
 				<div class="content-section">
@@ -331,15 +326,32 @@
 			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
 			if(overlay) overlay.addEventListener('click', toggleMenu);
 
-			// --- SLIDER LOGIC ---
+			// --- SLIDER LOGIC AVEC LÉGENDE DYNAMIQUE ---
 			const sliderContainer = document.querySelector('.slider-container');
 			const slides = document.querySelectorAll('.slide');
 			const prevBtn = document.querySelector('.prev-btn');
 			const nextBtn = document.querySelector('.next-btn');
+			
+			// Éléments de légende
+			const captionTitle = document.getElementById('caption-title');
+			const captionDesc = document.getElementById('caption-desc');
+
+			// Données des légendes (Correspondant aux slides 1, 2, 3)
+			const captions = [
+				{ title: "Détection Automatique", desc: "Identification des joueurs et du ballon par Vision par Ordinateur." },
+				{ title: "Projection Tactique 2D", desc: "Transformation de la perspective vidéo en carte vue de dessus." },
+				{ title: "Analyse de Possession", desc: "Calcul des statistiques d'équipe sur la séquence vidéo." }
+			];
+
 			let currentIndex = 0;
 
 			function updateSlider() {
+				// Bouger le slider
 				sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+				
+				// Mettre à jour la légende en dessous
+				captionTitle.innerText = captions[currentIndex].title;
+				captionDesc.innerText = captions[currentIndex].desc;
 			}
 
 			nextBtn.addEventListener('click', () => {
