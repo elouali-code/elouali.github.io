@@ -6,249 +6,187 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link rel="icon" type="image/png" href="favicon.png"> 
 		
 		<style>
-			:root {
-				--background: #0A0F1E;
-				--surface: #161B29;
-				--text-primary: #F0F0F0;
-				--text-secondary: #A0A0B0;
-				--accent-blue: #5271FF;
-				--accent-purple: #C652FF;
-				--border-color: #2a3042;
-			}
+			/* --- STYLE GLOBAL ET CORRECTIFS --- */
+			:root { --background-start: #0c0a1f; --background-end: #1f1d36; --surface-glass: rgba(22, 27, 41, 0.9); --border-glass: rgba(255, 255, 255, 0.15); --text-primary: #ffffff; --text-secondary: #e0e0e0; --accent-cyan: #00d4ff; --accent-purple: #8c52ff; --gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); }
+			* { box-sizing: border-box; } html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+			body { background-color: var(--background-start); background-image: radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%); color: var(--text-secondary); font-family: 'Poppins', sans-serif; line-height: 1.8; }
+			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
+			.container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+			h1, h2, h3 { color: var(--text-primary); font-weight: 600; margin-bottom: 0.5em; } a { color: var(--accent-cyan); text-decoration: none; transition: 0.3s; } a:hover { color: #fff; }
 
-			body {
-				background: var(--background);
-				color: var(--text-secondary);
-				font-family: 'Poppins', sans-serif;
-			}
-			#page-wrapper { background: none; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; }
-			a { color: var(--text-primary); text-decoration: none; transition: color 0.2s ease; }
-			a:hover { color: var(--accent-blue); }
-			hr { border-bottom-color: var(--border-color); margin: 3em 0;}
-
-			#header {
-				background: var(--background);
-				border-bottom: 1px solid var(--border-color);
-				position: sticky; top: 0; z-index: 1000;
-				padding: 0.5em 2em;
-			}
+			/* HEADER & MENU (Identique Home) */
+			#header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(12, 10, 31, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-glass); z-index: 1000; padding: 0.8em 0; }
 			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			#logo { display: flex; align-items: center; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; margin-right: 1em; }
-			#logo h1 { font-size: 1.2em; margin: 0; }
-			
-			#nav ul li a {
-				color: var(--text-secondary);
-				position: relative;
-				padding-bottom: 5px;
-				font-weight: 500;
-			}
-			#nav ul li a:after {
-				content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-				width: 0; height: 2px; background-color: var(--accent-blue);
-				transition: width 0.3s ease;
-			}
-			#nav ul li a:hover:after, #nav ul li.current > a:after { width: 100%; }
-			#nav ul li.current > a { color: var(--text-primary) !important; background: none !important; }
+			#logo { display: flex; align-items: center; gap: 1em; } #logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); } #logo h1 { font-size: 1.1em; margin: 0; color: #fff; }
+			.menu-toggle { display: flex; align-items: center; gap: 0.5em; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); padding: 0.5em 1.2em; border-radius: 50px; cursor: pointer; color: var(--text-primary); }
+			#sidebar-menu { position: fixed; top: 0; right: 0; width: 300px; height: 100vh; background: #0e0b1f; border-left: 1px solid var(--border-glass); z-index: 2000; transform: translateX(100%); transition: 0.4s ease; padding: 2em; display: flex; flex-direction: column; }
+			#sidebar-menu.active { transform: translateX(0); }
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; margin-bottom: 1em; } .menu-links a:hover { color: var(--accent-cyan); }
+			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: 0.3s; } #menu-overlay.active { opacity: 1; visibility: visible; }
 
-			.gradient-title {
-				background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				display: inline-block;
-				line-height: 1.4; 
-			}
-			
-			article.box.post section { margin-bottom: 2.5em; }
-			article.box.post section h3 {
-				font-size: 1.8em;
-				margin-bottom: 1em;
-			}
+			/* --- PROJECT SPECIFIC STYLES --- */
+			.project-header { padding: 10em 0 4em 0; text-align: center; }
+			.project-header h1 { font-size: 3em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+			.project-header p { font-size: 1.2em; max-width: 800px; margin: 0 auto; color: var(--text-secondary); }
 
-			.project-meta { list-style: none; padding: 1.5em; margin: 2em 0; background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; flex-wrap: wrap; justify-content: space-around; }
-			.project-meta li { flex: 1; min-width: 200px; text-align: center; padding: 0.5em; }
-			.project-meta li strong { display: block; font-size: 0.9em; color: var(--text-secondary); text-transform: uppercase; }
-			.project-meta li span { font-size: 1.1em; color: var(--text-primary); font-weight: 500; }
-			
-			.slider-container { max-width: 800px; margin: 3em auto; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid var(--border-color); }
-			.slider { display: flex; transition: transform 0.5s ease-in-out; }
-			.slide { min-width: 100%; box-sizing: border-box; }
-			.slide img { width: 100%; display: block; }
-			.slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
-			.slider-nav a { background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px 15px; cursor: pointer; user-select: none; border-radius: 50%; }
-			.slider-nav a:hover { background-color: rgba(0, 0, 0, 0.8); }
-			.prev { margin-left: 1em; }
-			.next { margin-right: 1em; }
-			
-			.results-grid { margin-top: 2em; }
-			.result-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5em; text-align: center; height: 100%; transition: transform 0.3s ease; }
-			.result-card:hover { transform: translateY(-5px); }
-			.result-card .icon { font-size: 2em; color: var(--accent-blue); }
-			.result-card h4 { margin: 0.5em 0; }
-			
-			#footer { background: var(--background); border-top: 1px solid var(--border-color); padding: 4em 0; }
+			/* TAGS STACK */
+			.stack-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 1em; margin: 2em 0; }
+			.stack-badge { background: rgba(255,255,255,0.05); padding: 0.5em 1.5em; border-radius: 50px; border: 1px solid var(--border-glass); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 0.9em; }
+			.stack-badge i { color: var(--accent-cyan); font-size: 1.2em; }
+
+			/* CONTENU DÉTAILLÉ */
+			.details-section { display: flex; flex-wrap: wrap; gap: 4em; margin-bottom: 4em; }
+			.details-text { flex: 1; min-width: 300px; }
+			.details-text h3 { font-size: 1.8em; color: #fff; border-left: 4px solid var(--accent-purple); padding-left: 15px; margin-bottom: 1em; }
+			.details-text p { text-align: justify; margin-bottom: 1.5em; }
+
+			/* --- GALERIE INTELLIGENTE (IMAGE FIX) --- */
+			.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 4em 0; }
+			.gallery-item {
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				border-radius: 16px;
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+			}
+			.img-container {
+				width: 100%;
+				height: 250px; /* HAUTEUR FIXE POUR TOUTES LES IMAGES */
+				background: #000; /* Fond noir pour les images format portrait */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+				border-bottom: 1px solid var(--border-glass);
+			}
+			.img-container img {
+				max-width: 100%;
+				max-height: 100%;
+				object-fit: contain; /* L'image ne sera jamais coupée */
+			}
+			.gallery-caption { padding: 1.5em; text-align: center; }
+			.gallery-caption h4 { margin: 0 0 0.5em 0; color: #fff; }
+			.gallery-caption p { font-size: 0.9em; margin: 0; }
+
+			/* BOUTON GIT */
+			.git-action { text-align: center; margin: 4em 0; }
+			.btn-git { background: var(--text-primary); color: #000 !important; padding: 1em 3em; border-radius: 50px; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; transition: transform 0.3s; }
+			.btn-git:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(255,255,255,0.4); }
+
+			#footer { background: rgba(12, 10, 31, 0.8); border-top: 1px solid var(--border-glass); padding: 2em 0; margin-top: auto; text-align: center; font-size: 0.9em; }
+			@media (max-width: 768px) { .project-header h1 { font-size: 2.2em; } .details-section { flex-direction: column; } }
 		</style>
 	</head>
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
+	<body class="is-preload">
+		<div id="menu-overlay"></div>
+		<nav id="sidebar-menu">
+			<div class="menu-header"><span style="color:#fff; font-weight:bold;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
+			<ul class="menu-links">
+				<li><a href="index.html">Accueil</a></li><li><a href="about.html">À Propos</a></li><li><a href="experiences.html">Expériences</a></li><li><a href="projets-hub.html">Projets</a></li><li><a href="articles.html">Articles</a></li><li><a href="index.html#footer">Contact</a></li>
+			</ul>
+		</nav>
 
+		<div id="page-wrapper">
 			<section id="header">
 				<div class="container">
-					<div id="logo">
-						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-					</div>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Accueil</a></li>
-							<li><a href="about.html">À Propos</a></li>
-							<li><a href="experiences.html">Expériences</a></li>
-							<li class="current"><a href="projets-hub.html">Projets</a></li>
-							<li><a href="articles.html">Articles</a></li>
-							<li><a href="index.html#footer">Contact</a></li>
-						</ul>
-					</nav>
+					<div id="logo"><img src="images/logo.jpg" alt="Logo" /><h1><a href="index.html">Abderrahman El Ouali</a></h1></div>
+					<div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div>
 				</div>
 			</section>
 
-			<section id="main">
+			<section class="project-header">
 				<div class="container">
-					<article class="box post">
-						<header style="text-align:center; margin-bottom: 2em;">
-							<h2 style="font-size: 2.8em;" class="gradient-title">Projet : AI Football Tactical Analysis</h2>
-							<p style="font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Un pipeline de Computer Vision bout-en-bout pour l'analyse tactique automatisée utilisant YOLOv8 et la transformation homographique.</p>
-						</header>
-                        <ul class="project-meta">
-                            <li><strong>Type</strong><span>Projet Personnel</span></li>
-                            <li><strong>Domaine</strong><span>Computer Vision / Sport Tech</span></li>
-                            <li><strong>Tech Stack</strong><span>Python, YOLOv8, OpenCV, NumPy</span></li>
-                            <li><strong>Code</strong><span><a href="https://github.com/elouali-code/MonProjetFoot" target="_blank" style="color: var(--accent-blue);">Voir sur GitHub</a></span></li>
-                        </ul>
-						
-						<div class="slider-container">
-							<div class="slider">
-								<div class="slide"><img src="images/football-detection.jpg" alt="Détection des joueurs en temps réel avec YOLOv8"></div>
-								<div class="slide"><img src="images/football-heatmap.jpg" alt="Heatmap de pression générée après transformation homographique"></div>
-							</div>
-							<div class="slider-nav">
-								<a class="prev">&#10094;</a>
-								<a class="next">&#10095;</a>
-							</div>
-						</div>
-
-						<div style="max-width: 800px; margin: 2em auto 0 auto;">
-							<section>
-								<h3 class="gradient-title">Le Concept : La Data au service du Football</h3>
-								<p>Passionné par le football et la data, j'ai voulu créer un outil capable d'extraire des données tactiques directement à partir de flux vidéo bruts, sans capteurs physiques sur les joueurs. L'objectif était de transformer une simple vidéo de match en insights tactiques exploitables, comme l'occupation des zones ou la pression défensive.</p>
-							</section>
-
-							<hr/>
-
-							<section>
-								<h3 class="gradient-title">Fonctionnalités & Architecture Technique</h3>
-								<p>Le projet repose sur un pipeline de traitement vidéo en temps réel développé en Python :</p>
-								
-								<h4><strong>1. Détection d'Objets avec YOLOv8</strong></h4>
-								<p>Utilisation d'un modèle <strong>YOLOv8</strong> fine-tuné pour identifier et classifier trois types d'objets sur le terrain : les joueurs (en distinguant les équipes par analyse de couleur), les arbitres et le ballon. Cela permet un tracking précis des acteurs frame par frame.</p>
-
-								<h4><strong>2. Transformation de Perspective (Homographie)</strong></h4>
-								<p>Le défi majeur de l'analyse vidéo est la perspective 3D de la caméra. Pour projeter les joueurs sur une carte tactique 2D (vue de dessus), j'ai implémenté une <strong>transformation homographique</strong> avec OpenCV. En calibrant 4 points clés du terrain sur l'image, je calcule une matrice de transformation qui convertit les coordonnées pixels (x,y) de la vidéo en coordonnées géométriques réelles.</p>
-
-								<h4><strong>3. Analyse de la Pression & Heatmaps</strong></h4>
-								<p>Une fois les positions projetées en 2D, j'applique des algorithmes d'analyse spatiale. J'ai notamment développé un calcul de "pression" utilisant des fonctions gaussiennes autour de chaque joueur pour générer des <strong>Heatmaps dynamiques</strong>, visualisant les zones de contrôle de chaque équipe.</p>
-							</section>
-
-							<hr/>
-
-							<section>
-								<h3 class="gradient-title">Résultats Obtenus</h3>
-								<div class="row results-grid">
-									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-										<div class="result-card">
-											<span class="icon solid fa-eye"></span>
-											<h4 style="color: var(--accent-blue);">Tracking Temps Réel</h4>
-											<p style="color: var(--text-primary);">Détection fluide et robuste des joueurs et du ballon, même lors des mouvements rapides de caméra.</p>
-										</div>
-									</div>
-									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-										<div class="result-card">
-											<span class="icon solid fa-map"></span>
-											<h4 style="color: var(--accent-blue);">Projection Tactique 2D</h4>
-											<p style="color: var(--text-primary);">Transformation précise de la perspective vidéo vers un plan 2D, permettant des calculs de distances réels.</p>
-										</div>
-									</div>
-									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-										<div class="result-card">
-											<span class="icon solid fa-chart-area"></span>
-											<h4 style="color: var(--accent-blue);">Heatmaps de Pression</h4>
-											<p style="color: var(--text-primary);">Visualisation avancée de l'occupation du terrain et de l'intensité défensive/offensive des équipes.</p>
-										</div>
-									</div>
-									<div class="col-6 col-12-medium" style="margin-bottom: 1.5em;">
-										<div class="result-card">
-											<span class="icon solid fa-video"></span>
-											<h4 style="color: var(--accent-blue);">Double Flux Vidéo</h4>
-											<p style="color: var(--text-primary);">Génération d'une sortie vidéo combinant le match annoté et le radar tactique synchronisé.</p>
-										</div>
-									</div>
-								</div>
-							</section>
-						</div>
-					</article>
+					<h1>AI Football Tactical Analysis</h1>
+					<p>Détection, suivi et analyse tactique des joueurs en temps réel grâce à la vision par ordinateur.</p>
+					
+					<div class="stack-container">
+						<div class="stack-badge"><i class="fab fa-python"></i> Python</div>
+						<div class="stack-badge"><i class="fas fa-eye"></i> YOLOv8</div>
+						<div class="stack-badge"><i class="fas fa-camera"></i> OpenCV</div>
+						<div class="stack-badge"><i class="fas fa-brain"></i> Deep Learning</div>
+					</div>
 				</div>
 			</section>
 
-			<section id="footer" style="text-align: center; padding: 20px 0;">
-				<ul class="links" style="list-style: none; padding: 0;">
-					<li style="display: inline-block; padding: 0 1em; font-size: 0.9em; color: var(--text-secondary);">&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</li>
-				</ul>
-			</section>
+			<div class="container">
+				
+				<div class="details-section">
+					<div class="details-text">
+						<h3>Le Challenge</h3>
+						<p>L'analyse vidéo dans le football moderne est cruciale mais souvent manuelle et fastidieuse. L'objectif était de créer un système capable d'automatiser l'extraction de données tactiques à partir d'un simple flux vidéo de match, sans équipement GPS coûteux sur les joueurs.</p>
+						<p>Le défi principal résidait dans la détection précise des joueurs malgré les mouvements rapides, les occlusions (joueurs cachés) et les variations de lumière, tout en différenciant les équipes et l'arbitre.</p>
+					</div>
+					<div class="details-text">
+						<h3>La Solution Technique</h3>
+						<p>J'ai développé un pipeline de Computer Vision basé sur <strong>YOLOv8</strong> pour la détection d'objets. Le système suit les étapes suivantes :</p>
+						<ul>
+							<li><strong>Détection :</strong> Identification des joueurs, du ballon et des arbitres frame par frame.</li>
+							<li><strong>Tracking :</strong> Utilisation d'algorithmes (ByteTrack) pour attribuer un ID unique à chaque joueur et suivre son mouvement.</li>
+							<li><strong>Classification :</strong> Analyse des histogrammes de couleurs (K-Means Clustering) pour distinguer les maillots et assigner les équipes.</li>
+							<li><strong>Projection :</strong> Transformation de perspective pour projeter la position des joueurs sur une carte tactique 2D.</li>
+						</ul>
+					</div>
+				</div>
 
+				<h3 style="text-align: center; color: #fff; margin-bottom: 2em;">Aperçu du Système</h3>
+				<div class="gallery-grid">
+					
+					<div class="gallery-item">
+						<div class="img-container">
+							<img src="images/football-detection.jpg" alt="Détection YOLO">
+						</div>
+						<div class="gallery-caption">
+							<h4>Détection Temps Réel</h4>
+							<p>Bounding boxes identifiant joueurs et ballon avec score de confiance.</p>
+						</div>
+					</div>
+
+					<div class="gallery-item">
+						<div class="img-container">
+							<img src="images/football-tactic.jpg" alt="Carte Tactique 2D">
+						</div>
+						<div class="gallery-caption">
+							<h4>Projection 2D</h4>
+							<p>Transformation de la vue caméra en vue tactique "top-down".</p>
+						</div>
+					</div>
+
+					<div class="gallery-item">
+						<div class="img-container">
+							<img src="images/football-analysis.jpg" alt="Stats Joueurs">
+						</div>
+						<div class="gallery-caption">
+							<h4>Possession & Stats</h4>
+							<p>Calcul automatique de la possession et des distances parcourues.</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="git-action">
+					<a href="https://github.com/elouali-code" target="_blank" class="btn-git">
+						<i class="fab fa-github"></i> Voir le Code Source
+					</a>
+				</div>
+
+			</div>
+
+			<section id="footer">
+				<div class="container"><p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p></div>
+			</section>
 		</div>
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.dropotron.min.js"></script><script src="assets/js/browser.min.js"></script><script src="assets/js/breakpoints.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script>
 		<script>
-			// Script pour la galerie d'images
-			document.addEventListener('DOMContentLoaded', function() {
-				let currentSlide = 0;
-				const slides = document.querySelectorAll('.slide');
-				if (slides.length === 0) return;
-				const slideCount = slides.length;
-				const slider = document.querySelector('.slider');
-				const prevButton = document.querySelector('.prev');
-				const nextButton = document.querySelector('.next');
-
-				function showSlide(index) {
-					if (index >= slideCount) {
-						currentSlide = 0;
-					} else if (index < 0) {
-						currentSlide = slideCount - 1;
-					} else {
-						currentSlide = index;
-					}
-					const offset = -currentSlide * 100;
-					slider.style.transform = 'translateX(' + offset + '%)';
-				}
-
-				nextButton.addEventListener('click', function() {
-					showSlide(currentSlide + 1);
-				});
-
-				prevButton.addEventListener('click', function() {
-					showSlide(currentSlide - 1);
-				});
-			});
+			const menuBtn=document.getElementById('menu-btn'),closeBtn=document.querySelector('.menu-close'),sidebar=document.getElementById('sidebar-menu'),overlay=document.getElementById('menu-overlay'),body=document.body;
+			function toggleMenu(){const e=sidebar.classList.contains('active');e?(sidebar.classList.remove('active'),overlay.classList.remove('active'),body.style.overflow='auto'):(sidebar.classList.add('active'),overlay.classList.add('active'),body.style.overflow='hidden')}
+			menuBtn&&menuBtn.addEventListener('click',toggleMenu),closeBtn&&closeBtn.addEventListener('click',toggleMenu),overlay&&overlay.addEventListener('click',toggleMenu);
 		</script>
-
 	</body>
 </html>
