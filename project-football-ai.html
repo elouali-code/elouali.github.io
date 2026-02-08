@@ -6,24 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
 		<link rel="stylesheet" href="assets/css/main.css" />
-		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-		
 		<link rel="icon" type="image/png" href="favicon.png"> 
 		
 		<style>
-			/* --- 1. COULEURS & FOND (IDENTIQUE HOME) --- */
+			/* --- 1. CONFIGURATION IDENTIQUE HOME --- */
 			:root {
 				--background-start: #0c0a1f;
 				--background-end: #1f1d36;
 				--surface-glass: rgba(22, 27, 41, 0.9);
 				--border-glass: rgba(255, 255, 255, 0.15);
-				--text-primary: #ffffff; /* BLANC PUR */
-				--text-secondary: #e0e0e0; /* GRIS CLAIR */
+				--text-primary: #ffffff;
+				--text-secondary: #e0e0e0;
 				--accent-cyan: #00d4ff;
 				--accent-purple: #8c52ff;
 				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
@@ -42,25 +38,15 @@
 				line-height: 1.8;
 			}
 
-			/* --- 2. TYPOGRAPHIE CORRIGÉE --- */
-			h1, h2, h3, h4 { 
-				color: var(--text-primary) !important; /* Force le blanc */
-				font-weight: 600; 
-				letter-spacing: -0.5px; 
-				margin-bottom: 0.8em;
-			}
-			p, li { 
-				color: var(--text-secondary) !important; /* Force le gris clair */
-				font-size: 1.1em;
-			}
-			strong { color: var(--accent-cyan) !important; font-weight: 600; }
-
-			a { color: var(--accent-cyan); text-decoration: none; transition: 0.3s; }
-			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
-
+			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
 			.container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-			/* --- 3. HEADER & MENU (COPIÉ DE HOME) --- */
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin-bottom: 0.8em; }
+			p, li { font-size: 1.1em; color: var(--text-secondary); }
+			a { color: var(--accent-cyan); text-decoration: none; transition: 0.3s; }
+			a:hover { color: #fff; }
+
+			/* --- HEADER & MENU --- */
 			#header {
 				position: fixed; top: 0; left: 0; width: 100%;
 				background: rgba(12, 10, 31, 0.95);
@@ -90,17 +76,15 @@
 				box-shadow: -10px 0 40px rgba(0,0,0,0.8);
 			}
 			#sidebar-menu.active { transform: translateX(0); }
-			
 			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
 			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
 			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
 			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
 			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
-			
 			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: 0.3s; }
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-			/* --- 4. HERO PROJET --- */
+			/* --- HERO PROJET --- */
 			.project-hero { padding: 12em 0 4em 0; text-align: center; }
 			.project-hero h1 { 
 				font-size: 3em; 
@@ -117,7 +101,7 @@
 				color: var(--accent-cyan); display: flex; align-items: center; gap: 8px; font-weight: 500;
 			}
 
-			/* --- 5. SLIDER (CAROUSEL) FONCTIONNEL --- */
+			/* --- SLIDER CORRECT (BOUTONS PROPRES) --- */
 			.slider-wrapper {
 				position: relative;
 				max-width: 900px; margin: 0 auto 5em auto;
@@ -126,23 +110,48 @@
 				box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 				background: #000;
 			}
-			.slider-container { display: flex; transition: transform 0.5s ease-in-out; height: 500px; } /* Hauteur fixe */
+			.slider-container { display: flex; transition: transform 0.5s ease-in-out; height: 500px; }
 			.slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
-			
-			/* Image centrée sans être coupée */
 			.slide img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 			
+			/* Légende sur l'image */
+			.slide-caption {
+				position: absolute; bottom: 0; width: 100%;
+				background: rgba(0, 0, 0, 0.8); color: #fff;
+				padding: 1em; text-align: center; backdrop-filter: blur(5px);
+				border-top: 1px solid rgba(255,255,255,0.1);
+			}
+			.slide-caption h3 { margin: 0 0 0.2em 0; font-size: 1.2em; color: var(--accent-cyan); }
+			.slide-caption p { margin: 0; font-size: 0.9em; color: #ddd; }
+
+			/* BOUTONS SLIDER STYLÉS */
 			.slider-btn {
 				position: absolute; top: 50%; transform: translateY(-50%);
-				background: rgba(0, 0, 0, 0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2);
-				font-size: 1.5em; width: 50px; height: 50px; border-radius: 50%;
-				cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.3s;
+				/* Fond transparent léger */
+				background: rgba(255, 255, 255, 0.1);
+				color: #fff;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				/* Taille fixe pour cercle parfait */
+				width: 45px; height: 45px;
+				border-radius: 50%;
+				cursor: pointer; z-index: 10;
+				display: flex; align-items: center; justify-content: center;
+				transition: all 0.3s ease;
+				backdrop-filter: blur(2px);
 			}
-			.slider-btn:hover { background: var(--accent-cyan); color: #000; }
-			.prev-btn { left: 15px; }
-			.next-btn { right: 15px; }
+			.slider-btn i { font-size: 1em; } /* Taille icône */
+			
+			/* Effet au survol */
+			.slider-btn:hover {
+				background: var(--accent-cyan);
+				color: #000;
+				border-color: var(--accent-cyan);
+				box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+			}
+			.prev-btn { left: 20px; }
+			.next-btn { right: 20px; }
 
-			/* --- 6. CONTENU DU PROJET --- */
+			/* --- CONTENU DU PROJET --- */
 			.content-section { margin-bottom: 4em; }
 			.content-section h3 { border-left: 4px solid var(--accent-purple); padding-left: 15px; margin-bottom: 1em; font-size: 1.8em; color: #fff; }
 			.content-section p, .content-section li { text-align: justify; margin-bottom: 1em; }
@@ -206,7 +215,7 @@
 			<section class="project-hero">
 				<div class="container">
 					<h1>AI Football Tactical Analysis</h1>
-					<p>Détection, suivi et analyse tactique des joueurs en temps réel grâce à la vision par ordinateur.</p>
+					<p>Vision par ordinateur et Deep Learning pour l'analyse automatisée de matchs.</p>
 					
 					<div class="stack-container">
 						<div class="stack-badge"><i class="fab fa-python"></i> Python</div>
@@ -226,12 +235,24 @@
 					<div class="slider-container">
 						<div class="slide">
 							<img src="images/football-detection.jpg" alt="Détection">
+							<div class="slide-caption">
+								<h3>Détection Automatique</h3>
+								<p>Identification des joueurs et du ballon par Vision par Ordinateur.</p>
+							</div>
 						</div>
 						<div class="slide">
 							<img src="images/football-heatmap.jpg" alt="Tactique">
+							<div class="slide-caption">
+								<h3>Projection Tactique 2D</h3>
+								<p>Transformation de la perspective vidéo en carte vue de dessus.</p>
+							</div>
 						</div>
 						<div class="slide">
-							<img src="images/football-analysis.jpg" alt="Stats">
+							<img src="images/football-heatmap.jpg" alt="Stats">
+							<div class="slide-caption">
+								<h3>Analyse de Possession</h3>
+								<p>Calcul des statistiques d'équipe sur la séquence vidéo.</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -239,27 +260,27 @@
 				<div class="content-section">
 					<h3>Le Contexte</h3>
 					<p>
-						L'analyse vidéo dans le football moderne est cruciale pour la performance, mais elle est souvent effectuée manuellement ou nécessite des équipements GPS coûteux portés par les joueurs. Mon objectif était de créer un système capable d'extraire automatiquement des données tactiques à partir d'un simple flux vidéo de match (broadcast), sans aucun capteur.
+						L'analyse vidéo dans le football nécessite traditionnellement de nombreux opérateurs humains pour taguer manuellement les actions. Les systèmes automatiques existants nécessitent souvent des caméras fixes coûteuses ou des capteurs GPS sur les joueurs.
 					</p>
 				</div>
 
 				<div class="content-section">
 					<h3>La Solution Technique</h3>
 					<p>
-						J'ai développé un pipeline complet de Computer Vision en Python, orchestré autour de plusieurs modèles d'IA :
+						J'ai développé un pipeline complet capable de traiter des fichiers vidéo de match (broadcast) pour extraire automatiquement les données :
 					</p>
 					<ul class="custom-list">
-						<li><strong>Détection d'Objets (YOLOv8) :</strong> Un modèle pré-entraîné et affiné (fine-tuned) pour détecter trois classes d'objets : les joueurs, le ballon et les arbitres, même en mouvement rapide.</li>
-						<li><strong>Tracking Multi-Objets (ByteTrack) :</strong> Pour attribuer un ID unique à chaque joueur et le suivre tout au long de la vidéo, même lorsqu'il croise d'autres joueurs (gestion des occlusions).</li>
+						<li><strong>Détection d'Objets (YOLOv8) :</strong> Un modèle pré-entraîné et affiné (fine-tuned) pour détecter trois classes d'objets : les joueurs, le ballon et les arbitres.</li>
+						<li><strong>Tracking Multi-Objets (ByteTrack) :</strong> Pour attribuer un ID unique à chaque joueur et le suivre tout au long de la séquence vidéo, même lorsqu'il croise d'autres joueurs.</li>
 						<li><strong>Clustering de Couleurs (K-Means) :</strong> Analyse des pixels à l'intérieur des bounding boxes pour déterminer la couleur dominante des maillots et assigner automatiquement chaque joueur à son équipe.</li>
-						<li><strong>Transformation de Perspective :</strong> Utilisation d'une matrice homographique pour transformer la vue "caméra" en une vue "carte tactique 2D" (vue de dessus), permettant de calculer les positions réelles sur le terrain.</li>
+						<li><strong>Transformation de Perspective :</strong> Utilisation d'une matrice homographique pour transformer la vue "caméra" en une vue "carte tactique 2D" (vue de dessus).</li>
 					</ul>
 				</div>
 
 				<div class="content-section">
-					<h3>Résultats Obtenus</h3>
+					<h3>Résultats</h3>
 					<p>
-						Le système est capable de générer en temps réel une carte tactique 2D animée, de calculer la distance parcourue par chaque joueur et d'afficher les statistiques de possession de balle avec une précision de détection supérieure à 90%.
+						Le système génère une carte tactique 2D animée correspondant à la vidéo, calcule la distance parcourue par les joueurs détectés et affiche les statistiques de possession de balle basées sur la proximité des joueurs avec le ballon.
 					</p>
 				</div>
 
@@ -287,7 +308,7 @@
 		<script src="assets/js/main.js"></script>
 		
 		<script>
-			// --- MENU BURGER (Copie conforme Home) ---
+			// --- MENU BURGER ---
 			const menuBtn = document.getElementById('menu-btn');
 			const closeBtn = document.querySelector('.menu-close');
 			const sidebar = document.getElementById('sidebar-menu');
