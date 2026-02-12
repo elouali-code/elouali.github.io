@@ -29,8 +29,11 @@ jobs:
             --verbose
             --no-progress
             --exclude-mail
+            --offline
+            --base "."
             --exclude "pages/projects/project-template.html"
             --accept 200,429
             "**/*.html"
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
