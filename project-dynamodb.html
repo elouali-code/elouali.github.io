@@ -1,301 +1,98 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Projet : Architecture Data Serverless - Abderrahman El Ouali</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		
-		<link rel="stylesheet" href="assets/css/main.css" />
-		
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
-		
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-		
-		<link rel="icon" type="image/png" href="favicon.png"> 
-		
-		<style>
-			:root {
-				--background-start: #0c0a1f;
-				--background-end: #1f1d36;
-				--surface-glass: rgba(22, 27, 41, 0.9);
-				--border-glass: rgba(255, 255, 255, 0.15);
-				--text-primary: #ffffff;
-				--text-secondary: #e0e0e0;
-				--accent-cyan: #00d4ff;
-				--accent-purple: #8c52ff;
-				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-			}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Projet - Migration Architecture Data Serverless</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/project-template.css" />
+</head>
+<body class="project-page is-preload">
+  <div id="menu-overlay"></div>
+  <nav id="sidebar-menu">
+    <div class="menu-header"><span style="color:#fff;font-weight:700;letter-spacing:1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
+    <ul class="menu-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">A propos</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="projets-hub.html">Projets</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="index.html#footer">Contact</a></li>
+    </ul>
+  </nav>
 
-			* { box-sizing: border-box; }
-			html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+  <div id="page-wrapper">
+    <section id="header">
+      <div class="container">
+        <div id="logo"><img src="images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="index.html">Abderrahman El Ouali</a></h1></div>
+        <div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div>
+      </div>
+    </section>
 
-			body {
-				background-color: var(--background-start);
-				background-image: 
-					radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-					radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%);
-				color: var(--text-secondary);
-				font-family: 'Poppins', sans-serif;
-				line-height: 1.8;
-			}
+    <main class="project-main">
+      <section class="project-hero reveal">
+        <div class="container">
+          <span class="project-type"><i class="fas fa-database"></i> Data / Cloud</span>
+          <h1>Migration Architecture Serverless O(1)</h1>
+          <p>Refonte d une architecture data avec passage d un modele O(N) vers une lecture O(1) pour reduire la latence et fiabiliser les echanges applicatifs.</p>
+          <div class="project-meta">
+            <article class="meta-card"><span>Role</span><strong>Architecte Cloud</strong></article>
+            <article class="meta-card"><span>Contexte</span><strong>Airbus</strong></article>
+            <article class="meta-card"><span>Domaine</span><strong>Data Platform</strong></article>
+            <article class="meta-card"><span>Stack</span><strong>AWS Lambda, DynamoDB, SQS, CDK</strong></article>
+          </div>
+        </div>
+      </section>
 
-			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
-			.container { max-width: 900px; margin: 0 auto; padding: 0 25px; }
+      <section class="container project-grid">
+        <article class="project-slider reveal" data-slider>
+          <div class="slides">
+            <figure class="slide"><img src="images/projet-dynamodb.jpg" alt="Architecture cible DynamoDB" /><figcaption>Architecture serverless cible avec acces cle-valeur performant.</figcaption></figure>
+          </div>
+          <button class="slider-control prev" type="button" aria-label="Slide precedente"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-control next" type="button" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
+          <div class="slider-dots"></div>
+        </article>
 
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 0.8em 0; line-height: 1.3; }
-			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; font-weight: 500; }
-			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
-			strong, b { color: #fff; font-weight: 700; }
+        <section class="project-section reveal">
+          <h2>Contexte</h2>
+          <p>Le systeme initial stockait des fichiers parquet sur S3 et imposait un parcours large des donnees pour chaque requete. Cette approche degradait fortement la latence et la scalabilite.</p>
+        </section>
 
-			/* --- HEADER --- */
-			#header {
-				position: fixed; top: 0; left: 0; width: 100%;
-				background: rgba(12, 10, 31, 0.95);
-				backdrop-filter: blur(15px);
-				border-bottom: 1px solid var(--border-glass);
-				z-index: 1000;
-				padding: 0.8em 0;
-			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
-			#logo { display: flex; align-items: center; gap: 1em; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
-			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; }
-			#logo h1 a { color: #fff; }
+        <section class="project-section reveal">
+          <h2>Solution technique</h2>
+          <ul class="project-list">
+            <li>Migration vers DynamoDB pour des acces directs O(1) sur cles metier.</li>
+            <li>Orchestration des operations via fonctions AWS Lambda stateless.</li>
+            <li>Decouplage des ecritures avec SQS pour absorber les pics de charge.</li>
+            <li>Industrialisation complete de l infra avec AWS CDK Python.</li>
+          </ul>
+        </section>
 
-			/* --- MENU BURGER --- */
-			.menu-toggle {
-				display: flex; align-items: center; gap: 0.5em;
-				background: rgba(255, 255, 255, 0.08);
-				border: 1px solid var(--border-glass);
-				padding: 0.5em 1.2em; border-radius: 50px;
-				cursor: pointer; color: var(--text-primary); transition: background 0.3s;
-			}
-			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
-			
-			#sidebar-menu {
-				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
-				background: #0e0b1f; border-left: 1px solid var(--border-glass);
-				z-index: 2000; transform: translateX(100%); transition: transform 0.4s ease;
-				padding: 2em; display: flex; flex-direction: column;
-				box-shadow: -10px 0 40px rgba(0,0,0,0.8);
-			}
-			#sidebar-menu.active { transform: translateX(0); }
-			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
-			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
-			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
-			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
-			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
-			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-			#menu-overlay.active { opacity: 1; visibility: visible; }
+        <section class="project-section reveal">
+          <h2>Resultats</h2>
+          <div class="results-grid">
+            <article class="result-card"><i class="fas fa-stopwatch"></i><h3>Latence reduite</h3><p>Temps d acces fortement baisse grace a l adressage direct O(1).</p></article>
+            <article class="result-card"><i class="fas fa-scale-balanced"></i><h3>Scalabilite</h3><p>Architecture serverless capable de monter en charge sans gestion serveur.</p></article>
+            <article class="result-card"><i class="fas fa-code"></i><h3>Deploiement fiable</h3><p>Infra versionnee, reproductible et plus simple a maintenir.</p></article>
+          </div>
+        </section>
+      </section>
+    </main>
 
-			/* --- PROJECT HERO --- */
-			.project-hero { padding: 10em 0 4em 0; text-align: center; }
-			.project-hero h1 { 
-				font-size: 2.8em; 
-				background: var(--gradient-primary); 
-				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
-				margin-bottom: 0.5em;
-			}
-			.project-hero p { font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto; }
+    <section id="footer"><div class="container"><p>&copy; 2026 Abderrahman El Ouali. Tous droits reserves.</p></div></section>
+  </div>
 
-			/* --- META DATA (Tags) --- */
-			.project-meta {
-				display: flex; justify-content: center; flex-wrap: wrap; gap: 1em; margin: 3em 0;
-			}
-			.meta-item {
-				background: var(--surface-glass);
-				border: 1px solid var(--border-glass);
-				padding: 0.8em 1.5em; border-radius: 12px;
-				text-align: center;
-			}
-			.meta-item strong { display: block; color: var(--accent-cyan); font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3em; }
-			.meta-item span { color: #fff; font-weight: 500; }
-
-			/* --- SLIDER --- */
-			.slider-container {
-				position: relative; overflow: hidden; border-radius: 16px;
-				border: 1px solid var(--border-glass);
-				margin-bottom: 4em;
-				box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-			}
-			.slider { display: flex; transition: transform 0.5s ease-in-out; }
-			.slide { min-width: 100%; }
-			.slide img { width: 100%; display: block; }
-			.slider-nav {
-				position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%);
-				padding: 0 1em; pointer-events: none; /* Allows click through */
-			}
-			.slider-nav a {
-				background: rgba(0,0,0,0.6); color: #fff; padding: 15px; border-radius: 50%;
-				cursor: pointer; pointer-events: auto; transition: background 0.3s;
-			}
-			.slider-nav a:hover { background: var(--accent-cyan); color: #000; }
-
-			/* --- CONTENT & RESULTS --- */
-			.content-section { margin-bottom: 4em; }
-			.content-section h3 { color: #fff; font-size: 1.8em; margin-bottom: 1em; border-left: 4px solid var(--accent-purple); padding-left: 15px; }
-			
-			.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2em; margin-top: 2em; }
-			.result-card {
-				background: var(--surface-glass); border: 1px solid var(--border-glass);
-				border-radius: 16px; padding: 2em; text-align: center;
-				transition: transform 0.3s ease;
-			}
-			.result-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
-			.result-card i { font-size: 2.5em; color: var(--accent-cyan); margin-bottom: 0.5em; }
-			.result-card h4 { font-size: 1.2em; color: #fff; margin-bottom: 0.5em; }
-			.result-card p { font-size: 0.95em; margin: 0; color: var(--text-secondary); }
-
-			/* --- FOOTER --- */
-			#footer { background: rgba(12, 10, 31, 0.8); border-top: 1px solid var(--border-glass); padding: 2em 0; margin-top: auto; text-align: center; font-size: 0.9em; }
-
-			/* --- RESPONSIVE --- */
-			@media (max-width: 768px) {
-				.project-hero h1 { font-size: 2.2em; }
-				.meta-item { width: 100%; }
-			}
-		</style>
-	</head>
-	<body class="is-preload">
-		
-		<div id="menu-overlay"></div>
-
-		<nav id="sidebar-menu">
-			<div class="menu-header">
-				<span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span>
-				<div class="menu-close"><i class="fas fa-times"></i></div>
-			</div>
-			<ul class="menu-links">
-				<li><a href="index.html">Accueil</a></li>
-				<li><a href="about.html">À Propos</a></li>
-				<li><a href="experiences.html">Expériences</a></li>
-				<li><a href="projets-hub.html">Projets</a></li>
-				<li><a href="articles.html">Articles</a></li>
-				<li><a href="index.html#footer">Contact</a></li> </ul>
-		</nav>
-
-		<div id="page-wrapper">
-
-			<section id="header">
-				<div class="container">
-					<div id="logo">
-						<img src="images/logo.jpg" alt="Abderrahman El Ouali" />
-						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-					</div>
-					<div class="menu-toggle" id="menu-btn">
-						<i class="fas fa-bars"></i>
-						<span>Menu</span>
-					</div>
-				</div>
-			</section>
-
-			<section class="project-hero">
-				<div class="container">
-					<h1>Migration Architecture Serverless</h1>
-					<p>Conception et implémentation d'une solution data moderne en O(1) pour résoudre les problèmes de performance et de scalabilité chez Airbus.</p>
-					
-					<div class="project-meta">
-						<div class="meta-item">
-							<strong>Rôle</strong><span>Architecte Cloud</span>
-						</div>
-						<div class="meta-item">
-							<strong>Entreprise</strong><span>Airbus</span>
-						</div>
-						<div class="meta-item">
-							<strong>Tech Stack</strong><span>AWS DynamoDB, Lambda, CDK</span>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<div class="container">
-				
-				<div class="slider-container">
-					<div class="slider">
-						<div class="slide"><img src="images/projet-dynamodb.jpg" alt="Schéma Architecture"></div>
-						</div>
-					</div>
-
-				<section class="content-section">
-					<h3>Le Défi : Latence & Scalabilité</h3>
-					<p>L'architecture initiale reposait sur un stockage S3 statique (fichiers Parquet). Ce système imposait une complexité algorithmique de <strong>O(N)</strong> : pour lire ou écrire une seule donnée, il fallait parcourir tout le dataset. Résultat : une latence élevée et une incapacité à monter en charge.</p>
-				</section>
-
-				<section class="content-section">
-					<h3>Ma Solution : Architecture O(1)</h3>
-					<p>J'ai conçu une architecture 100% Serverless pour garantir une complexité constante <strong>O(1)</strong>, quelle que soit la taille des données.</p>
-					<ul>
-						<li><strong>Stockage :</strong> Migration vers <strong>Amazon DynamoDB</strong> pour des accès clé-valeur millimétrés.</li>
-						<li><strong>Logique :</strong> Fonctions <strong>AWS Lambda</strong> pour traiter les lectures/écritures sans gestion de serveur.</li>
-						<li><strong>Fiabilité :</strong> Utilisation de files <strong>SQS</strong> pour découpler les écritures et gérer les pics de charge.</li>
-						<li><strong>Déploiement :</strong> Infrastructure as Code (IaC) complète avec <strong>AWS CDK (Python)</strong>.</li>
-					</ul>
-				</section>
-
-				<section class="content-section">
-					<h3>Résultats Clés</h3>
-					<div class="results-grid">
-						<div class="result-card">
-							<i class="fas fa-rocket"></i>
-							<h4>Performance Maximale</h4>
-							<p>Latence réduite de plusieurs secondes à < 50ms (O(1)).</p>
-						</div>
-						<div class="result-card">
-							<i class="fas fa-coins"></i>
-							<h4>Coûts Optimisés</h4>
-							<p>Modèle "Pay-as-you-go" éliminant les coûts de serveurs inactifs.</p>
-						</div>
-						<div class="result-card">
-							<i class="fas fa-code"></i>
-							<h4>100% Automatisé</h4>
-							<p>Déploiement IaC reproductible et sans erreur manuelle.</p>
-						</div>
-					</div>
-				</section>
-
-			</div>
-
-			<section id="footer">
-				<div class="container">
-					<p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p>
-				</div>
-			</section>
-
-		</div>
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		
-		<script>
-			// Menu Burger Logic
-			const menuBtn = document.getElementById('menu-btn');
-			const closeBtn = document.querySelector('.menu-close');
-			const sidebar = document.getElementById('sidebar-menu');
-			const overlay = document.getElementById('menu-overlay');
-			const body = document.body;
-
-			function toggleMenu() {
-				const isActive = sidebar.classList.contains('active');
-				if(!isActive) {
-					sidebar.classList.add('active');
-					overlay.classList.add('active');
-					body.style.overflow = 'hidden';
-				} else {
-					sidebar.classList.remove('active');
-					overlay.classList.remove('active');
-					body.style.overflow = 'auto';
-				}
-			}
-
-			if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
-			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
-			if(overlay) overlay.addEventListener('click', toggleMenu);
-		</script>
-	</body>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/project-template.js"></script>
+</body>
 </html>

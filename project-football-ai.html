@@ -1,368 +1,103 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Projet : AI Football Analysis - Abderrahman El Ouali</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		
-		<link rel="stylesheet" href="assets/css/main.css" />
-		
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-		<link rel="icon" type="image/png" href="favicon.png"> 
-		
-		<style>
-			/* --- 1. BASE IDENTIQUE AUX AUTRES PAGES --- */
-			:root {
-				--background-start: #0c0a1f;
-				--background-end: #1f1d36;
-				--surface-glass: rgba(22, 27, 41, 0.9);
-				--border-glass: rgba(255, 255, 255, 0.15);
-				--text-primary: #ffffff;
-				--text-secondary: #e0e0e0;
-				--accent-cyan: #00d4ff;
-				--accent-purple: #8c52ff;
-				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-			}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Projet - AI Football Tactical Analysis</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/project-template.css" />
+</head>
+<body class="project-page is-preload">
+  <div id="menu-overlay"></div>
+  <nav id="sidebar-menu">
+    <div class="menu-header"><span style="color:#fff;font-weight:700;letter-spacing:1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
+    <ul class="menu-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">A propos</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="projets-hub.html">Projets</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="index.html#footer">Contact</a></li>
+    </ul>
+  </nav>
 
-			* { box-sizing: border-box; }
-			
-			body {
-				margin: 0; padding: 0; width: 100%; overflow-x: hidden;
-				background-color: var(--background-start);
-				background-image: 
-					radial-gradient(circle at 15% 50%, rgba(140, 82, 255, 0.1) 0%, transparent 25%), 
-                    radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 25%);
-				color: var(--text-secondary);
-				font-family: 'Poppins', sans-serif;
-				line-height: 1.8;
-			}
+  <div id="page-wrapper">
+    <section id="header">
+      <div class="container">
+        <div id="logo"><img src="images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="index.html">Abderrahman El Ouali</a></h1></div>
+        <div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div>
+      </div>
+    </section>
 
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin-bottom: 0.8em; }
-			p, li { font-size: 1.1em; color: var(--text-secondary); }
-			a { color: var(--accent-cyan); text-decoration: none; transition: 0.3s; }
-			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
+    <main class="project-main">
+      <section class="project-hero reveal">
+        <div class="container">
+          <span class="project-type"><i class="fas fa-futbol"></i> Data / IA</span>
+          <h1>AI Football Tactical Analysis</h1>
+          <p>Pipeline de vision par ordinateur pour detecter les joueurs et produire une lecture tactique exploitable a partir de videos de match classiques.</p>
+          <div class="project-meta">
+            <article class="meta-card"><span>Role</span><strong>Data Engineer / Computer Vision</strong></article>
+            <article class="meta-card"><span>Contexte</span><strong>Projet personnel</strong></article>
+            <article class="meta-card"><span>Domaine</span><strong>Vision IA sportive</strong></article>
+            <article class="meta-card"><span>Stack</span><strong>Python, YOLOv8, OpenCV, ByteTrack</strong></article>
+          </div>
+        </div>
+      </section>
 
-			.container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
+      <section class="container project-grid">
+        <article class="project-slider reveal" data-slider>
+          <div class="slides">
+            <figure class="slide"><img src="images/football-detection.jpg" alt="Detection des joueurs" /><figcaption>Detection automatique des joueurs, arbitres et ballon.</figcaption></figure>
+            <figure class="slide"><img src="images/football-heatmap.jpg" alt="Heatmap tactique" /><figcaption>Projection deplacements et zones d influence en vue tactique.</figcaption></figure>
+          </div>
+          <button class="slider-control prev" type="button" aria-label="Slide precedente"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-control next" type="button" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
+          <div class="slider-dots"></div>
+        </article>
 
-			/* --- 2. HEADER & MENU (STANDARDISE) --- */
-			#header {
-				position: fixed; top: 0; left: 0; width: 100%;
-				background: rgba(12, 10, 31, 0.95);
-				border-bottom: 1px solid var(--border-glass);
-				z-index: 1000; padding: 0.8em 0;
-			}
-			#header > .container { display: flex; justify-content: space-between; align-items: center; }
-			#logo { display: flex; align-items: center; gap: 1em; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
-			#logo h1 { font-size: 1.1em; margin: 0; color: #fff; font-weight: 500; }
-			#logo h1 a { color: #fff; }
+        <section class="project-section reveal">
+          <h2>Contexte</h2>
+          <p>L analyse video football est souvent manuelle, couteuse et peu scalable. Le besoin etait de construire une chaine automatique capable d extraire des indicateurs tactiques fiables a partir d un simple flux video broadcast.</p>
+        </section>
 
-			.menu-toggle {
-				display: flex; align-items: center; gap: 0.5em;
-				background: rgba(255, 255, 255, 0.1);
-				border: 1px solid var(--border-glass);
-				padding: 0.5em 1.2em; border-radius: 50px;
-				cursor: pointer; color: #fff; transition: 0.3s;
-			}
-			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
+        <section class="project-section reveal">
+          <h2>Solution technique</h2>
+          <ul class="project-list">
+            <li>Detection d objets avec YOLOv8 pour identifier joueurs, ballon et arbitres frame par frame.</li>
+            <li>Tracking multi objets avec ByteTrack pour maintenir des identites stables dans le temps.</li>
+            <li>Classification d equipe via clustering des couleurs de maillot et nettoyage des outliers.</li>
+            <li>Projection en vue tactique 2D pour visualiser la structure de jeu et les deplacements.</li>
+          </ul>
+        </section>
 
-			#sidebar-menu {
-				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
-				background: #0e0b1f; border-left: 1px solid var(--border-glass);
-				z-index: 2000; transform: translateX(100%); transition: 0.4s ease;
-				padding: 2em; display: flex; flex-direction: column;
-				box-shadow: -10px 0 40px rgba(0,0,0,0.8);
-			}
-			#sidebar-menu.active { transform: translateX(0); }
-			
-			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
-			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
-			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
-			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
-			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
-			
-			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: 0.3s; }
-			#menu-overlay.active { opacity: 1; visibility: visible; }
+        <section class="project-section reveal">
+          <h2>Resultats</h2>
+          <div class="results-grid">
+            <article class="result-card"><i class="fas fa-crosshairs"></i><h3>Detection robuste</h3><p>Tracking stable des joueurs sur sequences avec collisions et occultations.</p></article>
+            <article class="result-card"><i class="fas fa-map-marked-alt"></i><h3>Lecture tactique</h3><p>Generation de heatmaps et vision equipe pour l analyse de placement.</p></article>
+            <article class="result-card"><i class="fas fa-rocket"></i><h3>Pipeline reutilisable</h3><p>Architecture reemployable pour de nouveaux matchs sans reprise manuelle.</p></article>
+          </div>
+        </section>
 
-			/* --- 3. HERO --- */
-			.project-hero { padding: 12em 0 4em 0; text-align: center; }
-			.project-hero h1 { 
-				font-size: 3em; 
-				background: var(--gradient-primary); 
-				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
-				margin-bottom: 0.5em;
-			}
-			.project-hero p { font-size: 1.2em; max-width: 800px; margin: 0 auto; color: var(--text-secondary); }
+        <section class="project-cta reveal">
+          <a href="https://github.com/elouali-code" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Voir le code sur GitHub</a>
+        </section>
+      </section>
+    </main>
 
-			.stack-container { display: flex; justify-content: center; gap: 1em; flex-wrap: wrap; margin-top: 2em; }
-			.stack-badge { 
-				background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); 
-				padding: 0.6em 1.5em; border-radius: 50px; 
-				color: var(--accent-cyan); display: flex; align-items: center; gap: 8px; font-weight: 500;
-			}
+    <section id="footer"><div class="container"><p>&copy; 2026 Abderrahman El Ouali. Tous droits reserves.</p></div></section>
+  </div>
 
-			/* --- 4. SLIDER PROPRE (SANS TEXTE DESSUS) --- */
-			.slider-wrapper {
-				max-width: 900px; margin: 0 auto 2em auto;
-				border-radius: 16px; overflow: hidden;
-				border: 1px solid var(--border-glass);
-				box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-				background: #000;
-				position: relative;
-			}
-			
-			.slider-container { display: flex; transition: transform 0.5s ease-in-out; height: 500px; }
-			
-			.slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-			.slide img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-
-			/* FLÈCHES DE NAVIGATION DISCRÈTES */
-			.slider-arrow {
-				position: absolute; top: 50%; transform: translateY(-50%);
-				background: rgba(255,255,255,0.1); color: #fff;
-				width: 50px; height: 50px; border-radius: 50%;
-				display: flex; align-items: center; justify-content: center;
-				cursor: pointer; transition: 0.3s; z-index: 10;
-				border: 1px solid rgba(255,255,255,0.1);
-			}
-			.slider-arrow:hover { background: var(--accent-cyan); color: #000; border-color: var(--accent-cyan); }
-			.prev-btn { left: 20px; }
-			.next-btn { right: 20px; }
-
-			/* LÉGENDE SOUS LE SLIDER */
-			.caption-box {
-				max-width: 900px; margin: 0 auto 5em auto;
-				text-align: center; background: var(--surface-glass);
-				border: 1px solid var(--border-glass); border-radius: 12px;
-				padding: 1.5em;
-			}
-			.caption-box h3 { color: var(--accent-cyan); margin: 0 0 0.5em 0; font-size: 1.3em; }
-			.caption-box p { margin: 0; font-size: 1em; color: #fff; }
-
-			/* --- 5. CONTENU --- */
-			.content-section { margin-bottom: 4em; }
-			.content-section h3 { border-left: 4px solid var(--accent-purple); padding-left: 15px; margin-bottom: 1em; font-size: 1.8em; color: #fff; }
-			.content-section p, .content-section li { text-align: justify; margin-bottom: 1em; }
-			
-			ul.custom-list { list-style: none; padding: 0; }
-			ul.custom-list li { padding-left: 1.5em; position: relative; margin-bottom: 0.8em; }
-			ul.custom-list li::before { content: '▹'; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
-
-			/* BOUTON GIT */
-			.btn-git { 
-				display: inline-flex; align-items: center; gap: 10px;
-				background: #fff; color: #000 !important; 
-				padding: 1em 3em; border-radius: 50px; font-weight: 700; text-decoration: none; 
-				transition: 0.3s; margin-top: 3em;
-			}
-			.btn-git:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(255,255,255,0.5); }
-
-			/* --- 6. FOOTER (CORRIGÉ & UNIFORMISÉ) --- */
-			#footer { 
-				background: rgba(12, 10, 31, 0.8); /* Même fond que les autres pages */
-				border-top: 1px solid var(--border-glass); 
-				padding: 2em 0; /* Même padding standard */
-				text-align: center; 
-				margin-top: auto; /* Pousse le footer en bas */
-			}
-			#footer p {
-				margin: 0;
-				font-size: 0.9em; /* Même taille de police */
-				color: var(--text-secondary);
-			}
-			
-			@media (max-width: 768px) {
-				.project-hero h1 { font-size: 2.2em; }
-				.slider-container { height: 300px; }
-			}
-		</style>
-	</head>
-	<body class="is-preload">
-		
-		<div id="menu-overlay"></div>
-
-		<nav id="sidebar-menu">
-			<div class="menu-header">
-				<span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span>
-				<div class="menu-close"><i class="fas fa-times"></i></div>
-			</div>
-			<ul class="menu-links">
-				<li><a href="index.html">Accueil</a></li>
-				<li><a href="about.html">À Propos</a></li>
-				<li><a href="experiences.html">Expériences</a></li>
-				<li><a href="projets-hub.html">Projets</a></li>
-				<li><a href="articles.html">Articles</a></li>
-				<li><a href="index.html#footer">Contact</a></li>
-			</ul>
-		</nav>
-
-		<div id="page-wrapper">
-
-			<section id="header">
-				<div class="container">
-					<div id="logo">
-						<img src="images/logo.jpg" alt="Logo" />
-						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
-					</div>
-					<div class="menu-toggle" id="menu-btn">
-						<i class="fas fa-bars"></i>
-						<span>Menu</span>
-					</div>
-				</div>
-			</section>
-
-			<section class="project-hero">
-				<div class="container">
-					<h1>AI Football Tactical Analysis</h1>
-					<p>Vision par ordinateur et Deep Learning pour l'analyse automatisée de matchs.</p>
-					
-					<div class="stack-container">
-						<div class="stack-badge"><i class="fab fa-python"></i> Python</div>
-						<div class="stack-badge"><i class="fas fa-eye"></i> YOLOv8</div>
-						<div class="stack-badge"><i class="fas fa-camera"></i> OpenCV</div>
-						<div class="stack-badge"><i class="fas fa-brain"></i> Deep Learning</div>
-					</div>
-				</div>
-			</section>
-
-			<div class="container">
-				
-				<div class="slider-wrapper">
-					<div class="slider-arrow prev-btn"><i class="fas fa-chevron-left"></i></div>
-					<div class="slider-arrow next-btn"><i class="fas fa-chevron-right"></i></div>
-					
-					<div class="slider-container">
-						<div class="slide">
-							<img src="images/football-detection.jpg" alt="Détection">
-						</div>
-						<div class="slide">
-							<img src="images/football-tactic.jpg" alt="Tactique">
-						</div>
-						<div class="slide">
-							<img src="images/football-analysis.jpg" alt="Stats">
-						</div>
-					</div>
-				</div>
-
-				<div class="caption-box">
-					<h3 id="caption-title">Détection Automatique</h3>
-					<p id="caption-desc">Identification des joueurs et du ballon par Vision par Ordinateur.</p>
-				</div>
-
-				<div class="content-section">
-					<h3>Le Contexte</h3>
-					<p>
-						L'analyse vidéo dans le football nécessite traditionnellement de nombreux opérateurs humains pour taguer manuellement les actions. Les systèmes automatiques existants nécessitent souvent des caméras fixes coûteuses ou des capteurs GPS sur les joueurs.
-					</p>
-				</div>
-
-				<div class="content-section">
-					<h3>La Solution Technique</h3>
-					<p>
-						J'ai développé un pipeline complet capable de traiter des fichiers vidéo de match (broadcast) pour extraire automatiquement les données :
-					</p>
-					<ul class="custom-list">
-						<li><strong>Détection d'Objets (YOLOv8) :</strong> Un modèle pré-entraîné et affiné (fine-tuned) pour détecter trois classes d'objets : les joueurs, le ballon et les arbitres.</li>
-						<li><strong>Tracking Multi-Objets (ByteTrack) :</strong> Pour attribuer un ID unique à chaque joueur et le suivre tout au long de la séquence vidéo, même lorsqu'il croise d'autres joueurs.</li>
-						<li><strong>Clustering de Couleurs (K-Means) :</strong> Analyse des pixels à l'intérieur des bounding boxes pour déterminer la couleur dominante des maillots et assigner automatiquement chaque joueur à son équipe.</li>
-						<li><strong>Transformation de Perspective :</strong> Utilisation d'une matrice homographique pour transformer la vue "caméra" en une vue "carte tactique 2D" (vue de dessus).</li>
-					</ul>
-				</div>
-
-				<div class="content-section">
-					<h3>Résultats</h3>
-					<p>
-						Le système génère une carte tactique 2D animée correspondant à la vidéo, calcule la distance parcourue par les joueurs détectés et affiche les statistiques de possession de balle basées sur la proximité des joueurs avec le ballon.
-					</p>
-				</div>
-
-				<div style="text-align: center;">
-					<a href="https://github.com/elouali-code" target="_blank" class="btn-git">
-						<i class="fab fa-github"></i> Voir le code sur GitHub
-					</a>
-				</div>
-
-			</div>
-
-			<section id="footer">
-				<div class="container">
-					<p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p>
-				</div>
-			</section>
-
-		</div>
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		
-		<script>
-			// --- MENU BURGER ---
-			const menuBtn = document.getElementById('menu-btn');
-			const closeBtn = document.querySelector('.menu-close');
-			const sidebar = document.getElementById('sidebar-menu');
-			const overlay = document.getElementById('menu-overlay');
-			const body = document.body;
-
-			function toggleMenu() {
-				const isActive = sidebar.classList.contains('active');
-				if(!isActive) {
-					sidebar.classList.add('active');
-					overlay.classList.add('active');
-					body.style.overflow = 'hidden';
-				} else {
-					sidebar.classList.remove('active');
-					overlay.classList.remove('active');
-					body.style.overflow = 'auto';
-				}
-			}
-			if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
-			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
-			if(overlay) overlay.addEventListener('click', toggleMenu);
-
-			// --- SLIDER LOGIC AVEC LÉGENDE DYNAMIQUE ---
-			const sliderContainer = document.querySelector('.slider-container');
-			const slides = document.querySelectorAll('.slide');
-			const prevBtn = document.querySelector('.prev-btn');
-			const nextBtn = document.querySelector('.next-btn');
-			
-			// Éléments de légende
-			const captionTitle = document.getElementById('caption-title');
-			const captionDesc = document.getElementById('caption-desc');
-
-			// Données des légendes (Correspondant aux slides 1, 2, 3)
-			const captions = [
-				{ title: "Détection Automatique", desc: "Identification des joueurs et du ballon par Vision par Ordinateur." },
-				{ title: "Projection Tactique 2D", desc: "Transformation de la perspective vidéo en carte vue de dessus." },
-				{ title: "Analyse de Possession", desc: "Calcul des statistiques d'équipe sur la séquence vidéo." }
-			];
-
-			let currentIndex = 0;
-
-			function updateSlider() {
-				// Bouger le slider
-				sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-				
-				// Mettre à jour la légende en dessous
-				captionTitle.innerText = captions[currentIndex].title;
-				captionDesc.innerText = captions[currentIndex].desc;
-			}
-
-			nextBtn.addEventListener('click', () => {
-				currentIndex = (currentIndex + 1) % slides.length;
-				updateSlider();
-			});
-
-			prevBtn.addEventListener('click', () => {
-				currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-				updateSlider();
-			});
-		</script>
-	</body>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/project-template.js"></script>
+</body>
 </html>

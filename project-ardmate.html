@@ -1,195 +1,91 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Projet : ARDmate DevOps - Abderrahman El Ouali</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-		<link rel="icon" type="image/png" href="favicon.png"> 
-		
-		<style>
-			:root {
-				--background-start: #0c0a1f; --background-end: #1f1d36;
-				--surface-glass: rgba(22, 27, 41, 0.9); --border-glass: rgba(255, 255, 255, 0.15);
-				--text-primary: #ffffff; --text-secondary: #e0e0e0;
-				--accent-cyan: #00d4ff; --accent-purple: #8c52ff;
-				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-			}
-			* { box-sizing: border-box; }
-			html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
-			body { background-color: var(--background-start); background-image: radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%); color: var(--text-secondary); font-family: 'Poppins', sans-serif; line-height: 1.8; }
-			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
-			.container { max-width: 900px; margin: 0 auto; padding: 0 25px; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; margin: 0 0 0.8em 0; line-height: 1.3; }
-			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
-			a:hover { color: #fff; } strong, b { color: #fff; font-weight: 700; }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Projet - Industrialisation DevOps ARDmate</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/project-template.css" />
+</head>
+<body class="project-page is-preload">
+  <div id="menu-overlay"></div>
+  <nav id="sidebar-menu">
+    <div class="menu-header"><span style="color:#fff;font-weight:700;letter-spacing:1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
+    <ul class="menu-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">A propos</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="projets-hub.html">Projets</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="index.html#footer">Contact</a></li>
+    </ul>
+  </nav>
 
-			#header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(12, 10, 31, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-glass); z-index: 1000; padding: 0.8em 0; }
-			#header > .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
-			#logo { display: flex; align-items: center; gap: 1em; }
-			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
-			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; }
-			#logo h1 a { color: #fff; }
+  <div id="page-wrapper">
+    <section id="header"><div class="container"><div id="logo"><img src="images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="index.html">Abderrahman El Ouali</a></h1></div><div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div></div></section>
 
-			.menu-toggle { display: flex; align-items: center; gap: 0.5em; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); padding: 0.5em 1.2em; border-radius: 50px; cursor: pointer; color: var(--text-primary); transition: background 0.3s; }
-			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
-			#sidebar-menu { position: fixed; top: 0; right: 0; width: 300px; height: 100vh; background: #0e0b1f; border-left: 1px solid var(--border-glass); z-index: 2000; transform: translateX(100%); transition: transform 0.4s ease; padding: 2em; display: flex; flex-direction: column; box-shadow: -10px 0 40px rgba(0,0,0,0.8); }
-			#sidebar-menu.active { transform: translateX(0); }
-			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; padding-bottom: 1em; border-bottom: 1px solid rgba(255,255,255,0.1); }
-			.menu-close { font-size: 1.5em; cursor: pointer; color: #fff; }
-			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
-			.menu-links a { font-size: 1.2em; font-weight: 600; color: #fff; display: block; }
-			.menu-links a:hover { color: var(--accent-cyan); padding-left: 10px; }
-			#menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-			#menu-overlay.active { opacity: 1; visibility: visible; }
+    <main class="project-main">
+      <section class="project-hero reveal"><div class="container">
+        <span class="project-type"><i class="fas fa-code-branch"></i> Dev / DevOps</span>
+        <h1>Industrialisation DevOps ARDmate</h1>
+        <p>Transformation d un prototype monolithique en chaine d outillage fiable avec qualite logicielle, CI/CD et pratiques de collaboration standardisees.</p>
+        <div class="project-meta">
+          <article class="meta-card"><span>Role</span><strong>Ingenieur DevOps</strong></article>
+          <article class="meta-card"><span>Contexte</span><strong>Airbus</strong></article>
+          <article class="meta-card"><span>Domaine</span><strong>Tooling Engineering</strong></article>
+          <article class="meta-card"><span>Stack</span><strong>Python, Jenkins, Pytest, Git Flow</strong></article>
+        </div>
+      </div></section>
 
-			.project-hero { padding: 10em 0 4em 0; text-align: center; }
-			.project-hero h1 { font-size: 2.8em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5em; }
-			.project-hero p { font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto; }
+      <section class="container project-grid">
+        <article class="project-slider reveal" data-slider>
+          <div class="slides">
+            <figure class="slide"><img src="images/projet-ardmate.jpg" alt="Pipeline ARDmate" /><figcaption>Pipeline d industrialisation de la chaine d outils.</figcaption></figure>
+          </div>
+          <button class="slider-control prev" type="button" aria-label="Slide precedente"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-control next" type="button" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
+          <div class="slider-dots"></div>
+        </article>
 
-			.project-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 1em; margin: 3em 0; }
-			.meta-item { background: var(--surface-glass); border: 1px solid var(--border-glass); padding: 0.8em 1.5em; border-radius: 12px; text-align: center; }
-			.meta-item strong { display: block; color: var(--accent-cyan); font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3em; }
-			.meta-item span { color: #fff; font-weight: 500; }
+        <section class="project-section reveal">
+          <h2>Contexte</h2>
+          <p>Le socle initial etait un script unique difficile a maintenir, sans tests, sans chaine d integration et avec des risques de regression eleves en production.</p>
+        </section>
 
-			.slider-container { position: relative; overflow: hidden; border-radius: 16px; border: 1px solid var(--border-glass); margin-bottom: 4em; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-			.slider { display: flex; transition: transform 0.5s ease-in-out; }
-			.slide { min-width: 100%; } .slide img { width: 100%; display: block; }
-			.slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); padding: 0 1em; pointer-events: none; }
-			.slider-nav a { background: rgba(0,0,0,0.6); color: #fff; padding: 15px; border-radius: 50%; cursor: pointer; pointer-events: auto; transition: background 0.3s; }
-			.slider-nav a:hover { background: var(--accent-cyan); color: #000; }
+        <section class="project-section reveal">
+          <h2>Solution technique</h2>
+          <ul class="project-list">
+            <li>Refactoring en modules metier avec architecture plus lisible et testable.</li>
+            <li>Mise en place d une suite de tests unitaires avec Pytest et seuils de qualite.</li>
+            <li>Creation de pipelines Jenkins pour build, tests et packaging automatique.</li>
+            <li>Adoption de Git Flow et conventions de commit pour un cycle de livraison stable.</li>
+          </ul>
+        </section>
 
-			.content-section { margin-bottom: 4em; }
-			.content-section h3 { color: #fff; font-size: 1.8em; margin-bottom: 1em; border-left: 4px solid var(--accent-purple); padding-left: 15px; }
-			.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2em; margin-top: 2em; }
-			.result-card { background: var(--surface-glass); border: 1px solid var(--border-glass); border-radius: 16px; padding: 2em; text-align: center; transition: transform 0.3s ease; }
-			.result-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
-			.result-card i { font-size: 2.5em; color: var(--accent-cyan); margin-bottom: 0.5em; }
-			.result-card h4 { font-size: 1.2em; color: #fff; margin-bottom: 0.5em; }
-			.result-card p { font-size: 0.95em; margin: 0; color: var(--text-secondary); }
+        <section class="project-section reveal">
+          <h2>Resultats</h2>
+          <div class="results-grid">
+            <article class="result-card"><i class="fas fa-shield-halved"></i><h3>Fiabilite</h3><p>Diminution forte des regressions grace aux controles automatiques.</p></article>
+            <article class="result-card"><i class="fas fa-clock"></i><h3>Vitesse de livraison</h3><p>Reduction du temps entre modification et validation technique.</p></article>
+            <article class="result-card"><i class="fas fa-sitemap"></i><h3>Maintenabilite</h3><p>Code plus modulaire et plus simple a faire evoluer.</p></article>
+          </div>
+        </section>
+      </section>
+    </main>
 
-			#footer { background: rgba(12, 10, 31, 0.8); border-top: 1px solid var(--border-glass); padding: 2em 0; margin-top: auto; text-align: center; font-size: 0.9em; }
-			@media (max-width: 768px) { .project-hero h1 { font-size: 2.2em; } .meta-item { width: 100%; } }
-		</style>
-	</head>
-	<body class="is-preload">
-		
-		<div id="menu-overlay"></div>
-		<nav id="sidebar-menu">
-			<div class="menu-header"><span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
-			<ul class="menu-links">
-				<li><a href="index.html">Accueil</a></li><li><a href="about.html">À Propos</a></li><li><a href="experiences.html">Expériences</a></li><li><a href="projets-hub.html">Projets</a></li><li><a href="articles.html">Articles</a></li><li><a href="index.html#footer">Contact</a></li>
-			</ul>
-		</nav>
+    <section id="footer"><div class="container"><p>&copy; 2026 Abderrahman El Ouali. Tous droits reserves.</p></div></section>
+  </div>
 
-		<div id="page-wrapper">
-			<section id="header">
-				<div class="container">
-					<div id="logo"><img src="images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="index.html">Abderrahman El Ouali</a></h1></div>
-					<div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div>
-				</div>
-			</section>
-
-			<section class="project-hero">
-				<div class="container">
-					<h1>Industrialisation DevOps ARDmate</h1>
-					<p>Transformation d'un prototype en chaîne d'outils industrielle chez Airbus. Mise en place de pipelines CI/CD, tests automatisés et refonte architecturale.</p>
-					
-					<div class="project-meta">
-						<div class="meta-item"><strong>Rôle</strong><span>Ingénieur DevOps</span></div>
-						<div class="meta-item"><strong>Entreprise</strong><span>Airbus</span></div>
-						<div class="meta-item"><strong>Tech Stack</strong><span>Python, Jenkins, Git, Pytest</span></div>
-					</div>
-				</div>
-			</section>
-
-			<div class="container">
-				<div class="slider-container">
-					<div class="slider">
-						<div class="slide"><img src="images/projet-ardmate.jpg" alt="Architecture CI/CD"></div>
-						<div class="slide"><img src="images/ardmate-design-pattern.jpg" alt="Design Pattern Composite"></div>
-						<div class="slide"><img src="images/ardmate-cicd.jpg" alt="Pipeline Jenkins"></div>
-					</div>
-					<div class="slider-nav"><a class="prev">&#10094;</a><a class="next">&#10095;</a></div>
-				</div>
-
-				<section class="content-section">
-					<h3>Le Contexte : Prototype Instable</h3>
-					<p>L'outil existant était un script monolithique de 2000 lignes, sans tests ni documentation. Les mises en production étaient risquées et manuelles, provoquant des erreurs dans la génération des documents d'architecture critiques.</p>
-				</section>
-
-				<section class="content-section">
-					<h3>Ma Solution : Refonte & Automatisation</h3>
-					<p>J'ai mené une refonte complète en appliquant les standards industriels du développement logiciel :</p>
-					<ul>
-						<li><strong>Refactoring :</strong> Découpage du code en modules réutilisables avec le pattern <strong>Composite</strong>.</li>
-						<li><strong>Testing :</strong> Écriture de <strong>130+ tests unitaires</strong> (Pytest) pour garantir la non-régression.</li>
-						<li><strong>CI/CD :</strong> Création de pipelines <strong>Jenkins</strong> automatisés pour le build, le test et le packaging.</li>
-						<li><strong>Collaboration :</strong> Mise en place du <strong>Git Flow</strong> et des Conventional Commits.</li>
-					</ul>
-				</section>
-
-				<section class="content-section">
-					<h3>Résultats & Impact</h3>
-					<div class="results-grid">
-						<div class="result-card">
-							<i class="fas fa-shield-alt"></i>
-							<h4>Fiabilité Totale</h4>
-							<p>Couverture de tests > 90%, éliminant les bugs critiques en production.</p>
-						</div>
-						<div class="result-card">
-							<i class="fas fa-code-branch"></i>
-							<h4>Maintenance Facile</h4>
-							<p>Code modulaire et documenté, réduisant le temps de correction de 50%.</p>
-						</div>
-						<div class="result-card">
-							<i class="fas fa-check-circle"></i>
-							<h4>Qualité Garantie</h4>
-							<p>Validation automatique de chaque commit avant fusion.</p>
-						</div>
-					</div>
-				</section>
-			</div>
-
-			<section id="footer">
-				<div class="container"><p>&copy; 2025 Abderrahman El Ouali. Tous droits réservés.</p></div>
-			</section>
-		</div>
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script>
-			const menuBtn=document.getElementById('menu-btn'),closeBtn=document.querySelector('.menu-close'),sidebar=document.getElementById('sidebar-menu'),overlay=document.getElementById('menu-overlay'),body=document.body;
-			function toggleMenu(){const e=sidebar.classList.contains('active');e?(sidebar.classList.remove('active'),overlay.classList.remove('active'),body.style.overflow='auto'):(sidebar.classList.add('active'),overlay.classList.add('active'),body.style.overflow='hidden')}
-			menuBtn&&menuBtn.addEventListener('click',toggleMenu),closeBtn&&closeBtn.addEventListener('click',toggleMenu),overlay&&overlay.addEventListener('click',toggleMenu);
-			
-			// Slider Logic
-			document.addEventListener('DOMContentLoaded', function() {
-				const slides = document.querySelectorAll('.slide');
-				if(slides.length > 0) {
-					let currentSlide = 0;
-					const slider = document.querySelector('.slider');
-					const prev = document.querySelector('.prev');
-					const next = document.querySelector('.next');
-					
-					function show(index) {
-						if(index >= slides.length) currentSlide = 0;
-						else if(index < 0) currentSlide = slides.length - 1;
-						else currentSlide = index;
-						slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-					}
-					prev.addEventListener('click', () => show(currentSlide - 1));
-					next.addEventListener('click', () => show(currentSlide + 1));
-				}
-			});
-		</script>
-	</body>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/project-template.js"></script>
+</body>
 </html>
