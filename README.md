@@ -22,17 +22,20 @@ Le site est publie via GitHub Pages sur:
 
 ```text
 .
-|- index.html
-|- about.html
-|- experiences.html
-|- articles.html
-|- projets-hub.html
-|- projets-data.html
-|- projets-archi.html
-|- projets-dev.html
-|- project-*.html
-|- data_analyse_ocp.html
-|- project-template.html
+|- index.html (point d entree GitHub Pages, redirection)
+|- pages/
+|  |- index.html
+|  |- about.html
+|  |- experiences.html
+|  |- articles.html
+|  |- projets-hub.html
+|  |- projets-data.html
+|  |- projets-archi.html
+|  |- projets-dev.html
+|  |- projects/
+|     |- project-*.html
+|     |- data_analyse_ocp.html
+|     |- project-template.html
 |- assets/
 |  |- css/
 |  |  |- main.css
@@ -40,8 +43,8 @@ Le site est publie via GitHub Pages sur:
 |  |- js/
 |     |- main.js
 |     |- project-template.js
-|- images/
-|- LICENSE.txt
+|- assets/images/
+|- assets/docs/Cv_EL_OUALI_2025.pdf
 ```
 
 ## Stack technique
@@ -58,16 +61,16 @@ Le site est publie via GitHub Pages sur:
 Les pages projets utilisent une base commune:
 - `assets/css/project-template.css`
 - `assets/js/project-template.js`
-- `project-template.html`
+- `pages/projects/project-template.html`
 
 ### Ajouter un nouveau projet
 
-1. Dupliquer `project-template.html` vers `project-<nom>.html`.
+1. Dupliquer `pages/projects/project-template.html` vers `pages/projects/project-<nom>.html`.
 2. Remplir les sections (hero, meta, slider, contexte, solution, resultats).
 3. Ajouter la carte/lien du projet dans la page categorie correspondante:
-   - `projets-data.html`
-   - `projets-archi.html`
-   - `projets-dev.html`
+   - `pages/projets-data.html`
+   - `pages/projets-archi.html`
+   - `pages/projets-dev.html`
 4. Verifier l affichage desktop + mobile.
 
 ## Developpement local
@@ -88,7 +91,7 @@ Le deploiement est automatique apres push sur la branche configuree pour GitHub 
 
 Checklist avant push:
 - liens internes valides
-- images presentes dans `images/`
+- images presentes dans `assets/images/`
 - pas de `href="#"` non voulu
 - affichage responsive verifie
 
@@ -111,3 +114,6 @@ Avant publication, verifier aussi les metadonnees des fichiers (PDF/images) si n
 ## Licence
 
 Voir `LICENSE.txt`.
+
+
+

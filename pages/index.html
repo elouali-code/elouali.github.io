@@ -1,0 +1,526 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Abderrahman El Ouali - Portfolio d'Ingénieur</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<link rel="icon" type="image/png" href="../favicon.png"> 
+		
+		<style>
+			:root {
+				--background-start: #0c0a1f;
+				--background-end: #1f1d36;
+				--surface-glass: rgba(22, 27, 41, 0.85);
+				--border-glass: rgba(255, 255, 255, 0.15);
+				--text-primary: #ffffff;
+				--text-secondary: #c3c1d3;
+				--accent-purple: #8c52ff;
+				--accent-cyan: #00d4ff;
+				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+			}
+
+			/* --- RESET FORCE (POUR CORRIGER LE DÉCALAGE) --- */
+			* { box-sizing: border-box; }
+			
+			html, body {
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100% !important;
+				overflow-x: hidden !important;
+			}
+
+			body {
+				background-color: var(--background-start);
+				background-image: radial-gradient(circle at 15% 50%, rgba(140, 82, 255, 0.1) 0%, transparent 25%), 
+                                  radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 25%);
+				color: var(--text-secondary);
+				font-family: 'Poppins', sans-serif;
+			}
+
+			#page-wrapper { 
+				overflow: hidden; 
+				position: relative; 
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			
+			/* Centrage universel des conteneurs */
+			.container { 
+				max-width: 1200px !important; 
+				width: 100% !important;
+				margin-left: auto !important; 
+				margin-right: auto !important; 
+				padding-left: 20px !important; 
+				padding-right: 20px !important;
+			}
+
+			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 1em 0; }
+			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
+			a:hover { color: #fff; }
+			
+			/* --- ANIMATIONS (Scroll Reveal) --- */
+			.reveal {
+				opacity: 0;
+				transform: translateY(30px);
+				transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+			}
+			.reveal.active { opacity: 1; transform: translateY(0); }
+
+			/* --- HEADER --- */
+			#header {
+				position: fixed; top: 0; left: 0; width: 100%;
+				background: rgba(12, 10, 31, 0.95);
+				border-bottom: 1px solid var(--border-glass);
+				z-index: 1000;
+				padding: 0.8em 0;
+				height: auto;
+			}
+			#header > .container { display: flex; justify-content: space-between; align-items: center; }
+			
+			#logo { display: flex; align-items: center; gap: 1em; }
+			#logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
+			#logo h1 { font-size: 1.1em; margin: 0; font-weight: 500; color: #fff; }
+			#logo h1 a { color: var(--text-primary); text-decoration: none; border: 0; }
+
+			/* --- MENU BURGER --- */
+			.menu-toggle {
+				display: flex; align-items: center; gap: 0.5em;
+				background: rgba(255, 255, 255, 0.1);
+				border: 1px solid var(--border-glass);
+				padding: 0.5em 1em;
+				border-radius: 50px;
+				cursor: pointer;
+				color: var(--text-primary);
+				transition: background 0.3s;
+			}
+			.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--accent-cyan); }
+			
+			#sidebar-menu {
+				position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
+				background: #0e0b1f;
+				border-left: 1px solid var(--border-glass);
+				z-index: 2000;
+				transform: translateX(100%);
+				transition: transform 0.4s ease;
+				padding: 2em;
+				display: flex; flex-direction: column;
+				box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+			}
+			#sidebar-menu.active { transform: translateX(0); }
+			
+			.menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3em; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; }
+			.menu-close { font-size: 1.5em; cursor: pointer; color: var(--text-primary); }
+			.menu-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.5em; }
+			.menu-links a { font-size: 1.2em; font-weight: 600; color: var(--text-primary); display: block; border: 0; }
+			.menu-links a:hover { color: var(--accent-cyan); transform: translateX(10px); }
+
+			#menu-overlay {
+				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+				background: rgba(0,0,0,0.8); z-index: 1500;
+				opacity: 0; visibility: hidden; transition: all 0.3s ease;
+			}
+			#menu-overlay.active { opacity: 1; visibility: visible; }
+
+			/* --- HERO CORRIGÉ (CENTRAGE) --- */
+			.hero { 
+				padding: 12em 0 6em 0; 
+				text-align: center; 
+				width: 100% !important;
+				margin: 0 auto !important;
+			}
+			.hero .container {
+				max-width: 900px !important;
+				margin: 0 auto !important;
+			}
+			.hero h1 { 
+				font-size: 3.2em; 
+				font-weight: 700; 
+				margin-bottom: 0.5em; /* Espace augmenté */
+				line-height: 1.3; /* Interligne augmenté pour éviter le chevauchement */
+				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+			}
+			.hero .subtitle { 
+				font-size: 1.3em; 
+				line-height: 1.8; 
+				color: var(--text-secondary); 
+				margin-bottom: 2.5em; 
+				max-width: 800px; 
+				margin-left: auto; 
+				margin-right: auto; 
+			}
+			
+			.cta-group { display: flex; justify-content: center; gap: 1.5em; margin-bottom: 3em; flex-wrap: wrap; }
+			.button {
+				background: var(--gradient-primary);
+				color: #fff !important; border: 0; border-radius: 50px;
+				padding: 0.9em 2.5em; font-weight: 600; font-size: 1em;
+				box-shadow: 0 10px 20px rgba(140, 82, 255, 0.3);
+				display: inline-block;
+				cursor: pointer;
+			}
+			.button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(140, 82, 255, 0.5); }
+			.button.alt { background: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3); }
+			.button.alt:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+			.social-hub { display: flex; justify-content: center; gap: 1.5em; }
+			.social-icon-link {
+				display: flex; align-items: center; justify-content: center;
+				width: 50px; height: 50px;
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 50%; color: var(--text-secondary);
+				font-size: 22px; transition: all 0.3s ease; border-bottom: 0;
+			}
+			.social-icon-link:hover { background: #fff; color: #0c0a1f; transform: translateY(-5px); }
+
+			/* --- SECTIONS --- */
+			.section-container { padding: 5em 0; border-top: 1px solid var(--border-glass); }
+			.section-title { font-size: 2.2em; text-align: center; margin-bottom: 2em; color: var(--text-primary); }
+
+			/* --- CORRECTION GRILLE & CARTES --- */
+			.row { 
+				display: flex; 
+				flex-wrap: wrap; 
+				margin: 0 -15px; 
+				justify-content: center; /* Assure que les colonnes sont centrées si elles ne remplissent pas la ligne */
+			}
+			
+			.col-4 { width: 33.33%; padding: 0 15px; box-sizing: border-box; }
+			.col-3 { width: 25%; padding: 0 15px; box-sizing: border-box; }
+			
+			.experience-card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				border-radius: 16px;
+				padding: 2em 1.5em;
+				text-align: center;
+				min-height: 320px; 
+				margin-bottom: 2em;
+				transition: transform 0.3s ease;
+				position: relative;
+				box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+			}
+			.experience-card:hover { transform: translateY(-8px); border-color: var(--accent-purple); }
+			
+			.experience-card .logo-wrapper {
+				width: 90px; height: 90px;
+				background: #ffffff;
+				border-radius: 50%;
+				display: flex; align-items: center; justify-content: center;
+				margin-bottom: 1.5em;
+				box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+				padding: 10px;
+			}
+			.experience-card .logo { width: 100%; height: 100%; object-fit: contain; }
+			
+			.experience-card h3 { font-size: 1.3em; margin: 0.5em 0; color: #fff; }
+			.experience-card .role-highlight { color: var(--accent-cyan); font-weight: 600; font-size: 1em; display: block; margin-bottom: 0.5em; }
+			.experience-card .date { font-size: 0.9em; color: var(--text-secondary); opacity: 0.8; }
+
+			/* --- STACK TECHNIQUE --- */
+			.tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5em; margin-top: 2em; }
+			.tech-item {
+				background: rgba(255,255,255,0.05);
+				border: 1px solid var(--border-glass);
+				border-radius: 12px;
+				padding: 1em 1.5em;
+				text-align: center;
+				min-width: 110px;
+				transition: all 0.3s ease;
+			}
+			.tech-item:hover { background: rgba(255,255,255,0.1); border-color: var(--accent-cyan); transform: translateY(-5px); }
+			.tech-item i { font-size: 2em; margin-bottom: 0.3em; display: block; color: var(--text-primary); }
+			.tech-item span { font-size: 0.9em; color: var(--text-secondary); font-weight: 500; }
+
+			/* --- PROJETS --- */
+			.project-card {
+				background: var(--surface-glass);
+				border: 1px solid var(--border-glass);
+				border-radius: 16px;
+				overflow: hidden;
+				display: flex; flex-direction: column;
+				height: 100%;
+				margin-bottom: 2em;
+				transition: transform 0.3s ease;
+			}
+			.project-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
+			.project-card .image-container { width: 100%; height: 180px; overflow: hidden; }
+			.project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+			.project-card:hover img { transform: scale(1.05); }
+			.project-card .content { padding: 1.5em; display: flex; flex-direction: column; flex-grow: 1; }
+			.project-card h3 { font-size: 1.2em; margin-bottom: 0.5em; color: #fff; }
+			.project-card p { font-size: 0.9em; margin-bottom: 1.5em; color: var(--text-secondary); line-height: 1.6; flex-grow: 1; }
+			.project-card .btn-small { 
+				align-self: flex-start; padding: 0.5em 1.2em; font-size: 0.85em; 
+				border: 1px solid var(--accent-cyan); color: var(--accent-cyan); border-radius: 20px;
+			}
+			.project-card .btn-small:hover { background: var(--accent-cyan); color: #000; }
+
+			/* --- CONTACT --- */
+			.contact-card {
+				background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+				border: 1px solid var(--border-glass); border-radius: 20px;
+				padding: 3em; text-align: center;
+				max-width: 800px; margin: 0 auto;
+			}
+			.info-grid { display: flex; justify-content: center; gap: 2em; flex-wrap: wrap; margin: 2em 0; }
+			.info-item { display: flex; align-items: center; gap: 0.5em; font-size: 1.1em; color: var(--text-primary); }
+			.info-item i { color: var(--accent-cyan); }
+
+			/* --- RESPONSIVE FIXES --- */
+			@media (max-width: 980px) {
+				.col-4, .col-3 { width: 50%; }
+				.hero h1 { font-size: 2.5em; }
+			}
+			@media (max-width: 736px) {
+				.col-4, .col-3 { width: 100%; }
+				.hero { padding: 8em 0 4em 0; }
+				.hero h1 { font-size: 2em; }
+				.menu-toggle { padding: 0.4em 0.8em; font-size: 0.9em; }
+				#sidebar-menu { width: 100%; max-width: 300px; }
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		
+		<div id="menu-overlay"></div>
+
+		<nav id="sidebar-menu">
+			<div class="menu-header">
+				<span style="color:#fff; font-weight:bold; letter-spacing: 1px;">MENU</span>
+				<div class="menu-close"><i class="fas fa-times"></i></div>
+			</div>
+			<ul class="menu-links">
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="about.html">À Propos</a></li>
+				<li><a href="experiences.html">Expériences</a></li>
+				<li><a href="projets-hub.html">Projets</a></li>
+				<li><a href="articles.html">Articles</a></li>
+				<li><a href="index.html#footer">Contact</a></li>
+			</ul>
+		</nav>
+
+		<div id="page-wrapper">
+
+			<section id="header">
+				<div class="container">
+					<div id="logo">
+						<img src="../assets/images/logo.jpg" alt="Abderrahman El Ouali" />
+						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
+					</div>
+					<div class="menu-toggle" id="menu-btn">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="hero reveal">
+				<div class="container">
+					<h1>Ingénieur <br> Data & Cloud Architecture</h1>
+					<p class="subtitle">Je conçois des écosystèmes de données scalables et des architectures cloud résilientes pour transformer la donnée brute en valeur stratégique.</p>
+					
+					<div class="cta-group">
+						<a href="projets-hub.html" class="button">Voir mes projets</a>
+						<a href="../assets/docs/Cv_EL_OUALI_2025.pdf" target="_blank" class="button alt"><i class="fas fa-download" style="margin-right:10px;"></i> Télécharger CV</a>
+					</div>
+					
+					<div class="social-hub">
+						<a href="https://github.com/elouali-code" target="_blank" class="social-icon-link" title="GitHub"><i class="fab fa-github"></i></a>
+						<a href="https://www.linkedin.com/in/elouali/" target="_blank" class="social-icon-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+						<a href="mailto:el-ouali@insa-toulouse.fr" class="social-icon-link" title="Email"><i class="fas fa-envelope"></i></a>
+					</div>
+				</div>
+			</section>
+			
+			<section class="section-container">
+				<div class="container">
+					<h2 class="section-title reveal">Parcours Professionnel</h2>
+					<div class="row">
+						<div class="col-4 reveal">
+							<a href="experiences.html" class="experience-card">
+								<div class="logo-wrapper">
+									<img src="../assets/images/logo-airbus.png" alt="Airbus" class="logo"/>
+								</div>
+								<span class="role-highlight">Architecte Cloud (Stage)</span>
+								<h3>Airbus</h3>
+								<span class="date">Mars 2025 - Sept. 2025</span>
+							</a>
+						</div>
+						<div class="col-4 reveal">
+							<a href="experiences.html" class="experience-card">
+								<div class="logo-wrapper">
+									<img src="../assets/images/logo-ocp.png" alt="OCP" class="logo"/>
+								</div>
+								<span class="role-highlight">Data Analyst (Stage)</span>
+								<h3>OCP Group</h3>
+								<span class="date">Juil. 2024 - Sept. 2024</span>
+							</a>
+						</div>
+						<div class="col-4 reveal">
+							<a href="experiences.html" class="experience-card">
+								<div class="logo-wrapper">
+									<img src="../assets/images/logo-webhelp.png" alt="Webhelp" class="logo"/>
+								</div>
+								<span class="role-highlight">Dev Full-Stack (Stage)</span>
+								<h3>Webhelp</h3>
+								<span class="date">Juil. 2021 - Août 2021</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-container" style="background: rgba(255,255,255,0.02);">
+				<div class="container">
+					<h2 class="section-title reveal">Stack Technique</h2>
+					<p style="text-align: center; margin-bottom: 2em; max-width:600px; margin-left:auto; margin-right:auto;" class="reveal">Les technologies que j'utilise au quotidien pour bâtir des solutions robustes.</p>
+					
+					<div class="tech-grid reveal">
+						<div class="tech-item"><i class="fab fa-aws" style="color:#FF9900;"></i><span>AWS</span></div>
+						<div class="tech-item"><i class="fab fa-python" style="color:#3776AB;"></i><span>Python</span></div>
+						<div class="tech-item"><i class="fab fa-java" style="color:#007396;"></i><span>Java</span></div>
+						<div class="tech-item"><i class="fab fa-docker" style="color:#2496ED;"></i><span>Docker</span></div>
+						<div class="tech-item"><i class="fas fa-database" style="color:#4DB33D;"></i><span>SQL / NoSQL</span></div>
+						<div class="tech-item"><i class="fab fa-jenkins" style="color:#D24939;"></i><span>CI/CD</span></div>
+						<div class="tech-item"><i class="fas fa-brain" style="color:#F7DF1E;"></i><span>AI / ML</span></div>
+						<div class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Git</span></div>
+					</div>
+				</div>
+			</section>
+			
+			<section class="section-container">
+				<div class="container">
+					<h2 class="section-title reveal">Projets Récents</h2>
+					<div class="row">
+						<div class="col-4 reveal">
+							<div class="project-card">
+								<div class="image-container">
+									<a href="projects/project-dynamodb.html"><img src="../assets/images/projet-dynamodb.jpg" alt="AWS Serverless"/></a>
+								</div>
+								<div class="content">
+									<h3>Data Serverless</h3>
+									<p>Architecture AWS optimisée (DynamoDB/Lambda) réduisant la latence de O(N) à O(1).</p>
+									<a href="projects/project-dynamodb.html" class="btn-small">Détails</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-4 reveal">
+							<div class="project-card">
+								<div class="image-container">
+									<a href="projects/project-Core_S&T.html"><img src="../assets/images/pipline.PNG" alt="Data Pipeline"/></a>
+								</div>
+								<div class="content">
+									<h3>Skywise Pipelines</h3>
+									<p>ETL complexes et Data Products industriels sur la plateforme Palantir Foundry.</p>
+									<a href="projects/project-Core_S&T.html" class="btn-small">Détails</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-4 reveal">
+							<div class="project-card">
+								<div class="image-container">
+									<a href="projects/project-football-ai.html"><img src="../assets/images/football-detection.jpg" alt="AI Football"/></a>
+								</div>
+								<div class="content">
+									<h3>AI Football Analysis</h3>
+									<p>Computer Vision (YOLOv8) pour l'analyse tactique de matchs en temps réel.</p>
+									<a href="projects/project-football-ai.html" class="btn-small">Détails</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div style="text-align: center; margin-top: 3em;" class="reveal">
+						<a href="projets-hub.html" class="button">Voir le catalogue complet</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="footer">
+				<div class="container reveal">
+					<div class="contact-card">
+						<h2>Prêt à collaborer ?</h2>
+						<p>Je suis toujours à l'écoute d'opportunités challengeantes en Data Engineering et Cloud Architecture.</p>
+						
+						<div class="info-grid">
+							<div class="info-item"><i class="fas fa-envelope"></i> el-ouali@insa-toulouse.fr</div>
+							<div class="info-item"><i class="fas fa-phone"></i> +33 7 52 04 36 70</div>
+							<div class="info-item"><i class="fab fa-linkedin"></i> linkedin.com/in/elouali</div>
+						</div>
+						
+						<a href="mailto:el-ouali@insa-toulouse.fr" class="button">Me contacter</a>
+					</div>
+					
+					<div style="text-align: center; margin-top: 4em; font-size: 0.9em; opacity: 0.6;">
+						<p>&copy; 2025 Abderrahman El Ouali. Designed & Engineered with passion.</p>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.dropotron.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+		
+		<script>
+			// Menu Burger
+			const menuBtn = document.getElementById('menu-btn');
+			const closeBtn = document.querySelector('.menu-close');
+			const sidebar = document.getElementById('sidebar-menu');
+			const overlay = document.getElementById('menu-overlay');
+			const body = document.body;
+
+			function toggleMenu() {
+				const isActive = sidebar.classList.contains('active');
+				if(!isActive) {
+					sidebar.classList.add('active');
+					overlay.classList.add('active');
+					body.style.overflow = 'hidden';
+				} else {
+					sidebar.classList.remove('active');
+					overlay.classList.remove('active');
+					body.style.overflow = 'auto';
+				}
+			}
+
+			if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+			if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
+			if(overlay) overlay.addEventListener('click', toggleMenu);
+
+			// Animation Reveal
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) entry.target.classList.add('active');
+				});
+			}, { threshold: 0.1 });
+
+			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+		</script>
+	<script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
+	</body>
+</html>
+
+
+

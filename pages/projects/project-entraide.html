@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Projet - Plateforme Entraide Microservices</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../assets/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../assets/css/project-template.css" />
+</head>
+<body class="project-page is-preload">
+  <div id="menu-overlay"></div>
+  <nav id="sidebar-menu">
+    <div class="menu-header"><span style="color:#fff;font-weight:700;letter-spacing:1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div>
+    <ul class="menu-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../about.html">A propos</a></li>
+      <li><a href="../experiences.html">Experiences</a></li>
+      <li><a href="../projets-hub.html">Projets</a></li>
+      <li><a href="../articles.html">Articles</a></li>
+      <li><a href="../index.html#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="page-wrapper">
+    <section id="header"><div class="container"><div id="logo"><img src="../../assets/images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="../index.html">Abderrahman El Ouali</a></h1></div><div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div></div></section>
+
+    <main class="project-main">
+      <section class="project-hero reveal"><div class="container">
+        <span class="project-type"><i class="fas fa-network-wired"></i> Dev / Architecture</span>
+        <h1>Plateforme Entraide Etudiante Microservices</h1>
+        <p>Application distribuee concue pour connecter les etudiants par competences avec un modele microservices orientee evolutivite.</p>
+        <div class="project-meta">
+          <article class="meta-card"><span>Role</span><strong>Developpeur Backend</strong></article>
+          <article class="meta-card"><span>Contexte</span><strong>Projet academique</strong></article>
+          <article class="meta-card"><span>Domaine</span><strong>Architecture microservices</strong></article>
+          <article class="meta-card"><span>Stack</span><strong>Java, Spring Boot, REST, MySQL</strong></article>
+        </div>
+      </div></section>
+
+      <section class="container project-grid">
+        <article class="project-slider reveal" data-slider>
+          <div class="slides">
+            <figure class="slide"><img src="../../assets/images/entraide-frontend.jpg" alt="Frontend entraide" /><figcaption>Interface web branchant les services de demande et recommandation.</figcaption></figure>
+          </div>
+          <button class="slider-control prev" type="button" aria-label="Slide precedente"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-control next" type="button" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
+          <div class="slider-dots"></div>
+        </article>
+
+        <section class="project-section reveal">
+          <h2>Contexte</h2>
+          <p>Le projet visait a sortir d une logique monolithique pour valider une architecture distribuable, testable et extensible autour de besoins etudiants concrets.</p>
+        </section>
+
+        <section class="project-section reveal">
+          <h2>Solution technique</h2>
+          <ul class="project-list">
+            <li>User Service pour la gestion des profils et competences.</li>
+            <li>Request Service pour la creation et le suivi des demandes d aide.</li>
+            <li>Recommendation Service pour le matching et priorisation des tuteurs.</li>
+            <li>Communication inter-services REST avec contrats d API clairs.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
+          <h2>Resultats</h2>
+          <div class="results-grid">
+            <article class="result-card"><i class="fas fa-cubes"></i><h3>Architecture modulaire</h3><p>Chaque service evolue independamment selon sa responsabilite metier.</p></article>
+            <article class="result-card"><i class="fas fa-plug"></i><h3>Interoperabilite</h3><p>Contrats REST reutilisables pour brancher frontend ou services tiers.</p></article>
+            <article class="result-card"><i class="fas fa-graduation-cap"></i><h3>Valeur metier</h3><p>Mise en relation etudiante plus rapide sur base de competences reelles.</p></article>
+          </div>
+        </section>
+
+        <section class="project-cta reveal">
+          <a href="https://github.com/elouali-code/Projet-Entraide-Microservices" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Voir le repository GitHub</a>
+        </section>
+      </section>
+    </main>
+
+    <section id="footer"><div class="container"><p>&copy; 2026 Abderrahman El Ouali. Tous droits reserves.</p></div></section>
+  </div>
+
+  <script src="../../assets/js/jquery.min.js"></script>
+  <script src="../../assets/js/jquery.dropotron.min.js"></script>
+  <script src="../../assets/js/browser.min.js"></script>
+  <script src="../../assets/js/breakpoints.min.js"></script>
+  <script src="../../assets/js/util.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/project-template.js"></script>
+</body>
+</html>
+
+
+
+
