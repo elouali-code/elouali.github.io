@@ -22,18 +22,49 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check links
-        uses: lycheeverse/lychee-action@v2
-        with:
-          args: >-
-            --verbose
-            --no-progress
-            --exclude-mail
-            --offline
-            --base "."
-            --exclude "pages/projects/project-template.html"
-            --accept 200,429
-            "**/*.html"
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Check local links and fragments
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $files = Get-ChildItem -Recurse -File -Filter *.html
+          $issues = New-Object System.Collections.Generic.List[string]
+
+          foreach ($f in $files) {
+            $content = Get-Content $f.FullName -Raw
+            $matches = [regex]::Matches($content, '(?:href|src)="([^"]+)"')
+
+            foreach ($m in $matches) {
+              $u = $m.Groups[1].Value
+              if ($u -match '^(https?:|mailto:|tel:|javascript:|data:)') { continue }
+
+              $parts = $u.Split('#', 2)
+              $path = $parts[0]
+              $frag = if ($parts.Count -gt 1) { $parts[1] } else { $null }
+
+              if ([string]::IsNullOrWhiteSpace($path)) {
+                if ($frag -and $content -notmatch ('id="' + [regex]::Escape($frag) + '"')) {
+                  $issues.Add("$($f.FullName) -> #$frag (missing fragment)")
+                }
+                continue
+              }
+
+              $target = Join-Path $f.DirectoryName $path
+              if (-not (Test-Path $target)) {
+                $issues.Add("$($f.FullName) -> $u (missing file)")
+                continue
+              }
+
+              if ($frag) {
+                $tcontent = Get-Content $target -Raw
+                if ($tcontent -notmatch ('id="' + [regex]::Escape($frag) + '"')) {
+                  $issues.Add("$($f.FullName) -> $u (missing fragment)")
+                }
+              }
+            }
+          }
+
+          if ($issues.Count -gt 0) {
+            $issues | Sort-Object -Unique | ForEach-Object { Write-Error $_ }
+            throw "Link check failed: $($issues.Count) issue(s)."
+          }
 
