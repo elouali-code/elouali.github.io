@@ -28,10 +28,10 @@ Le site est publie via GitHub Pages sur:
 |  |- about.html
 |  |- experiences.html
 |  |- articles.html
-|  |- projets-hub.html
-|  |- projets-data.html
-|  |- projets-archi.html
-|  |- projets-dev.html
+|  |- projects-hub.html
+|  |- projects-data.html
+|  |- projects-archi.html
+|  |- projects-dev.html
 |  |- projects/
 |     |- project-*.html
 |     |- data_analyse_ocp.html
@@ -68,9 +68,9 @@ Les pages projets utilisent une base commune:
 1. Dupliquer `pages/projects/project-template.html` vers `pages/projects/project-<nom>.html`.
 2. Remplir les sections (hero, meta, slider, contexte, solution, resultats).
 3. Ajouter la carte/lien du projet dans la page categorie correspondante:
-   - `pages/projets-data.html`
-   - `pages/projets-archi.html`
-   - `pages/projets-dev.html`
+   - `pages/projects-data.html`
+   - `pages/projects-archi.html`
+   - `pages/projects-dev.html`
 4. Verifier l affichage desktop + mobile.
 
 ## Developpement local
@@ -114,6 +114,7 @@ Avant publication, verifier aussi les metadonnees des fichiers (PDF/images) si n
 ## Licence
 
 Voir `LICENSE.txt`.
+
 
 
 

@@ -1,26 +1,186 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <title>Projet - Deploiement Cloud Automatise</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="../../assets/css/main.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../../assets/css/project-template.css" />
-</head>
-<body class="project-page is-preload">
-<div id="menu-overlay"></div>
-<nav id="sidebar-menu"><div class="menu-header"><span style="color:#fff;font-weight:700;letter-spacing:1px;">MENU</span><div class="menu-close"><i class="fas fa-times"></i></div></div><ul class="menu-links"><li><a href="../index.html">Accueil</a></li><li><a href="../about.html">A propos</a></li><li><a href="../experiences.html">Experiences</a></li><li><a href="../projets-hub.html">Projets</a></li><li><a href="../articles.html">Articles</a></li><li><a href="../index.html#footer">Contact</a></li></ul></nav>
-<div id="page-wrapper">
-<section id="header"><div class="container"><div id="logo"><img src="../../assets/images/logo.jpg" alt="Abderrahman El Ouali" /><h1><a href="../index.html">Abderrahman El Ouali</a></h1></div><div class="menu-toggle" id="menu-btn"><i class="fas fa-bars"></i><span>Menu</span></div></div></section>
-<main class="project-main"><section class="project-hero reveal"><div class="container"><span class="project-type"><i class="fas fa-cloud"></i> Cloud / IaC</span><h1>Deploiement Cloud Automatise</h1><p>Mise en place d une infrastructure AWS securisee et reproductible avec une approche Infrastructure as Code et automatisation de livraison.</p><div class="project-meta"><article class="meta-card"><span>Role</span><strong>Cloud Engineer</strong></article><article class="meta-card"><span>Contexte</span><strong>Projet professionnel</strong></article><article class="meta-card"><span>Domaine</span><strong>Cloud Architecture</strong></article><article class="meta-card"><span>Stack</span><strong>Terraform, Ansible, AWS, Kubernetes</strong></article></div></div></section><section class="container project-grid"><article class="project-slider reveal" data-slider><div class="slides"><figure class="slide"><img src="../../assets/images/projet-freeze.jpg" alt="Deploiement cloud" /><figcaption>Pipeline de deploiement et configuration infra automatisee.</figcaption></figure><figure class="slide"><img src="../../assets/images/projet-dynamodb.jpg" alt="Architecture cible" /><figcaption>Cible cloud modulaire avec separation reseau / compute / donnees.</figcaption></figure></div><button class="slider-control prev" type="button"><i class="fas fa-chevron-left"></i></button><button class="slider-control next" type="button"><i class="fas fa-chevron-right"></i></button><div class="slider-dots"></div></article><section class="project-section reveal"><h2>Contexte</h2><p>L objectif etait de fiabiliser les deploiements cloud et de supprimer les operations manuelles sources d ecarts entre environnements.</p></section><section class="project-section reveal"><h2>Solution technique</h2><ul class="project-list"><li>Provisionnement reseau et services via Terraform.</li><li>Configuration systeme et middleware avec Ansible.</li><li>Standardisation des environnements dev, test, prod.</li><li>Pipeline de validation et deploiement automatise.</li></ul></section><section class="project-section reveal"><h2>Resultats</h2><div class="results-grid"><article class="result-card"><i class="fas fa-repeat"></i><h3>Reproductibilite</h3><p>Meme architecture deployee de facon fiable sur tous les environnements.</p></article><article class="result-card"><i class="fas fa-shield-alt"></i><h3>Fiabilite</h3><p>Moins d erreurs manuelles et rollback simplifie.</p></article><article class="result-card"><i class="fas fa-tachometer-alt"></i><h3>Vitesse</h3><p>Mise a disposition plus rapide des environnements.</p></article></div></section></section></main>
-<section id="footer"><div class="container"><p>&copy; 2026 Abderrahman El Ouali. Tous droits reserves.</p></div></section></div>
-<script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/jquery.dropotron.min.js"></script><script src="../../assets/js/browser.min.js"></script><script src="../../assets/js/breakpoints.min.js"></script><script src="../../assets/js/util.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/project-template.js"></script>
-</body></html>
-
-
-
+  <head>
+    <title>Projet - Deploiement Cloud Automatise</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- SEO START -->
+    <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+    <link rel="canonical" href="https://elouali.github.io/pages/projects/project-cloud-automation.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projet - Deploiement Cloud Automatise" />
+    <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+    <meta property="og:url" content="https://elouali.github.io/pages/projects/project-cloud-automation.html" />
+    <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projet - Deploiement Cloud Automatise" />
+    <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+    <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
+    <!-- SEO END -->
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/project-template.css" />
+  </head>
+  <body class="project-page is-preload">
+    <div id="menu-overlay">
+    </div>
+    <nav id="sidebar-menu">
+      <div class="menu-header">
+        <span style="color:#fff;font-weight:700;letter-spacing:1px;">MENU</span>
+        <div class="menu-close">
+          <i class="fas fa-times">
+          </i>
+        </div>
+      </div>
+      <ul class="menu-links">
+        <li>
+          <a href="../index.html">Accueil</a>
+        </li>
+        <li>
+          <a href="../about.html">A propos</a>
+        </li>
+        <li>
+          <a href="../experiences.html">Experiences</a>
+        </li>
+        <li>
+          <a href="../projects-hub.html">Projets</a>
+        </li>
+        <li>
+          <a href="../articles.html">Articles</a>
+        </li>
+        <li>
+          <a href="../index.html#footer">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="page-wrapper">
+      <section id="header">
+        <div class="container">
+          <div id="logo">
+            <img loading="lazy" decoding="async" src="../../assets/images/logo.jpg" alt="Abderrahman El Ouali" />
+            <h1>
+              <a href="../index.html">Abderrahman El Ouali</a>
+            </h1>
+          </div>
+          <div class="menu-toggle" id="menu-btn">
+            <i class="fas fa-bars">
+            </i>
+            <span>Menu</span>
+          </div>
+        </div>
+      </section>
+      <main class="project-main">
+        <section class="project-hero reveal">
+          <div class="container">
+            <span class="project-type">
+              <i class="fas fa-cloud">
+              </i> Cloud / IaC</span>
+              <h1>Deploiement Cloud Automatise</h1>
+              <p>Mise en place d une infrastructure AWS securisee et reproductible avec une approche Infrastructure as Code et automatisation de livraison.</p>
+              <div class="project-meta">
+                <article class="meta-card">
+                  <span>Role</span>
+                  <strong>Cloud Engineer</strong>
+                </article>
+                <article class="meta-card">
+                  <span>Contexte</span>
+                  <strong>Projet professionnel</strong>
+                </article>
+                <article class="meta-card">
+                  <span>Domaine</span>
+                  <strong>Cloud Architecture</strong>
+                </article>
+                <article class="meta-card">
+                  <span>Stack</span>
+                  <strong>Terraform, Ansible, AWS, Kubernetes</strong>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="container project-grid">
+            <article class="project-slider reveal" data-slider>
+              <div class="slides">
+                <figure class="slide">
+                  <img loading="lazy" decoding="async" src="../../assets/images/projet-freeze.jpg" alt="Deploiement cloud" />
+                  <figcaption>Pipeline de deploiement et configuration infra automatisee.</figcaption>
+                </figure>
+                <figure class="slide">
+                  <img loading="lazy" decoding="async" src="../../assets/images/projet-dynamodb.jpg" alt="Architecture cible" />
+                  <figcaption>Cible cloud modulaire avec separation reseau / compute / donnees.</figcaption>
+                </figure>
+              </div>
+              <button class="slider-control prev" type="button">
+                <i class="fas fa-chevron-left">
+                </i>
+              </button>
+              <button class="slider-control next" type="button">
+                <i class="fas fa-chevron-right">
+                </i>
+              </button>
+              <div class="slider-dots">
+              </div>
+            </article>
+            <section class="project-section reveal">
+              <h2>Contexte</h2>
+              <p>L objectif etait de fiabiliser les deploiements cloud et de supprimer les operations manuelles sources d ecarts entre environnements.</p>
+            </section>
+            <section class="project-section reveal">
+              <h2>Solution technique</h2>
+              <ul class="project-list">
+                <li>Provisionnement reseau et services via Terraform.</li>
+                <li>Configuration systeme et middleware avec Ansible.</li>
+                <li>Standardisation des environnements dev, test, prod.</li>
+                <li>Pipeline de validation et deploiement automatise.</li>
+              </ul>
+            </section>
+            <section class="project-section reveal">
+              <h2>Resultats</h2>
+              <div class="results-grid">
+                <article class="result-card">
+                  <i class="fas fa-repeat">
+                  </i>
+                  <h3>Reproductibilite</h3>
+                  <p>Meme architecture deployee de facon fiable sur tous les environnements.</p>
+                </article>
+                <article class="result-card">
+                  <i class="fas fa-shield-alt">
+                  </i>
+                  <h3>Fiabilite</h3>
+                  <p>Moins d erreurs manuelles et rollback simplifie.</p>
+                </article>
+                <article class="result-card">
+                  <i class="fas fa-tachometer-alt">
+                  </i>
+                  <h3>Vitesse</h3>
+                  <p>Mise a disposition plus rapide des environnements.</p>
+                </article>
+              </div>
+            </section>
+          </section>
+        </main>
+        <section id="footer">
+          <div class="container">
+            <p>&copy; 2026 Abderrahman El Ouali. Tous droits reserves.</p>
+          </div>
+        </section>
+      </div>
+      <script src="../../assets/js/jquery.min.js">
+      </script>
+      <script src="../../assets/js/jquery.dropotron.min.js">
+      </script>
+      <script src="../../assets/js/browser.min.js">
+      </script>
+      <script src="../../assets/js/breakpoints.min.js">
+      </script>
+      <script src="../../assets/js/util.js">
+      </script>
+      <script src="../../assets/js/main.js">
+      </script>
+      <script src="../../assets/js/project-template.js">
+      </script>
+    </body>
+  </html>
 

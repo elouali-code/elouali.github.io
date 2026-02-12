@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elouali.github.io/sitemap.xml

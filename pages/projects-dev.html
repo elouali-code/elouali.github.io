@@ -1,24 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Expériences - Abderrahman El Ouali</title>
+		<title>Projets DevOps & Dev - Abderrahman El Ouali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
 		
   <!-- SEO START -->
-  <meta name="description" content="Expériences - Portfolio personnel avec experiences, projets techniques et realisations." />
-  <link rel="canonical" href="https://elouali.github.io/pages/experiences.html" />
+  <meta name="description" content="Projets DevOps & Dev - Portfolio personnel avec experiences, projets techniques et realisations." />
+  <link rel="canonical" href="https://elouali.github.io/pages/projects-dev.html" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Expériences - Abderrahman El Ouali" />
-  <meta property="og:description" content="Expériences - Portfolio personnel avec experiences, projets techniques et realisations." />
-  <meta property="og:url" content="https://elouali.github.io/pages/experiences.html" />
+  <meta property="og:title" content="Projets DevOps & Dev - Abderrahman El Ouali" />
+  <meta property="og:description" content="Projets DevOps & Dev - Portfolio personnel avec experiences, projets techniques et realisations." />
+  <meta property="og:url" content="https://elouali.github.io/pages/projects-dev.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Expériences - Abderrahman El Ouali" />
-  <meta name="twitter:description" content="Expériences - Portfolio personnel avec experiences, projets techniques et realisations." />
+  <meta name="twitter:title" content="Projets DevOps & Dev - Abderrahman El Ouali" />
+  <meta name="twitter:description" content="Projets DevOps & Dev - Portfolio personnel avec experiences, projets techniques et realisations." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../assets/css/main.css" />
 		
@@ -61,23 +61,13 @@
 				line-height: 1.8;
 			}
 
-			#page-wrapper { 
-				position: relative; 
-				display: flex; flex-direction: column; min-height: 100vh;
-			}
+			#page-wrapper { position: relative; display: flex; flex-direction: column; min-height: 100vh; }
 			
-			.container { 
-				max-width: 1000px; margin: 0 auto; padding: 0 25px; 
-			}
+			.container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
 
 			h1, h2, h3 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 0.5em 0; }
-			
-			/* Liens et Highlights */
-			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; font-weight: 500; }
+			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; }
 			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
-			
-			strong, b { color: #fff; font-weight: 700; }
-			.highlight { color: var(--accent-cyan); font-weight: 600; }
 
 			/* --- HEADER --- */
 			#header {
@@ -139,107 +129,108 @@
 			.hero .subtitle {
 				font-size: 1.2em;
 				color: var(--text-secondary);
-				max-width: 700px;
+				max-width: 800px;
 				margin: 0 auto 3em auto;
 			}
 
-			/* --- TIMELINE EXPERIENCE --- */
-			.timeline {
-				position: relative;
-				max-width: 900px;
-				margin: 0 auto 4em auto;
+			/* --- GRID PROJETS --- */
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 2.5em;
+				margin-bottom: 6em;
 			}
-			/* Ligne verticale */
-			.timeline::before {
-				content: '';
-				position: absolute;
-				top: 0; bottom: 0; left: 30px;
-				width: 2px;
-				background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
-				opacity: 0.5;
-			}
-
-			.timeline-item {
-				position: relative;
-				margin-bottom: 4em;
-				padding-left: 80px;
-			}
-
-			/* Point sur la timeline (Logo) */
-			.timeline-logo {
-				position: absolute;
-				left: 0; top: 0;
-				width: 60px; height: 60px;
-				background: #fff;
-				border-radius: 50%;
-				display: flex; align-items: center; justify-content: center;
-				box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-				z-index: 2;
-				border: 3px solid #0c0a1f;
-			}
-			.timeline-logo img { width: 70%; height: auto; object-fit: contain; }
-
-			/* Carte Contenu */
-			.timeline-content {
+			
+			.project-card {
 				background: var(--surface-glass);
 				border: 1px solid var(--border-glass);
 				border-radius: 16px;
-				padding: 2em;
-				transition: transform 0.3s ease;
+				overflow: hidden;
+				transition: all 0.3s ease;
+				display: flex;
+				flex-direction: column;
+				height: 100%;
 				position: relative;
 			}
-			.timeline-content:hover {
-				transform: translateX(10px);
+
+			.project-card:hover {
+				transform: translateY(-8px);
 				border-color: var(--accent-cyan);
-				box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 			}
-			/* Flèche décorative */
-			.timeline-content::before {
-				content: ''; position: absolute; left: -10px; top: 20px;
-				width: 0; height: 0;
-				border-top: 10px solid transparent;
-				border-bottom: 10px solid transparent;
-				border-right: 10px solid var(--border-glass);
-			}
-
-			.role-title { font-size: 1.4em; color: #fff; margin-bottom: 0.2em; }
-			.company-name { font-size: 1.1em; color: var(--accent-cyan); font-weight: 500; margin-bottom: 0.5em; display: block; }
 			
-			.period-location { 
-				font-size: 0.95em; 
-				color: var(--text-secondary); 
-				margin-bottom: 1.5em; 
-				display: flex; gap: 1.5em; align-items: center;
-				border-bottom: 1px solid var(--border-glass);
-				padding-bottom: 1em;
-				flex-wrap: wrap;
-			}
-			.period-location i { color: var(--accent-purple); margin-right: 5px; }
-			
-			/* Style pour le drapeau intégré */
-			.flag-inline {
-				width: 24px;
-				height: 24px;
-				border-radius: 50%;
-				object-fit: cover;
-				vertical-align: middle;
-				border: 2px solid var(--accent-purple);
-				margin-left: 8px;
-			}
-
-			.task-list { list-style: none; padding: 0; margin: 0; }
-			.task-list li {
-				margin-bottom: 0.8em;
-				padding-left: 1.5em;
+			.card-thumb {
+				height: 200px;
+				width: 100%;
+				overflow: hidden;
 				position: relative;
+				border-bottom: 1px solid var(--border-glass);
+			}
+			
+			.card-thumb img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.5s ease;
+			}
+			
+			.project-card:hover .card-thumb img { transform: scale(1.05); }
+
+			.card-content {
+				padding: 2em;
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.card-content h3 {
+				font-size: 1.4em;
+				margin-bottom: 0.5em;
+				color: #fff;
+				line-height: 1.3;
+			}
+
+			.card-content p {
+				font-size: 0.95em;
 				color: var(--text-secondary);
+				margin-bottom: 1.5em;
+				flex-grow: 1;
 			}
-			.task-list li::before {
-				content: '▹';
-				position: absolute; left: 0;
+			
+			/* TECH TAGS */
+			.tech-stack {
+				display: flex;
+				gap: 0.5em;
+				flex-wrap: wrap;
+				margin-bottom: 1.5em;
+			}
+			.tech-tag {
+				font-size: 0.75em;
+				background: rgba(255,255,255,0.05);
+				padding: 0.3em 0.8em;
+				border-radius: 20px;
+				border: 1px solid rgba(255,255,255,0.1);
 				color: var(--accent-cyan);
+				font-weight: 500;
 			}
-			.task-list strong { color: #fff; font-weight: 600; }
+
+			.btn-card {
+				align-self: flex-start;
+				padding: 0.6em 1.5em;
+				border: 1px solid var(--accent-cyan);
+				border-radius: 50px;
+				background: transparent;
+				color: var(--accent-cyan);
+				font-size: 0.9em;
+				font-weight: 500;
+				transition: all 0.3s;
+			}
+			
+			.btn-card:hover {
+				background: var(--accent-cyan);
+				color: #000;
+				box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+			}
 
 			/* --- FOOTER --- */
 			#footer {
@@ -260,12 +251,8 @@
 
 			/* --- RESPONSIVE --- */
 			@media (max-width: 768px) {
-				.timeline::before { left: 20px; }
-				.timeline-item { padding-left: 60px; }
-				.timeline-logo { width: 40px; height: 40px; left: 0; }
-				.timeline-content { padding: 1.5em; }
 				.hero h1 { font-size: 2.2em; }
-				.period-location { flex-direction: column; align-items: flex-start; gap: 0.5em; }
+				.projects-grid { grid-template-columns: 1fr; }
 			}
 		</style>
 	</head>
@@ -305,80 +292,78 @@
 
 			<section class="hero reveal">
 				<div class="container">
-					<h1>Parcours Professionnel</h1>
-					<p class="subtitle">Mon évolution en tant qu'ingénieur, à travers des environnements techniques exigeants.</p>
+					<h1>Projets DevOps & Développement</h1>
+					<p class="subtitle">Automatisation, CI/CD et Ingénierie Logicielle Full-Stack.</p>
 				</div>
 			</section>
 
 			<div class="container">
-				<div class="timeline">
+				<div class="projects-grid">
 					
-					<div class="timeline-item reveal">
-						<div class="timeline-logo">
-							<img loading="lazy" decoding="async" src="../assets/images/logo-airbus.png" alt="Airbus">
+					<div class="project-card reveal">
+						<div class="card-thumb">
+							<img loading="lazy" decoding="async" src="../assets/images/projet-ardmate.jpg" alt="ARDmate CI/CD">
 						</div>
-						<div class="timeline-content">
-							<h3 class="role-title">Architecte de Solutions Informatiques (Stage)</h3>
-							<span class="company-name">Airbus</span>
-							<div class="period-location">
-								<span><i class="far fa-calendar-alt"></i> Mars 2025 - Sept. 2025</span>
-								<span>
-									<i class="fas fa-map-marker-alt"></i> Toulouse, France 
-									<img loading="lazy" decoding="async" src="../assets/images/photo-france.png" alt="France" class="flag-inline">
-								</span>
+						<div class="card-content">
+							<h3>ARDmate DevOps Tool</h3>
+							<p>Industrialisation d'un outil critique pour Airbus. Mise en place de pipelines CI/CD Jenkins, refactoring Python avancé et couverture de tests >90%.</p>
+							<div class="tech-stack">
+								<span class="tech-tag">Jenkins</span>
+								<span class="tech-tag">Python</span>
+								<span class="tech-tag">Pytest</span>
+								<span class="tech-tag">DevOps</span>
 							</div>
-							<p>Modernisation et optimisation des infrastructures Data critiques pour l'ingénierie aéronautique.</p>
-							<ul class="task-list">
-								<li><strong>Architecture Cloud (AWS) :</strong> Conception d'architectures serverless et migration d'une base de données S3 vers DynamoDB, réduisant la complexité d'accès de O(N) à O(1).</li>
-								<li><strong>Data Engineering :</strong> Développement de pipelines de données (ETL) robustes sur la plateforme "Core S&T" en utilisant Spark et Python.</li>
-								<li><strong>DevOps & CI/CD :</strong> Industrialisation du projet "ARDmate" et déploiement d'infrastructure via Code (IaC) avec AWS CDK.</li>
-							</ul>
+							<a href="projects/project-ardmate.html" class="btn-card">Voir l'étude de cas</a>
 						</div>
 					</div>
 
-					<div class="timeline-item reveal">
-						<div class="timeline-logo">
-							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="OCP Group">
+					<div class="project-card reveal" style="transition-delay: 0.1s;">
+						<div class="card-thumb">
+							<img loading="lazy" decoding="async" src="../assets/images/logo-webhelp.png" alt="App Webhelp" style="object-fit: contain; padding: 2em; background: #fff;">
 						</div>
-						<div class="timeline-content">
-							<h3 class="role-title">Data Analyst (Stage)</h3>
-							<span class="company-name">OCP Group</span>
-							<div class="period-location">
-								<span><i class="far fa-calendar-alt"></i> Juil. 2024 - Sept. 2024</span>
-								<span>
-									<i class="fas fa-map-marker-alt"></i> Casablanca, Maroc
-									<img loading="lazy" decoding="async" src="../assets/images/photo-maroc.jpg" alt="Maroc" class="flag-inline">
-								</span>
+						<div class="card-content">
+							<h3>App Gestion Ressources</h3>
+							<p>Conception et développement d'une application Full-Stack pour la gestion des ressources humaines, avec une API Java robuste et une interface Angular.</p>
+							<div class="tech-stack">
+								<span class="tech-tag">Java Spring Boot</span>
+								<span class="tech-tag">PostgreSQL</span>
+								<span class="tech-tag">Angular</span>
+								<span class="tech-tag">REST API</span>
 							</div>
-							<p>Mise en place de solutions de maintenance prédictive pour optimiser la production industrielle.</p>
-							<ul class="task-list">
-								<li><strong>Machine Learning :</strong> Développement d'un modèle prédictif pour anticiper les pannes des compresseurs industriels Siemens.</li>
-								<li><strong>Déploiement API :</strong> Création d'une API RESTful avec FastAPI pour rendre le modèle accessible aux équipes opérationnelles.</li>
-								<li><strong>Visualisation :</strong> Conception de dashboards Power BI pour le suivi des KPIs de performance en temps réel.</li>
-							</ul>
+							<a href="projects/project-resource-management.html" class="btn-card">Voir l'etude de cas</a>
 						</div>
 					</div>
 
-					<div class="timeline-item reveal">
-						<div class="timeline-logo">
-							<img loading="lazy" decoding="async" src="../assets/images/logo-webhelp.png" alt="Webhelp">
+					<div class="project-card reveal" style="transition-delay: 0.2s;">
+						<div class="card-thumb">
+							<img loading="lazy" decoding="async" src="../assets/images/logo.jpg" alt="Portfolio" style="object-fit: contain; background:#000;">
 						</div>
-						<div class="timeline-content">
-							<h3 class="role-title">Développeur Java Full-Stack (Stage)</h3>
-							<span class="company-name">Webhelp</span>
-							<div class="period-location">
-								<span><i class="far fa-calendar-alt"></i> Juil. 2021 - Août 2021</span>
-								<span>
-									<i class="fas fa-map-marker-alt"></i> Fès, Maroc
-									<img loading="lazy" decoding="async" src="../assets/images/photo-maroc.jpg" alt="Maroc" class="flag-inline">
-								</span>
+						<div class="card-content">
+							<h3>Portfolio High-Tech</h3>
+							<p>Développement de ce site personnel responsive. Utilisation de CSS moderne (Glassmorphism, Grid) et JavaScript pour une expérience utilisateur fluide.</p>
+							<div class="tech-stack">
+								<span class="tech-tag">HTML5</span>
+								<span class="tech-tag">CSS3</span>
+								<span class="tech-tag">JavaScript</span>
+								<span class="tech-tag">Responsive Design</span>
 							</div>
-							<p>Développement d'applications web robustes pour la gestion des ressources internes.</p>
-							<ul class="task-list">
-								<li><strong>Développement Backend :</strong> Conception d'une API RESTful performante avec Java Spring Boot.</li>
-								<li><strong>Base de Données :</strong> Gestion de la persistance des données avec PostgreSQL et Spring Data JPA.</li>
-								<li><strong>Génie Logiciel :</strong> Application des principes de code propre et architecture en couches.</li>
-							</ul>
+							<a href="index.html" class="btn-card">Voir le site</a>
+						</div>
+					</div>
+
+					<div class="project-card reveal">
+						<div class="card-thumb">
+							<img loading="lazy" decoding="async" src="../assets/images/logo.jpg" alt="Projet Futur" style="object-fit: contain; filter: opacity(0.5);">
+						</div>
+						<div class="card-content">
+							<h3>Infrastructure Automation</h3>
+							<p>Projet d'automatisation de déploiement cloud utilisant Ansible et Terraform pour des environnements multi-cloud.</p>
+							<div class="tech-stack">
+								<span class="tech-tag">Ansible</span>
+								<span class="tech-tag">Terraform</span>
+								<span class="tech-tag">Linux</span>
+							</div>
+							<a href="projects/project-infra-automation.html" class="btn-card">Voir l'etude de cas</a>
 						</div>
 					</div>
 
@@ -441,6 +426,7 @@
     <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
 	</body>
 </html>
+
 
 
 
