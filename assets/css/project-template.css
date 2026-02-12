@@ -242,10 +242,9 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius-md);
   padding: 12px 14px;
   text-align: left;
-  min-height: 104px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 6px;
 }
 
 .meta-card span {
@@ -467,3 +466,4 @@ p { margin: 0 0 1em; }
     height: 36px;
   }
 }
+
