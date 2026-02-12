@@ -29,6 +29,7 @@ jobs:
             --verbose
             --no-progress
             --exclude-mail
+            --exclude "pages/projects/project-template.html"
             --accept 200,429
             "**/*.html"
         env:
