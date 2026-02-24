@@ -65,7 +65,7 @@
             <p>Conception d un pipeline ETL batch complet pour ingerer des donnees meteo depuis une API publique, les transformer, les modeliser en entrepot local et les visualiser dans un dashboard interactif.</p>
 
             <div class="project-meta">
-              <article class="meta-card"><span>Role</span><strong>Data Engineer Junior</strong></article>
+              <article class="meta-card"><span>Role</span><strong>Data Engineer </strong></article>
               <article class="meta-card"><span>Type</span><strong>Projet Personnel</strong></article>
               <article class="meta-card"><span>Niveau</span><strong>Oriente Production</strong></article>
               <article class="meta-card"><span>Stack</span><strong>Python, Pandas, DuckDB, SQLite, Metabase</strong></article>
@@ -95,63 +95,41 @@
           </article>
 
           <section class="project-section reveal">
-            <h2>Description</h2>
-            <p>Ce projet met en place un flux data engineering de bout en bout: ingestion API, stockage brut, transformation analytique, chargement en entrepot et exposition BI. L objectif est de reproduire un environnement local proche des pratiques de production.</p>
+            <h2>Contexte</h2>
+            <p>Projet personnel de data engineering orientee production pour construire un pipeline meteo complet: ingestion API, transformation de donnees et exposition d indicateurs dans un dashboard BI.</p>
           </section>
 
           <section class="project-section reveal">
-            <h2>Responsabilites Principales</h2>
+            <h2>Solution technique</h2>
             <ul class="project-list">
-              <li>Developpement d un script Python d ingestion pour collecter des donnees meteo depuis une API publique.</li>
-              <li>Mise en place du stockage brut en JSON (couche data lake).</li>
-              <li>Developpement de la logique de transformation avec Pandas.</li>
-              <li>Chargement des donnees curiees dans un data warehouse SQLite.</li>
-              <li>Connexion du warehouse a Metabase pour la business intelligence.</li>
-              <li>Conception de dashboards interactifs sur les tendances de temperature et d humidite par ville.</li>
+              <li>Script Python d ingestion batch pour collecter les donnees meteo via API REST.</li>
+              <li>Stockage brut en JSON dans une couche raw (logique data lake).</li>
+              <li>Transformation et nettoyage des donnees avec Pandas.</li>
+              <li>Chargement des donnees curiees dans un entrepot local SQLite.</li>
+              <li>Preparation analytique avec DuckDB et modelisation de tables pour la BI.</li>
+              <li>Connexion de la base a Metabase pour visualiser temperature et humidite par ville.</li>
             </ul>
           </section>
 
           <section class="project-section reveal">
-            <h2>Points Forts de l Architecture</h2>
-            <ul class="project-list">
-              <li>Pipeline d ingestion en batch.</li>
-              <li>Architecture data en couches: raw -> transformed -> warehouse -> BI.</li>
-              <li>Environnement local reproductible avec virtualenv.</li>
-              <li>Design de pipeline modulaire et extensible.</li>
-            </ul>
-          </section>
-
-          <section class="project-section reveal">
-            <h2>Stack Technique</h2>
-            <ul class="project-list">
-              <li>Python, Pandas, DuckDB, SQLite.</li>
-              <li>Metabase, API REST, Modelisation de donnees.</li>
-            </ul>
-          </section>
-
-          <section class="project-section reveal">
-            <h2>Valeur Metier</h2>
-            <p>Ce projet demontre la capacite a construire des pipelines data proches de la production, transformer des donnees semi-structurees, modeliser des jeux analytiques et livrer des insights actionnables via des dashboards BI.</p>
-          </section>
-
-          <section class="project-section reveal">
-            <h2>Tags</h2>
-            <ul class="project-list">
-              <li>data-engineering</li>
-              <li>etl</li>
-              <li>data-pipeline</li>
-              <li>bi</li>
-              <li>metabase</li>
-              <li>python</li>
-            </ul>
-          </section>
-
-          <section class="project-section reveal">
-            <h2>Perimetre du Projet</h2>
-            <ul class="project-list">
-              <li>Type de projet: Projet Personnel.</li>
-              <li>Niveau: Data Engineer Junior (Oriente Production).</li>
-            </ul>
+            <h2>Resultats</h2>
+            <div class="results-grid">
+              <article class="result-card">
+                <i class="fas fa-layer-group"></i>
+                <h3>Pipeline de bout en bout</h3>
+                <p>Mise en place d une architecture en couches raw -> transformed -> warehouse -> BI.</p>
+              </article>
+              <article class="result-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Dashboards exploitables</h3>
+                <p>Visualisations claires des tendances de temperature et d humidite par ville.</p>
+              </article>
+              <article class="result-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Approche reproductible</h3>
+                <p>Environnement local reproductible avec virtualenv et pipeline modulaire extensible.</p>
+              </article>
+            </div>
           </section>
         </section>
       </main>
