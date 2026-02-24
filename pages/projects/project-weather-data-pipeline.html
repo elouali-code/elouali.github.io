@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Projet - End-to-End Weather Data Pipeline</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- SEO START -->
+    <meta name="description" content="Projet data engineering: pipeline de bout en bout pour ingestion API meteo, transformation, data warehouse SQLite et dashboard Metabase." />
+    <link rel="canonical" href="https://elouali.github.io/pages/projects/project-weather-data-pipeline.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projet - End-to-End Weather Data Pipeline" />
+    <meta property="og:description" content="Pipeline ETL batch avec architecture en couches raw -> transformed -> warehouse -> BI." />
+    <meta property="og:url" content="https://elouali.github.io/pages/projects/project-weather-data-pipeline.html" />
+    <meta property="og:image" content="https://elouali.github.io/assets/images/projet-api.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projet - End-to-End Weather Data Pipeline" />
+    <meta name="twitter:description" content="Pipeline ETL batch avec architecture en couches raw -> transformed -> warehouse -> BI." />
+    <meta name="twitter:image" content="https://elouali.github.io/assets/images/projet-api.jpg" />
+    <!-- SEO END -->
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/project-template.css" />
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+  </head>
+  <body class="project-page is-preload">
+    <div id="menu-overlay"></div>
+
+    <nav id="sidebar-menu">
+      <div class="menu-header">
+        <span style="color:#fff;font-weight:700;letter-spacing:1px;">MENU</span>
+        <div class="menu-close"><i class="fas fa-times"></i></div>
+      </div>
+      <ul class="menu-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../about.html">A propos</a></li>
+        <li><a href="../experiences.html">Experiences</a></li>
+        <li><a href="../projects-hub.html">Projets</a></li>
+        <li><a href="../articles.html">Articles</a></li>
+        <li><a href="../index.html#footer">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div id="page-wrapper">
+      <section id="header">
+        <div class="container">
+          <div id="logo">
+            <img loading="lazy" decoding="async" src="../../assets/images/logo.jpg" alt="Abderrahman El Ouali" />
+            <h1><a href="../index.html">Abderrahman El Ouali</a></h1>
+          </div>
+          <div class="menu-toggle" id="menu-btn">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+          </div>
+        </div>
+      </section>
+
+      <main class="project-main">
+        <section class="project-hero reveal">
+          <div class="container">
+            <span class="project-type"><i class="fas fa-cloud-sun-rain"></i> Data Engineering / BI</span>
+            <h1>End-to-End Weather Data Pipeline</h1>
+            <p>Conception d un pipeline ETL batch complet pour ingerer des donnees meteo depuis une API publique, les transformer, les modeliser en entrepot local et les visualiser dans un dashboard interactif.</p>
+
+            <div class="project-meta">
+              <article class="meta-card"><span>Role</span><strong>Junior Data Engineer</strong></article>
+              <article class="meta-card"><span>Type</span><strong>Personal Project</strong></article>
+              <article class="meta-card"><span>Niveau</span><strong>Production-Oriented</strong></article>
+              <article class="meta-card"><span>Stack</span><strong>Python, Pandas, DuckDB, SQLite, Metabase</strong></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="container project-grid">
+          <article class="project-slider reveal" data-slider>
+            <div class="slides">
+              <figure class="slide">
+                <img loading="lazy" decoding="async" src="../../assets/images/projet-api.jpg" alt="Temperature trend by city" />
+                <figcaption>Temperature trend by city</figcaption>
+              </figure>
+              <figure class="slide">
+                <img loading="lazy" decoding="async" src="../../assets/images/new.jpg" alt="Average humidity by city" />
+                <figcaption>Average humidity by city</figcaption>
+              </figure>
+              <figure class="slide">
+                <img loading="lazy" decoding="async" src="../../assets/images/article-fiabilite.png" alt="Average temperature by city" />
+                <figcaption>Average temperature by city</figcaption>
+              </figure>
+            </div>
+            <button class="slider-control prev" type="button" aria-label="Slide precedente"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-control next" type="button" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-dots"></div>
+          </article>
+
+          <section class="project-section reveal">
+            <h2>Description</h2>
+            <p>Ce projet met en place un flux data engineering de bout en bout: ingestion API, stockage brut, transformation analytique, chargement en entrepot et exposition BI. L objectif est de reproduire un environnement local proche des pratiques de production.</p>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Key Responsibilities</h2>
+            <ul class="project-list">
+              <li>Built a Python data ingestion script to collect weather data from a public API.</li>
+              <li>Implemented raw data storage in JSON format (data lake layer).</li>
+              <li>Developed data transformation logic using Pandas.</li>
+              <li>Loaded curated data into a SQLite data warehouse.</li>
+              <li>Connected the warehouse to Metabase for business intelligence.</li>
+              <li>Designed interactive dashboards showing temperature and humidity trends by city.</li>
+            </ul>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Architecture Highlights</h2>
+            <ul class="project-list">
+              <li>Batch ingestion pipeline.</li>
+              <li>Layered data architecture: raw -> transformed -> warehouse -> BI.</li>
+              <li>Reproducible local environment with virtualenv.</li>
+              <li>Modular and extensible pipeline design.</li>
+            </ul>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Tech Stack</h2>
+            <ul class="project-list">
+              <li>Python, Pandas, DuckDB, SQLite.</li>
+              <li>Metabase, REST API, Data Modeling.</li>
+            </ul>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Business Value</h2>
+            <p>This project demonstrates the ability to build production-style data pipelines, transform semi-structured data, model analytical datasets, and deliver actionable insights through BI dashboards.</p>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Tags</h2>
+            <ul class="project-list">
+              <li>data-engineering</li>
+              <li>etl</li>
+              <li>data-pipeline</li>
+              <li>bi</li>
+              <li>metabase</li>
+              <li>python</li>
+            </ul>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Project Scope</h2>
+            <ul class="project-list">
+              <li>Project Type: Personal Project.</li>
+              <li>Difficulty Level: Junior Data Engineer (Production-Oriented).</li>
+            </ul>
+          </section>
+        </section>
+      </main>
+
+      <section id="footer">
+        <div class="container">
+          <p>&copy; 2026 Abderrahman El Ouali. Tous droits reserves.</p>
+        </div>
+      </section>
+    </div>
+
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery.dropotron.min.js"></script>
+    <script src="../../assets/js/browser.min.js"></script>
+    <script src="../../assets/js/breakpoints.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/project-template.js"></script>
+  </body>
+</html>
