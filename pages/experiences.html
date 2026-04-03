@@ -159,11 +159,22 @@
 				opacity: 0.5;
 			}
 
-			.timeline-item {
-				position: relative;
-				margin-bottom: 4em;
-				padding-left: 80px;
-			}
+				.timeline-item {
+					position: relative;
+					margin-bottom: 4em;
+					padding-left: 80px;
+				}
+				.timeline-side-year {
+					position: absolute;
+					left: -78px;
+					top: 18px;
+					width: 56px;
+					text-align: right;
+					font-size: 0.95em;
+					font-weight: 700;
+					letter-spacing: 0.08em;
+					color: rgba(255, 255, 255, 0.58);
+				}
 
 			/* Point sur la timeline (Logo) */
 			.timeline-logo {
@@ -203,7 +214,21 @@
 			}
 
 			.role-title { font-size: 1.4em; color: #fff; margin-bottom: 0.2em; }
-			.company-name { font-size: 1.1em; color: var(--accent-cyan); font-weight: 500; margin-bottom: 0.5em; display: block; }
+			.role-badge {
+				display: inline-block;
+				margin-left: 0.6em;
+				padding: 0.12em 0.55em;
+				font-size: 0.65em;
+				font-weight: 500;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.75);
+				background: rgba(255, 255, 255, 0.06);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				border-radius: 999px;
+				vertical-align: middle;
+			}
+				.company-name { font-size: 1.1em; color: var(--accent-cyan); font-weight: 500; margin-bottom: 0.5em; display: block; }
 			
 			.period-location { 
 				font-size: 0.95em; 
@@ -262,6 +287,14 @@
 			@media (max-width: 768px) {
 				.timeline::before { left: 20px; }
 				.timeline-item { padding-left: 60px; }
+				.timeline-side-year {
+					left: -8px;
+					top: -24px;
+					width: auto;
+					text-align: left;
+					font-size: 0.78em;
+					letter-spacing: 0.06em;
+				}
 				.timeline-logo { width: 40px; height: 40px; left: 0; }
 				.timeline-content { padding: 1.5em; }
 				.hero h1 { font-size: 2.2em; }
@@ -313,12 +346,37 @@
 			<div class="container">
 				<div class="timeline">
 					
+						<div class="timeline-item reveal">
+							<span class="timeline-side-year">2026</span>
+							<div class="timeline-logo">
+							<img loading="lazy" decoding="async" src="../assets/images/logosbs.jpg" alt="SBS Software">
+						</div>
+						<div class="timeline-content">
+							<h3 class="role-title">Ingénieur R&D</h3>
+								<span class="company-name">SBS Software</span>
+							<div class="period-location">
+								<span><i class="far fa-calendar-alt"></i> Janv. 2026 - Aujourd'hui</span>
+								<span>
+									<i class="fas fa-map-marker-alt"></i> Annecy, France
+									<img loading="lazy" decoding="async" src="../assets/images/photo-france.png" alt="France" class="flag-inline">
+								</span>
+							</div>
+							<p>Contribution au sein de l'équipe data sur des sujets de valorisation de données issues de moteurs de calcul COBOL.</p>
+							<ul class="task-list">
+								<li><strong>Valorisation des données :</strong> Structuration et exploitation de données produites par des moteurs de calcul COBOL afin d'en améliorer l'accessibilité et l'usage métier.</li>
+								<li><strong>Data Lakehouse & BI :</strong> Participation à la mise en place d'un environnement data lakehouse et à la création de dashboards pour le suivi et l'analyse des données.</li>
+								<li><strong>Préparation pour l'IA :</strong> Préparation et qualification des données pour faciliter leur réutilisation dans des cas d'usage d'intelligence artificielle.</li>
+							</ul>
+						</div>
+					</div>
+
 					<div class="timeline-item reveal">
+						<span class="timeline-side-year">2025</span>
 						<div class="timeline-logo">
 							<img loading="lazy" decoding="async" src="../assets/images/logo-airbus.png" alt="Airbus">
 						</div>
 						<div class="timeline-content">
-							<h3 class="role-title">Architecte de Solutions Informatiques (Stage)</h3>
+							<h3 class="role-title">Architecte de Solutions Informatiques <span class="role-badge">Stage</span></h3>
 							<span class="company-name">Airbus</span>
 							<div class="period-location">
 								<span><i class="far fa-calendar-alt"></i> Mars 2025 - Sept. 2025</span>
@@ -337,11 +395,12 @@
 					</div>
 
 					<div class="timeline-item reveal">
+						<span class="timeline-side-year">2024</span>
 						<div class="timeline-logo">
 							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="OCP Group">
 						</div>
 						<div class="timeline-content">
-							<h3 class="role-title">Data Analyst (Stage)</h3>
+							<h3 class="role-title">Data Analyst <span class="role-badge">Stage</span></h3>
 							<span class="company-name">OCP Group</span>
 							<div class="period-location">
 								<span><i class="far fa-calendar-alt"></i> Juil. 2024 - Sept. 2024</span>
@@ -360,11 +419,12 @@
 					</div>
 
 					<div class="timeline-item reveal">
+						<span class="timeline-side-year">2021</span>
 						<div class="timeline-logo">
 							<img loading="lazy" decoding="async" src="../assets/images/logo-webhelp.png" alt="Webhelp">
 						</div>
 						<div class="timeline-content">
-							<h3 class="role-title">Développeur Java Full-Stack (Stage)</h3>
+							<h3 class="role-title">Développeur Java Full-Stack <span class="role-badge">Stage</span></h3>
 							<span class="company-name">Webhelp</span>
 							<div class="period-location">
 								<span><i class="far fa-calendar-alt"></i> Juil. 2021 - Août 2021</span>

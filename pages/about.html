@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>À Propos - Abderrahman El Ouali</title>
@@ -37,7 +37,7 @@
 				--surface-glass: rgba(22, 27, 41, 0.9); /* Plus sombre pour meilleur contraste */
 				--border-glass: rgba(255, 255, 255, 0.15);
 				--text-primary: #ffffff;
-				--text-secondary: #e0e0e0; /* Gris très clair pour la lisibilité */
+				--text-secondary: #e0e0e0; /* Gris tres clair pour la lisibilite */
 				--accent-cyan: #00d4ff;
 				--accent-purple: #8c52ff;
 				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
@@ -72,12 +72,12 @@
 
 			h1, h2, h3 { color: var(--text-primary); font-weight: 600; letter-spacing: -0.5px; margin: 0 0 0.8em 0; line-height: 1.3; }
 			
-			/* LIENS ET GRAS - CORRECTION LISIBILITÉ */
+			/* LIENS ET GRAS - CORRECTION LISIBILITE */
 			a { color: var(--accent-cyan); text-decoration: none; transition: all 0.3s ease; font-weight: 500; }
 			a:hover { color: #fff; text-shadow: 0 0 10px var(--accent-cyan); }
 			
 			strong, b {
-				color: #ffffff; /* BLANC PUR pour la lisibilité */
+				color: #ffffff; /* BLANC PUR pour la lisibilite */
 				font-weight: 700;
 			}
 			
@@ -133,7 +133,7 @@
 
 			/* --- HERO TEXT --- */
 			.page-header {
-				padding: 12em 0 4em 0; /* Padding augmenté pour éviter le header */
+				padding: 12em 0 4em 0; /* Padding augmente pour eviter le header */
 				text-align: center;
 			}
 			.page-header h1 {
@@ -150,7 +150,7 @@
 				margin: 0 auto;
 			}
 
-			/* --- SECTION À PROPOS --- */
+			/* --- SECTION A PROPOS --- */
 			.about-split {
 				display: flex;
 				align-items: flex-start;
@@ -195,44 +195,91 @@
 
 			/* --- SECTION LANGUES --- */
 			.languages-section {
-				text-align: center;
 				padding: 4em 0;
 				border-top: 1px solid var(--border-glass);
-				background: rgba(255,255,255,0.02);
+				background:
+					radial-gradient(circle at 10% 10%, rgba(0, 212, 255, 0.08), transparent 35%),
+					radial-gradient(circle at 90% 20%, rgba(140, 82, 255, 0.08), transparent 30%),
+					rgba(255,255,255,0.02);
 			}
-			.lang-pills-container {
-				display: flex;
-				justify-content: center;
-				flex-wrap: wrap;
-				gap: 1.5em;
-				margin-top: 2em;
+			.languages-shell {
+				max-width: 1360px;
+				margin: 0 auto;
+				padding: 0;
+				background: transparent;
+				border: 0;
+				border-radius: 0;
+				box-shadow: none;
+				backdrop-filter: none;
 			}
-			.lang-pill {
-				background: var(--surface-glass);
-				border: 1px solid var(--border-glass);
-				padding: 0.8em 2em;
-				border-radius: 50px;
+			.languages-section h2 {
+				text-align: center;
+				margin-bottom: 0.9em;
+			}
+			.languages-intro {
+				display: none;
+			}
+			.language-grid {
+				display: grid;
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				gap: 0.9em 1.1em;
+				align-items: stretch;
+			}
+			.language-card {
+				padding: 1em 1.05em;
+				border: 1px solid rgba(255,255,255,0.12);
+				border-radius: 12px;
+				background: rgba(255,255,255,0.06);
+				box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+				height: 116px;
+				display: grid;
+				grid-template-rows: auto auto;
+				align-content: start;
+				overflow: hidden;
+			}
+			.language-top {
 				display: flex;
 				align-items: center;
-				gap: 10px;
-				transition: all 0.3s ease;
-				cursor: default;
+				justify-content: flex-start;
+				gap: 0.75em;
+				margin-bottom: 0.55em;
 			}
-			/* Style spécial pour Langue Maternelle */
-			.lang-pill.native {
-				border: 1px solid var(--accent-cyan);
-				background: rgba(0, 212, 255, 0.1);
+			.language-flag {
+				font-size: 1.2em;
+				line-height: 1;
+				filter: none;
 			}
-			
-			.lang-pill:hover {
-				background: rgba(255,255,255,0.1);
-				border-color: #fff;
-				transform: translateY(-5px);
-				box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+			.language-name {
+				font-size: 0.98em;
+				font-weight: 600;
+				color: #fff;
 			}
-			.lang-pill .flag { font-size: 1.5em; }
-			.lang-pill .name { font-weight: 600; color: #fff; font-size: 1.1em; }
-
+			.language-meta {
+				display: grid;
+				grid-template-columns: 1fr;
+				row-gap: 0.55em;
+				align-items: start;
+			}
+			.language-level {
+				color: rgba(255,255,255,0.72);
+				font-size: 0.74em;
+				font-weight: 700;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+			}
+			.language-stars {
+				display: flex;
+				gap: 0.22em;
+				font-size: 0.82em;
+				align-self: start;
+			}
+			.language-stars .on {
+				color: #f4c542;
+				text-shadow: none;
+			}
+			.language-stars .off {
+				color: rgba(255,255,255,0.2);
+			}
 			/* --- FOOTER --- */
 			#footer {
 				background: rgba(12, 10, 31, 0.8);
@@ -249,11 +296,16 @@
 				.about-image { flex: auto; width: 100%; max-width: 350px; position: relative; top: 0; }
 				.about-text { width: 100%; }
 				.page-header h1 { font-size: 2.5em; }
+				.language-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+			}
+			@media (max-width: 860px) {
+				.language-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 			}
 			@media (max-width: 480px) {
 				.page-header { padding-top: 8em; }
 				.about-image { max-width: 100%; }
-				.lang-pill { padding: 0.6em 1.2em; width: 100%; justify-content: center; }
+				.languages-shell { padding: 1.4em; }
+				.language-grid { grid-template-columns: 1fr; }
 			}
 		</style>
 	</head>
@@ -325,32 +377,69 @@
 
 			<section class="languages-section">
 				<div class="container">
-					<h2 class="reveal" style="color: #fff;">Langues & Communication</h2>
-					<div class="lang-pills-container reveal">
-						
-						<div class="lang-pill native">
-							<span class="flag">🇲🇦</span>
-							<span class="name">Marocain (Darija) - Langue Maternelle</span>
-						</div>
-
-						<div class="lang-pill">
-							<span class="flag">🇸🇦</span>
-							<span class="name">Arabe - Bilingue</span>
-						</div>
-
-						<div class="lang-pill">
-							<span class="flag">🇫🇷</span>
-							<span class="name">Français - Bilingue</span>
-						</div>
-
-						<div class="lang-pill">
-							<span class="flag">🇬🇧</span>
-							<span class="name">Anglais - Professionnel</span>
-						</div>
-
-						<div class="lang-pill">
-							<span class="flag">🇪🇸</span>
-							<span class="name">Espagnol - Débutant</span>
+					<div class="languages-shell reveal">
+						<h2 style="color: #fff;">Langues</h2>
+						<div class="language-grid">
+							<article class="language-card primary">
+								<div class="language-top">
+									<span class="language-flag">🇲🇦</span>
+									<span class="language-name">Darija</span>
+								</div>
+								<div class="language-meta">
+									<span class="language-level">Langue maternelle</span>
+									<div class="language-stars" aria-label="5 sur 5">
+										<span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+									</div>
+								</div>
+							</article>
+							<article class="language-card">
+								<div class="language-top">
+									<span class="language-flag">🇫🇷</span>
+									<span class="language-name">Français</span>
+								</div>
+								<div class="language-meta">
+									<span class="language-level">Bilingue</span>
+									<div class="language-stars" aria-label="5 sur 5">
+										<span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+									</div>
+								</div>
+							</article>
+							<article class="language-card">
+								<div class="language-top">
+									<span class="language-flag">🇸🇦</span>
+									<span class="language-name">Arabe</span>
+								</div>
+								<div class="language-meta">
+									<span class="language-level">Bilingue</span>
+									<div class="language-stars" aria-label="5 sur 5">
+										<span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+									</div>
+								</div>
+							</article>
+							<article class="language-card">
+								<div class="language-top">
+									<span class="language-flag">🇬🇧</span>
+									<span class="language-name">Anglais</span>
+								</div>
+								<div class="language-meta">
+									<span class="language-level">Professionnel</span>
+									<div class="language-stars" aria-label="4 sur 5">
+										<span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="off">★</span>
+									</div>
+								</div>
+							</article>
+							<article class="language-card">
+								<div class="language-top">
+									<span class="language-flag">🇪🇸</span>
+									<span class="language-name">Espagnol</span>
+								</div>
+								<div class="language-meta">
+									<span class="language-level">Débutant</span>
+									<div class="language-stars" aria-label="2 sur 5">
+										<span class="on">★</span><span class="on">★</span><span class="off">★</span><span class="off">★</span><span class="off">★</span>
+									</div>
+								</div>
+							</article>
 						</div>
 					</div>
 				</div>

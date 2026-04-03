@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>Projets Data & IA - Abderrahman El Ouali</title>
@@ -231,6 +231,14 @@
 				color: #000;
 				box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
 			}
+			.btn-card.disabled {
+				border-color: rgba(255, 255, 255, 0.18);
+				color: rgba(255, 255, 255, 0.55);
+				cursor: not-allowed;
+				pointer-events: none;
+				background: rgba(255,255,255,0.04);
+				box-shadow: none;
+			}
 
 			/* --- FOOTER --- */
 			#footer {
@@ -319,7 +327,7 @@
 
 					<div class="project-card reveal" style="transition-delay: 0.1s;">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="Maintenance Prédictive" style="object-fit: contain; padding: 2em; background: #fff;">
+							<img loading="lazy" decoding="async" src="../assets/images/compresseur.png" alt="Maintenance Prédictive OCP">
 						</div>
 						<div class="card-content">
 							<h3>Maintenance Prédictive OCP</h3>
@@ -380,7 +388,7 @@
 								<span class="tech-tag">SQL</span>
 								<span class="tech-tag">DAX</span>
 							</div>
-							<a href="projects/project-dashboard-finance.html" class="btn-card">Voir l'etude de cas</a>
+							<span class="btn-card disabled">Contenu en cours de finalisation</span>
 						</div>
 					</div>
 
@@ -396,7 +404,7 @@
 								<span class="tech-tag">Bert</span>
 								<span class="tech-tag">TensorFlow</span>
 							</div>
-							<a href="projects/project-nlp-sentiment.html" class="btn-card">Voir l'etude de cas</a>
+							<span class="btn-card disabled">Contenu en cours de finalisation</span>
 						</div>
 					</div>
 

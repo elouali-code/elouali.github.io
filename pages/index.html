@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>Abderrahman El Ouali - Portfolio d'Ingénieur</title>
@@ -43,7 +43,7 @@
 				--gradient-primary: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
 			}
 
-			/* --- RESET FORCE (POUR CORRIGER LE DÉCALAGE) --- */
+			/* --- RESET FORCE (POUR CORRIGER LE DECALAGE) --- */
 			* { box-sizing: border-box; }
 			
 			html, body {
@@ -146,7 +146,7 @@
 			}
 			#menu-overlay.active { opacity: 1; visibility: visible; }
 
-			/* --- HERO CORRIGÉ (CENTRAGE) --- */
+			/* --- HERO CORRIGE (CENTRAGE) --- */
 			.hero { 
 				padding: 12em 0 6em 0; 
 				text-align: center; 
@@ -160,8 +160,8 @@
 			.hero h1 { 
 				font-size: 3.2em; 
 				font-weight: 700; 
-				margin-bottom: 0.5em; /* Espace augmenté */
-				line-height: 1.3; /* Interligne augmenté pour éviter le chevauchement */
+				margin-bottom: 0.5em; /* Espace augmente */
+				line-height: 1.3; /* Interligne augmente pour eviter le chevauchement */
 				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
 				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
 			}
@@ -177,9 +177,13 @@
 			
 			.cta-group { display: flex; justify-content: center; gap: 1.5em; margin-bottom: 3em; flex-wrap: wrap; }
 			.button {
+				appearance: none;
+				-webkit-appearance: none;
 				background: var(--gradient-primary);
 				color: #fff !important; border: 0; border-radius: 50px;
 				padding: 0.9em 2.5em; font-weight: 600; font-size: 1em;
+				font-family: inherit;
+				line-height: inherit;
 				box-shadow: 0 10px 20px rgba(140, 82, 255, 0.3);
 				display: inline-block;
 				cursor: pointer;
@@ -208,7 +212,7 @@
 				display: flex; 
 				flex-wrap: wrap; 
 				margin: 0 -15px; 
-				justify-content: center; /* Assure que les colonnes sont centrées si elles ne remplissent pas la ligne */
+				justify-content: center; /* Assure que les colonnes sont centrees si elles ne remplissent pas la ligne */
 			}
 			
 			.col-4 { width: 33.33%; padding: 0 15px; box-sizing: border-box; }
@@ -242,8 +246,15 @@
 			}
 			.experience-card .logo { width: 100%; height: 100%; object-fit: contain; }
 			
+			.section-container .row > .col-3 {
+				width: 33.33%;
+			}
+			.section-container .row > .col-3:nth-child(4) {
+				display: none;
+			}
+
 			.experience-card h3 { font-size: 1.3em; margin: 0.5em 0; color: #fff; }
-			.experience-card .role-highlight { color: var(--accent-cyan); font-weight: 600; font-size: 1em; display: block; margin-bottom: 0.5em; }
+			.experience-card .role-highlight { color: var(--accent-cyan); font-weight: 600; font-size: 1em; display: block; margin-bottom: 0.75em; }
 			.experience-card .date { font-size: 0.9em; color: var(--text-secondary); opacity: 0.8; }
 
 			/* --- STACK TECHNIQUE --- */
@@ -346,12 +357,12 @@
 
 			<section class="hero reveal">
 				<div class="container">
-					<h1>Ingénieur <br> Data & Cloud Architecture</h1>
+					<h1>Ingénieur de données <br>& Architecte Cloud</h1>
 					<p class="subtitle">Je conçois des écosystèmes de données scalables et des architectures cloud résilientes pour transformer la donnée brute en valeur stratégique.</p>
 					
 					<div class="cta-group">
 						<a href="projects-hub.html" class="button">Voir mes projets</a>
-						<a href="../assets/docs/Cv_EL_OUALI_2025.pdf" target="_blank" class="button alt"><i class="fas fa-download" style="margin-right:10px;"></i> Télécharger CV</a>
+						<button type="button" class="button alt" onclick="alert('CV en cours de mise à jour.');"><i class="fas fa-download" style="margin-right:10px;"></i> Télécharger CV</button>
 					</div>
 					
 					<div class="social-hub">
@@ -366,32 +377,42 @@
 				<div class="container">
 					<h2 class="section-title reveal">Parcours Professionnel</h2>
 					<div class="row">
-						<div class="col-4 reveal">
+						<div class="col-3 reveal">
+							<a href="experiences.html" class="experience-card">
+								<div class="logo-wrapper">
+										<img loading="lazy" decoding="async" src="../assets/images/logosbs.jpg" alt="SBS Software" class="logo"/>
+								</div>
+								<span class="role-highlight">Ingénieur R&amp;D</span>
+								<h3>SBS Software</h3>
+								<span class="date">Janv. 2026 - Aujourd'hui</span>
+							</a>
+						</div>
+						<div class="col-3 reveal">
 							<a href="experiences.html" class="experience-card">
 								<div class="logo-wrapper">
 									<img loading="lazy" decoding="async" src="../assets/images/logo-airbus.png" alt="Airbus" class="logo"/>
 								</div>
-								<span class="role-highlight">Architecte Cloud (Stage)</span>
+								<span class="role-highlight">Architecte Cloud</span>
 								<h3>Airbus</h3>
 								<span class="date">Mars 2025 - Sept. 2025</span>
 							</a>
 						</div>
-						<div class="col-4 reveal">
+						<div class="col-3 reveal">
 							<a href="experiences.html" class="experience-card">
 								<div class="logo-wrapper">
 									<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="OCP" class="logo"/>
 								</div>
-								<span class="role-highlight">Data Analyst (Stage)</span>
+								<span class="role-highlight">Data Analyst</span>
 								<h3>OCP Group</h3>
 								<span class="date">Juil. 2024 - Sept. 2024</span>
 							</a>
 						</div>
-						<div class="col-4 reveal">
+						<div class="col-3 reveal">
 							<a href="experiences.html" class="experience-card">
 								<div class="logo-wrapper">
 									<img loading="lazy" decoding="async" src="../assets/images/logo-webhelp.png" alt="Webhelp" class="logo"/>
 								</div>
-								<span class="role-highlight">Dev Full-Stack (Stage)</span>
+								<span class="role-highlight">Dev Full-Stack</span>
 								<h3>Webhelp</h3>
 								<span class="date">Juil. 2021 - Août 2021</span>
 							</a>
@@ -409,11 +430,21 @@
 						<div class="tech-item"><i class="fab fa-aws" style="color:#FF9900;"></i><span>AWS</span></div>
 						<div class="tech-item"><i class="fab fa-python" style="color:#3776AB;"></i><span>Python</span></div>
 						<div class="tech-item"><i class="fab fa-java" style="color:#007396;"></i><span>Java</span></div>
+						<div class="tech-item"><i class="fas fa-bolt" style="color:#E25A1C;"></i><span>Spark</span></div>
+						<div class="tech-item"><i class="fab fa-angular" style="color:#DD0031;"></i><span>Angular</span></div>
+						<div class="tech-item"><i class="fas fa-code" style="color:#3178C6;"></i><span>TypeScript</span></div>
 						<div class="tech-item"><i class="fab fa-docker" style="color:#2496ED;"></i><span>Docker</span></div>
 						<div class="tech-item"><i class="fas fa-database" style="color:#4DB33D;"></i><span>SQL / NoSQL</span></div>
+						<div class="tech-item"><i class="fas fa-database" style="color:#336791;"></i><span>PostgreSQL</span></div>
+						<div class="tech-item"><i class="fas fa-table" style="color:#FF6B35;"></i><span>dbt</span></div>
+						<div class="tech-item"><i class="fas fa-chart-bar" style="color:#509EE3;"></i><span>Metabase</span></div>
+						<div class="tech-item"><i class="fas fa-vial" style="color:#8E7CC3;"></i><span>Jasmine</span></div>
 						<div class="tech-item"><i class="fab fa-jenkins" style="color:#D24939;"></i><span>CI/CD</span></div>
+						<div class="tech-item"><i class="fas fa-tasks" style="color:#2684FF;"></i><span>Jira</span></div>
+						<div class="tech-item"><i class="fab fa-gitlab" style="color:#FC6D26;"></i><span>GitLab</span></div>
 						<div class="tech-item"><i class="fas fa-brain" style="color:#F7DF1E;"></i><span>AI / ML</span></div>
 						<div class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Git</span></div>
+						<div class="tech-item"><i class="fas fa-layer-group" style="color:#6FD3FB;"></i><span>Apache Iceberg</span></div>
 					</div>
 				</div>
 			</section>
