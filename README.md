@@ -56,15 +56,6 @@ Le site est publie via GitHub Pages sur:
 - Font Awesome
 - Google Fonts
 
-### Ajouter un nouveau projet
-
-1. Dupliquer `pages/projects/project-template.html` vers `pages/projects/project-<nom>.html`.
-2. Remplir les sections (hero, meta, slider, contexte, solution, resultats).
-3. Ajouter la carte/lien du projet dans la page categorie correspondante:
-   - `pages/projects-data.html`
-   - `pages/projects-archi.html`
-   - `pages/projects-dev.html`
-4. Verifier l affichage desktop + mobile.
 
 ## Developpement local
 
