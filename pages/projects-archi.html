@@ -1,24 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Projets Architecture & Cloud - Abderrahman El Ouali</title>
+		<title>Projets Architecture IT - Abderrahman El Ouali</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
 		
   <!-- SEO START -->
-  <meta name="description" content="Projets Architecture & Cloud - Portfolio personnel avec experiences, projets techniques et realisations." />
+  <meta name="description" content="Projets Architecture IT - Portfolio personnel avec experiences, projets techniques et realisations." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects-archi.html" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Projets Architecture & Cloud - Abderrahman El Ouali" />
-  <meta property="og:description" content="Projets Architecture & Cloud - Portfolio personnel avec experiences, projets techniques et realisations." />
+  <meta property="og:title" content="Projets Architecture IT - Abderrahman El Ouali" />
+  <meta property="og:description" content="Projets Architecture IT - Portfolio personnel avec experiences, projets techniques et realisations." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects-archi.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Projets Architecture & Cloud - Abderrahman El Ouali" />
-  <meta name="twitter:description" content="Projets Architecture & Cloud - Portfolio personnel avec experiences, projets techniques et realisations." />
+  <meta name="twitter:title" content="Projets Architecture IT - Abderrahman El Ouali" />
+  <meta name="twitter:description" content="Projets Architecture IT - Portfolio personnel avec experiences, projets techniques et realisations." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../assets/css/main.css" />
 		
@@ -73,17 +73,46 @@
 			.hero .subtitle { font-size: 1.2em; color: var(--text-secondary); max-width: 800px; margin: 0 auto; }
 
 			/* GRID PROJETS */
-			.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5em; margin-bottom: 6em; }
-			.project-card { background: var(--surface-glass); border: 1px solid var(--border-glass); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; height: 100%; position: relative; }
-			.project-card:hover { transform: translateY(-8px); border-color: var(--accent-cyan); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); }
-			.card-thumb { height: 200px; width: 100%; overflow: hidden; position: relative; border-bottom: 1px solid var(--border-glass); }
+			.projects-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.2em;
+				margin: 0 auto 6em auto;
+				max-width: 1040px;
+			}
+			.project-card {
+				background: linear-gradient(90deg, rgba(255,255,255,0.075), rgba(255,255,255,0.02));
+				border: 1px solid rgba(255,255,255,0.12);
+				border-left: 3px solid rgba(0, 212, 255, 0.55);
+				border-radius: 18px;
+				overflow: hidden;
+				transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+				display: grid;
+				grid-template-columns: 260px minmax(0, 1fr);
+				min-height: 230px;
+				position: relative;
+			}
+			.project-card:hover {
+				transform: translateX(6px);
+				border-color: var(--accent-cyan);
+				background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+				box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+			}
+			.card-thumb {
+				height: 100%;
+				min-height: 230px;
+				width: 100%;
+				overflow: hidden;
+				position: relative;
+				border-right: 1px solid rgba(255,255,255,0.12);
+			}
 			.card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-			.project-card:hover .card-thumb img { transform: scale(1.05); }
-			.card-content { padding: 2em; flex-grow: 1; display: flex; flex-direction: column; }
-			.card-content h3 { font-size: 1.4em; margin-bottom: 0.5em; color: #fff; }
-			.card-content p { font-size: 0.95em; color: var(--text-secondary); margin-bottom: 1.5em; flex-grow: 1; }
+			.project-card:hover .card-thumb img { transform: scale(1.04); }
+			.card-content { padding: 1.5em 1.7em; display: flex; flex-direction: column; }
+			.card-content h3 { font-size: 1.35em; margin: 0 0 0.45em 0; color: #fff; }
+			.card-content p { font-size: 0.95em; color: var(--text-secondary); margin: 0 0 1.3em 0; flex-grow: 1; line-height: 1.65; }
 			
-			.tech-stack { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 1.5em; }
+			.tech-stack { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 1.2em; }
 			.tech-tag { font-size: 0.75em; background: rgba(255,255,255,0.05); padding: 0.3em 0.8em; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); color: var(--accent-cyan); }
 			
 			.btn-card { align-self: flex-start; padding: 0.6em 1.5em; border: 1px solid var(--accent-cyan); border-radius: 50px; background: transparent; color: var(--accent-cyan); font-size: 0.9em; font-weight: 500; transition: all 0.3s; }
@@ -93,10 +122,23 @@
 			#footer { background: rgba(12, 10, 31, 0.8); border-top: 1px solid var(--border-glass); padding: 2em 0; margin-top: auto; text-align: center; font-size: 0.9em; }
 			.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
 			.reveal.active { opacity: 1; transform: translateY(0); }
-			@media (max-width: 768px) { .hero h1 { font-size: 2.2em; } .projects-grid { grid-template-columns: 1fr; } }
+			@media (max-width: 768px) {
+				.hero h1 { font-size: 2.2em; }
+				.projects-grid { grid-template-columns: 1fr; }
+				.project-card { grid-template-columns: 1fr; }
+				.card-thumb { height: 190px; min-height: 190px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+			}
 		</style>
+		<link rel="stylesheet" href="../assets/css/responsive.css" />
 	</head>
 	<body class="is-preload">
+		<div class="portfolio-it-background" aria-hidden="true">
+			<div class="portfolio-it-planet"></div>
+			<span class="portfolio-it-node"></span>
+			<span class="portfolio-it-node"></span>
+			<span class="portfolio-it-node"></span>
+		</div>
+
 		
 		<div id="menu-overlay"></div>
 
@@ -120,7 +162,7 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/logo.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
 					<div class="menu-toggle" id="menu-btn">
@@ -132,8 +174,8 @@
 
 			<section class="hero reveal">
 				<div class="container">
-					<h1>Architecture & Cloud</h1>
-					<p class="subtitle">Conception d'architectures scalables, résilientes et automatisées.</p>
+					<h1>Architecture IT</h1>
+					<p class="subtitle">Conception d'architectures scalables, résilientes et automatisées, du système applicatif aux environnements cloud.</p>
 				</div>
 			</section>
 

@@ -152,22 +152,29 @@
 				text-align: center; 
 				width: 100% !important;
 				margin: 0 auto !important;
+				position: relative;
+				overflow: hidden;
 			}
 			.hero .container {
-				max-width: 1120px !important;
+				position: relative;
+				z-index: 1;
+				max-width: 1240px !important;
 				margin: 0 auto !important;
+				padding-left: 25px !important;
+				padding-right: 25px !important;
 			}
 			.hero-layout {
 				display: grid;
-				grid-template-columns: minmax(0, 1fr) clamp(170px, 22vw, 230px);
+				grid-template-columns: minmax(620px, 760px) clamp(170px, 20vw, 230px);
 				align-items: center;
 				justify-content: center;
-				gap: clamp(2rem, 5vw, 4em);
+				gap: clamp(2.5rem, 6vw, 5.5rem);
 				text-align: left;
 			}
 			.hero-copy {
 				min-width: 0;
-				max-width: 720px;
+				max-width: 760px;
+				padding-left: 0;
 			}
 			.hero-avatar {
 				flex: 0 0 auto;
@@ -200,12 +207,13 @@
 				border: 4px solid rgba(12, 10, 31, 0.95);
 			}
 			.hero h1 { 
-				font-size: clamp(2.6em, 4.2vw, 3.55em);
+				font-size: clamp(2.45em, 3.8vw, 3.25em);
 				font-weight: 700; 
 				margin-bottom: 0.5em; /* Espace augmente */
 				line-height: 1.16;
 				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
 				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+				overflow: visible;
 			}
 			.hero h1 span {
 				display: block;
@@ -363,6 +371,7 @@
 				position: relative;
 				display: grid;
 				grid-template-columns: repeat(2, minmax(0, 1fr));
+				align-items: stretch;
 				gap: 1.4em;
 				margin-top: 1.5em;
 			}
@@ -370,7 +379,8 @@
 				position: relative;
 				display: flex;
 				flex-direction: column;
-				min-height: 210px;
+				min-height: 190px;
+				height: 100%;
 				padding: 0 0 0 1.3em;
 				border-left: 2px solid rgba(0, 212, 255, 0.36);
 				background: transparent;
@@ -391,19 +401,6 @@
 				transform: translateX(5px);
 				border-color: rgba(140, 82, 255, 0.55);
 				background: transparent;
-			}
-			.career-domain {
-				display: inline-flex;
-				align-self: flex-start;
-				padding: 0.4em 0.75em;
-				border: 1px solid rgba(0,212,255,0.22);
-				border-radius: 999px;
-				background: rgba(0,212,255,0.08);
-				color: var(--accent-cyan);
-				font-size: 0.72em;
-				font-weight: 800;
-				letter-spacing: 0.04em;
-				text-transform: uppercase;
 			}
 			.career-step h3 {
 				margin: 1em 0 0.35em 0;
@@ -595,6 +592,13 @@
 		<link rel="stylesheet" href="../assets/css/responsive.css" />
 	</head>
 	<body class="is-preload">
+		<div class="portfolio-it-background" aria-hidden="true">
+			<div class="portfolio-it-planet"></div>
+			<span class="portfolio-it-node"></span>
+			<span class="portfolio-it-node"></span>
+			<span class="portfolio-it-node"></span>
+		</div>
+
 		
 		<div id="menu-overlay"></div>
 
@@ -629,6 +633,7 @@
 			</section>
 
 			<section class="hero reveal">
+
 				<div class="container">
 					<div class="hero-layout">
 						<div class="hero-copy">
@@ -659,7 +664,7 @@
 						<div class="career-head">
 							<div>
 								<h2 class="section-title">Parcours Professionnel</h2>
-								<p class="career-subtitle">Deux expériences fortes dans des environnements exigeants : valorisation des données dans le bancaire et architecture IT pour l'aéronautique.</p>
+								<p class="career-subtitle">Mes deux dernières expériences dans des environnements exigeants : valorisation des données dans le bancaire et architecture IT pour l'aéronautique.</p>
 							</div>
 							<div class="career-logo-strip" aria-label="Entreprises du parcours">
 								<a href="https://www.sbs-software.com/" target="_blank" rel="noopener noreferrer" aria-label="Site officiel de SBS Software">
@@ -673,16 +678,14 @@
 
 						<div class="career-timeline">
 							<article class="career-step">
-								<span class="career-domain">Banking Data</span>
 								<h3>SBS Software</h3>
 								<span class="career-role">Ingénieur de données · 2026</span>
 								<p>Travail autour de la donnée bancaire : structuration, exploitation et valorisation pour transformer l'information en valeur métier.</p>
 							</article>
 							<article class="career-step">
-								<span class="career-domain">Aerospace IT</span>
 								<h3>Airbus</h3>
 								<span class="career-role">Architecte Solution IT · 2025</span>
-								<p>Contribution à des sujets d'architecture IT dans un environnement aéronautique exigeant, avec des enjeux de cohérence, robustesse et industrialisation.</p>
+								<p>Contribution à l'architecture IT dans un environnement aéronautique exigeant, avec des enjeux de cohérence, robustesse et industrialisation.</p>
 							</article>
 						</div>
 
@@ -706,7 +709,10 @@
 								<span class="tech-item"><i class="fas fa-table" style="color:#FF6B35;"></i>dbt</span>
 								<span class="tech-item"><i class="fas fa-chart-bar" style="color:#509EE3;"></i>Metabase</span>
 								<span class="tech-item"><i class="fas fa-layer-group" style="color:#6FD3FB;"></i>Apache Iceberg</span>
+								<span class="tech-item"><i class="fas fa-network-wired" style="color:#29B5E8;"></i>Trino</span>
+								<span class="tech-item"><i class="fas fa-project-diagram" style="color:#008CC1;"></i>Neo4j</span>
 								<span class="tech-item"><i class="fas fa-brain" style="color:#F7DF1E;"></i>AI / ML</span>
+								<span class="tech-item"><i class="fas fa-leaf" style="color:#2ECC71;"></i>CodeCarbon</span>
 							</div>
 						</article>
 
@@ -716,6 +722,8 @@
 							<div class="tech-list">
 								<span class="tech-item"><i class="fab fa-aws" style="color:#FF9900;"></i>AWS</span>
 								<span class="tech-item"><i class="fab fa-docker" style="color:#2496ED;"></i>Docker</span>
+								<span class="tech-item"><i class="fas fa-cube" style="color:#892CA0;"></i>Podman</span>
+								<span class="tech-item"><i class="fab fa-linux" style="color:#FCC624;"></i>Linux</span>
 								<span class="tech-item"><i class="fab fa-jenkins" style="color:#D24939;"></i>CI/CD</span>
 								<span class="tech-item"><i class="fab fa-gitlab" style="color:#FC6D26;"></i>GitLab</span>
 								<span class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i>Git</span>
@@ -731,6 +739,7 @@
 								<span class="tech-item"><i class="fas fa-code" style="color:#3178C6;"></i>TypeScript</span>
 								<span class="tech-item"><i class="fas fa-database" style="color:#4DB33D;"></i>SQL / NoSQL</span>
 								<span class="tech-item"><i class="fas fa-database" style="color:#336791;"></i>PostgreSQL</span>
+								<span class="tech-item"><i class="fas fa-code-branch" style="color:#4E9BCD;"></i>SonarQube</span>
 							</div>
 						</article>
 
@@ -739,6 +748,7 @@
 							<p>Tests, suivi projet et pratiques d'équipe pour livrer avec rigueur.</p>
 							<div class="tech-list">
 								<span class="tech-item"><i class="fas fa-vial" style="color:#8E7CC3;"></i>Jasmine</span>
+								<span class="tech-item"><i class="fas fa-flask" style="color:#0A9EDC;"></i>Pytest</span>
 								<span class="tech-item"><i class="fas fa-tasks" style="color:#2684FF;"></i>Jira</span>
 								<span class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i>Versioning</span>
 							</div>

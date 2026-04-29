@@ -141,30 +141,36 @@
 			/* --- GRID DES CATEGORIES --- */
 			.hub-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-				gap: 2.5em;
+				grid-template-columns: 1fr;
+				gap: 1.1em;
 				margin-bottom: 6em;
+				max-width: 1040px;
+				margin-left: auto;
+				margin-right: auto;
 			}
 
 			.hub-card {
-				background: var(--surface-glass);
-				border: 1px solid var(--border-glass);
-				border-radius: 20px;
-				padding: 3em 2em;
-				text-align: center;
-				transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-				display: flex;
-				flex-direction: column;
+				background: linear-gradient(90deg, rgba(255,255,255,0.07), rgba(255,255,255,0.018));
+				border: 1px solid rgba(255,255,255,0.12);
+				border-left: 3px solid rgba(0, 212, 255, 0.55);
+				border-radius: 18px;
+				padding: 1.25em 1.35em;
+				text-align: left;
+				transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+				display: grid;
+				grid-template-columns: 64px minmax(0, 1fr) auto;
 				align-items: center;
+				gap: 1.25em;
 				position: relative;
 				overflow: hidden;
 				text-decoration: none; /* Enleve le soulignement du lien global */
 			}
 
 			.hub-card:hover {
-				transform: translateY(-10px);
+				transform: translateX(6px);
 				border-color: var(--accent-cyan);
-				box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
+				background: linear-gradient(90deg, rgba(255,255,255,0.095), rgba(255,255,255,0.03));
+				box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
 			}
 
 			/* Effet de lueur en arriere-plan */
@@ -181,35 +187,43 @@
 			.hub-card:hover::before { opacity: 1; }
 
 			.hub-icon {
-				font-size: 3.5em;
-				margin-bottom: 0.5em;
-				background: var(--gradient-primary);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
+				grid-row: 1 / 5;
+				width: 54px;
+				height: 54px;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 16px;
+				background: rgba(0, 212, 255, 0.1);
+				color: var(--accent-cyan);
+				font-size: 1.45em;
 				z-index: 1;
 			}
 
 			.hub-card h3 {
-				font-size: 1.8em;
+				grid-column: 2;
+				font-size: 1.35em;
 				color: #fff;
-				margin-bottom: 0.5em;
+				margin: 0 0 0.35em 0;
 				z-index: 1;
 			}
 
 			.hub-card p {
+				grid-column: 2;
 				color: var(--text-secondary);
-				margin-bottom: 2em;
-				flex-grow: 1;
+				margin: 0 0 1em 0;
+				line-height: 1.65;
 				z-index: 1;
 			}
 
 			/* Liste des technologies miniatures */
 			.mini-techs {
+				grid-column: 2;
 				display: flex;
 				gap: 0.8em;
 				flex-wrap: wrap;
-				justify-content: center;
-				margin-bottom: 2em;
+				justify-content: flex-start;
+				margin: 0;
 				z-index: 1;
 			}
 			.mini-pill {
@@ -222,12 +236,15 @@
 			}
 
 			.hub-btn {
+				grid-column: 2;
+				justify-self: flex-start;
 				background: transparent;
 				border: 1px solid var(--accent-cyan);
 				color: #fff;
-				padding: 0.8em 2em;
+				padding: 0.65em 1.15em;
 				border-radius: 50px;
 				font-weight: 600;
+				white-space: nowrap;
 				transition: all 0.3s;
 				z-index: 1;
 			}
@@ -258,10 +275,35 @@
 			@media (max-width: 768px) {
 				.hero h1 { font-size: 2.5em; }
 				.hub-grid { grid-template-columns: 1fr; }
+				.hub-card {
+					grid-template-columns: 1fr;
+					text-align: left;
+				}
+				.hub-icon,
+				.hub-card h3,
+				.hub-card p,
+				.mini-techs,
+				.hub-btn {
+					grid-column: 1;
+				}
+				.hub-icon {
+					grid-row: auto;
+				}
+				.hub-btn {
+					justify-self: flex-start;
+				}
 			}
 		</style>
+		<link rel="stylesheet" href="../assets/css/responsive.css" />
 	</head>
 	<body class="is-preload">
+		<div class="portfolio-it-background" aria-hidden="true">
+			<div class="portfolio-it-planet"></div>
+			<span class="portfolio-it-node"></span>
+			<span class="portfolio-it-node"></span>
+			<span class="portfolio-it-node"></span>
+		</div>
+
 		
 		<div id="menu-overlay"></div>
 
@@ -285,7 +327,7 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/logo.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
 					<div class="menu-toggle" id="menu-btn">
@@ -298,27 +340,14 @@
 			<section class="hero reveal">
 				<div class="container">
 					<h1>Exploration Technique</h1>
-					<p class="subtitle">Découvrez mes réalisations concrètes en data engineering, architecture cloud, BI, développement et intelligence artificielle, avec une spécialisation forte autour de la valorisation de la donnée.</p>
+					<p class="subtitle">Découvrez mes réalisations concrètes en data engineering, architecture IT, BI, développement et intelligence artificielle, avec une spécialisation forte autour de la valorisation de la donnée.</p>
 				</div>
 			</section>
 
 			<div class="container">
 				<div class="hub-grid">
 					
-					<a href="projects-archi.html" class="hub-card reveal">
-						<div class="hub-icon"><i class="fas fa-cloud"></i></div>
-						<h3>Architecture & Cloud</h3>
-						<p>Conception de systèmes scalables et résilients sur AWS. Migration vers le Cloud, optimisation des coûts et solutions Serverless.</p>
-						<div class="mini-techs">
-							<span class="mini-pill">AWS CDK</span>
-							<span class="mini-pill">DynamoDB</span>
-							<span class="mini-pill">Lambda</span>
-							<span class="mini-pill">S3</span>
-						</div>
-						<span class="hub-btn">Explorer ce domaine</span>
-					</a>
-
-					<a href="projects-data.html" class="hub-card reveal" style="transition-delay: 0.1s;">
+					<a href="projects-data.html" class="hub-card reveal">
 						<div class="hub-icon"><i class="fas fa-brain"></i></div>
 						<h3>Data & Intelligence Artificielle</h3>
 						<p>Pipelines de données industriels, nettoyage, modélisation et déploiement de modèles de Machine Learning pour la prise de décision.</p>
@@ -327,6 +356,19 @@
 							<span class="mini-pill">Palantir Foundry</span>
 							<span class="mini-pill">TensorFlow</span>
 							<span class="mini-pill">Python</span>
+						</div>
+						<span class="hub-btn">Explorer ce domaine</span>
+					</a>
+
+					<a href="projects-archi.html" class="hub-card reveal" style="transition-delay: 0.1s;">
+						<div class="hub-icon"><i class="fas fa-cloud"></i></div>
+						<h3>Architecture IT</h3>
+						<p>Conception de systèmes scalables et résilients, avec une attention forte portée à l'architecture applicative, l'intégration, l'automatisation et les environnements cloud.</p>
+						<div class="mini-techs">
+							<span class="mini-pill">AWS CDK</span>
+							<span class="mini-pill">DynamoDB</span>
+							<span class="mini-pill">Lambda</span>
+							<span class="mini-pill">S3</span>
 						</div>
 						<span class="hub-btn">Explorer ce domaine</span>
 					</a>
