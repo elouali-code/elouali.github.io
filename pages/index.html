@@ -154,28 +154,74 @@
 				margin: 0 auto !important;
 			}
 			.hero .container {
-				max-width: 900px !important;
+				max-width: 1120px !important;
 				margin: 0 auto !important;
 			}
+			.hero-layout {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) clamp(170px, 22vw, 230px);
+				align-items: center;
+				justify-content: center;
+				gap: clamp(2rem, 5vw, 4em);
+				text-align: left;
+			}
+			.hero-copy {
+				min-width: 0;
+				max-width: 720px;
+			}
+			.hero-avatar {
+				flex: 0 0 auto;
+				position: relative;
+				width: clamp(170px, 22vw, 230px);
+				height: clamp(170px, 22vw, 230px);
+				margin: 0;
+				border-radius: 50%;
+				padding: 5px;
+				background: var(--gradient-primary);
+				box-shadow: 0 18px 45px rgba(0, 212, 255, 0.18), 0 10px 35px rgba(140, 82, 255, 0.22);
+			}
+			.hero-avatar::before {
+				content: '';
+				position: absolute;
+				inset: -14px;
+				border-radius: 50%;
+				background: var(--gradient-primary);
+				filter: blur(24px);
+				opacity: 0.24;
+				z-index: -1;
+			}
+			.hero-avatar img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: cover;
+				object-position: center 18%;
+				border-radius: 50%;
+				border: 4px solid rgba(12, 10, 31, 0.95);
+			}
 			.hero h1 { 
-				font-size: 3.2em; 
+				font-size: clamp(2.6em, 4.2vw, 3.55em);
 				font-weight: 700; 
 				margin-bottom: 0.5em; /* Espace augmente */
-				line-height: 1.3; /* Interligne augmente pour eviter le chevauchement */
+				line-height: 1.16;
 				background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
 				-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+			}
+			.hero h1 span {
+				display: block;
+				white-space: nowrap;
 			}
 			.hero .subtitle { 
 				font-size: 1.3em; 
 				line-height: 1.8; 
 				color: var(--text-secondary); 
 				margin-bottom: 2.5em; 
-				max-width: 800px; 
-				margin-left: auto; 
-				margin-right: auto; 
+				max-width: 680px;
+				margin-left: 0;
+				margin-right: 0;
 			}
 			
-			.cta-group { display: flex; justify-content: center; gap: 1.5em; margin-bottom: 3em; flex-wrap: wrap; }
+			.cta-group { display: flex; justify-content: flex-start; gap: 1.5em; margin-bottom: 3em; flex-wrap: wrap; }
 			.button {
 				appearance: none;
 				-webkit-appearance: none;
@@ -192,7 +238,7 @@
 			.button.alt { background: transparent; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3); }
 			.button.alt:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
-			.social-hub { display: flex; justify-content: center; gap: 1.5em; }
+			.social-hub { display: flex; justify-content: flex-start; gap: 1.5em; }
 			.social-icon-link {
 				display: flex; align-items: center; justify-content: center;
 				width: 50px; height: 50px;
@@ -257,20 +303,220 @@
 			.experience-card .role-highlight { color: var(--accent-cyan); font-weight: 600; font-size: 1em; display: block; margin-bottom: 0.75em; }
 			.experience-card .date { font-size: 0.9em; color: var(--text-secondary); opacity: 0.8; }
 
-			/* --- STACK TECHNIQUE --- */
-			.tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5em; margin-top: 2em; }
-			.tech-item {
-				background: rgba(255,255,255,0.05);
-				border: 1px solid var(--border-glass);
-				border-radius: 12px;
-				padding: 1em 1.5em;
-				text-align: center;
-				min-width: 110px;
-				transition: all 0.3s ease;
+			.career-preview {
+				position: relative;
+				padding: 0;
 			}
-			.tech-item:hover { background: rgba(255,255,255,0.1); border-color: var(--accent-cyan); transform: translateY(-5px); }
-			.tech-item i { font-size: 2em; margin-bottom: 0.3em; display: block; color: var(--text-primary); }
-			.tech-item span { font-size: 0.9em; color: var(--text-secondary); font-weight: 500; }
+			.career-head {
+				position: relative;
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) auto;
+				align-items: center;
+				gap: 2em;
+				margin-bottom: 2.4em;
+			}
+			.career-head .section-title {
+				text-align: left;
+				margin-bottom: 0.35em;
+			}
+			.career-subtitle {
+				max-width: 660px;
+				margin: 0;
+				color: rgba(255,255,255,0.72);
+				font-size: 1.05em;
+				line-height: 1.75;
+			}
+			.career-logo-strip {
+				display: inline-flex;
+				align-items: center;
+				justify-content: flex-end;
+				flex-wrap: wrap;
+				gap: 1.8em;
+			}
+			.career-logo-strip a {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				opacity: 0.82;
+				transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+			}
+			.career-logo-strip a:hover {
+				opacity: 1;
+				transform: translateY(-5px);
+				filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.28));
+				text-shadow: none;
+			}
+			.career-logo-strip img {
+				width: auto;
+				height: 38px;
+				max-width: 120px;
+				object-fit: contain;
+				filter: drop-shadow(0 12px 20px rgba(0,0,0,0.34));
+			}
+			.career-logo-strip .logo-sbs { height: 46px; max-width: 135px; }
+			.career-logo-strip .logo-airbus {
+				height: 32px;
+				max-width: 145px;
+				filter: brightness(0) invert(1) drop-shadow(0 12px 20px rgba(0,0,0,0.34));
+			}
+			.career-timeline {
+				position: relative;
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1.4em;
+				margin-top: 1.5em;
+			}
+			.career-step {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				min-height: 210px;
+				padding: 0 0 0 1.3em;
+				border-left: 2px solid rgba(0, 212, 255, 0.36);
+				background: transparent;
+				transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+			}
+			.career-step::before {
+				content: '';
+				position: absolute;
+				left: -7px;
+				top: 0;
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: var(--accent-cyan);
+				box-shadow: 0 0 18px rgba(0, 212, 255, 0.72);
+			}
+			.career-step:hover {
+				transform: translateX(5px);
+				border-color: rgba(140, 82, 255, 0.55);
+				background: transparent;
+			}
+			.career-domain {
+				display: inline-flex;
+				align-self: flex-start;
+				padding: 0.4em 0.75em;
+				border: 1px solid rgba(0,212,255,0.22);
+				border-radius: 999px;
+				background: rgba(0,212,255,0.08);
+				color: var(--accent-cyan);
+				font-size: 0.72em;
+				font-weight: 800;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+			}
+			.career-step h3 {
+				margin: 1em 0 0.35em 0;
+				color: #fff;
+				font-size: 1.08em;
+			}
+			.career-role {
+				color: rgba(255,255,255,0.66);
+				font-size: 0.86em;
+				font-weight: 700;
+			}
+			.career-step p {
+				margin: 1em 0 0 0;
+				color: rgba(255,255,255,0.76);
+				font-size: 0.92em;
+				line-height: 1.65;
+				flex: 1;
+			}
+			.career-link-wrap {
+				position: relative;
+				text-align: center;
+				margin-top: 2.2em;
+			}
+
+			/* --- STACK TECHNIQUE --- */
+			.tech-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				align-items: stretch;
+				gap: 1.5em;
+				margin-top: 2em;
+			}
+			.tech-category {
+				position: relative;
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+				border: 1px solid rgba(255,255,255,0.14);
+				border-radius: 22px;
+				padding: 1.6em;
+				height: 100%;
+				box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+				transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+			}
+			.tech-category::before {
+				content: '';
+				position: absolute;
+				top: -45px;
+				right: -45px;
+				width: 130px;
+				height: 130px;
+				background: radial-gradient(circle, rgba(0,212,255,0.16), transparent 70%);
+				pointer-events: none;
+			}
+			.tech-category:hover {
+				transform: translateY(-6px);
+				border-color: rgba(0, 212, 255, 0.42);
+				background: linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.035));
+			}
+			.tech-category h3 {
+				display: flex;
+				align-items: center;
+				gap: 0.7em;
+				margin: 0 0 0.5em 0;
+				font-size: 1.15em;
+				color: #fff;
+			}
+			.tech-category h3 i {
+				width: 38px;
+				height: 38px;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 12px;
+				background: rgba(0, 212, 255, 0.1);
+				color: var(--accent-cyan);
+			}
+			.tech-category p {
+				margin: 0 0 1.2em 0;
+				color: rgba(255,255,255,0.68);
+				font-size: 0.92em;
+				line-height: 1.7;
+			}
+			.tech-list {
+				display: flex;
+				flex-wrap: wrap;
+				align-content: flex-start;
+				gap: 0.75em;
+			}
+			.tech-item {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.55em;
+				background: rgba(12, 10, 31, 0.58);
+				border: 1px solid rgba(255,255,255,0.12);
+				border-radius: 999px;
+				padding: 0.62em 0.9em;
+				color: var(--text-primary);
+				font-size: 0.92em;
+				font-weight: 500;
+				line-height: 1;
+				transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+			}
+			.tech-item:hover {
+				transform: translateY(-3px);
+				border-color: rgba(255,255,255,0.28);
+				background: rgba(255,255,255,0.09);
+			}
+			.tech-item i {
+				font-size: 1.15em;
+				line-height: 1;
+			}
 
 			/* --- PROJETS --- */
 			.project-card {
@@ -310,16 +556,43 @@
 			/* --- RESPONSIVE FIXES --- */
 			@media (max-width: 980px) {
 				.col-4, .col-3 { width: 50%; }
+				.hero-layout {
+					display: flex;
+					flex-direction: column-reverse;
+					gap: 2em;
+					text-align: center;
+				}
+				.hero-copy { max-width: 760px; }
+				.hero-avatar { width: 180px; height: 180px; }
 				.hero h1 { font-size: 2.5em; }
+				.hero h1 br { display: none; }
+				.hero .subtitle { margin-left: auto; margin-right: auto; }
+				.cta-group, .social-hub { justify-content: center; }
+				.tech-grid { grid-template-columns: 1fr; }
+				.career-head { grid-template-columns: 1fr; text-align: center; }
+				.career-head .section-title { text-align: center; }
+				.career-subtitle { margin-left: auto; margin-right: auto; }
+				.career-logo-strip { justify-content: center; }
+				.career-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 			}
 			@media (max-width: 736px) {
 				.col-4, .col-3 { width: 100%; }
 				.hero { padding: 8em 0 4em 0; }
+				.hero-layout { flex-direction: column-reverse; gap: 1.8em; text-align: center; }
+				.hero-copy { max-width: 100%; }
+				.hero-avatar { width: 140px; height: 140px; }
 				.hero h1 { font-size: 2em; }
+				.hero .subtitle { margin-left: auto; margin-right: auto; }
+				.cta-group, .social-hub { justify-content: center; }
 				.menu-toggle { padding: 0.4em 0.8em; font-size: 0.9em; }
 				#sidebar-menu { width: 100%; max-width: 300px; }
+				.career-timeline { grid-template-columns: 1fr; }
+				.career-step { min-height: 0; }
+				.career-logo-strip { gap: 1.4em; }
+				.career-logo-strip img { max-width: 110px; height: 34px; }
 			}
 		</style>
+		<link rel="stylesheet" href="../assets/css/responsive.css" />
 	</head>
 	<body class="is-preload">
 		
@@ -345,7 +618,7 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/logo.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
 					<div class="menu-toggle" id="menu-btn">
@@ -357,94 +630,119 @@
 
 			<section class="hero reveal">
 				<div class="container">
-					<h1>Ingénieur de données <br>& Architecte Cloud</h1>
-					<p class="subtitle">Je conçois des écosystèmes de données scalables et des architectures cloud résilientes pour transformer la donnée brute en valeur stratégique.</p>
-					
-					<div class="cta-group">
-						<a href="projects-hub.html" class="button">Voir mes projets</a>
-						<button type="button" class="button alt" onclick="alert('CV en cours de mise à jour.');"><i class="fas fa-download" style="margin-right:10px;"></i> Télécharger CV</button>
-					</div>
-					
-					<div class="social-hub">
-						<a href="https://github.com/elouali-code" target="_blank" class="social-icon-link" title="GitHub"><i class="fab fa-github"></i></a>
-						<a href="https://www.linkedin.com/in/elouali/" target="_blank" class="social-icon-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-						<a href="mailto:el-ouali@insa-toulouse.fr" class="social-icon-link" title="Email"><i class="fas fa-envelope"></i></a>
+					<div class="hero-layout">
+						<div class="hero-copy">
+							<h1><span>Ingénieur de données</span><span>&amp; Architecture IT</span></h1>
+							<p class="subtitle">Je conçois des écosystèmes de données scalables et des architectures IT résilientes pour transformer la donnée brute en valeur stratégique.</p>
+
+							<div class="cta-group">
+								<a href="projects-hub.html" class="button">Voir mes projets</a>
+								<button type="button" class="button alt" onclick="alert('CV en cours de mise à jour.');"><i class="fas fa-download" style="margin-right:10px;"></i> Télécharger CV</button>
+							</div>
+
+							<div class="social-hub">
+								<a href="https://github.com/elouali-code" target="_blank" class="social-icon-link" title="GitHub"><i class="fab fa-github"></i></a>
+								<a href="https://www.linkedin.com/in/elouali/" target="_blank" class="social-icon-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+								<a href="mailto:el-ouali@insa-toulouse.fr" class="social-icon-link" title="Email"><i class="fas fa-envelope"></i></a>
+							</div>
+						</div>
+						<a href="about.html" class="hero-avatar" aria-label="Voir la page À propos">
+							<img loading="eager" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Portrait Abderrahman El Ouali" />
+						</a>
 					</div>
 				</div>
 			</section>
 			
 			<section class="section-container">
 				<div class="container">
-					<h2 class="section-title reveal">Parcours Professionnel</h2>
-					<div class="row">
-						<div class="col-3 reveal">
-							<a href="experiences.html" class="experience-card">
-								<div class="logo-wrapper">
-										<img loading="lazy" decoding="async" src="../assets/images/logosbs.jpg" alt="SBS Software" class="logo"/>
-								</div>
-								<span class="role-highlight">Ingénieur R&amp;D</span>
+					<div class="career-preview reveal">
+						<div class="career-head">
+							<div>
+								<h2 class="section-title">Parcours Professionnel</h2>
+								<p class="career-subtitle">Deux expériences fortes dans des environnements exigeants : valorisation des données dans le bancaire et architecture IT pour l'aéronautique.</p>
+							</div>
+							<div class="career-logo-strip" aria-label="Entreprises du parcours">
+								<a href="https://www.sbs-software.com/" target="_blank" rel="noopener noreferrer" aria-label="Site officiel de SBS Software">
+									<img loading="lazy" decoding="async" src="../assets/images/logo-sbs-official.svg" alt="SBS Software" class="logo-sbs" />
+								</a>
+								<a href="https://www.airbus.com/" target="_blank" rel="noopener noreferrer" aria-label="Site officiel d'Airbus">
+									<img loading="lazy" decoding="async" src="../assets/images/logo-airbus-official.svg" alt="Airbus" class="logo-airbus" />
+								</a>
+							</div>
+						</div>
+
+						<div class="career-timeline">
+							<article class="career-step">
+								<span class="career-domain">Banking Data</span>
 								<h3>SBS Software</h3>
-								<span class="date">Janv. 2026 - Aujourd'hui</span>
-							</a>
-						</div>
-						<div class="col-3 reveal">
-							<a href="experiences.html" class="experience-card">
-								<div class="logo-wrapper">
-									<img loading="lazy" decoding="async" src="../assets/images/logo-airbus.png" alt="Airbus" class="logo"/>
-								</div>
-								<span class="role-highlight">Architecte Cloud</span>
+								<span class="career-role">Ingénieur de données · 2026</span>
+								<p>Travail autour de la donnée bancaire : structuration, exploitation et valorisation pour transformer l'information en valeur métier.</p>
+							</article>
+							<article class="career-step">
+								<span class="career-domain">Aerospace IT</span>
 								<h3>Airbus</h3>
-								<span class="date">Mars 2025 - Sept. 2025</span>
-							</a>
+								<span class="career-role">Architecte Solution IT · 2025</span>
+								<p>Contribution à des sujets d'architecture IT dans un environnement aéronautique exigeant, avec des enjeux de cohérence, robustesse et industrialisation.</p>
+							</article>
 						</div>
-						<div class="col-3 reveal">
-							<a href="experiences.html" class="experience-card">
-								<div class="logo-wrapper">
-									<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="OCP" class="logo"/>
-								</div>
-								<span class="role-highlight">Data Analyst</span>
-								<h3>OCP Group</h3>
-								<span class="date">Juil. 2024 - Sept. 2024</span>
-							</a>
-						</div>
-						<div class="col-3 reveal">
-							<a href="experiences.html" class="experience-card">
-								<div class="logo-wrapper">
-									<img loading="lazy" decoding="async" src="../assets/images/logo-webhelp.png" alt="Webhelp" class="logo"/>
-								</div>
-								<span class="role-highlight">Dev Full-Stack</span>
-								<h3>Webhelp</h3>
-								<span class="date">Juil. 2021 - Août 2021</span>
-							</a>
+
+						<div class="career-link-wrap">
+							<a href="experiences.html" class="button">Voir le parcours complet</a>
 						</div>
 					</div>
 				</div>
 			</section>
-
 			<section class="section-container" style="background: rgba(255,255,255,0.02);">
 				<div class="container">
 					<h2 class="section-title reveal">Stack Technique</h2>
-					<p style="text-align: center; margin-bottom: 2em; max-width:600px; margin-left:auto; margin-right:auto;" class="reveal">Les technologies que j'utilise au quotidien pour bâtir des solutions robustes.</p>
 					
 					<div class="tech-grid reveal">
-						<div class="tech-item"><i class="fab fa-aws" style="color:#FF9900;"></i><span>AWS</span></div>
-						<div class="tech-item"><i class="fab fa-python" style="color:#3776AB;"></i><span>Python</span></div>
-						<div class="tech-item"><i class="fab fa-java" style="color:#007396;"></i><span>Java</span></div>
-						<div class="tech-item"><i class="fas fa-bolt" style="color:#E25A1C;"></i><span>Spark</span></div>
-						<div class="tech-item"><i class="fab fa-angular" style="color:#DD0031;"></i><span>Angular</span></div>
-						<div class="tech-item"><i class="fas fa-code" style="color:#3178C6;"></i><span>TypeScript</span></div>
-						<div class="tech-item"><i class="fab fa-docker" style="color:#2496ED;"></i><span>Docker</span></div>
-						<div class="tech-item"><i class="fas fa-database" style="color:#4DB33D;"></i><span>SQL / NoSQL</span></div>
-						<div class="tech-item"><i class="fas fa-database" style="color:#336791;"></i><span>PostgreSQL</span></div>
-						<div class="tech-item"><i class="fas fa-table" style="color:#FF6B35;"></i><span>dbt</span></div>
-						<div class="tech-item"><i class="fas fa-chart-bar" style="color:#509EE3;"></i><span>Metabase</span></div>
-						<div class="tech-item"><i class="fas fa-vial" style="color:#8E7CC3;"></i><span>Jasmine</span></div>
-						<div class="tech-item"><i class="fab fa-jenkins" style="color:#D24939;"></i><span>CI/CD</span></div>
-						<div class="tech-item"><i class="fas fa-tasks" style="color:#2684FF;"></i><span>Jira</span></div>
-						<div class="tech-item"><i class="fab fa-gitlab" style="color:#FC6D26;"></i><span>GitLab</span></div>
-						<div class="tech-item"><i class="fas fa-brain" style="color:#F7DF1E;"></i><span>AI / ML</span></div>
-						<div class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i><span>Git</span></div>
-						<div class="tech-item"><i class="fas fa-layer-group" style="color:#6FD3FB;"></i><span>Apache Iceberg</span></div>
+						<article class="tech-category">
+							<h3><i class="fas fa-database"></i>Data & Analytics</h3>
+							<p>Conception de pipelines, transformation, modélisation et valorisation des données.</p>
+							<div class="tech-list">
+								<span class="tech-item"><i class="fab fa-python" style="color:#3776AB;"></i>Python</span>
+								<span class="tech-item"><i class="fas fa-bolt" style="color:#E25A1C;"></i>Spark</span>
+								<span class="tech-item"><i class="fas fa-table" style="color:#FF6B35;"></i>dbt</span>
+								<span class="tech-item"><i class="fas fa-chart-bar" style="color:#509EE3;"></i>Metabase</span>
+								<span class="tech-item"><i class="fas fa-layer-group" style="color:#6FD3FB;"></i>Apache Iceberg</span>
+								<span class="tech-item"><i class="fas fa-brain" style="color:#F7DF1E;"></i>AI / ML</span>
+							</div>
+						</article>
+
+						<article class="tech-category">
+							<h3><i class="fas fa-cloud"></i>Cloud & DevOps</h3>
+							<p>Déploiement, automatisation et supervision d'environnements cloud fiables.</p>
+							<div class="tech-list">
+								<span class="tech-item"><i class="fab fa-aws" style="color:#FF9900;"></i>AWS</span>
+								<span class="tech-item"><i class="fab fa-docker" style="color:#2496ED;"></i>Docker</span>
+								<span class="tech-item"><i class="fab fa-jenkins" style="color:#D24939;"></i>CI/CD</span>
+								<span class="tech-item"><i class="fab fa-gitlab" style="color:#FC6D26;"></i>GitLab</span>
+								<span class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i>Git</span>
+							</div>
+						</article>
+
+						<article class="tech-category">
+							<h3><i class="fas fa-code"></i>Développement</h3>
+							<p>Développement backend, frontend et intégration d'applications orientées métier.</p>
+							<div class="tech-list">
+								<span class="tech-item"><i class="fab fa-java" style="color:#007396;"></i>Java</span>
+								<span class="tech-item"><i class="fab fa-angular" style="color:#DD0031;"></i>Angular</span>
+								<span class="tech-item"><i class="fas fa-code" style="color:#3178C6;"></i>TypeScript</span>
+								<span class="tech-item"><i class="fas fa-database" style="color:#4DB33D;"></i>SQL / NoSQL</span>
+								<span class="tech-item"><i class="fas fa-database" style="color:#336791;"></i>PostgreSQL</span>
+							</div>
+						</article>
+
+						<article class="tech-category">
+							<h3><i class="fas fa-check-circle"></i>Qualité & Pilotage</h3>
+							<p>Tests, suivi projet et pratiques d'équipe pour livrer avec rigueur.</p>
+							<div class="tech-list">
+								<span class="tech-item"><i class="fas fa-vial" style="color:#8E7CC3;"></i>Jasmine</span>
+								<span class="tech-item"><i class="fas fa-tasks" style="color:#2684FF;"></i>Jira</span>
+								<span class="tech-item"><i class="fab fa-git-alt" style="color:#F05032;"></i>Versioning</span>
+							</div>
+						</article>
 					</div>
 				</div>
 			</section>

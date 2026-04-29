@@ -140,7 +140,50 @@
 				font-size: 1.2em;
 				color: var(--text-secondary);
 				max-width: 700px;
-				margin: 0 auto 3em auto;
+				margin: 0 auto 2.2em auto;
+			}
+			.hero-logo-strip {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: clamp(2.6em, 6vw, 5.5em);
+				padding: 0;
+				margin-top: 0.6em;
+			}
+			.hero-logo-link {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				opacity: 0.82;
+				transform: translateY(0);
+				transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+			}
+			.hero-logo-link:hover {
+				opacity: 1;
+				transform: translateY(-5px);
+				filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.3));
+			}
+			.hero-logo-strip img {
+				width: auto;
+				height: 48px;
+				max-width: 160px;
+				object-fit: contain;
+				filter: drop-shadow(0 12px 20px rgba(0,0,0,0.34));
+			}
+			.hero-logo-strip img.logo-sbs {
+				height: 58px;
+				max-width: 170px;
+			}
+			.hero-logo-strip img.logo-airbus {
+				height: 42px;
+				max-width: 185px;
+				filter: brightness(0) invert(1) drop-shadow(0 12px 20px rgba(0,0,0,0.34));
+			}
+			.hero-logo-strip img.logo-ocp {
+				height: 56px;
+			}
+			.hero-logo-strip img.logo-webhelp {
+				height: 44px;
 			}
 
 			/* --- TIMELINE EXPERIENCE --- */
@@ -285,6 +328,18 @@
 
 			/* --- RESPONSIVE --- */
 			@media (max-width: 768px) {
+				.hero-logo-strip {
+					display: grid;
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 1.6em 2.2em;
+				}
+				.hero-logo-link {
+					justify-self: center;
+				}
+				.hero-logo-strip img {
+					max-width: 130px;
+					height: 42px;
+				}
 				.timeline::before { left: 20px; }
 				.timeline-item { padding-left: 60px; }
 				.timeline-side-year {
@@ -301,6 +356,7 @@
 				.period-location { flex-direction: column; align-items: flex-start; gap: 0.5em; }
 			}
 		</style>
+		<link rel="stylesheet" href="../assets/css/responsive.css" />
 	</head>
 	<body class="is-preload">
 		
@@ -326,7 +382,7 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/logo.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
 					<div class="menu-toggle" id="menu-btn">
@@ -340,6 +396,20 @@
 				<div class="container">
 					<h1>Parcours Professionnel</h1>
 					<p class="subtitle">Mon évolution en tant qu'ingénieur, à travers des environnements techniques exigeants.</p>
+					<div class="hero-logo-strip" aria-label="Entreprises du parcours">
+						<a href="https://www.sbs-software.com/" target="_blank" rel="noopener noreferrer" class="hero-logo-link" aria-label="Site officiel de SBS Software">
+							<img loading="lazy" decoding="async" src="../assets/images/logo-sbs-official.svg" alt="SBS Software" class="logo-sbs">
+						</a>
+						<a href="https://www.airbus.com/" target="_blank" rel="noopener noreferrer" class="hero-logo-link" aria-label="Site officiel d'Airbus">
+							<img loading="lazy" decoding="async" src="../assets/images/logo-airbus-official.svg" alt="Airbus" class="logo-airbus">
+						</a>
+						<a href="https://www.ocpgroup.ma/" target="_blank" rel="noopener noreferrer" class="hero-logo-link" aria-label="Site officiel d'OCP Group">
+							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="OCP Group" class="logo-ocp">
+						</a>
+						<a href="https://medica.concentrix.com/" target="_blank" rel="noopener noreferrer" class="hero-logo-link" aria-label="Site officiel de Concentrix Medica, anciennement Webhelp Medica">
+							<img loading="lazy" decoding="async" src="../assets/images/logo-webhelp.png" alt="Webhelp" class="logo-webhelp">
+						</a>
+					</div>
 				</div>
 			</section>
 
