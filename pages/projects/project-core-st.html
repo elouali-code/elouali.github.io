@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   
   <!-- SEO START -->
-  <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="description" content="Etude de cas data engineering: transformation de donnees industrielles sur Palantir Foundry avec PySpark, controles qualite, modelisation metier et CI/CD." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects/project-core-st.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projet - Data Transformation Skywise" />
-  <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta property="og:description" content="Pipelines PySpark sur Palantir Foundry pour transformer des donnees industrielles en data products fiables et gouvernes." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects/project-core-st.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projet - Data Transformation Skywise" />
-  <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="twitter:description" content="Pipelines PySpark sur Palantir Foundry pour transformer des donnees industrielles en data products fiables et gouvernes." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +55,7 @@
       <section class="project-hero reveal"><div class="container">
         <span class="project-type"><i class="fas fa-chart-line"></i> Data Engineering</span>
         <h1>Data Transformation sur Skywise</h1>
-        <p>Industrialisation de pipelines de transformation pour convertir des donnees d ingenierie heterogenes en data products fiables et exploitables.</p>
+        <p>Industrialisation de pipelines de transformation pour convertir des donnees d'ingenierie heterogenes en data products fiables, gouvernes et directement exploitables par les equipes metier.</p>
         <div class="project-meta">
           <article class="meta-card"><span>Role</span><strong>Data Engineer</strong></article>
           <article class="meta-card"><span>Contexte</span><strong>Airbus</strong></article>
@@ -77,11 +77,12 @@
 
         <section class="project-section reveal">
           <h2>Contexte</h2>
-          <p>Les donnees provenaient de plusieurs systemes legacy avec des formats et qualites heterogenes. Le challenge etait de livrer des datasets coherents et gouvernes pour l analyse metier.</p>
+          <p>Les donnees provenaient de plusieurs systemes sources, avec des formats, niveaux de qualite et conventions metier differents. Le challenge n'etait pas seulement de transformer des fichiers, mais de livrer des datasets explicables, reutilisables et fiables pour l'analyse.</p>
+          <p>Dans ce type de contexte industriel, la valeur d'un pipeline depend autant de la qualite des transformations que de sa gouvernance: lineage, controles, documentation et capacite a evoluer sans casser les usages existants.</p>
         </section>
 
         <section class="project-section reveal">
-          <h2>Solution technique</h2>
+          <h2>Transformation data</h2>
           <ul class="project-list">
             <li>Developpement de pipelines PySpark pour nettoyage, normalisation et enrichissement.</li>
             <li>Structuration des jeux de donnees en data products avec modeles semantiques metier.</li>
@@ -91,11 +92,21 @@
         </section>
 
         <section class="project-section reveal">
+          <h2>Gouvernance & controle</h2>
+          <ul class="project-list">
+            <li>Definition de schemas de sortie stables pour eviter les ruptures cote dashboards et consommateurs.</li>
+            <li>Ajout de controles sur fraicheur, completude, typage et coherence fonctionnelle des colonnes.</li>
+            <li>Documentation des regles de transformation afin de rendre le pipeline comprehensible par les equipes metier.</li>
+            <li>Suivi du lineage pour comprendre l'origine des champs et faciliter les investigations.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
           <h2>Resultats</h2>
           <div class="results-grid">
-            <article class="result-card"><i class="fas fa-gears"></i><h3>Pipelines robustes</h3><p>Execution automatisable et stable des transformations critiques.</p></article>
-            <article class="result-card"><i class="fas fa-check-circle"></i><h3>Qualite monitorable</h3><p>Detection rapide des ecarts de fraicheur et de conformite des donnees.</p></article>
-            <article class="result-card"><i class="fas fa-chart-pie"></i><h3>Valeur metier</h3><p>Datasets fiables utilises pour analyses et dashboards decisionnels.</p></article>
+            <article class="result-card"><i class="fas fa-gears"></i><h3>Pipelines robustes</h3><p>Les transformations sont structurees, automatisables et plus simples a maintenir.</p></article>
+            <article class="result-card"><i class="fas fa-check-circle"></i><h3>Qualite monitorable</h3><p>Les anomalies de fraicheur, completude ou coherence sont plus faciles a detecter.</p></article>
+            <article class="result-card"><i class="fas fa-chart-pie"></i><h3>Valeur metier</h3><p>Les data products deviennent exploitables pour analyses, dashboards et decisions operationnelles.</p></article>
           </div>
         </section>
       </section>

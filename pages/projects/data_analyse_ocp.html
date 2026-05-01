@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   
   <!-- SEO START -->
-  <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="description" content="Etude de cas data science: maintenance predictive d'un compresseur industriel avec Python, Pandas, Scikit-learn, Flask et interface de prediction." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects/data_analyse_ocp.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projet - Maintenance Predictive OCP" />
-  <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta property="og:description" content="Maintenance predictive industrielle avec Python, Scikit-learn, Flask et interface de prediction pour un compresseur critique." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects/data_analyse_ocp.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projet - Maintenance Predictive OCP" />
-  <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="twitter:description" content="Maintenance predictive industrielle avec Python, Scikit-learn, Flask et interface de prediction pour un compresseur critique." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -72,7 +72,7 @@
         <div class="container">
           <span class="project-type"><i class="fas fa-industry"></i> Data / IA</span>
           <h1>Maintenance Predictive Compresseurs OCP</h1>
-          <p>Developpement d une solution de machine learning pour predire la performance des compresseurs et passer d une maintenance reactive a une maintenance proactive.</p>
+          <p>Developpement d'une solution de machine learning appliquee a un equipement industriel critique afin d'anticiper les derives de performance et d'aider les equipes a passer d'une logique reactive a une logique predictive.</p>
 
           <div class="project-meta">
             <article class="meta-card"><span>Role</span><strong>Data Analyst & ML Developer</strong></article>
@@ -106,16 +106,28 @@
 
         <section class="project-section reveal">
           <h2>Contexte</h2>
-          <p>Le compresseur radial Siemens SFO est un equipement critique dans la production d acide sulfurique. Toute derive de performance impacte directement la disponibilite et l efficacite energetique de la ligne.</p>
+          <p>Le compresseur radial Siemens SFO est un equipement critique dans la production d'acide sulfurique. Une derive de performance peut impacter la disponibilite de la ligne, la consommation energetique et la planification des interventions.</p>
+          <p>Le projet visait a exploiter l'historique des donnees process pour produire un indicateur predictif utile aux equipes, avec une interface simple permettant de tester rapidement de nouveaux releves.</p>
         </section>
 
         <section class="project-section reveal">
-          <h2>Solution technique</h2>
+          <h2>Approche data science</h2>
           <ul class="project-list">
             <li>Preparation et analyse de 24 mois d historique de donnees process.</li>
+            <li>Nettoyage des valeurs manquantes, controle des variables process et exploration des correlations.</li>
             <li>Modele de regression Random Forest pour predire la performance du compresseur.</li>
             <li>Exposition du modele via API Flask pour integration operationnelle.</li>
             <li>Interface web simple pour upload des releves et prediction instantanee.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
+          <h2>Industrialisation</h2>
+          <ul class="project-list">
+            <li>Separation entre preparation des donnees, entrainement du modele, prediction et interface utilisateur.</li>
+            <li>Serialisation du modele afin de pouvoir le recharger sans reentrainement a chaque prediction.</li>
+            <li>Creation d'une API Flask pour rendre le modele consommable par une interface ou un autre systeme.</li>
+            <li>Presentation des resultats de facon lisible pour faciliter l'interpretation terrain.</li>
           </ul>
         </section>
 
@@ -124,18 +136,18 @@
           <div class="results-grid">
             <article class="result-card">
               <i class="fas fa-chart-line"></i>
-              <h3>Precision elevee</h3>
-              <p>Le modele atteint un R2 proche de 1 sur le jeu de validation.</p>
+              <h3>Prediction exploitable</h3>
+              <p>Le modele fournit une estimation de performance utilisable pour comparer comportement attendu et releves observes.</p>
             </article>
             <article class="result-card">
               <i class="fas fa-tools"></i>
               <h3>Maintenance proactive</h3>
-              <p>Detection anticipee des derives de performance avant incident majeur.</p>
+              <p>La solution aide a identifier plus tot les ecarts qui meritent une investigation technique.</p>
             </article>
             <article class="result-card">
               <i class="fas fa-desktop"></i>
               <h3>Outil operationnel</h3>
-              <p>Solution deployable et exploitable directement par les equipes terrain.</p>
+              <p>L'API et l'interface rendent le modele plus accessible qu'un notebook isole.</p>
             </article>
           </div>
         </section>

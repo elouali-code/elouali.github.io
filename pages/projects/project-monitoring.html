@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   
   <!-- SEO START -->
-  <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="description" content="Etude de cas cloud DevOps: mise en place d'une observabilite AWS avec CloudWatch, alarmes, SNS, Lambda et AWS CDK pour detecter les incidents plus tot." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects/project-monitoring.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projet - Observabilite Cloud AWS" />
-  <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta property="og:description" content="Observabilite AWS avec CloudWatch, SNS, Lambda et CDK pour detecter plus vite les incidents et standardiser le monitoring." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects/project-monitoring.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projet - Observabilite Cloud AWS" />
-  <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="twitter:description" content="Observabilite AWS avec CloudWatch, SNS, Lambda et CDK pour detecter plus vite les incidents et standardiser le monitoring." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,7 +61,7 @@
         <div class="container">
           <span class="project-type"><i class="fas fa-cloud"></i> Cloud / DevOps</span>
           <h1>Architecture d Observabilite AWS</h1>
-          <p>Conception d une couche de monitoring proactive pour transformer une application opaque en systeme observable, alerte et maintenable.</p>
+          <p>Conception d'une couche d'observabilite AWS pour rendre une application plus lisible en exploitation: dashboards, alarmes, notifications et stack deployable par Infrastructure as Code.</p>
           <div class="project-meta">
             <article class="meta-card"><span>Role</span><strong>Architecte Cloud / DevOps</strong></article>
             <article class="meta-card"><span>Contexte</span><strong>Airbus</strong></article>
@@ -85,11 +85,12 @@
 
         <section class="project-section reveal">
           <h2>Contexte</h2>
-          <p>L application etait une boite noire: incidents detectes tardivement, diagnostic lent, et impact operationnel eleve. L objectif etait de mettre en place une observabilite de bout en bout.</p>
+          <p>L'application manquait de visibilite operationnelle: les incidents etaient detectes trop tard, le diagnostic demandait beaucoup de verification manuelle et les equipes ne disposaient pas d'une vue claire sur les composants critiques.</p>
+          <p>L'objectif etait de passer d'une supervision reactive a une observabilite exploitable: comprendre rapidement l'etat du systeme, detecter les signaux faibles et standardiser le monitoring pour les futurs services.</p>
         </section>
 
         <section class="project-section reveal">
-          <h2>Solution technique</h2>
+          <h2>Architecture d'observabilite</h2>
           <ul class="project-list">
             <li>Creation d une stack CDK reutilisable pour dashboards, alarmes et widgets.</li>
             <li>Pattern event-driven: CloudWatch Alarm vers SNS puis canaux de notification.</li>
@@ -99,11 +100,21 @@
         </section>
 
         <section class="project-section reveal">
+          <h2>Approche operationnelle</h2>
+          <ul class="project-list">
+            <li>Identification des metriques critiques: erreurs, latence, disponibilite, saturation et executions anormales.</li>
+            <li>Organisation des dashboards pour permettre une lecture rapide par composant et par niveau de criticite.</li>
+            <li>Definition d'alarmes actionnables afin d'eviter le bruit et de prioriser les alertes utiles.</li>
+            <li>Versionnement de la configuration de monitoring pour eviter les reglages manuels non tracables.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
           <h2>Resultats</h2>
           <div class="results-grid">
-            <article class="result-card"><i class="fas fa-eye"></i><h3>Visibilite temps reel</h3><p>Suivi clair des erreurs, latences et disponibilite des composants.</p></article>
-            <article class="result-card"><i class="fas fa-bell"></i><h3>Alerte proactive</h3><p>Incidents detectes plus tot avec escalation automatique.</p></article>
-            <article class="result-card"><i class="fas fa-screwdriver-wrench"></i><h3>Maintien simplifie</h3><p>Monitoring deployable sur nouveaux services sans duplication manuelle.</p></article>
+            <article class="result-card"><i class="fas fa-eye"></i><h3>Visibilite operationnelle</h3><p>Les composants critiques deviennent observables via des dashboards lisibles et centralises.</p></article>
+            <article class="result-card"><i class="fas fa-bell"></i><h3>Alerte proactive</h3><p>Les anomalies peuvent etre detectees plus tot et routees vers les bons canaux de notification.</p></article>
+            <article class="result-card"><i class="fas fa-screwdriver-wrench"></i><h3>Monitoring reproductible</h3><p>La stack CDK permet de redeployer la supervision sans duplication manuelle.</p></article>
           </div>
         </section>
       </section>

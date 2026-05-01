@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   
   <!-- SEO START -->
-  <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="description" content="Etude de cas DevOps: refactoring d'un outil Python, mise en place de tests Pytest, pipeline Jenkins et pratiques Git Flow pour industrialiser la livraison." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects/project-ardmate.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projet - Industrialisation DevOps ARDmate" />
-  <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta property="og:description" content="Refactoring Python, tests Pytest, Jenkins et Git Flow pour transformer un outil interne en chaine DevOps maintenable." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects/project-ardmate.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projet - Industrialisation DevOps ARDmate" />
-  <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="twitter:description" content="Refactoring Python, tests Pytest, Jenkins et Git Flow pour transformer un outil interne en chaine DevOps maintenable." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +55,7 @@
       <section class="project-hero reveal"><div class="container">
         <span class="project-type"><i class="fas fa-code-branch"></i> Dev / DevOps</span>
         <h1>Industrialisation DevOps ARDmate</h1>
-        <p>Transformation d un prototype monolithique en chaine d outillage fiable avec qualite logicielle, CI/CD et pratiques de collaboration standardisees.</p>
+        <p>Industrialisation d'un outil Python utilise dans un contexte d'ingenierie: refactoring, tests automatises, pipeline CI/CD et mise en place de pratiques de livraison plus robustes.</p>
         <div class="project-meta">
           <article class="meta-card"><span>Role</span><strong>Ingenieur DevOps</strong></article>
           <article class="meta-card"><span>Contexte</span><strong>Airbus</strong></article>
@@ -76,11 +76,12 @@
 
         <section class="project-section reveal">
           <h2>Contexte</h2>
-          <p>Le socle initial etait un script unique difficile a maintenir, sans tests, sans chaine d integration et avec des risques de regression eleves en production.</p>
+          <p>Le socle initial etait proche d'un script monolithique: logique metier concentree, peu de separation des responsabilites et peu de garde-fous automatiques. Chaque modification pouvait introduire une regression difficile a detecter avant livraison.</p>
+          <p>Le besoin etait de transformer cet outil en composant d'ingenierie maintenable, testable et livrable par une chaine standardisee, sans ralentir les developpeurs qui l'utilisaient au quotidien.</p>
         </section>
 
         <section class="project-section reveal">
-          <h2>Solution technique</h2>
+          <h2>Industrialisation</h2>
           <ul class="project-list">
             <li>Refactoring en modules metier avec architecture plus lisible et testable.</li>
             <li>Mise en place d une suite de tests unitaires avec Pytest et seuils de qualite.</li>
@@ -90,11 +91,21 @@
         </section>
 
         <section class="project-section reveal">
+          <h2>Qualite logicielle</h2>
+          <ul class="project-list">
+            <li>Isolation des fonctions critiques pour faciliter les tests unitaires et la relecture.</li>
+            <li>Ajout de controles automatiques dans la pipeline pour detecter rapidement les regressions.</li>
+            <li>Clarification du cycle de contribution: branches, revues, validation et packaging.</li>
+            <li>Preparation d'une base plus saine pour les evolutions futures de l'outil.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
           <h2>Resultats</h2>
           <div class="results-grid">
-            <article class="result-card"><i class="fas fa-shield-halved"></i><h3>Fiabilite</h3><p>Diminution forte des regressions grace aux controles automatiques.</p></article>
-            <article class="result-card"><i class="fas fa-clock"></i><h3>Vitesse de livraison</h3><p>Reduction du temps entre modification et validation technique.</p></article>
-            <article class="result-card"><i class="fas fa-sitemap"></i><h3>Maintenabilite</h3><p>Code plus modulaire et plus simple a faire evoluer.</p></article>
+            <article class="result-card"><i class="fas fa-shield-halved"></i><h3>Fiabilite</h3><p>Les changements sont controles par des tests et une pipeline avant integration.</p></article>
+            <article class="result-card"><i class="fas fa-clock"></i><h3>Livraison plus fluide</h3><p>La validation technique devient plus rapide et moins dependante d'operations manuelles.</p></article>
+            <article class="result-card"><i class="fas fa-sitemap"></i><h3>Maintenabilite</h3><p>La separation en modules rend le code plus lisible et plus simple a faire evoluer.</p></article>
           </div>
         </section>
       </section>

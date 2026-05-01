@@ -5,16 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <!-- SEO START -->
-    <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+    <meta name="description" content="Etude de cas cloud: automatisation d'infrastructure AWS avec Terraform, Ansible, Kubernetes et pipeline de validation pour reduire les operations manuelles." />
     <link rel="canonical" href="https://elouali.github.io/pages/projects/project-cloud-automation.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Projet - Deploiement Cloud Automatise" />
-    <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+    <meta property="og:description" content="Infrastructure as Code avec Terraform, Ansible et AWS pour rendre les environnements cloud reproductibles et auditables." />
     <meta property="og:url" content="https://elouali.github.io/pages/projects/project-cloud-automation.html" />
     <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Projet - Deploiement Cloud Automatise" />
-    <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+    <meta name="twitter:description" content="Infrastructure as Code avec Terraform, Ansible et AWS pour rendre les environnements cloud reproductibles et auditables." />
     <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
     <!-- SEO END -->
     <link rel="stylesheet" href="../../assets/css/main.css" />
@@ -87,7 +87,7 @@
               <i class="fas fa-cloud">
               </i> Cloud / IaC</span>
               <h1>Deploiement Cloud Automatise</h1>
-              <p>Mise en place d une infrastructure AWS securisee et reproductible avec une approche Infrastructure as Code et automatisation de livraison.</p>
+              <p>Mise en place d'une approche Infrastructure as Code pour rendre les environnements cloud plus reproductibles, plus faciles a auditer et moins dependants d'operations manuelles.</p>
               <div class="project-meta">
                 <article class="meta-card">
                   <span>Role</span>
@@ -133,15 +133,25 @@
             </article>
             <section class="project-section reveal">
               <h2>Contexte</h2>
-              <p>L objectif etait de fiabiliser les deploiements cloud et de supprimer les operations manuelles sources d ecarts entre environnements.</p>
+              <p>L'objectif etait de fiabiliser les deploiements cloud et de reduire les ecarts entre environnements. Les configurations manuelles rendent les plateformes difficiles a reproduire et augmentent le risque d'erreur lors des evolutions.</p>
+              <p>Le projet formalise l'infrastructure sous forme de code afin que reseau, compute, configuration systeme et deploiement suivent un processus relisible et versionne.</p>
             </section>
             <section class="project-section reveal">
-              <h2>Solution technique</h2>
+              <h2>Architecture IaC</h2>
               <ul class="project-list">
                 <li>Provisionnement reseau et services via Terraform.</li>
                 <li>Configuration systeme et middleware avec Ansible.</li>
                 <li>Standardisation des environnements dev, test, prod.</li>
                 <li>Pipeline de validation et deploiement automatise.</li>
+              </ul>
+            </section>
+            <section class="project-section reveal">
+              <h2>Pratiques appliquees</h2>
+              <ul class="project-list">
+                <li>Versionnement des definitions d'infrastructure pour tracer chaque changement.</li>
+                <li>Separation des variables par environnement afin de garder une base commune configurable.</li>
+                <li>Validation avant deploiement pour detecter les erreurs de syntaxe ou de configuration.</li>
+                <li>Documentation des composants afin de faciliter la reprise par une autre equipe.</li>
               </ul>
             </section>
             <section class="project-section reveal">
@@ -151,19 +161,19 @@
                   <i class="fas fa-repeat">
                   </i>
                   <h3>Reproductibilite</h3>
-                  <p>Meme architecture deployee de facon fiable sur tous les environnements.</p>
+                  <p>La meme base d'infrastructure peut etre rejouee sur plusieurs environnements avec moins d'ecarts.</p>
                 </article>
                 <article class="result-card">
                   <i class="fas fa-shield-alt">
                   </i>
                   <h3>Fiabilite</h3>
-                  <p>Moins d erreurs manuelles et rollback simplifie.</p>
+                  <p>Les changements sont explicites, relisibles et plus faciles a corriger en cas d'anomalie.</p>
                 </article>
                 <article class="result-card">
                   <i class="fas fa-tachometer-alt">
                   </i>
                   <h3>Vitesse</h3>
-                  <p>Mise a disposition plus rapide des environnements.</p>
+                  <p>La creation ou l'evolution d'un environnement demande moins d'interventions manuelles.</p>
                 </article>
               </div>
             </section>

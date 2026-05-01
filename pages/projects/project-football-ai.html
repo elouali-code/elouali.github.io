@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   
   <!-- SEO START -->
-  <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="description" content="Etude de cas IA: pipeline de computer vision pour detecter les joueurs, suivre les actions et produire une analyse tactique a partir de videos de football." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects/project-football-ai.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projet - AI Football Tactical Analysis" />
-  <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta property="og:description" content="Pipeline YOLOv8, OpenCV et tracking multi-objets pour transformer une video de match en informations tactiques exploitables." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects/project-football-ai.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projet - AI Football Tactical Analysis" />
-  <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="twitter:description" content="Pipeline YOLOv8, OpenCV et tracking multi-objets pour transformer une video de match en informations tactiques exploitables." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,7 +61,7 @@
         <div class="container">
           <span class="project-type"><i class="fas fa-futbol"></i> Data / IA</span>
           <h1>AI Football Tactical Analysis</h1>
-          <p>Pipeline de vision par ordinateur pour detecter les joueurs et produire une lecture tactique exploitable a partir de videos de match classiques.</p>
+          <p>Pipeline de computer vision applique au football pour passer d'une video brute a des informations structurees: detection, suivi des joueurs, identification des equipes et visualisation tactique.</p>
           <div class="project-meta">
             <article class="meta-card"><span>Role</span><strong>Data Engineer / Computer Vision</strong></article>
             <article class="meta-card"><span>Contexte</span><strong>Projet personnel</strong></article>
@@ -74,7 +74,7 @@
       <section class="container project-grid">
         <article class="project-slider reveal" data-slider>
           <div class="slides">
-            <figure class="slide"><img loading="lazy" decoding="async" src="../../assets/images/football-detection.jpg" alt="Detection des joueurs" /><figcaption>Detection automatique des joueurs, arbitres et ballon.</figcaption></figure>
+            <figure class="slide"><img loading="lazy" decoding="async" src="../../assets/images/football-detection.jpg" alt="Detection des joueurs" /><figcaption>Detection automatique des joueurs, arbitres et ballon sur une video de match afin de construire une base d'analyse tactique.</figcaption></figure>
             <figure class="slide"><img loading="lazy" decoding="async" src="../../assets/images/football-heatmap.jpg" alt="Heatmap tactique" /><figcaption>Projection deplacements et zones d influence en vue tactique.</figcaption></figure>
           </div>
           <button class="slider-control prev" type="button" aria-label="Slide precedente"><i class="fas fa-chevron-left"></i></button>
@@ -84,26 +84,47 @@
 
         <section class="project-section reveal">
           <h2>Contexte</h2>
-          <p>L analyse video football est souvent manuelle, couteuse et peu scalable. Le besoin etait de construire une chaine automatique capable d extraire des indicateurs tactiques fiables a partir d un simple flux video broadcast.</p>
+          <p>L'analyse video football demande beaucoup de temps lorsqu'elle est realisee manuellement: il faut revoir les sequences, identifier les joueurs, comprendre les placements et extraire les moments importants. L'objectif du projet etait de construire une chaine automatique capable de traiter une video classique et d'en extraire une lecture plus structuree.</p>
+          <p>Le projet se concentre sur une approche pragmatique: detecter correctement les acteurs du jeu, conserver leur identite dans le temps, puis produire une representation lisible pour analyser les mouvements et les zones d'influence.</p>
         </section>
 
         <section class="project-section reveal">
-          <h2>Solution technique</h2>
+          <h2>Pipeline IA</h2>
           <ul class="project-list">
-            <li>Detection d objets avec YOLOv8 pour identifier joueurs, ballon et arbitres frame par frame.</li>
-            <li>Tracking multi objets avec ByteTrack pour maintenir des identites stables dans le temps.</li>
-            <li>Classification d equipe via clustering des couleurs de maillot et nettoyage des outliers.</li>
-            <li>Projection en vue tactique 2D pour visualiser la structure de jeu et les deplacements.</li>
+            <li>Extraction des frames video et preparation d'un flux exploitable par le modele de detection.</li>
+            <li>Detection avec YOLOv8 pour identifier joueurs, ballon et arbitres frame par frame.</li>
+            <li>Tracking multi-objets pour maintenir une identite stable lorsque les joueurs se croisent ou sortent partiellement du champ.</li>
+            <li>Classification des equipes a partir des couleurs dominantes des maillots, avec nettoyage des cas ambigus.</li>
+            <li>Projection en vue 2D pour faciliter la lecture tactique des placements et des deplacements.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
+          <h2>Traitements cles</h2>
+          <ul class="project-list">
+            <li>Filtrage des detections peu fiables pour limiter le bruit dans les resultats.</li>
+            <li>Association temporelle des objets detectes afin d'obtenir des trajectoires coherentes.</li>
+            <li>Structuration des sorties pour pouvoir produire des visualisations: heatmaps, positions, zones de presence.</li>
+            <li>Conception du pipeline comme une succession d'etapes reutilisables plutot qu'un script unique difficile a maintenir.</li>
           </ul>
         </section>
 
         <section class="project-section reveal">
           <h2>Resultats</h2>
           <div class="results-grid">
-            <article class="result-card"><i class="fas fa-crosshairs"></i><h3>Detection robuste</h3><p>Tracking stable des joueurs sur sequences avec collisions et occultations.</p></article>
-            <article class="result-card"><i class="fas fa-map-marked-alt"></i><h3>Lecture tactique</h3><p>Generation de heatmaps et vision equipe pour l analyse de placement.</p></article>
-            <article class="result-card"><i class="fas fa-rocket"></i><h3>Pipeline reutilisable</h3><p>Architecture reemployable pour de nouveaux matchs sans reprise manuelle.</p></article>
+            <article class="result-card"><i class="fas fa-crosshairs"></i><h3>Detection exploitable</h3><p>Les acteurs principaux du jeu sont identifies automatiquement et peuvent etre suivis dans la sequence.</p></article>
+            <article class="result-card"><i class="fas fa-map-marked-alt"></i><h3>Lecture tactique</h3><p>Les positions et trajectoires sont transformees en representations plus lisibles qu'une video brute.</p></article>
+            <article class="result-card"><i class="fas fa-rocket"></i><h3>Pipeline reutilisable</h3><p>La structure du projet permet de tester d'autres videos ou d'ajouter de nouveaux indicateurs sans repartir de zero.</p></article>
           </div>
+        </section>
+
+        <section class="project-section reveal">
+          <h2>Limites & suite</h2>
+          <ul class="project-list">
+            <li>La qualite depend fortement de l'angle de camera, de la resolution et des occultations entre joueurs.</li>
+            <li>La detection du ballon reste plus difficile que celle des joueurs a cause de sa petite taille et de sa vitesse.</li>
+            <li>Une suite logique serait d'ajouter une calibration terrain plus precise et des indicateurs collectifs: lignes d'equipe, distances, zones de pression.</li>
+          </ul>
         </section>
 
         <section class="project-cta reveal">

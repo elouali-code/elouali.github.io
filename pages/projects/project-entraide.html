@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   
   <!-- SEO START -->
-  <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="description" content="Etude de cas microservices: plateforme d'entraide etudiante avec services Spring Boot, API REST, gestion des profils, demandes et recommandations." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects/project-entraide.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projet - Plateforme Entraide Microservices" />
-  <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta property="og:description" content="Plateforme microservices Spring Boot pour connecter les etudiants selon leurs besoins, profils et competences." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects/project-entraide.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projet - Plateforme Entraide Microservices" />
-  <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="twitter:description" content="Plateforme microservices Spring Boot pour connecter les etudiants selon leurs besoins, profils et competences." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +55,7 @@
       <section class="project-hero reveal"><div class="container">
         <span class="project-type"><i class="fas fa-network-wired"></i> Dev / Architecture</span>
         <h1>Plateforme Entraide Etudiante Microservices</h1>
-        <p>Application distribuee concue pour connecter les etudiants par competences avec un modele microservices orientee evolutivite.</p>
+        <p>Application distribuee concue pour connecter des etudiants selon leurs besoins et competences, tout en experimentant une architecture microservices claire et evolutive.</p>
         <div class="project-meta">
           <article class="meta-card"><span>Role</span><strong>Developpeur Backend</strong></article>
           <article class="meta-card"><span>Contexte</span><strong>Projet academique</strong></article>
@@ -76,11 +76,12 @@
 
         <section class="project-section reveal">
           <h2>Contexte</h2>
-          <p>Le projet visait a sortir d une logique monolithique pour valider une architecture distribuable, testable et extensible autour de besoins etudiants concrets.</p>
+          <p>Le projet part d'un besoin simple: faciliter la mise en relation entre etudiants qui cherchent de l'aide et etudiants capables d'accompagner sur une competence precise. Le choix microservices permettait aussi de travailler l'architecture backend, les responsabilites metier et les contrats API.</p>
+          <p>L'objectif n'etait pas seulement de construire une application, mais de montrer comment decouper un domaine fonctionnel en services autonomes et comprehensibles.</p>
         </section>
 
         <section class="project-section reveal">
-          <h2>Solution technique</h2>
+          <h2>Decoupage services</h2>
           <ul class="project-list">
             <li>User Service pour la gestion des profils et competences.</li>
             <li>Request Service pour la creation et le suivi des demandes d aide.</li>
@@ -90,11 +91,21 @@
         </section>
 
         <section class="project-section reveal">
+          <h2>Choix d'architecture</h2>
+          <ul class="project-list">
+            <li>Separation des responsabilites pour eviter qu'un seul backend porte toute la logique metier.</li>
+            <li>API REST documentees pour rendre les echanges entre frontend et services plus previsibles.</li>
+            <li>Modele de donnees pense autour des profils, competences, demandes et correspondances.</li>
+            <li>Architecture extensible pour ajouter plus tard messagerie, notifications ou scoring avance.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
           <h2>Resultats</h2>
           <div class="results-grid">
-            <article class="result-card"><i class="fas fa-cubes"></i><h3>Architecture modulaire</h3><p>Chaque service evolue independamment selon sa responsabilite metier.</p></article>
-            <article class="result-card"><i class="fas fa-plug"></i><h3>Interoperabilite</h3><p>Contrats REST reutilisables pour brancher frontend ou services tiers.</p></article>
-            <article class="result-card"><i class="fas fa-graduation-cap"></i><h3>Valeur metier</h3><p>Mise en relation etudiante plus rapide sur base de competences reelles.</p></article>
+            <article class="result-card"><i class="fas fa-cubes"></i><h3>Architecture modulaire</h3><p>Chaque service porte une responsabilite claire et peut evoluer sans impacter toute l'application.</p></article>
+            <article class="result-card"><i class="fas fa-plug"></i><h3>APIs reutilisables</h3><p>Les contrats REST permettent de brancher une interface web ou d'autres consommateurs.</p></article>
+            <article class="result-card"><i class="fas fa-graduation-cap"></i><h3>Valeur utilisateur</h3><p>La plateforme structure la mise en relation autour des besoins et competences des etudiants.</p></article>
           </div>
         </section>
 

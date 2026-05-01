@@ -64,7 +64,11 @@
       const max = slides.length;
 
       function render() {
-        track.style.transform = 'translateX(-' + index * 100 + '%)';
+        if (window.getComputedStyle(track).display === 'grid') {
+          track.style.transform = 'none';
+        } else {
+          track.style.transform = 'translateX(-' + index * 100 + '%)';
+        }
         if (!dotsWrap) return;
         dotsWrap.querySelectorAll('button').forEach(function (dot, dotIndex) {
           dot.classList.toggle('active', dotIndex === index);

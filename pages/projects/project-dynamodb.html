@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   
   <!-- SEO START -->
-  <meta name="description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="description" content="Etude de cas cloud data: migration d'une architecture S3 vers DynamoDB, Lambda, SQS et AWS CDK pour obtenir des lectures directes, scalables et maintenables." />
   <link rel="canonical" href="https://elouali.github.io/pages/projects/project-dynamodb.html" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projet - Migration Architecture Data Serverless" />
-  <meta property="og:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta property="og:description" content="Migration d'une architecture data vers un modele serverless DynamoDB + Lambda pour reduire la latence et simplifier l'exploitation." />
   <meta property="og:url" content="https://elouali.github.io/pages/projects/project-dynamodb.html" />
   <meta property="og:image" content="https://elouali.github.io/assets/images/logo.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projet - Migration Architecture Data Serverless" />
-  <meta name="twitter:description" content="Portfolio personnel: experiences, projets data/cloud/dev et articles techniques." />
+  <meta name="twitter:description" content="Migration d'une architecture data vers un modele serverless DynamoDB + Lambda pour reduire la latence et simplifier l'exploitation." />
   <meta name="twitter:image" content="https://elouali.github.io/assets/images/logo.jpg" />
   <!-- SEO END --><link rel="stylesheet" href="../../assets/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,12 +61,12 @@
         <div class="container">
           <span class="project-type"><i class="fas fa-database"></i> Data / Cloud</span>
           <h1>Migration Architecture Serverless O(1)</h1>
-          <p>Refonte d une architecture data avec passage d un modele O(N) vers une lecture O(1) pour reduire la latence et fiabiliser les echanges applicatifs.</p>
+          <p>Refonte d'une architecture de consultation data afin de remplacer un parcours couteux de fichiers par un acces direct, previsible et industrialise autour de services AWS serverless.</p>
           <div class="project-meta">
-            <article class="meta-card"><span>Role</span><strong>Architecte Cloud</strong></article>
+            <article class="meta-card"><span>Role</span><strong>Conception Cloud & Data</strong></article>
             <article class="meta-card"><span>Contexte</span><strong>Airbus</strong></article>
-            <article class="meta-card"><span>Domaine</span><strong>Data Platform</strong></article>
-            <article class="meta-card"><span>Stack</span><strong>AWS Lambda, DynamoDB, SQS, CDK</strong></article>
+            <article class="meta-card"><span>Domaine</span><strong>Architecture Data Serverless</strong></article>
+            <article class="meta-card"><span>Stack</span><strong>DynamoDB, Lambda, SQS, S3, AWS CDK</strong></article>
           </div>
         </div>
       </section>
@@ -74,7 +74,7 @@
       <section class="container project-grid">
         <article class="project-slider reveal" data-slider>
           <div class="slides">
-            <figure class="slide"><img loading="lazy" decoding="async" src="../../assets/images/projet-dynamodb.jpg" alt="Architecture cible DynamoDB" /><figcaption>Architecture serverless cible avec acces cle-valeur performant.</figcaption></figure>
+            <figure class="slide"><img loading="lazy" decoding="async" src="../../assets/images/projet-dynamodb.jpg" alt="Architecture cible DynamoDB" /><figcaption>Architecture cible orientee acces direct: les donnees utiles sont indexees dans DynamoDB, exposees via Lambda et deployees avec AWS CDK.</figcaption></figure>
           </div>
           <button class="slider-control prev" type="button" aria-label="Slide precedente"><i class="fas fa-chevron-left"></i></button>
           <button class="slider-control next" type="button" aria-label="Slide suivante"><i class="fas fa-chevron-right"></i></button>
@@ -83,26 +83,47 @@
 
         <section class="project-section reveal">
           <h2>Contexte</h2>
-          <p>Le systeme initial stockait des fichiers parquet sur S3 et imposait un parcours large des donnees pour chaque requete. Cette approche degradait fortement la latence et la scalabilite.</p>
+          <p>Le systeme initial reposait sur des fichiers stockes dans S3. Pour repondre a une requete, l'application devait identifier puis parcourir un volume de donnees trop large par rapport au besoin reel. Ce fonctionnement etait acceptable pour de l'archivage ou de l'analyse batch, mais moins adapte a un usage applicatif avec besoin de reponse rapide.</p>
+          <p>L'objectif etait de conserver la robustesse du stockage data tout en ajoutant une couche de consultation plus efficace, plus maintenable et plus simple a deployer dans differents environnements.</p>
         </section>
 
         <section class="project-section reveal">
-          <h2>Solution technique</h2>
+          <h2>Architecture cible</h2>
           <ul class="project-list">
-            <li>Migration vers DynamoDB pour des acces directs O(1) sur cles metier.</li>
-            <li>Orchestration des operations via fonctions AWS Lambda stateless.</li>
-            <li>Decouplage des ecritures avec SQS pour absorber les pics de charge.</li>
-            <li>Industrialisation complete de l infra avec AWS CDK Python.</li>
+            <li>Creation d'un modele DynamoDB base sur les cles de consultation metier les plus frequentes.</li>
+            <li>Conservation de S3 comme couche source / stockage durable pour les donnees brutes ou historisees.</li>
+            <li>Utilisation de Lambda pour exposer une logique stateless de lecture, transformation legere et controle des erreurs.</li>
+            <li>Ajout de SQS pour decoupler certains traitements et absorber les variations de charge.</li>
+            <li>Description de l'infrastructure avec AWS CDK afin de versionner, relire et redeployer l'architecture proprement.</li>
+          </ul>
+        </section>
+
+        <section class="project-section reveal">
+          <h2>Demarche</h2>
+          <ul class="project-list">
+            <li>Analyse des chemins de lecture existants pour identifier les requetes lentes et les patterns repetitifs.</li>
+            <li>Definition d'une strategie de cle DynamoDB adaptee aux acces applicatifs, sans chercher a reproduire le modele fichier.</li>
+            <li>Separation claire entre stockage, file d'evenements, logique applicative et infrastructure as code.</li>
+            <li>Validation progressive avec des jeux de donnees representatifs afin de verifier le comportement et la simplicite d'exploitation.</li>
           </ul>
         </section>
 
         <section class="project-section reveal">
           <h2>Resultats</h2>
           <div class="results-grid">
-            <article class="result-card"><i class="fas fa-stopwatch"></i><h3>Latence reduite</h3><p>Temps d acces fortement baisse grace a l adressage direct O(1).</p></article>
-            <article class="result-card"><i class="fas fa-scale-balanced"></i><h3>Scalabilite</h3><p>Architecture serverless capable de monter en charge sans gestion serveur.</p></article>
-            <article class="result-card"><i class="fas fa-code"></i><h3>Deploiement fiable</h3><p>Infra versionnee, reproductible et plus simple a maintenir.</p></article>
+            <article class="result-card"><i class="fas fa-stopwatch"></i><h3>Acces plus directs</h3><p>Les lectures applicatives ne dependent plus d'un parcours large de fichiers: la donnee cible est adressee par cle.</p></article>
+            <article class="result-card"><i class="fas fa-scale-balanced"></i><h3>Scalabilite native</h3><p>Le recours a DynamoDB, Lambda et SQS reduit la gestion serveur et facilite l'absorption des variations de charge.</p></article>
+            <article class="result-card"><i class="fas fa-code"></i><h3>Infrastructure reproductible</h3><p>La definition CDK rend les environnements plus faciles a relire, deployer et maintenir.</p></article>
           </div>
+        </section>
+
+        <section class="project-section reveal">
+          <h2>Points d'attention</h2>
+          <ul class="project-list">
+            <li>Le modele DynamoDB impose de bien connaitre les patterns d'acces avant de definir les cles.</li>
+            <li>La solution ne remplace pas le data lake: elle ajoute une couche optimisee pour les usages applicatifs.</li>
+            <li>Les erreurs et cas limites doivent etre geres explicitement dans les Lambdas pour garder un comportement previsible.</li>
+          </ul>
         </section>
       </section>
     </main>

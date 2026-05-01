@@ -70,10 +70,10 @@
           <div class="container">
             <span class="project-type"><i class="fas fa-cloud-sun-rain"></i> Data Engineering / BI</span>
             <h1>Pipeline Meteo de Bout en Bout</h1>
-            <p>Conception d un pipeline ETL batch complet pour ingerer des donnees meteo depuis une API publique, les transformer, les modeliser en entrepot local et les visualiser dans un dashboard interactif.</p>
+            <p>Conception d'un pipeline data engineering complet, depuis l'ingestion API jusqu'a la visualisation BI, avec une organisation en couches inspiree des pratiques data lake / warehouse.</p>
 
             <div class="project-meta">
-              <article class="meta-card"><span>Role</span><strong>Data Engineer </strong></article>
+              <article class="meta-card"><span>Role</span><strong>Data Engineer</strong></article>
               <article class="meta-card"><span>Type</span><strong>Projet Personnel</strong></article>
               <article class="meta-card"><span>Niveau</span><strong>Oriente Production</strong></article>
               <article class="meta-card"><span>Stack</span><strong>Python, Pandas, DuckDB, SQLite, Metabase</strong></article>
@@ -86,7 +86,7 @@
             <div class="slides">
               <figure class="slide">
                 <img loading="lazy" decoding="async" src="../../assets/images/Temperature trend by city.png" alt="Temperature trend by city" />
-                <figcaption>Temperature trend by city</figcaption>
+                <figcaption>Dashboard final: suivi des tendances de temperature par ville pour verifier la qualite et l'exploitabilite du pipeline.</figcaption>
               </figure>
               <figure class="slide">
                 <img loading="lazy" decoding="async" src="../../assets/images/Average humidity by city.png" alt="Average humidity by city" />
@@ -104,18 +104,29 @@
 
           <section class="project-section reveal">
             <h2>Contexte</h2>
-            <p>Projet personnel de data engineering orientee production pour construire un pipeline meteo complet: ingestion API, transformation de donnees et exposition d indicateurs dans un dashboard BI.</p>
+            <p>Le but du projet etait de construire un pipeline de donnees complet, pas seulement un script d'extraction. Les donnees meteo sont un bon cas d'usage car elles combinent ingestion API, normalisation de formats, gestion de villes, horodatage, controles qualite et restitution analytique.</p>
+            <p>J'ai structure le projet comme un mini systeme data: une couche raw pour conserver la donnee source, une couche transformee pour nettoyer et standardiser, puis une couche warehouse pour alimenter les indicateurs BI.</p>
           </section>
 
           <section class="project-section reveal">
-            <h2>Solution technique</h2>
+            <h2>Architecture data</h2>
             <ul class="project-list">
-              <li>Script Python d ingestion batch pour collecter les donnees meteo via API REST.</li>
-              <li>Stockage brut en JSON dans une couche raw (logique data lake).</li>
-              <li>Transformation et nettoyage des donnees avec Pandas.</li>
-              <li>Chargement des donnees curiees dans un entrepot local SQLite.</li>
-              <li>Preparation analytique avec DuckDB et modelisation de tables pour la BI.</li>
-              <li>Connexion de la base a Metabase pour visualiser temperature et humidite par ville.</li>
+              <li>Ingestion batch en Python depuis une API meteo publique avec gestion des villes et des timestamps.</li>
+              <li>Stockage des reponses brutes dans une couche raw afin de pouvoir rejouer ou auditer les transformations.</li>
+              <li>Nettoyage avec Pandas: typage des colonnes, normalisation des unites, controle des valeurs manquantes.</li>
+              <li>Utilisation de DuckDB pour preparer des vues analytiques et tester les aggregations rapidement.</li>
+              <li>Chargement dans SQLite comme entrepot local simple, portable et facile a connecter a Metabase.</li>
+              <li>Creation de dashboards pour suivre temperature, humidite et comparaisons par ville.</li>
+            </ul>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Qualite & exploitation</h2>
+            <ul class="project-list">
+              <li>Separation des responsabilites entre ingestion, transformation, chargement et visualisation.</li>
+              <li>Organisation du depot pour pouvoir relancer chaque etape sans melanger les donnees brutes et transformees.</li>
+              <li>Preparation de tables finales lisibles par un outil BI, plutot que de connecter directement les donnees brutes.</li>
+              <li>Choix d'une stack locale volontairement legere pour montrer la logique data engineering sans dependance cloud.</li>
             </ul>
           </section>
 
@@ -124,20 +135,29 @@
             <div class="results-grid">
               <article class="result-card">
                 <i class="fas fa-layer-group"></i>
-                <h3>Pipeline de bout en bout</h3>
-                <p>Mise en place d une architecture en couches raw -> transformed -> warehouse -> BI.</p>
+                <h3>Pipeline complet</h3>
+                <p>La chaine couvre l'ensemble du cycle: API, raw, transformation, warehouse local et dashboard BI.</p>
               </article>
               <article class="result-card">
                 <i class="fas fa-chart-line"></i>
                 <h3>Dashboards exploitables</h3>
-                <p>Visualisations claires des tendances de temperature et d humidite par ville.</p>
+                <p>Les indicateurs finaux permettent de comparer les villes et de suivre les tendances meteo dans le temps.</p>
               </article>
               <article class="result-card">
                 <i class="fas fa-cogs"></i>
-                <h3>Approche reproductible</h3>
-                <p>Environnement local reproductible avec virtualenv et pipeline modulaire extensible.</p>
+                <h3>Approche modulaire</h3>
+                <p>Chaque etape peut evoluer independamment: nouvelle source API, nouvelle transformation ou nouveau dashboard.</p>
               </article>
             </div>
+          </section>
+
+          <section class="project-section reveal">
+            <h2>Ameliorations possibles</h2>
+            <ul class="project-list">
+              <li>Ajouter une orchestration planifiee avec Airflow, Prefect ou GitHub Actions.</li>
+              <li>Ajouter des tests de qualite de donnees pour detecter automatiquement les valeurs incoherentes.</li>
+              <li>Remplacer SQLite par un warehouse cloud si le volume ou le nombre d'utilisateurs augmente.</li>
+            </ul>
           </section>
         </section>
       </main>
