@@ -141,33 +141,40 @@
 			/* --- ARTICLES GRID --- */
 			.articles-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-				gap: 2.5em;
-				margin-bottom: 6em;
+				grid-template-columns: 1fr;
+				gap: 1.2em;
+				margin: 0 auto 6em auto;
+				max-width: 1040px;
 			}
 
 			.article-card {
-				background: var(--surface-glass);
-				border: 1px solid var(--border-glass);
-				border-radius: 16px;
+				background: linear-gradient(90deg, rgba(255,255,255,0.075), rgba(255,255,255,0.02));
+				border: 1px solid rgba(255,255,255,0.12);
+				border-left: 3px solid rgba(0, 212, 255, 0.55);
+				border-radius: 18px;
 				overflow: hidden;
-				transition: all 0.3s ease;
-				display: flex;
-				flex-direction: column;
-				height: 100%;
+				transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+				display: grid;
+				grid-template-columns: 260px minmax(0, 1fr);
+				min-height: 232px;
+				position: relative;
 			}
 
 			.article-card:hover {
-				transform: translateY(-8px);
+				transform: translateX(6px);
 				border-color: var(--accent-cyan);
-				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+				background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+				box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
 			}
 
 			.article-image {
-				height: 220px;
+				height: 100%;
+				min-height: 232px;
 				width: 100%;
 				overflow: hidden;
 				position: relative;
+				border-right: 1px solid rgba(255,255,255,0.12);
+				background: rgba(255,255,255,0.04);
 			}
 			
 			.article-image img {
@@ -180,44 +187,81 @@
 			.article-card:hover .article-image img { transform: scale(1.05); }
 
 			.article-content {
-				padding: 2em;
+				padding: 1.5em 1.7em;
 				flex-grow: 1;
 				display: flex;
 				flex-direction: column;
 			}
 
 			.article-date {
-				font-size: 0.85em;
+				display: inline-flex;
+				align-self: flex-start;
+				font-size: 0.74em;
 				color: var(--accent-cyan);
-				font-weight: 600;
-				margin-bottom: 0.8em;
+				font-weight: 700;
+				margin-bottom: 0.9em;
 				text-transform: uppercase;
-				letter-spacing: 1px;
+				letter-spacing: 0.08em;
+				padding: 0.35em 0.7em;
+				border: 1px solid rgba(0, 212, 255, 0.22);
+				border-radius: 999px;
+				background: rgba(0, 212, 255, 0.08);
 			}
 
 			.article-title {
-				font-size: 1.4em;
-				margin-bottom: 0.8em;
+				font-size: 1.35em;
+				margin: 0 0 0.45em 0;
 				color: #fff;
-				line-height: 1.4;
+				line-height: 1.3;
 			}
 
 			.article-excerpt {
 				font-size: 0.95em;
 				color: var(--text-secondary);
-				margin-bottom: 1.5em;
+				margin: 0 0 1.2em 0;
 				flex-grow: 1;
+				line-height: 1.65;
+			}
+
+			.article-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5em;
+				margin-bottom: 1.2em;
+			}
+
+			.article-tag {
+				font-size: 0.72em;
+				color: rgba(255,255,255,0.78);
+				border: 1px solid rgba(255,255,255,0.11);
+				border-radius: 999px;
+				padding: 0.24em 0.7em;
+				background: rgba(255,255,255,0.04);
+			}
+
+			.article-credit {
+				margin: -0.35em 0 1.1em 0;
+				color: rgba(255,255,255,0.5);
+				font-size: 0.76em;
+				line-height: 1.5;
+			}
+
+			.article-credit a {
+				color: rgba(0, 212, 255, 0.78);
 			}
 
 			.read-more-btn {
 				align-self: flex-start;
-				padding: 0.6em 1.5em;
-				border: 1px solid var(--border-glass);
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				padding: 0.6em 1.25em;
+				border: 1px solid var(--accent-cyan);
 				border-radius: 50px;
-				background: rgba(255,255,255,0.05);
-				color: #fff;
+				background: transparent;
+				color: var(--accent-cyan);
 				font-size: 0.9em;
-				font-weight: 500;
+				font-weight: 600;
 				transition: all 0.3s;
 			}
 			
@@ -259,6 +303,13 @@
 			@media (max-width: 768px) {
 				.hero h1 { font-size: 2.2em; }
 				.articles-grid { grid-template-columns: 1fr; }
+				.article-card { grid-template-columns: 1fr; }
+				.article-image {
+					height: 190px;
+					min-height: 190px;
+					border-right: 0;
+					border-bottom: 1px solid rgba(255,255,255,0.12);
+				}
 			}
 		</style>
 		<link rel="stylesheet" href="../assets/css/responsive.css" />
@@ -316,6 +367,26 @@
 					
 					<div class="article-card reveal">
 						<div class="article-image">
+							<a href="../assets/docs/article-ml-risque-bancaire.pdf" target="_blank">
+								<img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Prior%2C_Likelihood%2C_Posterior_schematic.svg/1280px-Prior%2C_Likelihood%2C_Posterior_schematic.svg.png" alt="Schéma d'inférence bayésienne avec prior, likelihood et posterior">
+							</a>
+						</div>
+						<div class="article-content">
+							<span class="article-date">20 Avril 2026</span>
+							<h3 class="article-title">Machine Learning, risque et incertitude</h3>
+							<p class="article-excerpt">Dans l'industrie bancaire et les systemes critiques, les modeles de Machine Learning doivent depasser l'approche Black Box. Ce recap explique l'inference bayesienne, la regression logistique et les seuils de decision pour transformer la donnee brute en decision metier face au risque.</p>
+							<div class="article-tags">
+								<span class="article-tag">Machine Learning</span>
+								<span class="article-tag">Risque</span>
+								<span class="article-tag">Big Data</span>
+							</div>
+							<p class="article-credit">Image : <a href="https://commons.wikimedia.org/wiki/File:Prior,_Likelihood,_Posterior_schematic.svg" target="_blank" rel="noopener noreferrer">Rbb / Wikimedia Commons</a>, CC BY-SA 3.0.</p>
+							<a href="../assets/docs/article-ml-risque-bancaire.pdf" target="_blank" class="read-more-btn">Lire l'article <i class="fas fa-file-pdf"></i></a>
+						</div>
+					</div>
+
+					<div class="article-card reveal">
+						<div class="article-image">
 							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank">
 								<img loading="lazy" decoding="async" src="../assets/images/article-fiabilite.png" alt="Fiabilité en Aéronautique">
 							</a>
@@ -324,7 +395,12 @@
 							<span class="article-date">26 Août 2025</span>
 							<h3 class="article-title">Fiabilité en Aéronautique : L'Importance de la Qualification</h3>
 							<p class="article-excerpt">En aéronautique, la fiabilité d'un système IT se joue avant la mise en production. Cet article explore les stratégies de qualification pour neutraliser les faiblesses avant qu'elles ne deviennent critiques.</p>
-							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank" class="read-more-btn">Lire sur LinkedIn <i class="fas fa-external-link-alt" style="margin-left:5px;"></i></a>
+							<div class="article-tags">
+								<span class="article-tag">Aéronautique</span>
+								<span class="article-tag">Qualification</span>
+								<span class="article-tag">Fiabilité</span>
+							</div>
+							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank" class="read-more-btn">Lire sur LinkedIn <i class="fas fa-external-link-alt"></i></a>
 						</div>
 					</div>
 
@@ -338,7 +414,12 @@
 							<span class="article-date">25 Juillet 2024</span>
 							<h3 class="article-title">Here we go! : Internship Offer</h3>
 							<p class="article-excerpt">I’m thrilled to announce that I’ve been selected for the Growintern internship program offered by a forward-thinking Indian company. Focusing on Cloud Computing and Data Science projects.</p>
-							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank" class="read-more-btn">Lire sur LinkedIn <i class="fas fa-external-link-alt" style="margin-left:5px;"></i></a>
+							<div class="article-tags">
+								<span class="article-tag">Cloud Computing</span>
+								<span class="article-tag">Data Science</span>
+								<span class="article-tag">Internship</span>
+							</div>
+							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank" class="read-more-btn">Lire sur LinkedIn <i class="fas fa-external-link-alt"></i></a>
 						</div>
 					</div>
 
@@ -350,6 +431,10 @@
 							<span class="article-date" style="color:var(--text-secondary);">Prochainement</span>
 							<h3 class="article-title">Nouvel Article Technique</h3>
 							<p class="article-excerpt">Un nouveau sujet technique sera exploré en détail ici prochainement. Restez à l'écoute pour de nouvelles publications sur le Data Engineering et le Cloud.</p>
+							<div class="article-tags">
+								<span class="article-tag">Data Engineering</span>
+								<span class="article-tag">Cloud</span>
+							</div>
 							<span class="read-more-btn disabled">À venir</span>
 						</div>
 					</div>
