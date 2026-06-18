@@ -1,8 +1,9 @@
 body {
+  background-color: #0c0a1f !important;
   background:
-    linear-gradient(135deg, rgba(6, 11, 22, 0.98), rgba(15, 22, 34, 0.98)),
-    radial-gradient(circle at 18% 12%, rgba(0, 212, 255, 0.16), transparent 32%),
-    radial-gradient(circle at 92% 88%, rgba(35, 197, 94, 0.12), transparent 34%) !important;
+    radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(140, 82, 255, 0.1) 0%, transparent 50%),
+    #0c0a1f !important;
 }
 
 .hero {
@@ -27,7 +28,7 @@ body {
 .hero .subtitle {
   max-width: 760px !important;
   margin: 0 !important;
-  color: rgba(232, 238, 247, 0.78) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
   font-size: 1.12rem !important;
   line-height: 1.7 !important;
 }
@@ -51,7 +52,7 @@ body {
   border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 8px !important;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.032)) !important;
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)) !important;
   overflow: hidden !important;
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
   transform: none !important;
@@ -62,7 +63,7 @@ body {
   transform: translateY(-6px) !important;
   border-color: rgba(0, 212, 255, 0.56) !important;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.04)) !important;
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.035)) !important;
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34) !important;
 }
 
@@ -107,7 +108,7 @@ body {
 
 .card-content p,
 .hub-card p {
-  color: rgba(232, 238, 247, 0.76) !important;
+  color: rgba(255, 255, 255, 0.76) !important;
   font-size: 0.95rem !important;
   line-height: 1.65 !important;
   margin-bottom: 1rem !important;
@@ -125,7 +126,7 @@ body {
   border-radius: 6px !important;
   border-color: rgba(255, 255, 255, 0.13) !important;
   background: rgba(255, 255, 255, 0.065) !important;
-  color: #8ee7ff !important;
+  color: #00d4ff !important;
   line-height: 1.4;
 }
 
@@ -145,8 +146,8 @@ body {
 
 .btn-card:hover,
 .hub-card:hover .hub-btn {
-  color: #06111d !important;
-  background: #8ee7ff !important;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #00d4ff, #8c52ff) !important;
 }
 
 .btn-card.disabled {
@@ -170,7 +171,7 @@ body {
   margin-bottom: 1.2rem;
   border-radius: 8px !important;
   background: rgba(0, 212, 255, 0.11) !important;
-  color: #8ee7ff !important;
+  color: #00d4ff !important;
 }
 
 .hub-card h3,
@@ -186,7 +187,7 @@ body {
 .project-entry {
   border-radius: 8px !important;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.032)) !important;
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)) !important;
   border-color: rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
 }
