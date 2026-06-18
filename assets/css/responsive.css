@@ -423,7 +423,16 @@ svg {
 
 	.hero h1,
 	.page-header h1 {
-		font-size: clamp(1.78rem, 10vw, 2.15rem) !important;
+		font-size: clamp(1.65rem, 8.8vw, 2.05rem) !important;
+		line-height: 1.2 !important;
+		max-width: 100%;
+		padding-bottom: 0.08em;
+		overflow: visible !important;
+	}
+
+	.hero h1 span {
+		white-space: normal !important;
+		overflow-wrap: anywhere;
 	}
 
 	.hero-avatar {
