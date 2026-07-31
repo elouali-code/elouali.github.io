@@ -890,7 +890,7 @@
 							<div class="info-item"><i class="fab fa-linkedin"></i> linkedin.com/in/elouali</div>
 						</div>
 						
-						<form action="https://formspree.io/el-ouali@insa-toulouse.fr" method="POST" class="contact-form">
+						<form class="contact-form" id="contact-form-js">
 							<div class="form-row">
 								<div class="form-group">
 									<label for="contact-name">Nom</label>
@@ -960,6 +960,20 @@
 			}, { threshold: 0.1 });
 
 			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+			// Contact form → mailto
+			const contactForm = document.getElementById('contact-form-js');
+			if (contactForm) {
+				contactForm.addEventListener('submit', function(e) {
+					e.preventDefault();
+					const name = document.getElementById('contact-name').value;
+					const email = document.getElementById('contact-email').value;
+					const subject = document.getElementById('contact-subject').value;
+					const message = document.getElementById('contact-message').value;
+					const body = 'Nom: ' + name + '\nEmail: ' + email + '\n\n' + message;
+					window.location.href = 'mailto:el-ouali@insa-toulouse.fr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+				});
+			}
 		</script>
 	<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
