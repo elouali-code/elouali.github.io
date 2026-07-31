@@ -615,17 +615,6 @@
 	color: #5a5a7a !important;
 }
 
-[data-theme="light"] .timeline-logo {
-	border-color: #f5f7fa !important;
-	background: #ffffff !important;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
-}
-
-[data-theme="light"] .timeline-line,
-[data-theme="light"] .timeline::before {
-	background: rgba(0, 0, 0, 0.08) !important;
-}
-
 [data-theme="light"] .timeline-content {
 	background: #ffffff !important;
 	border-color: rgba(0, 0, 0, 0.08) !important;
@@ -691,22 +680,46 @@
    NUCLEAR OVERRIDE: Force all remaining white text to dark
    This catches any rgba(255,255,255,...) colors in page <style> blocks
    ============================================ */
-[data-theme="light"] .career-preview *,
-[data-theme="light"] .section-container *,
-[data-theme="light"] .contact-card *,
-[data-theme="light"] .hero *,
-[data-theme="light"] .project-card *,
-[data-theme="light"] .article-card *,
-[data-theme="light"] .tech-category *,
-[data-theme="light"] .experience-card *,
-[data-theme="light"] .domain-card *,
-[data-theme="light"] .profile-top *,
-[data-theme="light"] .about-split *,
-[data-theme="light"] .about-text *,
-[data-theme="light"] .languages-section *,
-[data-theme="light"] .domains-section *,
-[data-theme="light"] main * {
+[data-theme="light"] .career-preview p,
+[data-theme="light"] .career-preview span,
+[data-theme="light"] .career-preview li,
+[data-theme="light"] .section-container p,
+[data-theme="light"] .section-container span:not(.tech-item):not(.tech-item *),
+[data-theme="light"] .section-container li,
+[data-theme="light"] .contact-card p,
+[data-theme="light"] .contact-card span,
+[data-theme="light"] .hero p,
+[data-theme="light"] .hero span:not(.button *),
+[data-theme="light"] .project-card p,
+[data-theme="light"] .article-card p,
+[data-theme="light"] .tech-category p,
+[data-theme="light"] .experience-card p,
+[data-theme="light"] .experience-card span,
+[data-theme="light"] .domain-card p,
+[data-theme="light"] .domain-card span,
+[data-theme="light"] .profile-top p,
+[data-theme="light"] .about-split p,
+[data-theme="light"] .about-text p,
+[data-theme="light"] .languages-section p,
+[data-theme="light"] .domains-section p,
+[data-theme="light"] main p,
+[data-theme="light"] main li,
+[data-theme="light"] .task-list li,
+[data-theme="light"] .timeline-content p,
+[data-theme="light"] .timeline-content li,
+[data-theme="light"] .timeline-content span,
+[data-theme="light"] .timeline-side-year,
+[data-theme="light"] .role-badge,
+[data-theme="light"] .period-location {
 	color: #3d3d5c !important;
+}
+
+/* Strong/bold text in lists and cards - make darker for emphasis */
+[data-theme="light"] .task-list strong,
+[data-theme="light"] .timeline-content strong,
+[data-theme="light"] strong,
+[data-theme="light"] b {
+	color: #1a1a2e !important;
 }
 
 /* Restore specific elements that need different colors */
@@ -721,13 +734,20 @@
 	color: #0088b3 !important;
 }
 
-[data-theme="light"] .button {
+/* BUTTONS: keep white text on gradient background */
+[data-theme="light"] .button,
+[data-theme="light"] .button *,
+[data-theme="light"] a.button,
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .read-more-btn:hover,
+[data-theme="light"] .btn-small:hover {
 	color: #fff !important;
 }
 
 [data-theme="light"] .article-date,
 [data-theme="light"] .domain-tag,
-[data-theme="light"] .experience-card .role-highlight {
+[data-theme="light"] .experience-card .role-highlight,
+[data-theme="light"] .company-name {
 	color: #0088b3 !important;
 }
 
@@ -748,6 +768,26 @@
 
 [data-theme="light"] .domain-icon i {
 	color: #0088b3 !important;
+}
+
+[data-theme="light"] .task-list li::before {
+	color: #0088b3 !important;
+}
+
+/* Timeline line - keep visible */
+[data-theme="light"] .timeline::before {
+	background: linear-gradient(to bottom, #0088b3, #6b3fa0) !important;
+	opacity: 0.4 !important;
+}
+
+[data-theme="light"] .timeline-logo {
+	border-color: #f0f2f5 !important;
+	background: #ffffff !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .timeline-content::before {
+	border-right-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 /* ============================================
