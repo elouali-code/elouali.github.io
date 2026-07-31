@@ -202,10 +202,6 @@
 	opacity: 1 !important;
 }
 
-[data-theme="light"] .career-logo-strip .logo-airbus {
-	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.15)) !important;
-}
-
 /* --- TECH CARDS --- */
 [data-theme="light"] .tech-category {
 	background: rgba(255, 255, 255, 0.95) !important;
@@ -392,6 +388,41 @@
 /* --- BACKGROUND ANIMATION --- */
 [data-theme="light"] .portfolio-it-background {
 	opacity: 0.15 !important;
+}
+
+/* --- COMPANY LOGOS (white in dark mode, need to be dark in light mode) --- */
+[data-theme="light"] .career-logo-strip .logo-airbus {
+	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
+}
+
+[data-theme="light"] .career-logo-strip .logo-sbs,
+[data-theme="light"] .hero-logo-strip .logo-sbs {
+	filter: brightness(0.2) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
+}
+
+[data-theme="light"] .hero-logo-strip .logo-airbus {
+	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
+}
+
+[data-theme="light"] .hero-logo-strip img,
+[data-theme="light"] .career-logo-strip img {
+	opacity: 0.85 !important;
+}
+
+[data-theme="light"] .hero-logo-strip .logo-ocp,
+[data-theme="light"] .hero-logo-strip .logo-webhelp {
+	filter: brightness(0.8) drop-shadow(0 8px 15px rgba(0,0,0,0.08)) !important;
+}
+
+/* Timeline logos (experiences page) */
+[data-theme="light"] .timeline-logo img {
+	filter: none !important;
+}
+
+/* Experience card logos in white circles - keep as-is since they're on white bg */
+[data-theme="light"] .experience-card .logo-wrapper {
+	background: #ffffff !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* --- CATEGORY CARDS (projects hub) --- */
