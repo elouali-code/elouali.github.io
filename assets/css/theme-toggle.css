@@ -402,6 +402,21 @@
 	color: #5a5a7a !important;
 }
 
+/* Sections with hardcoded dark backgrounds */
+[data-theme="light"] section[style*="background"],
+[data-theme="light"] .section-container[style*="background"] {
+	background: rgba(0, 0, 0, 0.015) !important;
+}
+
+/* Profile avatar borders (about page) */
+[data-theme="light"] .profile-avatar img {
+	border-color: #f5f7fa !important;
+}
+
+[data-theme="light"] .profile-avatar .status-dot {
+	border-color: #f5f7fa !important;
+}
+
 /* --- BACKGROUND ANIMATION --- */
 [data-theme="light"] .portfolio-it-background {
 	opacity: 0.15 !important;
@@ -556,6 +571,20 @@
 	color: #4a4a6a !important;
 }
 
+/* Languages section dark background override */
+[data-theme="light"] .languages-section {
+	background: linear-gradient(180deg, rgba(240, 242, 247, 0.98), rgba(235, 238, 245, 0.98)) !important;
+	border-top-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .languages-section h2 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .languages-section * {
+	color: #3d3d5c !important;
+}
+
 /* --- EXPERIENCES PAGE TIMELINE --- */
 [data-theme="light"] .timeline-item,
 [data-theme="light"] .timeline-card {
@@ -584,6 +613,46 @@
 [data-theme="light"] .timeline-role,
 [data-theme="light"] .exp-role {
 	color: #5a5a7a !important;
+}
+
+[data-theme="light"] .timeline-logo {
+	border-color: #f5f7fa !important;
+	background: #ffffff !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .timeline-line,
+[data-theme="light"] .timeline::before {
+	background: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .timeline-content {
+	background: #ffffff !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .timeline-content h3 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .timeline-content p,
+[data-theme="light"] .timeline-content li,
+[data-theme="light"] .timeline-content span {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .timeline-side-year {
+	color: #0088b3 !important;
+}
+
+/* Experiences hero logos */
+[data-theme="light"] .hero-logo-strip .logo-airbus {
+	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
+}
+
+[data-theme="light"] .hero-logo-strip .logo-sbs {
+	filter: brightness(0.2) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
 }
 
 /* --- IMAGE CARDS (about page) --- */
