@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE HTML>
-<html>
+<html lang="fr">
 	<head>
 		<title>Abderrahman El Ouali - Portfolio d'Ingénieur</title>
 		<meta charset="utf-8" />
@@ -550,6 +550,59 @@
 			.info-item { display: flex; align-items: center; gap: 0.5em; font-size: 1.1em; color: var(--text-primary); }
 			.info-item i { color: var(--accent-cyan); }
 
+			/* --- CONTACT FORM --- */
+			.contact-form {
+				margin-top: 2em;
+				text-align: left;
+			}
+			.contact-form .form-row {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1em;
+			}
+			.contact-form .form-group {
+				margin-bottom: 1em;
+			}
+			.contact-form label {
+				display: block;
+				font-size: 0.9em;
+				color: var(--text-secondary);
+				margin-bottom: 0.4em;
+			}
+			.contact-form input,
+			.contact-form textarea {
+				width: 100%;
+				background: transparent;
+				border: 1px solid var(--border-glass);
+				border-radius: 10px;
+				padding: 0.8em 1em;
+				color: var(--text-primary);
+				font-family: 'Poppins', sans-serif;
+				font-size: 0.95em;
+				transition: border-color 0.3s ease;
+			}
+			.contact-form input::placeholder,
+			.contact-form textarea::placeholder {
+				color: rgba(255, 255, 255, 0.4);
+			}
+			.contact-form input:focus,
+			.contact-form textarea:focus {
+				outline: none;
+				border-color: var(--accent-cyan);
+			}
+			.contact-form textarea {
+				resize: vertical;
+			}
+			.contact-form .button {
+				display: inline-block;
+				margin-top: 0.5em;
+			}
+			@media (max-width: 736px) {
+				.contact-form .form-row {
+					grid-template-columns: 1fr;
+				}
+			}
+
 			/* --- RESPONSIVE FIXES --- */
 			@media (max-width: 980px) {
 				.col-4, .col-3 { width: 50%; }
@@ -837,7 +890,27 @@
 							<div class="info-item"><i class="fab fa-linkedin"></i> linkedin.com/in/elouali</div>
 						</div>
 						
-						<a href="mailto:el-ouali@insa-toulouse.fr" class="button">Me contacter</a>
+						<form action="https://formspree.io/f/xdkozzow" method="POST" class="contact-form">
+							<div class="form-row">
+								<div class="form-group">
+									<label for="contact-name">Nom</label>
+									<input type="text" id="contact-name" name="name" placeholder="Votre nom" required />
+								</div>
+								<div class="form-group">
+									<label for="contact-email">Email</label>
+									<input type="email" id="contact-email" name="email" placeholder="Votre email" required />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="contact-subject">Sujet</label>
+								<input type="text" id="contact-subject" name="subject" placeholder="Sujet du message" required />
+							</div>
+							<div class="form-group">
+								<label for="contact-message">Message</label>
+								<textarea id="contact-message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+							</div>
+							<button type="submit" class="button">Envoyer le message</button>
+						</form>
 					</div>
 					
 					<div style="text-align: center; margin-top: 4em; font-size: 0.9em; opacity: 0.6;">
