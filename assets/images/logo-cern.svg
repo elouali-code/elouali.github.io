@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#003366" stroke-width="4"/>
+  <ellipse cx="100" cy="100" rx="60" ry="35" fill="none" stroke="#003366" stroke-width="3" transform="rotate(0,100,100)"/>
+  <ellipse cx="100" cy="100" rx="60" ry="35" fill="none" stroke="#003366" stroke-width="3" transform="rotate(60,100,100)"/>
+  <ellipse cx="100" cy="100" rx="60" ry="35" fill="none" stroke="#003366" stroke-width="3" transform="rotate(120,100,100)"/>
+  <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#003366">CERN</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <rect x="2" y="2" width="236" height="76" rx="6" fill="none" stroke="#8B0000" stroke-width="2"/>
+  <text x="120" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#8B0000">LYCÉE</text>
+  <text x="120" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#8B0000">BELLEVUE</text>
+  <text x="120" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">TOULOUSE</text>
+</svg>
