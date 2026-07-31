@@ -1,6 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
-  <rect x="2" y="2" width="236" height="76" rx="6" fill="none" stroke="#8B0000" stroke-width="2"/>
-  <text x="120" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#8B0000">LYCÉE</text>
-  <text x="120" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#8B0000">BELLEVUE</text>
-  <text x="120" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555">TOULOUSE</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 280" width="300" height="280">
+  <!-- Building illustration -->
+  <g opacity="0.35" stroke="#666" stroke-width="1.2" fill="none">
+    <!-- Roof / Triangle -->
+    <polygon points="150,30 100,60 200,60"/>
+    <!-- Main facade -->
+    <rect x="80" y="60" width="140" height="80"/>
+    <!-- Windows top row -->
+    <path d="M 95,70 L 95,90 Q 95,65 105,65 Q 115,65 115,90 L 115,70" />
+    <path d="M 125,70 L 125,90 Q 125,65 135,65 Q 145,65 145,90 L 145,70" />
+    <path d="M 155,70 L 155,90 Q 155,65 165,65 Q 175,65 175,90 L 175,70" />
+    <!-- Windows bottom row (arches) -->
+    <path d="M 90,100 L 90,130 Q 90,95 100,95 Q 110,95 110,130 L 110,100" />
+    <path d="M 115,100 L 115,130 Q 115,95 125,95 Q 135,95 135,130 L 135,100" />
+    <path d="M 140,100 L 140,130 Q 140,95 150,95 Q 160,95 160,130 L 160,100" />
+    <path d="M 165,100 L 165,130 Q 165,95 175,95 Q 185,95 185,130 L 185,100" />
+    <path d="M 190,100 L 190,130 Q 190,95 200,95 Q 210,95 210,130 L 210,100" />
+    <!-- Ground floor columns -->
+    <line x1="90" y1="140" x2="90" y2="170"/>
+    <line x1="110" y1="140" x2="110" y2="170"/>
+    <line x1="130" y1="140" x2="130" y2="170"/>
+    <line x1="150" y1="140" x2="150" y2="170"/>
+    <line x1="170" y1="140" x2="170" y2="170"/>
+    <line x1="190" y1="140" x2="190" y2="170"/>
+    <line x1="210" y1="140" x2="210" y2="170"/>
+  </g>
+  <!-- LYCÉE POLYVALENT text -->
+  <text x="150" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#888" letter-spacing="3">LYCÉE POLYVALENT</text>
+  <!-- BELLEVUE main text -->
+  <text x="150" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="38" font-weight="bold" fill="#6B1015" letter-spacing="2">BELLEVUE</text>
+  <!-- TOULOUSE text -->
+  <text x="150" y="268" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#888" letter-spacing="5">TOULOUSE</text>
 </svg>
