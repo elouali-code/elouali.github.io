@@ -1,145 +1,578 @@
 /* ============================================
-   DARK / LIGHT THEME TOGGLE
+   DARK / LIGHT THEME TOGGLE - FULL COVERAGE
    ============================================ */
 
-/* Light mode overrides */
+/* Light mode CSS variables */
 [data-theme="light"] {
 	--background-start: #f5f7fa;
 	--background-end: #e8ecf1;
-	--surface-glass: rgba(255, 255, 255, 0.85);
+	--surface-glass: rgba(255, 255, 255, 0.92);
 	--border-glass: rgba(0, 0, 0, 0.1);
 	--text-primary: #1a1a2e;
-	--text-secondary: #4a4a6a;
-	--accent-cyan: #0099cc;
+	--text-secondary: #3d3d5c;
+	--accent-cyan: #0088b3;
 	--accent-purple: #6b3fa0;
+	--gradient-primary: linear-gradient(135deg, #0088b3, #6b3fa0);
 }
 
+/* --- BODY & GLOBAL --- */
 [data-theme="light"] body {
-	background-color: var(--background-start) !important;
-	background-image: radial-gradient(circle at 15% 50%, rgba(0, 153, 204, 0.06) 0%, transparent 25%),
-	                   radial-gradient(circle at 85% 30%, rgba(107, 63, 160, 0.06) 0%, transparent 25%) !important;
-	color: var(--text-secondary) !important;
+	background-color: #f5f7fa !important;
+	background-image: radial-gradient(circle at 15% 50%, rgba(0, 136, 179, 0.05) 0%, transparent 25%),
+	                   radial-gradient(circle at 85% 30%, rgba(107, 63, 160, 0.05) 0%, transparent 25%) !important;
+	color: #3d3d5c !important;
 }
 
-[data-theme="light"] #header {
-	background: rgba(245, 247, 250, 0.95) !important;
-	border-bottom-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-[data-theme="light"] #logo h1 a,
-[data-theme="light"] #logo h1 {
-	color: var(--text-primary) !important;
-}
-
-[data-theme="light"] .menu-toggle {
-	background: rgba(0, 0, 0, 0.05) !important;
-	border-color: rgba(0, 0, 0, 0.12) !important;
-	color: var(--text-primary) !important;
-}
-
-[data-theme="light"] #sidebar-menu {
-	background: #ffffff !important;
-	border-left-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-[data-theme="light"] .menu-links a {
-	color: var(--text-primary) !important;
-}
-
+/* --- ALL TEXT ELEMENTS --- */
 [data-theme="light"] h1, 
 [data-theme="light"] h2, 
 [data-theme="light"] h3, 
-[data-theme="light"] h4 {
-	color: var(--text-primary) !important;
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
+	color: #1a1a2e !important;
 }
 
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] li,
+[data-theme="light"] td,
+[data-theme="light"] th,
+[data-theme="light"] label,
+[data-theme="light"] .subtitle,
+[data-theme="light"] .article-excerpt,
+[data-theme="light"] .career-subtitle {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] a {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] a:hover {
+	color: #005f7f !important;
+	text-shadow: none !important;
+}
+
+/* --- HEADER --- */
+[data-theme="light"] #header {
+	background: rgba(245, 247, 250, 0.97) !important;
+	border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] #logo h1,
+[data-theme="light"] #logo h1 a {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .menu-toggle {
+	background: rgba(0, 0, 0, 0.04) !important;
+	border-color: rgba(0, 0, 0, 0.12) !important;
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .menu-toggle:hover {
+	background: rgba(0, 0, 0, 0.08) !important;
+	border-color: #0088b3 !important;
+}
+
+/* --- SIDEBAR MENU --- */
+[data-theme="light"] #sidebar-menu {
+	background: #ffffff !important;
+	border-left-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .menu-header {
+	border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .menu-header span {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .menu-close {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .menu-links a {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .menu-links a:hover {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] #menu-overlay {
+	background: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* --- HERO --- */
 [data-theme="light"] .hero h1 {
-	background: linear-gradient(135deg, #1a1a2e 30%, var(--accent-cyan) 100%) !important;
+	background: linear-gradient(135deg, #1a1a2e 30%, #0088b3 100%) !important;
 	-webkit-background-clip: text !important;
 	-webkit-text-fill-color: transparent !important;
 }
 
+[data-theme="light"] .hero .subtitle {
+	color: #4a4a6a !important;
+}
+
+/* --- BUTTONS --- */
+[data-theme="light"] .button {
+	box-shadow: 0 10px 20px rgba(107, 63, 160, 0.2) !important;
+}
+
+[data-theme="light"] .button.alt {
+	box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.2) !important;
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .button.alt:hover {
+	background: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* --- SOCIAL ICONS --- */
+[data-theme="light"] .social-icon-link {
+	background: rgba(0, 0, 0, 0.03) !important;
+	border-color: rgba(0, 0, 0, 0.12) !important;
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .social-icon-link:hover {
+	background: #1a1a2e !important;
+	color: #fff !important;
+	border-color: #1a1a2e !important;
+}
+
+/* --- SECTIONS --- */
 [data-theme="light"] .section-container {
 	border-top-color: rgba(0, 0, 0, 0.06) !important;
 }
 
-[data-theme="light"] .experience-card,
-[data-theme="light"] .project-card,
-[data-theme="light"] .tech-category,
-[data-theme="light"] .article-card,
-[data-theme="light"] .contact-card,
+[data-theme="light"] .section-title {
+	color: #1a1a2e !important;
+}
+
+/* --- STATS SECTION --- */
+[data-theme="light"] .stats-section {
+	border-color: rgba(0, 0, 0, 0.06) !important;
+	background: rgba(0, 0, 0, 0.015) !important;
+}
+
+[data-theme="light"] .stat-number {
+	background: linear-gradient(135deg, #0088b3, #6b3fa0) !important;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="light"] .stat-label {
+	color: #4a4a6a !important;
+}
+
+/* --- CAREER / TIMELINE --- */
 [data-theme="light"] .career-step {
-	background: rgba(255, 255, 255, 0.9) !important;
+	border-left-color: rgba(0, 136, 179, 0.4) !important;
+	background: transparent !important;
+}
+
+[data-theme="light"] .career-step:hover {
+	border-left-color: rgba(107, 63, 160, 0.5) !important;
+}
+
+[data-theme="light"] .career-step h3 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .career-step p {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .career-role,
+[data-theme="light"] .career-step .career-role {
+	color: #5a5a7a !important;
+}
+
+[data-theme="light"] .career-step::before {
+	background: #0088b3 !important;
+	box-shadow: 0 0 12px rgba(0, 136, 179, 0.4) !important;
+}
+
+[data-theme="light"] .career-logo-strip a {
+	opacity: 1 !important;
+}
+
+[data-theme="light"] .career-logo-strip .logo-airbus {
+	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.15)) !important;
+}
+
+/* --- TECH CARDS --- */
+[data-theme="light"] .tech-category {
+	background: rgba(255, 255, 255, 0.95) !important;
 	border-color: rgba(0, 0, 0, 0.08) !important;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
-[data-theme="light"] .article-card {
-	background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)) !important;
-	border-left-color: var(--accent-cyan) !important;
+[data-theme="light"] .tech-category:hover {
+	border-color: rgba(0, 136, 179, 0.3) !important;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
 }
 
-[data-theme="light"] .article-title,
-[data-theme="light"] .career-step h3,
+[data-theme="light"] .tech-category::before {
+	background: radial-gradient(circle, rgba(0, 136, 179, 0.08), transparent 70%) !important;
+}
+
 [data-theme="light"] .tech-category h3 {
-	color: var(--text-primary) !important;
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .tech-category h3 i {
+	background: rgba(0, 136, 179, 0.08) !important;
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .tech-category p {
+	color: #4a4a6a !important;
 }
 
 [data-theme="light"] .tech-item {
-	background: rgba(0, 0, 0, 0.04) !important;
+	background: rgba(0, 0, 0, 0.03) !important;
 	border-color: rgba(0, 0, 0, 0.08) !important;
-	color: var(--text-primary) !important;
+	color: #2d2d4a !important;
 }
 
-[data-theme="light"] .button.alt {
-	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2) !important;
-	color: var(--text-primary) !important;
+[data-theme="light"] .tech-item:hover {
+	background: rgba(0, 0, 0, 0.06) !important;
+	border-color: rgba(0, 0, 0, 0.15) !important;
 }
 
-[data-theme="light"] .social-icon-link {
-	background: rgba(0, 0, 0, 0.04) !important;
-	border-color: rgba(0, 0, 0, 0.12) !important;
-	color: var(--text-secondary) !important;
+/* --- PROJECT CARDS --- */
+[data-theme="light"] .project-card {
+	background: #ffffff !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
-[data-theme="light"] .social-icon-link:hover {
-	background: var(--text-primary) !important;
+[data-theme="light"] .project-card:hover {
+	border-color: #0088b3 !important;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .project-card h3 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .project-card p {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .project-card .btn-small,
+[data-theme="light"] .btn-small {
+	border-color: #0088b3 !important;
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .project-card .btn-small:hover,
+[data-theme="light"] .btn-small:hover {
+	background: #0088b3 !important;
 	color: #fff !important;
 }
 
-[data-theme="light"] #footer {
-	background: rgba(245, 247, 250, 0.9) !important;
-	border-top-color: rgba(0, 0, 0, 0.06) !important;
+/* --- EXPERIENCE CARDS --- */
+[data-theme="light"] .experience-card {
+	background: #ffffff !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
-[data-theme="light"] .portfolio-it-background {
-	opacity: 0.25 !important;
+[data-theme="light"] .experience-card:hover {
+	border-color: #6b3fa0 !important;
 }
 
-[data-theme="light"] .career-step {
-	border-left-color: rgba(0, 153, 204, 0.4) !important;
+[data-theme="light"] .experience-card h3 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .experience-card .role-highlight {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .experience-card .date {
+	color: #5a5a7a !important;
+}
+
+/* --- ARTICLE CARDS --- */
+[data-theme="light"] .article-card {
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 252, 0.95)) !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	border-left-color: #0088b3 !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .article-card:hover {
+	border-color: #0088b3 !important;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .article-title {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .article-excerpt {
+	color: #3d3d5c !important;
 }
 
 [data-theme="light"] .article-date {
-	background: rgba(0, 153, 204, 0.08) !important;
-	border-color: rgba(0, 153, 204, 0.2) !important;
-}
-
-[data-theme="light"] .read-more-btn {
-	border-color: var(--accent-cyan) !important;
-	color: var(--accent-cyan) !important;
+	background: rgba(0, 136, 179, 0.06) !important;
+	border-color: rgba(0, 136, 179, 0.2) !important;
+	color: #0088b3 !important;
 }
 
 [data-theme="light"] .article-tag {
 	border-color: rgba(0, 0, 0, 0.1) !important;
-	color: var(--text-secondary) !important;
+	color: #4a4a6a !important;
+	background: rgba(0, 0, 0, 0.03) !important;
 }
 
 [data-theme="light"] .article-image {
 	border-right-color: rgba(0, 0, 0, 0.06) !important;
+	background: rgba(0, 0, 0, 0.02) !important;
 }
 
-/* Theme toggle button */
+[data-theme="light"] .read-more-btn {
+	border-color: #0088b3 !important;
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .read-more-btn:hover {
+	background: #0088b3 !important;
+	color: #fff !important;
+}
+
+[data-theme="light"] .article-credit {
+	color: #5a5a7a !important;
+}
+
+[data-theme="light"] .article-credit a {
+	color: #0088b3 !important;
+}
+
+/* --- CONTACT / FOOTER --- */
+[data-theme="light"] .contact-card {
+	background: rgba(255, 255, 255, 0.95) !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .contact-card h2 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .contact-card p {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .info-item {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .info-item i {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] #footer {
+	background: rgba(245, 247, 250, 0.95) !important;
+	border-top-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] #footer p {
+	color: #5a5a7a !important;
+}
+
+/* --- BACKGROUND ANIMATION --- */
+[data-theme="light"] .portfolio-it-background {
+	opacity: 0.15 !important;
+}
+
+/* --- CATEGORY CARDS (projects hub) --- */
+[data-theme="light"] .category-card,
+[data-theme="light"] .domain-card {
+	background: #ffffff !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] .category-card:hover,
+[data-theme="light"] .domain-card:hover {
+	border-color: #0088b3 !important;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .category-card h3,
+[data-theme="light"] .domain-card h3 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .category-card p,
+[data-theme="light"] .domain-card p {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .domain-company {
+	color: #5a5a7a !important;
+}
+
+[data-theme="light"] .domain-tag {
+	border-color: rgba(0, 136, 179, 0.2) !important;
+	background: rgba(0, 136, 179, 0.06) !important;
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .domain-icon {
+	background: rgba(0, 136, 179, 0.08) !important;
+	color: #0088b3 !important;
+}
+
+/* --- PROJECT DETAIL PAGES --- */
+[data-theme="light"] .project-hero,
+[data-theme="light"] .project-main {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .project-hero h1 {
+	color: #1a1a2e !important;
+	-webkit-text-fill-color: #1a1a2e !important;
+	background: none !important;
+}
+
+[data-theme="light"] .project-hero p {
+	color: #4a4a6a !important;
+}
+
+[data-theme="light"] .meta-card,
+[data-theme="light"] .project-section,
+[data-theme="light"] .project-entry {
+	background: #ffffff !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .project-section h2,
+[data-theme="light"] .project-section h3 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .project-section p,
+[data-theme="light"] .project-section li {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .tech-tag,
+[data-theme="light"] .category-card .tag {
+	background: rgba(0, 0, 0, 0.04) !important;
+	border-color: rgba(0, 0, 0, 0.1) !important;
+	color: #2d2d4a !important;
+}
+
+/* --- ABOUT PAGE --- */
+[data-theme="light"] .profile-top {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .about-text p {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .portrait-caption {
+	background: rgba(255, 255, 255, 0.9) !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .portrait-caption strong {
+	color: #1a1a2e !important;
+}
+
+/* --- LANGUAGE CARDS (about page) --- */
+[data-theme="light"] .language-card {
+	background: #ffffff !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .language-card h4 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .language-card span {
+	color: #4a4a6a !important;
+}
+
+/* --- EXPERIENCES PAGE TIMELINE --- */
+[data-theme="light"] .timeline-item,
+[data-theme="light"] .timeline-card {
+	background: #ffffff !important;
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .timeline-item h3,
+[data-theme="light"] .timeline-card h3 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .timeline-item p,
+[data-theme="light"] .timeline-card p,
+[data-theme="light"] .timeline-item li,
+[data-theme="light"] .timeline-card li {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .timeline-date,
+[data-theme="light"] .exp-date {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .timeline-role,
+[data-theme="light"] .exp-role {
+	color: #5a5a7a !important;
+}
+
+/* --- IMAGE CARDS (about page) --- */
+[data-theme="light"] .image-card {
+	border-color: rgba(0, 0, 0, 0.08) !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* --- GENERAL OVERRIDES for inline rgba(255,...) colors --- */
+[data-theme="light"] [style*="color: #fff"],
+[data-theme="light"] [style*="color:#fff"],
+[data-theme="light"] [style*="color: rgba(255"],
+[data-theme="light"] [style*="color:rgba(255"] {
+	color: #1a1a2e !important;
+}
+
+/* Catch-all for white text elements common in dark themes */
+[data-theme="light"] .career-head .section-title {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .career-subtitle {
+	color: #4a4a6a !important;
+}
+
+/* --- SCROLLBAR --- */
+[data-theme="light"] ::-webkit-scrollbar-track {
+	background: #f0f0f0;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+	background: #c0c0c0;
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
 .theme-toggle {
 	display: flex;
 	align-items: center;
@@ -163,9 +596,14 @@
 }
 
 [data-theme="light"] .theme-toggle {
-	background: rgba(0, 0, 0, 0.05) !important;
+	background: rgba(0, 0, 0, 0.04) !important;
 	border-color: rgba(0, 0, 0, 0.12) !important;
-	color: var(--text-primary) !important;
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+	background: rgba(0, 0, 0, 0.08) !important;
+	border-color: #0088b3 !important;
 }
 
 .theme-toggle .fa-sun { display: none; }
@@ -184,6 +622,10 @@
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.35s ease;
+}
+
+[data-theme="light"] .page-transition-overlay {
+	background: #f5f7fa !important;
 }
 
 .page-transition-overlay.active {
@@ -226,7 +668,6 @@ body {
 .stat-number {
 	font-size: 2.8em;
 	font-weight: 700;
-	color: var(--text-primary);
 	background: var(--gradient-primary);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
