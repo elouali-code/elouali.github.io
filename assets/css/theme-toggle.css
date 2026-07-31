@@ -755,6 +755,28 @@ html[data-theme="light"] .languages-section,
 
 /* Icons: don't override - let inline style colors (Python blue, Docker blue, etc.) show through */
 
+/* Contact form inputs in light mode */
+[data-theme="light"] .contact-form input,
+[data-theme="light"] .contact-form textarea {
+	color: #1a1a2e !important;
+	background: rgba(0, 0, 0, 0.02) !important;
+	border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .contact-form input::placeholder,
+[data-theme="light"] .contact-form textarea::placeholder {
+	color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="light"] .contact-form input:focus,
+[data-theme="light"] .contact-form textarea:focus {
+	border-color: #0088b3 !important;
+}
+
+[data-theme="light"] .contact-form label {
+	color: #1a1a2e !important;
+}
+
 [data-theme="light"] .tech-category h3 i {
 	color: #0088b3 !important;
 }
