@@ -753,11 +753,7 @@ html[data-theme="light"] .languages-section,
 	-webkit-text-fill-color: transparent !important;
 }
 
-[data-theme="light"] i.fas,
-[data-theme="light"] i.fab,
-[data-theme="light"] i.fa {
-	color: inherit !important;
-}
+/* Icons: don't override - let inline style colors (Python blue, Docker blue, etc.) show through */
 
 [data-theme="light"] .tech-category h3 i {
 	color: #0088b3 !important;
@@ -766,6 +762,8 @@ html[data-theme="light"] .languages-section,
 [data-theme="light"] .domain-icon i {
 	color: #0088b3 !important;
 }
+
+/* Tech item icons - preserve their inline colors (Python blue, Docker blue, etc.) */
 
 [data-theme="light"] .task-list li::before {
 	color: #0088b3 !important;
