@@ -24,6 +24,13 @@
 }
 
 /* --- ALL TEXT ELEMENTS --- */
+/* Force override for all text that uses rgba(255,...) white tones in dark mode */
+[data-theme="light"],
+[data-theme="light"] * {
+	--text-primary: #1a1a2e;
+	--text-secondary: #3d3d5c;
+}
+
 [data-theme="light"] h1, 
 [data-theme="light"] h2, 
 [data-theme="light"] h3, 
@@ -34,14 +41,24 @@
 }
 
 [data-theme="light"] p,
-[data-theme="light"] span,
+[data-theme="light"] span:not(.tech-item i):not(.fa):not(.fas):not(.fab),
 [data-theme="light"] li,
 [data-theme="light"] td,
 [data-theme="light"] th,
 [data-theme="light"] label,
 [data-theme="light"] .subtitle,
 [data-theme="light"] .article-excerpt,
-[data-theme="light"] .career-subtitle {
+[data-theme="light"] .career-subtitle,
+[data-theme="light"] .career-role,
+[data-theme="light"] .career-step p,
+[data-theme="light"] .tech-category p,
+[data-theme="light"] .domain-card p,
+[data-theme="light"] .domain-company,
+[data-theme="light"] .experience-card .date,
+[data-theme="light"] .about-text p,
+[data-theme="light"] .profile-top p,
+[data-theme="light"] div[style*="opacity"],
+[data-theme="light"] .hero .subtitle {
 	color: #3d3d5c !important;
 }
 
@@ -599,6 +616,69 @@
 
 [data-theme="light"] ::-webkit-scrollbar-thumb {
 	background: #c0c0c0;
+}
+
+/* ============================================
+   NUCLEAR OVERRIDE: Force all remaining white text to dark
+   This catches any rgba(255,255,255,...) colors in page <style> blocks
+   ============================================ */
+[data-theme="light"] .career-preview *,
+[data-theme="light"] .section-container *,
+[data-theme="light"] .contact-card *,
+[data-theme="light"] .hero *,
+[data-theme="light"] .project-card *,
+[data-theme="light"] .article-card *,
+[data-theme="light"] .tech-category *,
+[data-theme="light"] .experience-card *,
+[data-theme="light"] .domain-card *,
+[data-theme="light"] .profile-top *,
+[data-theme="light"] .about-split *,
+[data-theme="light"] .about-text *,
+[data-theme="light"] .languages-section *,
+[data-theme="light"] .domains-section *,
+[data-theme="light"] main * {
+	color: #3d3d5c !important;
+}
+
+/* Restore specific elements that need different colors */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4 {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] a:not(.button):not(.btn-small):not(.read-more-btn):not(.social-icon-link) {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .button {
+	color: #fff !important;
+}
+
+[data-theme="light"] .article-date,
+[data-theme="light"] .domain-tag,
+[data-theme="light"] .experience-card .role-highlight {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .stat-number {
+	color: transparent !important;
+	-webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="light"] i.fas,
+[data-theme="light"] i.fab,
+[data-theme="light"] i.fa {
+	color: inherit !important;
+}
+
+[data-theme="light"] .tech-category h3 i {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .domain-icon i {
+	color: #0088b3 !important;
 }
 
 /* ============================================
