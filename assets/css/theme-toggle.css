@@ -422,18 +422,15 @@
 	opacity: 0.15 !important;
 }
 
-/* --- COMPANY LOGOS (white in dark mode, need to be dark in light mode) --- */
-[data-theme="light"] .career-logo-strip .logo-airbus {
-	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
+/* --- COMPANY LOGOS (show original colors in light mode) --- */
+[data-theme="light"] .career-logo-strip .logo-airbus,
+[data-theme="light"] .hero-logo-strip .logo-airbus {
+	filter: none !important;
 }
 
 [data-theme="light"] .career-logo-strip .logo-sbs,
 [data-theme="light"] .hero-logo-strip .logo-sbs {
-	filter: brightness(0.2) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
-}
-
-[data-theme="light"] .hero-logo-strip .logo-airbus {
-	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
+	filter: none !important;
 }
 
 [data-theme="light"] .hero-logo-strip img,
@@ -642,14 +639,7 @@ html[data-theme="light"] .languages-section,
 	color: #3d3d5c !important;
 }
 
-/* Experiences hero logos */
-[data-theme="light"] .hero-logo-strip .logo-airbus {
-	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
-}
-
-[data-theme="light"] .hero-logo-strip .logo-sbs {
-	filter: brightness(0.2) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
-}
+/* Experiences hero logos - handled above */
 
 /* --- IMAGE CARDS (about page) --- */
 [data-theme="light"] .image-card {
