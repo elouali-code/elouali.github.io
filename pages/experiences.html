@@ -357,6 +357,8 @@
 			}
 		</style>
 		<link rel="stylesheet" href="../assets/css/responsive.css" />
+		<link rel="stylesheet" href="../assets/css/theme-toggle.css" />
+		<script src="../assets/js/theme-toggle.js"></script>
 	</head>
 	<body class="is-preload">
 		<div class="portfolio-it-background" aria-hidden="true">
@@ -389,12 +391,18 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.webp" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
-					<div class="menu-toggle" id="menu-btn">
-						<i class="fas fa-bars"></i>
-						<span>Menu</span>
+					<div style="display:flex;align-items:center;">
+						<button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
+							<i class="fas fa-moon"></i>
+							<i class="fas fa-sun"></i>
+						</button>
+						<div class="menu-toggle" id="menu-btn">
+							<i class="fas fa-bars"></i>
+							<span>Menu</span>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -411,7 +419,7 @@
 							<img loading="lazy" decoding="async" src="../assets/images/logo-airbus-official.svg" alt="Airbus" class="logo-airbus">
 						</a>
 						<a href="https://www.ocpgroup.ma/" target="_blank" rel="noopener noreferrer" class="hero-logo-link" aria-label="Site officiel d'OCP Group">
-							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="OCP Group" class="logo-ocp">
+							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.webp" alt="OCP Group" class="logo-ocp">
 						</a>
 						<a href="https://medica.concentrix.com/" target="_blank" rel="noopener noreferrer" class="hero-logo-link" aria-label="Site officiel de Concentrix Medica, anciennement Webhelp Medica">
 							<img loading="lazy" decoding="async" src="../assets/images/logo-webhelp.png" alt="Webhelp" class="logo-webhelp">
@@ -474,7 +482,7 @@
 					<div class="timeline-item reveal">
 						<span class="timeline-side-year">2024</span>
 						<div class="timeline-logo">
-							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.png" alt="OCP Group">
+							<img loading="lazy" decoding="async" src="../assets/images/logo-ocp.webp" alt="OCP Group">
 						</div>
 						<div class="timeline-content">
 							<h3 class="role-title">Data Analyst <span class="role-badge">Stage</span></h3>
@@ -571,9 +579,6 @@
 
 			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 		</script>
-	<script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-
     <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
 	</body>

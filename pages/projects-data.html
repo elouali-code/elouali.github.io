@@ -271,7 +271,9 @@
 		</style>
 		<link rel="stylesheet" href="../assets/css/responsive.css" />
 		<link rel="stylesheet" href="../assets/css/projects-showcase.css" />
-	</head>
+			<link rel="stylesheet" href="../assets/css/theme-toggle.css" />
+		<script src="../assets/js/theme-toggle.js"></script>
+</head>
 	<body class="is-preload">
 		<div class="portfolio-it-background" aria-hidden="true">
 			<div class="portfolio-it-planet"></div>
@@ -303,12 +305,15 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.webp" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
-					<div class="menu-toggle" id="menu-btn">
-						<i class="fas fa-bars"></i>
-						<span>Menu</span>
+					<div style="display:flex;align-items:center;">
+						<button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></button>
+						<div class="menu-toggle" id="menu-btn">
+							<i class="fas fa-bars"></i>
+							<span>Menu</span>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -325,7 +330,7 @@
 					
 					<div class="project-card reveal">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/pipline.PNG" alt="Pipeline de transformation de donnees Skywise">
+							<img loading="lazy" decoding="async" src="../assets/images/pipline.webp" alt="Pipeline de transformation de donnees Skywise">
 						</div>
 						<div class="card-content">
 							<h3>Skywise Data Pipelines</h3>
@@ -342,7 +347,7 @@
 
 					<div class="project-card reveal" style="transition-delay: 0.1s;">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/performance_compresseur_complex.png" alt="Dashboard de performance pour compresseur industriel">
+							<img loading="lazy" decoding="async" src="../assets/images/performance_compresseur_complex.webp" alt="Dashboard de performance pour compresseur industriel">
 						</div>
 						<div class="card-content">
 							<h3>Maintenance Prédictive OCP</h3>
@@ -359,7 +364,7 @@
 
 					<div class="project-card reveal" style="transition-delay: 0.2s;">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/football-detection.jpg" alt="Detection de joueurs par computer vision sur une video de football">
+							<img loading="lazy" decoding="async" src="../assets/images/football-detection.webp" alt="Detection de joueurs par computer vision sur une video de football">
 						</div>
 						<div class="card-content">
 							<h3>AI Football Analysis</h3>
@@ -410,7 +415,7 @@
 
 					<div class="project-card reveal">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/projet-dynamodb.jpg" alt="Schema d'architecture serverless avec DynamoDB et Lambda">
+							<img loading="lazy" decoding="async" src="../assets/images/projet-dynamodb.webp" alt="Schema d'architecture serverless avec DynamoDB et Lambda">
 						</div>
 						<div class="card-content">
 							<h3>Architecture Data Serverless</h3>
@@ -427,7 +432,7 @@
 
 					<div class="project-card reveal">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/article-ml-risque-incertitude.jpg" alt="Visualisation de modeles et risques pour analyse financiere">
+							<img loading="lazy" decoding="async" src="../assets/images/article-ml-risque-incertitude.webp" alt="Visualisation de modeles et risques pour analyse financiere">
 						</div>
 						<div class="card-content">
 							<h3>Dashboard Financier Temps Réel</h3>
@@ -443,7 +448,7 @@
 
 					<div class="project-card reveal">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/projet-chat.jpg" alt="Interface de conversation pour analyse de texte et NLP">
+							<img loading="lazy" decoding="async" src="../assets/images/projet-chat.webp" alt="Interface de conversation pour analyse de texte et NLP">
 						</div>
 						<div class="card-content">
 							<h3>Analyse de Sentiment NLP</h3>
@@ -527,9 +532,6 @@
 
 			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 		</script>
-	<script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-
     <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
 	</body>

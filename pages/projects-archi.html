@@ -131,7 +131,9 @@
 		</style>
 		<link rel="stylesheet" href="../assets/css/responsive.css" />
 		<link rel="stylesheet" href="../assets/css/projects-showcase.css" />
-	</head>
+			<link rel="stylesheet" href="../assets/css/theme-toggle.css" />
+		<script src="../assets/js/theme-toggle.js"></script>
+</head>
 	<body class="is-preload">
 		<div class="portfolio-it-background" aria-hidden="true">
 			<div class="portfolio-it-planet"></div>
@@ -163,12 +165,15 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.webp" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
-					<div class="menu-toggle" id="menu-btn">
-						<i class="fas fa-bars"></i>
-						<span>Menu</span>
+					<div style="display:flex;align-items:center;">
+						<button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></button>
+						<div class="menu-toggle" id="menu-btn">
+							<i class="fas fa-bars"></i>
+							<span>Menu</span>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -185,7 +190,7 @@
 					
 					<div class="project-card reveal">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/projet-dynamodb.jpg" alt="Schema d'architecture serverless avec DynamoDB">
+							<img loading="lazy" decoding="async" src="../assets/images/projet-dynamodb.webp" alt="Schema d'architecture serverless avec DynamoDB">
 						</div>
 						<div class="card-content">
 							<h3>Architecture Data Serverless O(1)</h3>
@@ -219,7 +224,7 @@
 
 					<div class="project-card reveal" style="transition-delay: 0.2s;">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/entraide-frontend.jpg" alt="Interface web de la plateforme microservices Entraide">
+							<img loading="lazy" decoding="async" src="../assets/images/entraide-frontend.webp" alt="Interface web de la plateforme microservices Entraide">
 						</div>
 						<div class="card-content">
 							<h3>Architecture Microservices</h3>
@@ -236,7 +241,7 @@
 
 					<div class="project-card reveal">
 						<div class="card-thumb">
-							<img loading="lazy" decoding="async" src="../assets/images/projet-ardmate.jpg" alt="Pipeline CI CD du projet ARDmate">
+							<img loading="lazy" decoding="async" src="../assets/images/projet-ardmate.webp" alt="Pipeline CI CD du projet ARDmate">
 						</div>
 						<div class="card-content">
 							<h3>Pipelines CI/CD Industriels</h3>
@@ -303,9 +308,6 @@
 
 			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 		</script>
-	<script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-
     <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
 	</body>

@@ -500,6 +500,8 @@
 			}
 		</style>
 		<link rel="stylesheet" href="../assets/css/responsive.css" />
+		<link rel="stylesheet" href="../assets/css/theme-toggle.css" />
+		<script src="../assets/js/theme-toggle.js"></script>
 	</head>
 	<body class="is-preload">
 		<div class="portfolio-it-background" aria-hidden="true">
@@ -532,12 +534,18 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.webp" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
-					<div class="menu-toggle" id="menu-btn">
-						<i class="fas fa-bars"></i>
-						<span>Menu</span>
+					<div style="display:flex;align-items:center;">
+						<button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
+							<i class="fas fa-moon"></i>
+							<i class="fas fa-sun"></i>
+						</button>
+						<div class="menu-toggle" id="menu-btn">
+							<i class="fas fa-bars"></i>
+							<span>Menu</span>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -548,7 +556,7 @@
 						<section class="profile-hero reveal">
 							<div class="profile-top">
 								<div class="profile-avatar">
-									<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Portrait Abderrahman El Ouali" />
+									<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.webp" alt="Portrait Abderrahman El Ouali" />
 									<span class="status-dot" aria-hidden="true"></span>
 								</div>
 
@@ -767,9 +775,6 @@
 
 			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 		</script>
-	<script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-
     <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
 	</body>

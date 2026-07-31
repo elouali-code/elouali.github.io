@@ -25,7 +25,9 @@
     <link rel="stylesheet" href="../../assets/css/project-template.css" />
 		<link rel="stylesheet" href="../../assets/css/responsive.css" />
     <link rel="icon" type="image/png" href="../../favicon.png" />
-  </head>
+  		<link rel="stylesheet" href="../../assets/css/theme-toggle.css" />
+		<script src="../../assets/js/theme-toggle.js"></script>
+</head>
   <body class="project-page is-preload">
 		<div class="portfolio-it-background" aria-hidden="true">
 			<div class="portfolio-it-planet"></div>
@@ -55,13 +57,16 @@
       <section id="header">
         <div class="container">
           <div id="logo">
-            <img loading="lazy" decoding="async" src="../../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+            <img loading="lazy" decoding="async" src="../../assets/images/IMG_0318.webp" alt="Abderrahman El Ouali" />
             <h1><a href="../index.html">Abderrahman El Ouali</a></h1>
           </div>
-          <div class="menu-toggle" id="menu-btn">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-          </div>
+          <div style="display:flex;align-items:center;">
+	<button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></button>
+	<div class="menu-toggle" id="menu-btn">
+		<i class="fas fa-bars"></i>
+		<span>Menu</span>
+	</div>
+</div>
         </div>
       </section>
 

@@ -313,6 +313,8 @@
 			}
 		</style>
 		<link rel="stylesheet" href="../assets/css/responsive.css" />
+		<link rel="stylesheet" href="../assets/css/theme-toggle.css" />
+		<script src="../assets/js/theme-toggle.js"></script>
 	</head>
 	<body class="is-preload">
 		<div class="portfolio-it-background" aria-hidden="true">
@@ -345,12 +347,18 @@
 			<section id="header">
 				<div class="container">
 					<div id="logo">
-						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.jpg" alt="Abderrahman El Ouali" />
+						<img loading="lazy" decoding="async" src="../assets/images/IMG_0318.webp" alt="Abderrahman El Ouali" />
 						<h1><a href="index.html">Abderrahman El Ouali</a></h1>
 					</div>
-					<div class="menu-toggle" id="menu-btn">
-						<i class="fas fa-bars"></i>
-						<span>Menu</span>
+					<div style="display:flex;align-items:center;">
+						<button class="theme-toggle" id="theme-toggle-btn" aria-label="Changer de thème">
+							<i class="fas fa-moon"></i>
+							<i class="fas fa-sun"></i>
+						</button>
+						<div class="menu-toggle" id="menu-btn">
+							<i class="fas fa-bars"></i>
+							<span>Menu</span>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -368,7 +376,7 @@
 					<div class="article-card reveal">
 						<div class="article-image">
 							<a href="../assets/docs/Gouvernance_des_donnees.pdf" target="_blank">
-								<img loading="lazy" decoding="async" src="../assets/images/article-gouvernance-donnees-cover.png" alt="Premiere page de l'article Gouvernance des données à l'ère de l'IA générative">
+								<img loading="lazy" decoding="async" src="../assets/images/article-gouvernance-donnees-cover.webp" alt="Premiere page de l'article Gouvernance des données à l'ère de l'IA générative">
 							</a>
 						</div>
 						<div class="article-content">
@@ -388,7 +396,7 @@
 					<div class="article-card reveal">
 						<div class="article-image">
 							<a href="../assets/docs/Modeles_probabilistes_quantiques.pdf" target="_blank">
-								<img loading="lazy" decoding="async" src="../assets/images/article-modeles-quantiques-cover.png" alt="Premiere page de l'article Modèles probabilistes quantiques vs. statistiques classiques">
+								<img loading="lazy" decoding="async" src="../assets/images/article-modeles-quantiques-cover.webp" alt="Premiere page de l'article Modèles probabilistes quantiques vs. statistiques classiques">
 							</a>
 						</div>
 						<div class="article-content">
@@ -408,7 +416,7 @@
 					<div class="article-card reveal">
 						<div class="article-image">
 							<a href="../assets/docs/Jacobienne_en_Deep_learnin.pdf" target="_blank">
-								<img loading="lazy" decoding="async" src="../assets/images/article-jacobienne-cover.png" alt="Premiere page de l'article sur la matrice jacobienne en deep learning">
+								<img loading="lazy" decoding="async" src="../assets/images/article-jacobienne-cover.webp" alt="Premiere page de l'article sur la matrice jacobienne en deep learning">
 							</a>
 						</div>
 						<div class="article-content">
@@ -427,7 +435,7 @@
 					<div class="article-card reveal">
 						<div class="article-image">
 							<a href="../assets/docs/article-ml-risque-bancaire.pdf" target="_blank">
-								<img loading="lazy" decoding="async" src="../assets/images/article-ml-risque-bancaire-cover.png" alt="Premiere page de l'article Machine Learning, risque et incertitude">
+								<img loading="lazy" decoding="async" src="../assets/images/article-ml-risque-bancaire-cover.webp" alt="Premiere page de l'article Machine Learning, risque et incertitude">
 							</a>
 						</div>
 						<div class="article-content">
@@ -446,7 +454,7 @@
 					<div class="article-card reveal">
 						<div class="article-image">
 							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7341031474529198080/" target="_blank">
-								<img loading="lazy" decoding="async" src="../assets/images/article-fiabilite.png" alt="Fiabilité en Aéronautique">
+								<img loading="lazy" decoding="async" src="../assets/images/article-fiabilite.webp" alt="Fiabilité en Aéronautique">
 							</a>
 						</div>
 						<div class="article-content">
@@ -465,7 +473,7 @@
 					<div class="article-card reveal" style="transition-delay: 0.1s;">
 						<div class="article-image">
 							<a href="https://www.linkedin.com/feed/update/urn:li:activity:7237577571079532544/" target="_blank">
-								<img loading="lazy" decoding="async" src="../assets/images/offre.png" alt="Internship Offer">
+								<img loading="lazy" decoding="async" src="../assets/images/offre.webp" alt="Internship Offer">
 							</a>
 						</div>
 						<div class="article-content">
@@ -481,22 +489,7 @@
 						</div>
 					</div>
 
-					<div class="article-card reveal" style="transition-delay: 0.2s;">
-						<div class="article-image">
-							<img loading="lazy" decoding="async" src="../assets/images/new.jpg" alt="Prochainement" style="opacity: 0.5;">
-						</div>
-						<div class="article-content">
-							<span class="article-date" style="color:var(--text-secondary);">Prochainement</span>
-							<h3 class="article-title">Nouvel Article Technique</h3>
-							<p class="article-excerpt">De nouveaux sujets techniques seront ajoutés ici au fil du temps. Restez à l'écoute pour les prochaines publications sur l'IA, la data, le cloud et l'architecture IT.</p>
-							<div class="article-tags">
-								<span class="article-tag">IA</span>
-								<span class="article-tag">Data Engineering</span>
-								<span class="article-tag">Cloud</span>
-							</div>
-							<span class="read-more-btn disabled">À venir</span>
-						</div>
-					</div>
+
 
 				</div>
 			</div>
@@ -550,10 +543,7 @@
 
 			document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 		</script>
-	<script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-
-    <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
+	<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2026/02/10/08/20260210084024-LPO917N1.js" defer></script>
 	</body>
 </html>
