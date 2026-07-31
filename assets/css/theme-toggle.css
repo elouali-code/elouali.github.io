@@ -642,56 +642,6 @@ html[data-theme="light"] .languages-section,
 	color: #3d3d5c !important;
 }
 
-/* --- EXPERIENCES PAGE TIMELINE --- */
-[data-theme="light"] .timeline-item,
-[data-theme="light"] .timeline-card {
-	background: #ffffff !important;
-	border-color: rgba(0, 0, 0, 0.08) !important;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
-}
-
-[data-theme="light"] .timeline-item h3,
-[data-theme="light"] .timeline-card h3 {
-	color: #1a1a2e !important;
-}
-
-[data-theme="light"] .timeline-item p,
-[data-theme="light"] .timeline-card p,
-[data-theme="light"] .timeline-item li,
-[data-theme="light"] .timeline-card li {
-	color: #3d3d5c !important;
-}
-
-[data-theme="light"] .timeline-date,
-[data-theme="light"] .exp-date {
-	color: #0088b3 !important;
-}
-
-[data-theme="light"] .timeline-role,
-[data-theme="light"] .exp-role {
-	color: #5a5a7a !important;
-}
-
-[data-theme="light"] .timeline-content {
-	background: #ffffff !important;
-	border-color: rgba(0, 0, 0, 0.08) !important;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
-}
-
-[data-theme="light"] .timeline-content h3 {
-	color: #1a1a2e !important;
-}
-
-[data-theme="light"] .timeline-content p,
-[data-theme="light"] .timeline-content li,
-[data-theme="light"] .timeline-content span {
-	color: #3d3d5c !important;
-}
-
-[data-theme="light"] .timeline-side-year {
-	color: #0088b3 !important;
-}
-
 /* Experiences hero logos */
 [data-theme="light"] .hero-logo-strip .logo-airbus {
 	filter: brightness(0) drop-shadow(0 8px 15px rgba(0,0,0,0.1)) !important;
@@ -834,17 +784,107 @@ html[data-theme="light"] .languages-section,
 /* Timeline line - keep visible */
 [data-theme="light"] .timeline::before {
 	background: linear-gradient(to bottom, #0088b3, #6b3fa0) !important;
-	opacity: 0.4 !important;
+	opacity: 0.5 !important;
 }
 
 [data-theme="light"] .timeline-logo {
-	border-color: #f0f2f5 !important;
+	border-color: #e0e4ea !important;
 	background: #ffffff !important;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 }
 
 [data-theme="light"] .timeline-content::before {
-	border-right-color: rgba(0, 0, 0, 0.08) !important;
+	border-right-color: #e0e4ea !important;
+}
+
+[data-theme="light"] .timeline-content {
+	background: #ffffff !important;
+	border-color: #e0e4ea !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .timeline-content:hover {
+	border-color: #0088b3 !important;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .timeline-side-year {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .role-title {
+	color: #1a1a2e !important;
+}
+
+[data-theme="light"] .role-badge {
+	color: #4a4a6a !important;
+	background: rgba(0, 0, 0, 0.04) !important;
+	border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .company-name {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .period-location {
+	color: #4a4a6a !important;
+	border-bottom-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .period-location i {
+	color: #6b3fa0 !important;
+}
+
+[data-theme="light"] .task-list li {
+	color: #3d3d5c !important;
+}
+
+[data-theme="light"] .task-list li::before {
+	color: #0088b3 !important;
+}
+
+[data-theme="light"] .task-list strong {
+	color: #1a1a2e !important;
+}
+
+/* ============================================
+   BORDERS ON ALL CARDS/BOXES - Light mode 
+   Same style as dark mode but with visible light borders
+   ============================================ */
+[data-theme="light"] .experience-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .tech-category,
+[data-theme="light"] .article-card,
+[data-theme="light"] .contact-card,
+[data-theme="light"] .category-card,
+[data-theme="light"] .domain-card,
+[data-theme="light"] .hub-card,
+[data-theme="light"] .showcase-card,
+[data-theme="light"] .language-card,
+[data-theme="light"] .image-card,
+[data-theme="light"] .meta-card,
+[data-theme="light"] .project-section,
+[data-theme="light"] .project-entry,
+[data-theme="light"] .timeline-content,
+[data-theme="light"] .career-step {
+	border: 1px solid #e0e4ea !important;
+}
+
+[data-theme="light"] .article-card {
+	border-left: 3px solid #0088b3 !important;
+}
+
+[data-theme="light"] .experience-card:hover,
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .tech-category:hover,
+[data-theme="light"] .article-card:hover,
+[data-theme="light"] .category-card:hover,
+[data-theme="light"] .domain-card:hover,
+[data-theme="light"] .hub-card:hover,
+[data-theme="light"] .showcase-card:hover,
+[data-theme="light"] .language-card:hover,
+[data-theme="light"] .career-step:hover {
+	border-color: #0088b3 !important;
 }
 
 /* ============================================
